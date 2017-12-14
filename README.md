@@ -1,7 +1,7 @@
-校园宝
+校园宝 ![SchoolB](favicon.ico) 
 = 
-![SchoolB](favicon.ico) 
 ***
+
 ##校园宝是什么?
 方便自己学院任何人更便捷的体验校园
 
