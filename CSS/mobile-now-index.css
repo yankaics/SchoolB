@@ -1,0 +1,48 @@
+@charset "utf-8";
+body {
+	background-color:#DEEBE0;
+	font-family:"微软雅黑";
+}
+.now-main{
+	padding-top:80px;
+	padding-left:1%;
+	padding-right:1%;
+}
+.rq-t{
+	color:#3B393B;
+	font-size:30px;
+}
+.money{
+	color:#3B393B;
+	font-size:20px;
+}
+.moneyz{
+	color:#FE5E55;
+}
+.xia{
+	font-size:20px;
+	color:#3B393B;
+}
+.red{
+	color:#FE5E55;
+}
+.zfb{
+	width:40%;
+	padding:3%;
+	float:left;
+}
+.zfb>img{
+	width:100%;
+}
+.wx{
+	width:40%;
+	padding:3%;
+	float:left;
+}
+.wx>img{
+	width:100%;
+}
+p{
+	color:#3B393B;
+	font-size:20px;
+}

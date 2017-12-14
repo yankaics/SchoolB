@@ -1,0 +1,10 @@
+<?
+$rqrq=date_default_timezone_set("Asia/shanghai");
+$rqm=date("n");
+$rqmm=date("m");
+$rqY=date("Y");
+$rqd=date("d");
+$rqH=date("H");
+$rqi=date("i");
+$rqs=date("s");
+?>

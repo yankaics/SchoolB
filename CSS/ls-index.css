@@ -1,0 +1,97 @@
+@charset "utf-8";
+body {
+	background-color:#DEEBE0;
+	font-family:"微软雅黑";
+}
+.ls-main{
+	padding-top:200px;
+	padding-left:2%;
+	padding-right:2%;
+}
+.ls-t{
+	color:#3B393B;
+	font-size:30px;
+}
+.lsmoney{
+	color:#3B393B;
+	font-size:30px;
+}
+.moneyt{
+	color:#FE5E55;
+}
+.m-br{
+	display:none;
+}
+#slsm{
+	height:50px;
+	background-color:#DEEBE0;
+	text-align:center;
+	border: 2px dashed #3B393B;
+-moz-border-radius: 15px;      
+-webkit-border-radius: 15px;
+width:100px;   
+border-radius:15px;
+text-align:center; 
+}
+#tkey{
+	height:50px;
+	background-color:#DEEBE0;
+	text-align:center;
+	border: 2px dashed #3B393B;
+-moz-border-radius: 15px;      
+-webkit-border-radius: 15px;
+width:200px;   
+border-radius:15px;
+text-align:center; 
+}
+#button{
+	border: 2px solid #009ca8;
+-moz-border-radius: 15px;      
+-webkit-border-radius: 15px;   
+border-radius:15px;
+width:200px;
+height:60px;
+background-color: #DEEBE0;
+color:#009ca8;
+transition:color 400ms;
+	/* Firefox 4 */
+	-moz-transition:color 400ms;
+	/* Safari and Chrome */
+	-webkit-transition:color 400ms;
+	/* Opera */
+	-o-transition:color 400ms;
+	
+	transition:background-color 400ms;
+	/* Firefox 4 */
+	-moz-transition:background-color 400ms;
+	/* Safari and Chrome */
+	-webkit-transition:background-color 400ms;
+	/* Opera */
+	-o-transition:background-color 400ms;
+}
+#button:hover{
+	border: 2px solid #009ca8;
+-moz-border-radius: 15px;      
+-webkit-border-radius: 15px;   
+border-radius:15px;
+width:200px;
+height:60px;
+background-color: #009ca8;
+color: #FAFAFA;
+transition:color 400ms;
+	/* Firefox 4 */
+	-moz-transition:color 400ms;
+	/* Safari and Chrome */
+	-webkit-transition:color 400ms;
+	/* Opera */
+	-o-transition:color 400ms;
+	
+	transition:background-color 400ms;
+	/* Firefox 4 */
+	-moz-transition:background-color 400ms;
+	/* Safari and Chrome */
+	-webkit-transition:background-color 400ms;
+	/* Opera */
+	-o-transition:background-color 400ms;
+
+}

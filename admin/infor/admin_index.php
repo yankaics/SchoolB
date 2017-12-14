@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+<link rel="stylesheet" href="../../layui/css/layui.css">
+<script src="../../layui/layui.js"></script>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<link rel="shortcut icon" href="../../favicon.ico" />
+<!---JSQ--->
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+<script src="../../JSQ/index.js"></script>
+<title>校园宝后台</title>
+</head>
+<body>
+<?
+	include("../../PHP/riqi.php");
+	include("../../SQL/db/db.php");
+	include("../../PHP/adminse.php");
+?>
+    	<div class="layui-container">  
+          <div class="layui-row">
+          	<div class="layui-col-md8">
+            	<blockquote class="layui-elem-quote">校园宝后台<br>欢迎<?=$_SESSION['name']?></blockquote>
+                <p><br>
+                <i class="layui-icon" style="font-size: 32px; color: #FF5722;">&#xe60b;</i>目前后台还没有完善更新，有些页面不太好用，望谅解【正在根据使用情况进行更改】~ 
+                </p><br> 
+              <fieldset class="layui-elem-field">
+                  <legend>菜单及修改密码</legend>
+                  <div class="layui-field-box">
+                    点击左上角【校园宝后台】呼出菜单<br>点击右上角【姓名】修改密码<br>还没有修改密码的管理员请及时【修改密码】
+                  </div>
+                </fieldset>
+          	</div>
+          </div>
+        </div>
+        
+</body>
+</html>
