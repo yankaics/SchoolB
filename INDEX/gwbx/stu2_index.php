@@ -108,7 +108,7 @@ body{ padding-bottom:300px;};
               		<!---!!!--->
                     <input name="bxzdl" type="hidden" value="" />
 					<?
-                    if(isset($_POST['tea']))
+                    if($_SESSION['utype']=="教师")
                     {
                         ?>
                         <input name="tea" type="hidden" value="" />

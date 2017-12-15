@@ -56,12 +56,16 @@
                           <input name="trxm" type="text" disabled required class="layui-input" placeholder="姓名" autocomplete="off" value="<?=$row[3]?>" readonly  lay-verify="required"> 
                       	</div>
                     </div>
+                    
                     <div class="layui-form-item">
                         <label class="layui-form-label">电话</label>
-                        <div class="layui-input-block">
-                          <input name="trdh" type="text" disabled required class="layui-input" placeholder="电话" autocomplete="off" value="<?=($row[5]+1)/2?>" readonly  lay-verify="required"> 
+                        <div class="layui-input-inline">
+                          <input name="trdh" type="text" disabled required class="layui-input" placeholder="电话" autocomplete="off" value="<?=$row[5]?>" readonly  lay-verify="required">
                       	</div>
+                        <a href="tel:<?=$row[5]?>" class="layui-btn  layui-btn-sm">拨打电话</a>
+                       
                     </div>
+                    
                     
                     <div class="layui-form-item layui-form-text">
                         <label class="layui-form-label">损坏描述</label>

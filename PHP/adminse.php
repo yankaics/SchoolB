@@ -1,6 +1,6 @@
-<?
+﻿<?
 //此处修改非法接入返回位置（网址首页）
-$add="http://127.0.0.1:8080/schoolB/index.php";
+$add="http://192.168.252.189/index.php";
 
 $user=$_SESSION['user'];
 $upass=$_SESSION['upass'];
@@ -18,7 +18,7 @@ if($utype=="管理员" || $utype=="教师" || $utype=="学生")
 			{	
 				?>
 				<script language="javascript">
-					alert("非法接入！");
+					alert("请先登陆！");
 					window.location.href="<?=$add?>";
 				</script>
 				<?
@@ -49,7 +49,7 @@ if($utype=="管理员" || $utype=="教师" || $utype=="学生")
 			{	
 			?>
 			<script language="javascript">
-				alert("非法接入！");
+				alert("请先登陆！");
 				window.location.href="<?=$add?>";
 			</script>
 			<?
@@ -69,7 +69,7 @@ if($utype=="管理员" || $utype=="教师" || $utype=="学生")
 			{	
 			?>
 			<script language="javascript">
-				alert("非法接入！");
+				alert("请先登陆！");
 				window.location.href="<?=$add?>";
 			</script>
 			<?
@@ -83,7 +83,7 @@ else
 {
 			?>
 			<script language="javascript">
-				alert("非法接入！");
+				alert("请先登陆！");
 				window.location.href="<?=$add?>";
 			</script>
 			<?

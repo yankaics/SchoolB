@@ -1,8 +1,9 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="favicon.ico" />
+<meta name=“renderer” content=“webkit”>
 <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
 <link rel="stylesheet" href="layui/css/layui.css">
 <script src="layui/layui.js"></script>
@@ -63,7 +64,7 @@ a:active {
 			<span><h1 class="layui-anim layui-anim-upbit"><a href="copy.php" style="color:#FFF;">校园宝</a></h1></span>
 			<form class="form layui-anim layui-anim-upbit" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
 				<input type="text" name="user"  placeholder="学号·工号·账号">
-				<input type="password" name="upass" placeholder="密码默认本人电话">
+				<input type="password" name="upass" placeholder="默认身份证后6位">
                 <select name="utype" size="1">
                   <option value="学生">&nbsp;&nbsp;学生</option>
                   <option value="教师">&nbsp;&nbsp;教师</option>

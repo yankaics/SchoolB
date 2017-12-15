@@ -171,7 +171,7 @@ if($bnclcount==0)
                             </tr>
                             <tr>
                               <td align="right">电话：</td>
-                              <td><?=($row[5]+1)/2?></td>
+                              <td><?=$row[5]?></td>
                             </tr>
                             <tr>
                               <td align="right">
@@ -286,7 +286,7 @@ if($bnclcount==0)
                             </tr>
                             <tr>
                               <td align="right">电话：</td>
-                              <td><?=($row[5]+1)/2?></td>
+                              <td><?=$row[5]?></td>
                             </tr>
                             <tr>
                               <td align="right">
@@ -400,7 +400,7 @@ if($bnclcount==0)
                             </tr>
                             <tr>
                               <td align="right">电话：</td>
-                              <td><?=($row[5]+1)/2?></td>
+                              <td><?=$row[5]?></td>
                             </tr>
                             <tr>
                               <td align="right">

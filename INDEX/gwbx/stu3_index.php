@@ -84,6 +84,14 @@ a:active{text-decoration:none;}
                 <!--上一步-->
                 <form class="forms" name="stu3" action="stu2_index.php" method="post" role="form">
                 	<input name="bxzdl" type="hidden" value="" />
+                    <?
+                    if(isset($_POST['tea']))
+                   	{
+                    	?>
+                         <input name="tea" type="hidden" value="" />
+                        <?
+                    }
+                   	?>
                 </form>
                 
                	<form class="form-horizontal form3" name="stu3" action="stu4_index.php" method="post" role="form" onsubmit="return checknum()">

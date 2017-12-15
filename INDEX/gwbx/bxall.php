@@ -176,7 +176,7 @@ if(isset($_GET['buttons']))
             </tr>
             <tr>
               <td align="right">电话：</td>
-              <td align="left"><?=($row[5]+1)/2?></td>
+              <td align="left"><?=$row[5]?></td>
             </tr>
             <tr>
               <td align="right">

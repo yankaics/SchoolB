@@ -187,7 +187,7 @@ if($row12=mysql_fetch_row($rs12))
     <td align="center">不能处理</td>
     <td align="center"><?=$rowre[9].$rowre[1]?></td>
     <td align="center"><?=$rowre[11]?></td>
-    <td align="center"><?=($rowre[12]+1)/2?></td>
+    <td align="center"><?=$rowre[12]?></td>
     <td align="center"><?=$rowre[0]?></td>
     <td align="center"><?=$rowre[3]?></td>
     <td align="center"><?=$rowre[4]?></td>
@@ -210,7 +210,7 @@ if($row12=mysql_fetch_row($rs12))
     </td>
     <td align="center"><?=$rowre[1].$rowre[2]?></td>
     <td align="center"><?=$rowre[3]?></td>
-    <td align="center"><?=($rowre[5]+1)/2?></td>
+    <td align="center"><?=$rowre[5]?></td>
     <td align="center"><?=$rowre[4]?></td>
     <td align="center"><?=$rowre[10]?></td>
     <td align="center"><?=$rowre[7]?></td>

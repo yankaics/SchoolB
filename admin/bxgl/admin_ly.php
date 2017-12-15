@@ -279,7 +279,7 @@ if($row8=mysql_fetch_row($rs8))
     </td>
     <td align="center"><?=$rowre[1].$rowre[2]?></td>
     <td align="center"><?=$rowre[3]?></td>
-    <td align="center"><?=($rowre[5]+1)/2?></td>
+    <td align="center"><?=$rowre[5]?></td>
     <td align="center"><?=$rowre[4]?></td>
     <td align="center"><?=$rowre[10]?></td>
     <td align="center"><?=$rowre[7]?></td>

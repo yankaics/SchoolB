@@ -87,7 +87,7 @@ if($rowle=mysql_fetch_row($rsle))
             <a href="czxq.php?id=<?=$rowl[0]?>"><button name="button" class="layui-btn" type="button">操作</button></a>
           </div>
           <div class="layui-col-md12 layui-col-xs12">
-            姓名:<?=$rowl[3]?> | 电话:<?=($rowl[5]+1)/2?>
+            姓名:<?=$rowl[3]?> | 电话:<?=$rowl[5]?>
           </div>
           <div class="layui-col-md12 layui-col-xs12">
           <form style="color:#333; " class="layui-form" action="">

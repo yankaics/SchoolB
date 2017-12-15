@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -41,7 +41,7 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			}
 			else
 			{
-				$spassid=($row[4]+1)/2;
+				$spassid=$row[3];
 			}
 			
 			//学号
@@ -53,12 +53,13 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			//辅导员
 			$_SESSION['tfdy']=$row[6];
 			//电话
-			$_SESSION['tdh']=($row[4]+1)/2;
+			$_SESSION['tdh']=$row[4];
 			
-			//密码
-			$_SESSION['spassid']=$spassid;
+			
 			if($mysql['upass']==$spassid && $user==$row[7])
 			{
+				//密码
+				$_SESSION['spassid']=$spassid;
 				$sqlre="insert into sch_loginre values('','".$row[7]."','".$row[1]."','".$row[5]."','".$da1."','学生')";
 				$rsre=mysql_query($sqlre,$con);
 				?>
@@ -101,18 +102,19 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			}
 			else
 			{
-				$spassid=($row[4]+1)/2;
+				$spassid=$row[3];
 			}
 			//姓名
 			$_SESSION['txm']=$row[1];
 			//电话
-			$_SESSION['tdh']=($row[4]+1)/2;
+			$_SESSION['tdh']=$row[4];
 			//部门
 			$_SESSION['tjob']=$row[5];
-			//密码
-			$_SESSION['spassid']=$spassid;
+			
 			if($upass==$spassid && $user==$row[6])
 			{
+				//密码
+				$_SESSION['spassid']=$spassid;
 				$sqlre="insert into sch_loginre values('','".$row[6]."','".$row[1]."','".$row[5].$row[8]."','".$da1."','教师')";
 				$rsre=mysql_query($sqlre,$con);
 				?>
