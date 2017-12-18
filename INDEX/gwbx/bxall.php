@@ -45,51 +45,43 @@ function checktime()
 <body bgcolor="#F0F0F0">
 
 <!------导航------>
-<div class="layui-header header header-doc">
-    <ul class="layui-nav layui-icon" lay-filter="">
-        <div class="layui-container">  
-        	<li class="layui-nav-item layui-icon" style="z-index:1;"><a href="../../index.php"><img class="layui-icon" src="../../UI/logo/呕吐-1.png"></a>
-            <span class="layui-nav-bar" style=" display:none"></span>
-            </li>
-        </div> 
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/呕吐-1.png"></div>
+	<?
+	include("../../SQL/db/db.php");
+	include("../../PHP/adminse.php");
+	//报修查询数量
+	$countsql="select count(*) from sch_repair_re where s_schid='".$_SESSION['user']."' and s_jg!='已处理'";
+	$countrs=mysql_query($countsql,$con);
+	if($countrow=mysql_fetch_row($countrs))
+		$countnum=$countrow[0];
+	else
+		$countnum=0;
+	
+	?>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item ">
+		  <?
+          if($_SESSION['utype']=="教师")
+          {
+          ?>
+          <a href="../../tea_i.php">
+          <div class="xz-index">菜单</div></a>
+          <?
+          }
+          else
+          {
+          ?>
+          <a href="../../stu_i.php">
+          <div class="xz-index">菜单</div></a>
+          <?
+          }
+          ?>
+      </li>
+      <li class="layui-nav-item "><a href="gwbxcx_index.php">报修查询<span class="layui-badge"><?=$countnum?></span></a></li>
     </ul>
-<?
-include("../../SQL/db/db.php");
-include("../../PHP/adminse.php");
-//报修查询数量
-$countsql="select count(*) from sch_repair_re where s_schid='".$_SESSION['user']."' and s_jg!='已处理'";
-$countrs=mysql_query($countsql,$con);
-if($countrow=mysql_fetch_row($countrs))
-	$countnum=$countrow[0];
-else
-	$countnum=0;
-
-?>
-    <ul class="layui-nav layui-layout-right" style="text-align:center;">
-    	<div class="layui-container ">
-        	
-            <li class="layui-nav-item ">
-            	<?
-				if($_SESSION['utype']=="教师")
-				{
-				?>
-				<a href="../../tea_i.php">
-				<div class="xz-index">菜单</div></a>
-				<?
-				}
-				else
-				{
-				?>
-				<a href="../../stu_i.php">
-				<div class="xz-index">菜单</div></a>
-				<?
-				}
-				?>
-            </li>
-     		<li class="layui-nav-item "><a href="gwbxcx_index.php">报修查询<span class="layui-badge"><?=$countnum?></span></a></li>
-            
-        </div>
-    </ul>
+  </div>
 </div><br><br>
 <!------main------>
 <div class="layui-container">
@@ -176,7 +168,7 @@ if(isset($_GET['buttons']))
             </tr>
             <tr>
               <td align="right">电话：</td>
-              <td align="left"><?=$row[5]?></td>
+              <td align="left"><?=($row[5]+1)/2?></td>
             </tr>
             <tr>
               <td align="right">

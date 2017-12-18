@@ -25,42 +25,36 @@
 <body  bgcolor="#F0F0F0">
 
 <!------导航------>
-<div class="layui-header header header-doc">
-    <ul class="layui-nav layui-icon" lay-filter="">
-        <div class="layui-container">  
-        	<li class="layui-nav-item layui-icon" style="z-index:1;"><a href="../../index.php"><img class="layui-icon" src="../../UI/logo/呕吐-1.png"></a>
-            <span class="layui-nav-bar" style=" display:none"></span>
-            </li>
-        </div> 
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/呕吐-1.png"></div>
+	<?
+	include("../../SQL/db/db.php");
+	include("../../PHP/adminse.php");
+	?>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item ">
+		  <?
+          if($_SESSION['utype']=="教师")
+          {
+          ?>
+          <a href="../../tea_i.php">
+          <div class="xz-index">菜单</div></a>
+          <?
+          }
+          else
+          {
+          ?>
+          <a href="../../stu_i.php">
+          <div class="xz-index">菜单</div></a>
+          <?
+          }
+          ?>
+      </li>
     </ul>
-    <ul class="layui-nav layui-layout-right" style="text-align:center;">
-    	<div class="layui-container ">
-        	<?
-			include("../../SQL/db/db.php");
-			include("../../PHP/adminse.php");
-			?>
-            <li class="layui-nav-item ">
-            	<?
-				if($_SESSION['utype']=="教师")
-				{
-				?>
-				<a href="../../tea_i.php">
-				<div class="xz-index">菜单</div></a>
-				<?
-				}
-				else
-				{
-				?>
-				<a href="../../stu_i.php">
-				<div class="xz-index">菜单</div></a>
-				<?
-				}
-				?>
-            </li>
-            
-        </div>
-    </ul>
-</div><br><br>
+  </div>
+</div>
+
 <!------main------>
 <div class="layui-container">
   <div class="layui-row">
@@ -107,5 +101,11 @@ $(document).ready(function(e) {
 });
 </script>
 <? }?>
+
+<script>
+layui.use('element', function(){
+  var element = layui.element;	
+});
+</script>
 </body>
 </html>

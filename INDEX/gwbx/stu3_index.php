@@ -34,41 +34,34 @@ a:active{text-decoration:none;}
 
 <body>
 <!------导航------>
-<div class="layui-header header header-doc">
-    <ul class="layui-nav layui-icon" lay-filter="">
-        <div class="layui-container">  
-        	<li class="layui-nav-item layui-icon" style="z-index:1;"><a href="../../index.php"><img class="layui-icon" src="../../UI/logo/呕吐-1.png"></a>
-            <span class="layui-nav-bar" style=" display:none"></span>
-            </li>
-        </div> 
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/呕吐-1.png"></div>
+	<?
+	include("../../SQL/db/db.php");
+	include("../../PHP/adminse.php");
+	?>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item ">
+		  <?
+          if($_SESSION['utype']=="教师")
+          {
+          ?>
+          <a href="../../tea_i.php">
+          <div class="xz-index">菜单</div></a>
+          <?
+          }
+          else
+          {
+          ?>
+          <a href="../../stu_i.php">
+          <div class="xz-index">菜单</div></a>
+          <?
+          }
+          ?>
+      </li>
     </ul>
-    <ul class="layui-nav layui-layout-right" style="text-align:center;">
-    	<div class="layui-container ">
-        	<?
-			include("../../SQL/db/db.php");
-			include("../../PHP/adminse.php");
-			?> 
-            <li class="layui-nav-item ">
-            	<?
-				if($_SESSION['utype']=="教师")
-				{
-				?>
-				<a href="../../tea_i.php">
-				<div class="xz-index">菜单</div></a>
-				<?
-				}
-				else
-				{
-				?>
-				<a href="../../stu_i.php">
-				<div class="xz-index">菜单</div></a>
-				<?
-				}
-				?>
-            </li>
-            
-        </div>
-    </ul>
+  </div>
 </div>
 <!------main------>
 
@@ -84,14 +77,6 @@ a:active{text-decoration:none;}
                 <!--上一步-->
                 <form class="forms" name="stu3" action="stu2_index.php" method="post" role="form">
                 	<input name="bxzdl" type="hidden" value="" />
-                    <?
-                    if(isset($_POST['tea']))
-                   	{
-                    	?>
-                         <input name="tea" type="hidden" value="" />
-                        <?
-                    }
-                   	?>
                 </form>
                 
                	<form class="form-horizontal form3" name="stu3" action="stu4_index.php" method="post" role="form" onsubmit="return checknum()">
@@ -131,9 +116,9 @@ a:active{text-decoration:none;}
                                 <td align="center"><?=$rowres[0]?></td>
                                 <td align="center">
                                   
-                                    <span class="layui-btn layui-btn-small jian"><a class="jian" style="color:#FFF;">-</a></span>
+                                    <span class="layui-btn layui-btn-sm jian"><a class="jian" style="color:#FFF;">-</a></span>
                                     <input name="nb[]" type="text" disabled="disabled" class="lskdo btn " style="width:40px;" value="0" size="1" />
-                                  <span class="layui-btn layui-btn-small jia"><a class="jia" style="color:#FFF;">+</a></span>
+                                  <span class="layui-btn layui-btn-sm jia"><a class="jia" style="color:#FFF;">+</a></span>
                                 
                                 
                                 </td>

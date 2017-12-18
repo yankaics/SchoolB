@@ -16,26 +16,19 @@
 </head>
 
 <body bgcolor="#F0F0F0">
-
-<div class="layui-header header header-doc">
-    <ul class="layui-nav layui-icon" lay-filter="">
-        <div class="layui-container">  
-        	<li class="layui-nav-item layui-icon" style="z-index:1;"><a href="index.php"><img class="layui-icon" src="UI/logo/呕吐-1.png"></a>
-            <span class="layui-nav-bar" style=" display:none"></span>
-            </li>
-        </div> 
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo"><img class="layui-icon" src="UI/logo/呕吐-1.png"></div>
+	<?
+	include"PHP/riqi.php";
+	?>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item "><a href="index.php">登陆</a> </li>
+      <li class="layui-nav-item layui-this" ><a href="">关于</a> </li>
     </ul>
-    <ul class="layui-nav layui-layout-right" style="text-align:center;">
-    	<div class="layui-container ">
-            <li class="layui-nav-item "><a href="index.php">登陆</a> </li>
-            <li class="layui-nav-item layui-this" ><a href="">关于</a> </li>
-        </div>
-    </ul>
-    
+  </div>
 </div>
-<?
-include("php/riqi.php");
-?>
+
 <div class="layui-container layui-anim layui-anim-upbit"><br>
       <div class=""><div style="font-size:36px; color:#393D49;"><blockquote class="layui-elem-quote">校园宝</blockquote></div></div>
       <fieldset class="layui-elem-field">
@@ -66,8 +59,10 @@ include("php/riqi.php");
             <li class="layui-timeline-item">
                 <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
                 <div class="layui-timeline-content layui-text">
-                  <h3 class="layui-timeline-title">2017-12-1</h3>
-                  <p>修改了已知bug~~</p>
+                  <h3 class="layui-timeline-title">2017-12-18</h3>
+                  	<p>新增用户右上角个人管理（姓名显示）</p>
+                    <p>修改了顶部导航布局</p>
+                  	<p>修改了已知bug~~</p>
                   <p></p>
                 </div>
               </li>

@@ -15,7 +15,7 @@ if(isset($_POST['bxzdl']))
 $j=$_SESSION['j'];
 $time=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 $tname=$_POST['tname'];
-$tphone=$_POST['tphone'];
+$tphone=$_POST['tphone']*2-1;
 $tzy=$_POST['tzy'];
 $ttea=$_POST['ttea'];
 $tadd=$_POST['tadd'];
