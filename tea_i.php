@@ -34,6 +34,11 @@ layui.use('element', function(){
 layui.use('layer', function(){
   var layer = layui.layer;
   $(document).ready(function(e) {
+	$(".DESS").click(function(e) {
+    	layer.msg('计划中', {
+    	time: 2000,
+  		});
+	});
 	$(".DE").click(function(e) {
     	layer.msg('(｡・`ω´･)', {
     	time: 2000,
@@ -60,27 +65,27 @@ layui.use('layer', function(){
 <body bgcolor="#F0F0F0">
 
 <!------导航------>
-<div class="layui-header header header-doc">
-    <ul class="layui-nav layui-icon" lay-filter="">
-        <div class="layui-container">  
-        	<li class="layui-nav-item layui-icon" style="z-index:1;"><a href="index.php"><img class="layui-icon" src="UI/logo/呕吐-1.png"></a>
-            <span class="layui-nav-bar" style=" display:none"></span>
-            </li>
-        </div> 
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo"><img class="layui-icon" src="UI/logo/呕吐-1.png"></div>
+	<?
+	include"PHP/riqi.php";
+	include"SQL/db/db.php";
+	include"PHP/adminse.php";
+	?>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <?=$_SESSION['txm'];?>
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a class="updatepass" href="javascript:;">修改密码</a></dd>
+          <dd><a href="index.php">退出</a></dd>
+        </dl>
+      </li>
     </ul>
-    <ul class="layui-nav layui-layout-right" style="text-align:center;">
-    	<div class="layui-container ">
-        	
-            <li class="layui-nav-item "><a href="index.php">校园宝</a> </li>
-     		
-        </div>
-    </ul>
+  </div>
 </div><br><br>
-<?
-include"PHP/riqi.php";
-include"SQL/db/db.php";
-include"PHP/adminse.php";
-?>
 <!------main------>
 
 <div class="school_i">
@@ -124,16 +129,9 @@ include"PHP/adminse.php";
       
       <div class="layui-col-md3 layui-col-xs6">
         <div class="layui-row grid-demo">
-        <a href="javascript:;" class="grid-demo3 updatepass">
+        <a href="javascript:;" class="grid-demo3 DESS">
           <div class="layui-col-md4">
-            <i class="layui-icon 3" style="font-size:64px;">&#xe642;<?
-            $sql="select * from sch_teab where tjobnum='".$_SESSION['user']."'";
-			$rs=mysql_query($sql,$con);
-			if($row=mysql_fetch_row($rs))
-			{
-				if($row[7]=='')
-				{
-			?><span class="layui-badge-dot"></span><? }}?></i><p>修改密码</p>
+            <i class="layui-icon 3" style="font-size:64px;">&#xe636;</i><p>宿舍水电</p>
           </div>
        	</a>
         </div>
