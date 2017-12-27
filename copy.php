@@ -59,9 +59,9 @@
             <li class="layui-timeline-item">
                 <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
                 <div class="layui-timeline-content layui-text">
-                  <h3 class="layui-timeline-title">2017-12-18</h3>
+                  <h3 class="layui-timeline-title">2017-12-27</h3>
                   	<p>新增用户右上角个人管理（姓名显示）</p>
-                    <p>修改了顶部导航布局</p>
+                    <p>修改了顶部导航布局，加入了部分提示</p>
                   	<p>修改了已知bug~~</p>
                   <p></p>
                 </div>

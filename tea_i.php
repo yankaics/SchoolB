@@ -76,6 +76,12 @@ layui.use('layer', function(){
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
         <a href="javascript:;">
+        <?php
+			$sql="select tid from sch_teab where tpass=''";
+			$rs=mysql_query($sql,$con);
+			if($row=mysql_fetch_row($rs))
+			{
+		?><span class="layui-badge-dot "></span><?php }?>
           <?=$_SESSION['txm'];?>
         </a>
         <dl class="layui-nav-child">

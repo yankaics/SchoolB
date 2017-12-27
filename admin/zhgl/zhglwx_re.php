@@ -113,7 +113,7 @@ body{ padding-bottom:100px;}
         <tr>
           <td align="left"><?=$rowre[1].$rowre[2]?></td>
           <td align="left"><?=$rowre[3]?></td>
-          <td align="left"><?=$rowre[5]?></td>
+          <td align="left"><?=($rowre[5]+1)/2?></td>
           <td align="left"><?=$rowre[4]?></td>
           <td align="left"><?=$rowre[10]?></td>
           <td align="left"><?=$rowre[12]?></td>

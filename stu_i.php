@@ -76,8 +76,14 @@ layui.use('layer', function(){
 	?>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
+      	<?php
+			$sql="select tid from sch_stub where tpass=''";
+			$rs=mysql_query($sql,$con);
+			if($row=mysql_fetch_row($rs))
+			{
+		?><span class="layui-badge-dot "></span><?php }?>
         <a href="javascript:;">
-          <?=$_SESSION['txm'];?>
+           <?=$_SESSION['txm'];?>
         </a>
         <dl class="layui-nav-child">
           <dd><a class="updatepass" href="javascript:;">修改密码</a></dd>

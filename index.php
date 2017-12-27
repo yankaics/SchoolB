@@ -1,48 +1,16 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
 <link rel="shortcut icon" href="favicon.ico" />
-<meta name=“renderer” content=“webkit”>
 <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
 <link rel="stylesheet" href="layui/css/layui.css">
 <script src="layui/layui.js"></script>
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/styles.css">
-<style type="text/css">
-body,td,th {
-	font-family:"宋体";
-}
-a:link {
-	text-decoration: none;
-}
-a:visited {
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: none;
-}
-a:active {
-	text-decoration: none;
-}
-:-moz-placeholder
-{
-  text-align:center;
-}
-::-moz-placeholder
-{
-  text-align: center;
-}
-:-ms-input-placeholder
-{
-   text-align: center;
-}
-::-webkit-input-placeholder
-{
-    text-align: center;
-}
-</style>
 <title>校园宝 | Hi~</title>
 <system.webServer>
     <httpProtocol>
@@ -64,7 +32,7 @@ a:active {
 			<span><h1 class="layui-anim layui-anim-upbit"><a href="copy.php" style="color:#FFF;">校园宝</a></h1></span>
 			<form class="form layui-anim layui-anim-upbit" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
 				<input type="text" name="user"  placeholder="学号·工号·账号">
-				<input type="password" name="upass" placeholder="默认身份证后6位">
+				<input type="password" name="upass" placeholder="密码身份证后6位">
                 <select name="utype" size="1">
                   <option value="学生">&nbsp;&nbsp;学生</option>
                   <option value="教师">&nbsp;&nbsp;教师</option>
@@ -73,7 +41,7 @@ a:active {
 			  <p><button type="submit" name="button" >登陆</button></p>
                 
 		  </form>
-          <a href="copy.php" ><p style="color:#CCC;" class="layui-anim layui-anim-fadein"><span class="layui-badge-dot"></span> 关于校园宝</p></a>
+          <a href="copy.php" ><p style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"><span class="layui-badge-dot"></span> 关于校园宝</p></a>
 		</div>
 		
 		

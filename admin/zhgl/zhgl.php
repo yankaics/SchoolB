@@ -177,7 +177,7 @@ if(isset($_GET['zw_zhgl_3']))
 if(isset($_GET['p']))
 $sqll="select * from sch_admin where s_position='".$_GET['n']."' and s_g=0";
 else
-$sqll="select * from sch_admin where s_position='".$_GET['n']."'";
+$sqll="select * from sch_admin where s_position='".$_GET['n']."' and s_g!=0";
 $rsl=mysql_query($sqll,$con);
 while($rowl=mysql_fetch_row($rsl))
 {
