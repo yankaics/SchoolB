@@ -8,15 +8,15 @@
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
-<!---JSQ--->
+<!--JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../../JSQ/index.js"></script>
-<!---以往的CSS
+<!--以往的CSS
 <link media="(max-width:650px)" href="CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
 <link media="(max-width:500px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
 <link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
 <link media="(min-width:500px)" href="CSS/ly-admin-index.css" rel="stylesheet" type="text/css"/>
-<link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />--->
+<link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />-->
 <style>
 body{ background-color:#F0F0F0; padding-bottom:200px;};
 a:link{text-decoration:none;}
@@ -29,7 +29,7 @@ a:active{text-decoration:none;}
 
 <body>
 
-<!------导航------>
+<!--导航-->
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
     <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/呕吐-1.png"></div>
@@ -59,7 +59,7 @@ a:active{text-decoration:none;}
     </ul>
   </div>
 </div>
-<!------main------>
+<!--main-->
 <div class="layui-row">
   		<div class="layui-col-md4 layui-col-md-offset4 layui-col-xs-12">
     	<?
@@ -71,7 +71,7 @@ a:active{text-decoration:none;}
               	<p>
                 <!--上一步-->
                 <form class="forms" name="stu3" action="stu3_index.php" method="post" role="form">
-                	<!---!!!--->
+                	<!--!!!-->
                     <input name="taddr" type="hidden" value="<?=$_POST['taddr']?>" />
                     <input name="tadd" type="hidden" value="<?=$_POST['tadd']?>" />
                     <input name="bxzdl" type="hidden" value="" />
@@ -123,7 +123,7 @@ a:active{text-decoration:none;}
                       </colgroup>
                       <thead>
                         <tr>
-                        	<th align="left">序号</th>
+                        	<th align="left">图片</th>
                           	<th align="left">物件</th>
                        	  	<th align="left">数量</th>
                         </tr> 
@@ -137,7 +137,7 @@ a:active{text-decoration:none;}
 					  {
 					  ?>
                         <tr>
-                        	<td align="left"><?=$i?></td>
+                        	<td align="left"><input class="layui-btn" type="file" name="uploadImg" onchange="Javascript:validate_img(this);" size="12"/></td>
                         	<td align="left"><?=$t1[$i-1]?></td>
                         	<td align="left"><?=$nb1[$i-1]?></td>
                         </tr>
@@ -185,6 +185,26 @@ a:active{text-decoration:none;}
                 </p>
              </div>
 <script>
+$('input[type=file]').each(function()   
+                {
+                    var max_size=102400;
+                     $(this).change(function(evt)   
+                        {   
+                            var finput = $(this);
+                            var file = a.value;   
+                            var files = evt.target.files; // 获得文件对象   
+                            var output = [];   
+                            for (var i = 0, f; f = files[i]; i++)   
+                                    {  //检查文件大小   
+                                     if(f.size > max_size)   
+                                        {   
+                                            alert("上传的图片不能超过100KB!");   
+                                            $(this).val('');   
+                                        }   
+                                    }
+			});   
+        }); 
+
 layui.use('form', function(){
   		var form = layui.form;
 	});
