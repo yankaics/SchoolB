@@ -59,6 +59,18 @@
             <li class="layui-timeline-item">
                 <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
                 <div class="layui-timeline-content layui-text">
+                  <h3 class="layui-timeline-title">2018-1-6</h3>
+                  <p>2018的第一次更新</p>
+                  <p>增加了<评论专区>，目前还是第三方的。</p>
+                  <p>修改了已知BUG！</p>
+                  <p>修改了<报修查询>，移动至右上角，并加入提示信息。</p>
+                  <p>优化了部分代码以及用户体验！</p>
+                </div>
+              </li>
+
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
+                <div class="layui-timeline-content layui-text">
                   <h3 class="layui-timeline-title">2017-12-27</h3>
                   	<p>新增用户右上角个人管理（姓名显示）</p>
                     <p>修改了顶部导航布局，加入了部分提示</p>
