@@ -7,14 +7,15 @@
 <script src="layui/layui.js"></script>
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-<!------>
+<!---->
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <link rel="shortcut icon" href="favicon.ico" />
-<!---JSQ--->
+<!--JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="JSQ/index.js"></script>
 
-<!---CSS
+<link rel="stylesheet" type="text/css" href="css/tea_index.css" />
+<!--CSS
 以往版本的样式
 <link media="(max-width:769px)" href="CSS/mobile-main.css" rel="stylesheet" type="text/css" />
 <link media="(max-width:769px)" href="CSS/mobile-top.css" rel="stylesheet" type="text/css" />
@@ -23,7 +24,7 @@
 <link media="(min-width:769px)" href="CSS/z-index-bt.css" rel="stylesheet" type="text/css" />
 <link media="(min-width:769px)" href="CSS/top-index.css" rel="stylesheet" type="text/css" />
 <link media="(min-width:769px)" href="CSS/main-index.css" rel="stylesheet" type="text/css" />
---->
+-->
 
 <title>老师你好</title>
 <script>
@@ -63,71 +64,91 @@ layui.use('layer', function(){
 </head>
 
 <body bgcolor="#F0F0F0">
-
-<!------导航------>
+<!--导航-->
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
     <div class="layui-logo"><img class="layui-icon" src="UI/logo/呕吐-1.png"></div>
-	<?
-	include"PHP/riqi.php";
-	include"SQL/db/db.php";
-	include"PHP/adminse.php";
-	?>
+  <?
+  include"PHP/riqi.php";
+  include"SQL/db/db.php";
+  include"PHP/adminse.php";
+  ?>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
-        <a href="javascript:;">
+        <!--修改密码-->
         <?php
-			$sql="select tid from sch_teab where tpass=''";
-			$rs=mysql_query($sql,$con);
-			if($row=mysql_fetch_row($rs))
-			{
-		?><span class="layui-badge-dot "></span><?php }?>
-          <?=$_SESSION['txm'];?>
+        $sql="select tid from sch_stub where tpass=''";
+        $rs=mysql_query($sql,$con);
+        if($row=mysql_fetch_row($rs))
+        {
+      ?><span class="layui-badge-dot "></span><?php }?>
+        <!--报修查询-->
+        <?
+        if($_SESSION['utype']=="教师")
+        {
+          $sql="select * from sch_repair_re where s_schid='".$_SESSION['user']."' and s_repair!='未分配' and s_jg!='已处理'";
+        }
+        else
+        {
+          $sql="select * from sch_repair_re where s_schid='".$_SESSION['txh']."' and s_repair!='未分配' and s_jg!='已处理'";
+        }
+        $rs=mysql_query($sql,$con);
+        if($row=mysql_fetch_row($rs))
+        {
+      ?><span class="layui-badge-dot "></span><? }?>
+        <a href="javascript:;">
+           <?=$_SESSION['txm'];?>
         </a>
         <dl class="layui-nav-child">
-          <dd><a class="updatepass" href="javascript:;">修改密码</a></dd>
+          <dd>
+          <!--报修查询-->
+          <?
+            if($_SESSION['utype']=="教师")
+            {
+              $sql="select * from sch_repair_re where s_schid='".$_SESSION['user']."' and s_repair!='未分配' and s_jg!='已处理'";
+            }
+            else
+            {
+              $sql="select * from sch_repair_re where s_schid='".$_SESSION['txh']."' and s_repair!='未分配' and s_jg!='已处理'";
+            }
+            $rs=mysql_query($sql,$con);
+            if($row=mysql_fetch_row($rs))
+            {
+          ?><span class="layui-badge-dot "></span><? }?>
+            <a href="INDEX/gwbx/gwbxcx_index.php">报修查询</a>
+          </dd>
+
+          <dd>
+          <!--修改密码-->
+          <?php
+            $sql="select tid from sch_stub where tpass=''";
+            $rs=mysql_query($sql,$con);
+            if($row=mysql_fetch_row($rs))
+            {
+          ?><span class="layui-badge-dot "></span><?php }?>
+            <a class="updatepass" href="javascript:;">修改密码</a>
+          </dd>
+
           <dd><a href="index.php">退出</a></dd>
         </dl>
       </li>
     </ul>
   </div>
 </div><br><br>
-<!------main------>
+<!--main-->
 
 <div class="school_i">
-
+  
 <div class="layui-container">
 
 <center>
+  <!--菜单-->
 <div class="layui-row layui-col-space30 layui-anim layui-anim-upbit">
       <div class="layui-col-md3 layui-col-xs6">
         <div class="layui-row grid-demo">
-        <a href="INDEX/gwbx/alerts.php?tea=" class="grid-demo1">
+        <a href="INDEX/gwbx/alerts.php" class="grid-demo">
           <div class="layui-col-md4">
-            <i class="layui-icon 1" style="font-size:64px;">&#xe631;</i><p>公物报修</p>
-          </div>
-        </a>
-        </div>
-       
-      </div>
-      
-     <div class="layui-col-md3 layui-col-xs6">
-        <div class="layui-row grid-demo">
-        <a href="INDEX/gwbx/gwbxcx_index.php" class="grid-demo2">
-          <div class="layui-col-md4">
-            <i class="layui-icon 2" style="font-size:64px;">&#xe615;<?
-			if($_SESSION['utype']=="教师")
-			{
-				$sql="select * from sch_repair_re where s_schid='".$_SESSION['user']."' and s_repair!='未分配' and s_jg!='已处理'";
-			}
-			else
-			{
-				$sql="select * from sch_repair_re where s_schid='".$_SESSION['txh']."' and s_repair!='未分配' and s_jg!='已处理'";
-			}
-			  $rs=mysql_query($sql,$con);
-			  if($row=mysql_fetch_row($rs))
-			  {
-				  ?><span class="layui-badge-dot "></span><? }?></i><p>报修查询</p>
+            <i class="layui-icon">&#xe631;</i><p>公物报修</p>
           </div>
         </a>
         </div>
@@ -135,26 +156,37 @@ layui.use('layer', function(){
       
       <div class="layui-col-md3 layui-col-xs6">
         <div class="layui-row grid-demo">
-        <a href="javascript:;" class="grid-demo3 DESS">
+        <a href="INDEX/comment/index.php" class="grid-demo">
           <div class="layui-col-md4">
-            <i class="layui-icon 3" style="font-size:64px;">&#xe636;</i><p>宿舍水电</p>
+            <i class="layui-icon">&#xe606;</i><p>评论专区</p>
           </div>
-       	</a>
+        </a>
+        </div>
+      </div>
+
+      <div class="layui-col-md3 layui-col-xs6">
+        <div class="layui-row grid-demo">
+        <a href="javascript:;" class="grid-demo DESS">
+          <div class="layui-col-md4">
+            <i class="layui-icon">&#xe636;</i><p>宿舍水电</p>
+          </div>
+        </a>
         </div>
       </div>
       
       <div class="layui-col-md3 layui-col-xs6">
         <div class="layui-row grid-demo">
-        <a href="javascript:;" class="grid-demo4 DE">
+        <a href="javascript:;" class="grid-demo DE">
           <div class="layui-col-md4">
-            <i class="layui-icon 4" style="font-size:64px;">&#xe705;</i><p>敬请期待</p>
+            <i class="layui-icon">&#xe705;</i><p>敬请期待</p>
           </div>
         </a>
         </div>
       
-      </div>
       
-</div> 
+      
+    </div>
+</div>  
 <?
 //报修成功
 if(isset($_GET['iok']))
