@@ -17,13 +17,33 @@
 <link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
 <link media="(min-width:500px)" href="CSS/ly-admin-index.css" rel="stylesheet" type="text/css"/>
 <link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />-->
+
 <style>
 body{ background-color:#F0F0F0; padding-bottom:200px;};
 a:link{text-decoration:none;}
 a:visited{text-decoration:none;}
 a:hover{text-decoration:none;}
 a:active{text-decoration:none;}
+
+
+.upimg input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.show
+            {
+                top:40px;
+                width: 100%;
+                height: 30px;
+                font:normal normal normal 14px/30px 'Microsoft YaHei';
+            }
 </style>
+<script type="text/javascript">
+
+</script>
 <title>预览报修订单</title>
 </head>
 
@@ -66,7 +86,7 @@ a:active{text-decoration:none;}
 		if(isset($_POST['bxzdl']))
 		{
 			?>
-            <blockquote class="layui-elem-quote">预览报修订单<br>检查订单并填写损坏描述</blockquote>
+            <blockquote class="layui-elem-quote">预览报修订单<br>检查订单<br>并填写损坏描述<br>或上传对应的照片</blockquote>
               <div class="layui-field-box layui-anim layui-anim-upbit">
               	<p>
                 <!--上一步-->
@@ -89,7 +109,7 @@ a:active{text-decoration:none;}
                    	?>
                 </form>
                 
-                <form class="layui-form layui-form-pane form4" name="stu4" action="stuinsert_index.php" method="post" role="form" onsubmit="return check()">
+                <form class="layui-form layui-form-pane form4" name="stu4" action="stuinsert_index.php" method="post" role="form" onsubmit="return check()" enctype="multipart/form-data">
                 	<input name="bxzdl" type="hidden" value="" />
                 	<div class="layui-form-item">
                         <label class="layui-form-label">姓名</label>
@@ -112,9 +132,10 @@ a:active{text-decoration:none;}
                     <div class="layui-form-item layui-form-text">
                         <label class="layui-form-label"><span class="layui-badge-dot"></span>损坏描述</label>
                         <div class="layui-input-block">
-                          <textarea name="twxxq" placeholder="如：桌子腿坏了或水管裂开了" class="layui-textarea"></textarea>
+                          <textarea name="twxxq" placeholder="如：桌子腿坏了，水管裂开了" class="layui-textarea"></textarea>
                         </div>
                      </div>
+
                     <table class="layui-table">
                       <colgroup>
                         <col width="100">
@@ -123,7 +144,7 @@ a:active{text-decoration:none;}
                       </colgroup>
                       <thead>
                         <tr>
-                        	<th align="left">图片</th>
+                        	<th align="left">照片</th>
                           	<th align="left">物件</th>
                        	  	<th align="left">数量</th>
                         </tr> 
@@ -137,10 +158,65 @@ a:active{text-decoration:none;}
 					  {
 					  ?>
                         <tr>
-                        	<td align="left"><input class="layui-btn" type="file" name="uploadImg" onchange="Javascript:validate_img(this);" size="12"/></td>
+                        	<td align="left">
+                        		<a href="javascript:;" class="upimg fupimg<?=$i?> layui-btn">选择
+									<input name="ttp<?=$i?>" class="fileimg<?=$i?>" type="file"/>
+								</a>
+								<div class="show<?=$i?>"></div>
+							</td>
                         	<td align="left"><?=$t1[$i-1]?></td>
                         	<td align="left"><?=$nb1[$i-1]?></td>
                         </tr>
+
+                        <script type="text/javascript">
+                        	//上传图片
+						    $(document).ready(function(){
+						            $(".fupimg<?=$i?>").on("change","input[type='file']",function(){
+									    var filePath=$(this).val();
+									    
+									    if(filePath.indexOf("jpg")!=-1 || filePath.indexOf("png")!=-1){
+									        $(".fileerrorTip").html("").hide();
+									        var arr=filePath.split('\\');
+									        var fileName=arr[arr.length-1];
+									        $('.show<?=$i?>').html(fileName.substr(0, 2)+'..'+fileName.substr(-6));
+									    }
+									    
+									    else
+									    {
+									    	$(".fileimg<?=$i?>").attr("value",""); 
+									        $(".show<?=$i?>").html("");
+									        layui.use('layer', function(){
+											var layer = layui.layer;
+											layer.msg('您未上传文件<br>或文件类型有误！', {
+											title: false,
+											closeBtn: 0,
+															
+												});
+											});
+											//延迟弹出
+											setTimeout(function(){ 
+												$(document).ready(function(e) {
+													layui.use('layer', function(){
+													var layer = layui.layer;
+													layer.msg('<button onclick="opens()" type="submit" class="layui-btn">上一步</button><button onclick="openf()" type="submit" class="layui-btn">提交报修</button>', {
+													title: false,
+													closeBtn: 0,
+													time:0,
+													anim: 2,
+													shadeClose :false,
+													offset: 'b',
+													area: ['100%', '60px']	
+														});	
+													});
+													
+												});
+											
+											 }, 2000);
+									     	return false
+									    }
+									});
+						        });
+                        </script>
                       <?
 					  }
 					  ?>
@@ -184,27 +260,10 @@ a:active{text-decoration:none;}
                 
                 </p>
              </div>
-<script>
-$('input[type=file]').each(function()   
-                {
-                    var max_size=102400;
-                     $(this).change(function(evt)   
-                        {   
-                            var finput = $(this);
-                            var file = a.value;   
-                            var files = evt.target.files; // 获得文件对象   
-                            var output = [];   
-                            for (var i = 0, f; f = files[i]; i++)   
-                                    {  //检查文件大小   
-                                     if(f.size > max_size)   
-                                        {   
-                                            alert("上传的图片不能超过100KB!");   
-                                            $(this).val('');   
-                                        }   
-                                    }
-			});   
-        }); 
+<script type="text/javascript">
 
+
+//提示，提交部分  
 layui.use('form', function(){
   		var form = layui.form;
 	});
@@ -353,6 +412,9 @@ function check()
         window.addEventListener('popstate', function () {
             history.pushState(null, null, document.URL);
         });
+
+    	
+
     </script>
 </body>
 </html>

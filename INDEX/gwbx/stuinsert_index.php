@@ -79,8 +79,10 @@ else
 		for($i=1;$i<=$j;$i++)
 		{
 			
-		
-		$sqlrea="insert into sch_repair_rea values('','".$_POST['tres'.$i]."','".$_POST['tnum'.$i]."','','未分配','','".$time."','".$tadd."','','".$tname."','".$tphone."','未处理','','".$_SESSION['user']."')";
+		//	
+		$image = mysql_escape_string(file_get_contents($_FILES['ttp'.$i]['tmp_name']));
+		//
+		$sqlrea="insert into sch_repair_rea values('','".$_POST['tres'.$i]."','".$_POST['tnum'.$i]."','','未分配','','".$time."','".$tadd."',".$image.",'".$tname."','".$tphone."','未处理','','".$_SESSION['user']."')";
 		$rsrea=mysql_query($sqlrea,$con);
 		}
 		if($rsrea>0)

@@ -141,10 +141,11 @@ layui.use('layer', function(){
 <!--main-->
 
 <div class="school_i">
-  
+
 <div class="layui-container">
 
 <center>
+  
   <!--菜单-->
 <div class="layui-row layui-col-space30 layui-anim layui-anim-upbit">
       <div class="layui-col-md3 layui-col-xs6">
