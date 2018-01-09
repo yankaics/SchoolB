@@ -8,7 +8,7 @@
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
-<!---JSQ--->
+<!--JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <title>报修详情</title>
@@ -31,7 +31,7 @@
         </div>
     </ul>
 </div><br><br>
-<!------main------>
+<!--main-->
 <div class="layui-container">
   <div class="layui-row">
   	 <div class="layui-col-md4 layui-col-md-offset4">
@@ -94,7 +94,32 @@
 						{
 					  ?>
                         <tr>
-                        	<td><?=$rowwj[1]?></td>
+                        	<td>
+                        		<p><?=$rowwj[1]?></p>
+								<p>
+									<?
+										if($rowwj[8]!="")
+										{
+									?>
+									<div class="layui-btn layui-btn-sm xq_photo<?=$rowwj[0]?>">照片</div>
+									<script type="text/javascript">
+										layui.use('layer', function(){
+								  			var layer = layui.layer;
+											$(".xq_photo<?=$rowwj[0]?>").click(function(){
+												$.getJSON('xq_photo.php?photoid=<?=$rowwj[0]?>', function(json){
+												  layer.photos({
+												    photos: json 
+												    ,anim: 5 
+												  });
+												});
+											});
+										});
+									</script>
+									<?
+										}
+									?>
+								</p>
+                        	</td>
                             <td><?=$rowwj[2]?></td>
                             <td>
                             <?

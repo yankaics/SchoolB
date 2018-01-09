@@ -8,7 +8,7 @@
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
-<!---JSQ--->
+<!--JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <title>管理员菜单</title>
@@ -36,6 +36,15 @@
                   <div class="layui-field-box">
                     <ul class="layui-timeline">
                     
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                        <div class="layui-timeline-content layui-text">
+                          <h3 class="layui-timeline-title">2018-1-9</h3>
+                          <p>修复了已知BUG</p>
+                          <p>新增了维修员能够查看用户上传的报修照片，能更好的做出解决方法。</p>
+                        </div>
+                      </li>
+
                     <li class="layui-timeline-item">
                         <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                         <div class="layui-timeline-content layui-text">

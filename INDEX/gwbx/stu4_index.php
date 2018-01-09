@@ -86,7 +86,7 @@ a:active{text-decoration:none;}
 		if(isset($_POST['bxzdl']))
 		{
 			?>
-            <blockquote class="layui-elem-quote">预览报修订单<br>检查订单<br>并填写损坏描述<br>或上传对应的照片</blockquote>
+            <blockquote class="layui-elem-quote">预览报修订单<br>检查订单<br>并填写损坏描述<br>也可上传对应的照片</blockquote>
               <div class="layui-field-box layui-anim layui-anim-upbit">
               	<p>
                 <!--上一步-->
@@ -132,9 +132,11 @@ a:active{text-decoration:none;}
                     <div class="layui-form-item layui-form-text">
                         <label class="layui-form-label"><span class="layui-badge-dot"></span>损坏描述</label>
                         <div class="layui-input-block">
-                          <textarea name="twxxq" placeholder="如：桌子腿坏了，水管裂开了" class="layui-textarea"></textarea>
+                          <textarea name="twxxq" placeholder="如：桌子腿坏了，水管裂开了，尽量详细。" class="layui-textarea"></textarea>
                         </div>
                      </div>
+					
+					 <blockquote class="layui-elem-quote">照片格式JPG,PNG,JPEG,大小不能超过4MB<br>不符合的照片，自动删除</blockquote>
 
                     <table class="layui-table">
                       <colgroup>
@@ -151,21 +153,22 @@ a:active{text-decoration:none;}
                       </thead>
                       <tbody>
                       <?
-					  $nbc1=count($_POST['c']);
+					  $nbc1=count($_POST['c'])-1;
 					  $t1=$_POST['c'];
 					  $nb1=$_POST['nb'];
-					  for($i=1;$i<=$nbc1;$i++)
+					  for($i=0;$i<=$nbc1;$i++)
 					  {
 					  ?>
                         <tr>
                         	<td align="left">
                         		<a href="javascript:;" class="upimg fupimg<?=$i?> layui-btn">选择
 									<input name="ttp<?=$i?>" class="fileimg<?=$i?>" type="file"/>
+									<input name="MAX_FILE_SIZE" type="hidden" value="409600" />
 								</a>
 								<div class="show<?=$i?>"></div>
 							</td>
-                        	<td align="left"><?=$t1[$i-1]?></td>
-                        	<td align="left"><?=$nb1[$i-1]?></td>
+                        	<td align="left"><?=$t1[$i]?></td>
+                        	<td align="left"><?=$nb1[$i]?></td>
                         </tr>
 
                         <script type="text/javascript">
@@ -174,7 +177,7 @@ a:active{text-decoration:none;}
 						            $(".fupimg<?=$i?>").on("change","input[type='file']",function(){
 									    var filePath=$(this).val();
 									    
-									    if(filePath.indexOf("jpg")!=-1 || filePath.indexOf("png")!=-1){
+									    if(filePath.indexOf("jpg")!=-1 || filePath.indexOf("png")!=-1 || filePath.indexOf("jpeg")!=-1){
 									        $(".fileerrorTip").html("").hide();
 									        var arr=filePath.split('\\');
 									        var fileName=arr[arr.length-1];
@@ -183,7 +186,10 @@ a:active{text-decoration:none;}
 									    
 									    else
 									    {
-									    	$(".fileimg<?=$i?>").attr("value",""); 
+									    	//部分浏览器
+									    	$(".fileimg<?=$i?>").prop("value","");
+									    	//IE 
+									    	$(".fileimg<?=$i?>").replaceWith($(".fileimg<?=$i?>").clone());  
 									        $(".show<?=$i?>").html("");
 									        layui.use('layer', function(){
 											var layer = layui.layer;
@@ -212,7 +218,8 @@ a:active{text-decoration:none;}
 												});
 											
 											 }, 2000);
-									     	return false
+											
+									     	return false;
 									    }
 									});
 						        });
@@ -244,15 +251,15 @@ a:active{text-decoration:none;}
 					}
 					?>
                     <?
-				  	$nbc=count($_POST['c']);
+				  	$nbc=count($_POST['c'])-1;
 					$_SESSION['j']=$nbc;
 					$t=$_POST['c'];
 					$nb=$_POST['nb'];
-					for($i=1;$i<=$nbc;$i++)
+					for($i=0;$i<=$nbc;$i++)
 					{
 						?>
-						<input name="tres<?=$i?>" type="hidden" class="form-control" id="firstname" maxlength="40" readonly value="<?=$t[$i-1]?>">
-						<input name="tnum<?=$i?>" type="hidden" class="form-control" id="firstname" maxlength="40" readonly value="<?=$nb[$i-1]?>">						
+						<input name="tres<?=$i?>" type="hidden" class="form-control" id="firstname" maxlength="40" readonly value="<?=$t[$i]?>">
+						<input name="tnum<?=$i?>" type="hidden" class="form-control" id="firstname" maxlength="40" readonly value="<?=$nb[$i]?>">						
 					  	<?
 					}
 					?>

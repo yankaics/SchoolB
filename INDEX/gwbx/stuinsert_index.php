@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312" />
 <title>提交报修订单</title>
 </head>
 
@@ -28,12 +28,19 @@ if(!isset($_POST['tea']))
 	$rs=mysql_query($sql,$con);
 	if($rs>0)
 	{
-		for($i=1;$i<=$j;$i++)
+		for($i=0;$i<=$j;$i++)
 		{
-			
-		
-		$sqlrea="insert into sch_repair_rea values('','".$_POST['tres'.$i]."','".$_POST['tnum'.$i]."','','未分配','','".$time."','".$tadd."','','".$tname."','".$tphone."','未处理','','".$_SESSION['txh']."')";
-		$rsrea=mysql_query($sqlrea,$con);
+			$frand=rand(1,100);
+			$ftime=date('YmdhisB').$i;
+			$fname=$_FILES['ttp'.$i]['name'];
+			$fsize=$_FILES['ttp'.$i]['size'];
+			$ftname=$_FILES['ttp'.$i]['tmp_name'];
+			$ferr=$_FILES['ttp'.$i]['error'];
+			move_uploaded_file($ftname,"../../img/stu_BX/".$ftime."_".$frand.$i.substr($fname,-4));
+			$ftmpname="img/stu_BX/".$ftime."_".$frand.$i.substr($fname,-4);
+
+			$sqlrea="insert into sch_repair_rea values('','".$_POST['tres'.$i]."','".$_POST['tnum'.$i]."','','未分配','','".$time."','".$tadd."','".$ftmpname."','".$tname."','".$tphone."','未处理','','".$_SESSION['txh']."')";
+			$rsrea=mysql_query($sqlrea,$con);
 		}
 		if($rsrea>0)
 		{
@@ -76,13 +83,22 @@ else
 	$rs=mysql_query($sql,$con);
 	if($rs>0)
 	{
-		for($i=1;$i<=$j;$i++)
+		for($i=0;$i<=$j;$i++)
 		{
-			
-		//	
-		$image = mysql_escape_string(file_get_contents($_FILES['ttp'.$i]['tmp_name']));
-		//
-		$sqlrea="insert into sch_repair_rea values('','".$_POST['tres'.$i]."','".$_POST['tnum'.$i]."','','未分配','','".$time."','".$tadd."',".$image.",'".$tname."','".$tphone."','未处理','','".$_SESSION['user']."')";
+			if($_FILES['ttp'.$i]['size']!=0)
+			{
+				$frand=rand(1,100);
+				$ftime=date('YmdhisB').$i;
+				$fname=$_FILES['ttp'.$i]['name'];
+				$fsize=$_FILES['ttp'.$i]['size'];
+				$ftname=$_FILES['ttp'.$i]['tmp_name'];
+				$ferr=$_FILES['ttp'.$i]['error'];
+				$fttype='.'.substr(strrchr($fname, '.'), 1); 
+				move_uploaded_file($ftname,"../../img/tea_BX/".$ftime."_".$frand.$i.$fttype);
+				$ftmpname="img/tea_BX/".$ftime."_".$frand.$i.$fttype;
+			}
+
+		$sqlrea="insert into sch_repair_rea values('','".$_POST['tres'.$i]."','".$_POST['tnum'.$i]."','','未分配','','".$time."','".$tadd."','".$ftmpname."','".$tname."','".$tphone."','未处理','','".$_SESSION['user']."')";
 		$rsrea=mysql_query($sqlrea,$con);
 		}
 		if($rsrea>0)
