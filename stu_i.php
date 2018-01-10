@@ -62,6 +62,24 @@ layui.use('layer', function(){
 });
 });
 
+//退出
+$(document).ready(function(e) {
+  $(".del_login").click(function(e) {
+              layui.use('layer', function(){
+                var layer = layui.layer;
+                parent.layer.confirm('<center>确定退出？<br>下次将不会自动登陆</center>', {
+                  btn: ['确定|·_·)','取消'],
+                  title: false,
+                  btnAlign: 'c',
+                  closeBtn: 0,
+                }, function(){
+                  location.href="del_login.php";
+                },function(){
+                  
+                    });
+                  });
+                });
+              });
 </script>
 <title>同学你好</title>
 </head>
@@ -132,7 +150,7 @@ layui.use('layer', function(){
             <a class="updatepass" href="javascript:;">修改密码</a>
           </dd>
 
-          <dd><a href="index.php">退出</a></dd>
+          <dd><a href="javascript:;" class="del_login">退出</a></dd>
         </dl>
       </li>
     </ul>

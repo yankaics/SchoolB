@@ -1,0 +1,9 @@
+<?php
+session_start(); 
+session_destroy(); 
+//自动登录删除
+setcookie("schoolb_username","",time()-86400*31,'/');//30天后cookie失效
+setcookie("schoolb_password","",time()-86400*31,'/');
+setcookie("schoolb_type","",time()-86400*31,'/');
+header("location:index.php");
+?>

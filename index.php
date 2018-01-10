@@ -22,18 +22,14 @@
 </head>
 
 <body>
-<?
-	session_start();
- $_SESSION = array();
-?>
 <div class="htmleaf-container">
 	<div class="wrapper">
 		<div class="container ">
 			<span><h1 class="layui-anim layui-anim-upbit"><a href="copy.php" style="color:#FFF;">校园宝</a></h1></span>
-			<form class="form layui-anim layui-anim-upbit" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
-				<input type="text" name="user"  placeholder="学号·工号·账号">
-				<input type="password" name="upass" placeholder="密码身份证后6位">
-                <select name="utype" size="1">
+			<form class="form zdlogin layui-anim layui-anim-upbit" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
+				<input type="text" name="user" class="user" placeholder="学号·工号·账号">
+				<input type="password" name="upass" class="upass" placeholder="密码身份证后6位">
+                <select name="utype" class="utype" size="1">
                   <option value="学生">&nbsp;&nbsp;学生</option>
                   <option value="教师">&nbsp;&nbsp;教师</option>
                   <option value="管理员">&nbsp;&nbsp;管理员</option>
@@ -147,6 +143,26 @@ if(isset($_GET['c']))
 	}
 
 </script>
+
+<?
+//自动登录
+if(!empty($_COOKIE["schoolb_username"]))
+{
+	?>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".user").val("<?=$_COOKIE['schoolb_username']?>");
+			$(".upass").val("<?=$_COOKIE['schoolb_password']?>");
+			$(".utype").val("<?=$_COOKIE['schoolb_type']?>");
+			$(".zdlogin").submit()
+		});
+	</script>
+	<?
+}
+
+?>
+
+
 <h1></h1>
 </div>
 </body>

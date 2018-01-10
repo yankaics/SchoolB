@@ -5,13 +5,13 @@
 <script src="../layui/layui.js"></script>
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-<!------>
+<!---->
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <link rel="shortcut icon" href="favicon.ico" />
-<!---JSQ--->
+<!--JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../JSQ/index.js"></script>
-<title>用户登录成功</title>
+<title>登录</title>
 </head>
 
 <body>
@@ -58,6 +58,11 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			
 			if($mysql['upass']==$spassid && $user==$row[7])
 			{
+				//学生自动登录
+				setcookie("schoolb_username",$user,time()+86400*30,'/');//30天后cookie失效
+				setcookie("schoolb_password",$upass,time()+86400*30,'/');
+				setcookie("schoolb_type",$utype,time()+86400*30,'/');
+
 				//密码
 				$_SESSION['spassid']=$spassid;
 				$sqlre="insert into sch_loginre values('','".$row[7]."','".$row[1]."','".$row[5]."','".$da1."','学生')";
@@ -113,6 +118,11 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			
 			if($upass==$spassid && $user==$row[6])
 			{
+				//教师自动登录
+				setcookie("schoolb_username",$user,time()+86400*30,'/');//30天后cookie失效
+				setcookie("schoolb_password",$upass,time()+86400*30,'/');
+				setcookie("schoolb_type",$utype,time()+86400*30,'/');
+
 				//密码
 				$_SESSION['spassid']=$spassid;
 				$sqlre="insert into sch_loginre values('','".$row[6]."','".$row[1]."','".$row[5].$row[8]."','".$da1."','教师')";
@@ -164,6 +174,12 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			$_SESSION['poi']=$row[6];
 			//权限
 			$_SESSION['cg']=$row[7];
+
+			//管理员自动登录
+				setcookie("schoolb_username",$user,time()+86400*30,'/');//30天后cookie失效
+				setcookie("schoolb_password",$upass,time()+86400*30,'/');
+				setcookie("schoolb_type",$utype,time()+86400*30,'/');
+
 			$sqlre="insert into sch_loginre values('','".$row[1]."','".$row[3]."','".$row[5]."','".$da1."','管理员')";
 			$rsre=mysql_query($sqlre,$con);
 			?>

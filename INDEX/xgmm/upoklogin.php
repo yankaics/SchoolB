@@ -6,10 +6,10 @@
 <script src="../../layui/layui.js"></script>
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-<!---
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />--->
+<!--
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />-->
 <link rel="shortcut icon" href="../../favicon.ico" />
-<!---JSQ--->
+<!--JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <title>修改密码</title>
@@ -44,7 +44,7 @@ if($_SESSION['utype']=="教师")
 				  title: false,
 				  closeBtn: 0,
 				}, function(){
-					parent.location.href="index.php";
+					parent.location.href="del_login.php";
 					parent.layer.close(index);
 				});
 				
@@ -99,7 +99,7 @@ else
 				  title: false,
 				  closeBtn: 0,
 				}, function(){
-					parent.location.href="index.php";
+					parent.location.href="del_login.php";
 					parent.layer.close(index);
 				});
 				
