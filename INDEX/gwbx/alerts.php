@@ -62,6 +62,7 @@
     	<fieldset class="layui-elem-field">
           <legend style="font-size:32px;">报修须知</legend><br>
           <div class="layui-field-box layui-anim layui-anim-upbit">
+            <p>可选：拍好你需要维修的照片。</p><br>
             <p>报修请严格按照提示进行填写！</p><br>
             <p>不可乱填，不可用别人的信息！</p><br>
             <p>发现违规行为，将会进行处罚！</p><br>

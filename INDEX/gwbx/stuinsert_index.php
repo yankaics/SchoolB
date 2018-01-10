@@ -30,14 +30,22 @@ if(!isset($_POST['tea']))
 	{
 		for($i=0;$i<=$j;$i++)
 		{
-			$frand=rand(1,100);
-			$ftime=date('YmdhisB').$i;
-			$fname=$_FILES['ttp'.$i]['name'];
-			$fsize=$_FILES['ttp'.$i]['size'];
-			$ftname=$_FILES['ttp'.$i]['tmp_name'];
-			$ferr=$_FILES['ttp'.$i]['error'];
-			move_uploaded_file($ftname,"../../img/stu_BX/".$ftime."_".$frand.$i.substr($fname,-4));
-			$ftmpname="img/stu_BX/".$ftime."_".$frand.$i.substr($fname,-4);
+			if($_FILES['ttp'.$i]['size']!=0)
+			{
+				$frand=rand(1,100);
+				$ftime=date('YmdhisB').$i;
+				$fname=$_FILES['ttp'.$i]['name'];
+				$fsize=$_FILES['ttp'.$i]['size'];
+				$ftname=$_FILES['ttp'.$i]['tmp_name'];
+				$ferr=$_FILES['ttp'.$i]['error'];
+				$fttype='.'.substr(strrchr($fname, '.'), 1); 
+				move_uploaded_file($ftname,"../../img/stu_BX/".$ftime."_".$frand.$i.$fttype);
+				$ftmpname="img/stu_BX/".$ftime."_".$frand.$i.$fttype;
+			}
+			else
+			{
+				$ftmpname="";
+			}
 
 			$sqlrea="insert into sch_repair_rea values('','".$_POST['tres'.$i]."','".$_POST['tnum'.$i]."','','未分配','','".$time."','".$tadd."','".$ftmpname."','".$tname."','".$tphone."','未处理','','".$_SESSION['txh']."')";
 			$rsrea=mysql_query($sqlrea,$con);
@@ -96,6 +104,10 @@ else
 				$fttype='.'.substr(strrchr($fname, '.'), 1); 
 				move_uploaded_file($ftname,"../../img/tea_BX/".$ftime."_".$frand.$i.$fttype);
 				$ftmpname="img/tea_BX/".$ftime."_".$frand.$i.$fttype;
+			}
+			else
+			{
+				$ftmpname="";
 			}
 
 		$sqlrea="insert into sch_repair_rea values('','".$_POST['tres'.$i]."','".$_POST['tnum'.$i]."','','未分配','','".$time."','".$tadd."','".$ftmpname."','".$tname."','".$tphone."','未处理','','".$_SESSION['user']."')";

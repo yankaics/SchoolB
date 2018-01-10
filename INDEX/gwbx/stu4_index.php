@@ -86,8 +86,9 @@ a:active{text-decoration:none;}
 		if(isset($_POST['bxzdl']))
 		{
 			?>
-            <blockquote class="layui-elem-quote">预览报修订单<br>检查订单<br>并填写损坏描述<br>也可上传对应的照片</blockquote>
+            
               <div class="layui-field-box layui-anim layui-anim-upbit">
+              	<blockquote class="layui-elem-quote">预览报修订单<br>检查订单<br>并填写损坏描述<br>也可上传对应的照片</blockquote>
               	<p>
                 <!--上一步-->
                 <form class="forms" name="stu3" action="stu3_index.php" method="post" role="form">
@@ -136,8 +137,10 @@ a:active{text-decoration:none;}
                         </div>
                      </div>
 					
-					 <blockquote class="layui-elem-quote">照片格式JPG,PNG,JPEG,大小不能超过4MB<br>不符合的照片，自动删除</blockquote>
-
+					 <blockquote class="layui-elem-quote">照片格式JPG,PNG,JPEG,大小不能超过4MB<br>不符合的照片，自动删除</blockquote>	
+					<!--图片大小-->
+                    <input name="MAX_FILE_SIZE" type="hidden" value="409600" />
+                    
                     <table class="layui-table">
                       <colgroup>
                         <col width="100">
@@ -162,8 +165,8 @@ a:active{text-decoration:none;}
                         <tr>
                         	<td align="left">
                         		<a href="javascript:;" class="upimg fupimg<?=$i?> layui-btn">选择
-									<input name="ttp<?=$i?>" class="fileimg<?=$i?>" type="file"/>
-									<input name="MAX_FILE_SIZE" type="hidden" value="409600" />
+									<input name="ttp<?=$i?>" class="fileimg<?=$i?>" type="file" accept="image/jpeg,image/jpg,image/png"/>
+									
 								</a>
 								<div class="show<?=$i?>"></div>
 							</td>
@@ -228,8 +231,8 @@ a:active{text-decoration:none;}
 					  }
 					  ?>
                       </tbody>
-                    </table>	
-                    
+                    </table>
+
                 	<input name="tname" type="hidden" class="form-control" id="firstname" maxlength="40" readonly value="<?=$_POST['tname']?>">
                     <input name="tphone" type="hidden" class="form-control" id="firstname" maxlength="40" readonly value="<?=$_POST['tphone']?>">
                     <input name="tzy" type="hidden" class="form-control" id="firstname" maxlength="40" readonly value="<?=$_POST['tzy']?>">

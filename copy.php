@@ -59,10 +59,11 @@
             <li class="layui-timeline-item">
                 <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
                 <div class="layui-timeline-content layui-text">
-                  <h3 class="layui-timeline-title">2018-1-6</h3>
+                  <h3 class="layui-timeline-title">2018-1-10</h3>
                   <p>2018的第一次更新</p>
-                  <p>增加了<评论专区>，目前还是第三方的。</p>
-                  <p>修改了已知BUG！</p>
+                  <p>新增了<评论专区>，目前还是第三方的。也就是说你的发言在我这是匿名的。</p>
+                  <p>新增了<公物报修>预览报修订单处能够<上传物件照片>，方便维修员更好的进行处理</p>
+                  <p>修复了已知BUG！</p>
                   <p>修改了<报修查询>，移动至右上角，并加入提示信息。</p>
                   <p>优化了部分代码以及用户体验！</p>
                 </div>
