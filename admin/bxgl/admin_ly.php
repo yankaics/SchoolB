@@ -9,7 +9,7 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!------>
+<!---->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <link rel="shortcut icon" href="../../favicon.ico" />
@@ -83,15 +83,15 @@ setTimeout("self.location.reload();",60*10000);
 </head>
 
 <body id=body onscroll=SetCookie("scroll",document.body.scrollTop); onload="scrollback();">
-<!------导航
+<!--导航
 <div class="top-index">
 	<div class="logo"><img src="../../UI/logo/logogif.gif"></div>
     <div class="top-dh">
     	<a href="../../index.php"><div class="dh-index">首页</div></a>
         <a href="bxgl_index.php"><div class="dh-index">返回</div></a>
   </div>
-</div>------>
-<!------main------>
+</div>-->
+<!--main-->
 <center>
 <?
 include("../../PHP/riqi.php");
@@ -314,7 +314,7 @@ if($row8=mysql_fetch_row($rs8))
     
   </tr>
 </table>
-<!---物件详情--->
+<!--物件详情-->
 <?
 if(isset($_GET['wjxq']))
 {
@@ -354,7 +354,7 @@ $("#allc").change(function(){
 	})
 	
 	</script>
-<!---分配--->
+<!--分配-->
 <?
 if(isset($_GET['buttonfp']))
 {	
@@ -371,21 +371,33 @@ if(isset($_GET['buttonfp']))
 			$sql_update="update sch_repair_rea set s_repair='".$wxy."' where s_time='".$rowewxy[10]."' and s_add='".$rowewxy[1]."' and s_name='".$rowewxy[3]."' and s_phone='".$rowewxy[5]."'";
 			$rs_update=mysql_query($sql_update,$con);
 		}
-		
 		$sql_inwxy="update sch_repair_re set s_repair='".$wxy."' where sid='".$nc[$i]."'";
 		$rs_inwxy=mysql_query($sql_inwxy,$con);
 	}
 	if($rs_inwxy>0)
 	{
-		?>
-        <script language="javascript">
-        	alert("分配成功：<?=$wxy?>");
-			location.href="admin_ly.php?<?=$tb?>";
-        </script>
-        <?
-	}
-	
-}
+		/*
+		短信平台：http://www.sms.cn/
+		 
+		$requesturl='http://api.sms.cn/sms/?ac=send&uid=amos&pwd=7191d511822634f5783dc89baeea616d&template=418231&mobile=15111888341&content={"name":"'.$wxy.'"}';
+	    //curl方式获取json数组
+	    $curl = curl_init(); //初始化
+	    curl_setopt($curl, CURLOPT_URL, $requesturl);//设置抓取的url
+	    curl_setopt($curl, CURLOPT_HEADER, 0);//设置头文件的信息作为数据流输出
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);//设置获取的信息以文件流的形式返回，而不是直接输出。
+	    $data = curl_exec($curl);//执行命令
+	    curl_close($curl);//关闭URL请求
+
+	    */
+				?>
+		        <script language="javascript">
+		        	alert("分配成功：<?=$wxy?>");
+					location.href="admin_ly.php?<?=$tb?>";
+		        </script>
+		        <?
+			}
+			
+		}
 ?>
 </div>
     </p>
