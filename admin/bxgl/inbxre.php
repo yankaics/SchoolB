@@ -9,7 +9,7 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!------>
+<!---->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <link rel="shortcut icon" href="../../favicon.ico" />
@@ -38,15 +38,15 @@ a:active {
 </head>
 
 <body>
-<!------导航
+<!--导航
 <div class="top-index">
 	<div class="logo"><img src="../../UI/logo/logogif.gif"></div>
     <div class="top-dh">
     	<a href="../../index.php"><div class="dh-index">首页</div></a>
         <a href="bxgl_index.php"><div class="dh-index">返回</div></a>
   </div>
-</div>------>
-<!------main------>
+</div>-->
+<!--main-->
 <center>
 <?
 include("../../PHP/riqi.php");

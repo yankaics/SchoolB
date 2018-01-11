@@ -36,7 +36,7 @@ layui.use('layer', function(){
   var layer = layui.layer;
   $(document).ready(function(e) {
 	$(".DESS").click(function(e) {
-    	layer.msg('计划中', {
+    	layer.msg('测试中', {
     	time: 2000,
   		});
 	});
