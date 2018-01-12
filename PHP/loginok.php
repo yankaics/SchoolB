@@ -14,7 +14,7 @@
 <title>登录</title>
 </head>
 
-<body>
+<body bgcolor="#393D49">
 
 <?
 include("../SQL/db/db.php");
@@ -69,7 +69,7 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 				$rsre=mysql_query($sqlre,$con);
 				?>
 				<script language="javascript">
-					location.href="../stu_i.php";
+					location.href="../loginok.php";
 				</script>
 				<?
 			}

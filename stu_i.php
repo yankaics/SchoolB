@@ -7,7 +7,7 @@
 <script src="layui/layui.js"></script>
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-<!---
+<!--
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />-->
 <link rel="shortcut icon" href="favicon.ico" />
 <!--JSQ-->
@@ -15,8 +15,7 @@
 <script src="JSQ/index.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/stu_index.css" />
-
-<!---CSS以往版本的样式
+<!--CSS以往版本的样式
 <link media="(max-width:769px)" href="CSS/mobile-main.css" rel="stylesheet" type="text/css" />
 <link media="(max-width:769px)" href="CSS/mobile-top.css" rel="stylesheet" type="text/css" />
 <link media="(max-width:769px)" href="CSS/mobile-bt.css" rel="stylesheet" type="text/css" />
@@ -178,6 +177,16 @@ $(document).ready(function(e) {
       
       <div class="layui-col-md3 layui-col-xs6">
         <div class="layui-row grid-demo">
+        <a href="javascript:;" class="grid-demo DESS">
+          <div class="layui-col-md4">
+            <i class="layui-icon">&#xe636;</i><p>宿舍水电</p>
+          </div>
+       	</a>
+        </div>
+      </div>
+
+      <div class="layui-col-md3 layui-col-xs6">
+        <div class="layui-row grid-demo">
         <a href="INDEX/comment/index.php" class="grid-demo">
           <div class="layui-col-md4">
             <i class="layui-icon">&#xe606;</i><p>评论专区</p>
@@ -186,16 +195,6 @@ $(document).ready(function(e) {
         </div>
       </div>
 
-      <div class="layui-col-md3 layui-col-xs6">
-        <div class="layui-row grid-demo">
-        <a href="javascript:;" class="grid-demo DESS">
-          <div class="layui-col-md4">
-            <i class="layui-icon">&#xe636;</i><p>宿舍水电</p>
-          </div>
-       	</a>
-        </div>
-      </div>
-      
       <div class="layui-col-md3 layui-col-xs6">
         <div class="layui-row grid-demo">
         <a href="javascript:;" class="grid-demo DE">
