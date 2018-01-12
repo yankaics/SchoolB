@@ -52,6 +52,7 @@ a:active {
 include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
+include("../adminse/admin_se.php");
 		
 		
 			$t='ss';

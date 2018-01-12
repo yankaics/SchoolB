@@ -7,9 +7,9 @@
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <!---
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />--->
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />-->
 <link rel="shortcut icon" href="../../favicon.ico" />
-<!---JSQ--->
+<!---JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <title>修改密码</title>
@@ -20,6 +20,7 @@
 include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
+include("../adminse/admin_se.php");
 ?>
 <?
 $coldpass=$_POST['toldpass'];

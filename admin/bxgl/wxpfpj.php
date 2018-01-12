@@ -9,7 +9,7 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!------>
+<!---->
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <link rel="shortcut icon" href="../../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -29,6 +29,7 @@
 include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
+include("../adminse/admin_se.php");
 $sqlc="select count(sid) from sch_repair_re where s_repair='".$_SESSION['name']."' and s_jg='已处理' and s_score!=0";
 $rsc=mysql_query($sqlc,$con);
 if($rowc=mysql_fetch_row($rsc))
@@ -46,7 +47,7 @@ $rsc2=mysql_query($sqlc2,$con);
 	}
 }
 ?>
-<!------导航------>
+<!--导航-->
 <div class="top-index">
 	<div class="logo"><img src="../../UI/logo/logogif.gif"></div>
     <div class="top-dh">
@@ -54,7 +55,7 @@ $rsc2=mysql_query($sqlc2,$con);
         <a href="wxrw.php"><div class="dh-index">任务</div></a>
   </div>
 </div>
-<!------main------>
+<!--main-->
 <center>
 <div class="admin-main">
 <h2><?=$_SESSION['name']?>的平均评分:

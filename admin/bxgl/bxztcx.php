@@ -9,7 +9,7 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!------>
+<!---->
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <link rel="shortcut icon" href="../../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -73,20 +73,21 @@ setTimeout("self.location.reload();",60*10000);
 </head>
 
 <body id=body onscroll=SetCookie("scroll",document.body.scrollTop); onload="scrollback();">
-<!------导航
+<!--导航
 <div class="top-index">
 	<div class="logo"><img src="../../UI/logo/logogif.gif"></div>
     <div class="top-dh">
     	<a href="../../index.php"><div class="dh-index">首页</div></a>
         <a href="bxgl_index.php"><div class="dh-index">返回</div></a>
   </div>
-</div>------>
-<!------main------>
+</div>-->
+<!--main-->
 <center>
 <?
 include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
+include("../adminse/admin_se.php");
 error_reporting(E_ALL^E_NOTICE^E_WARNING);
 $sql10="select count(sid) from sch_repair_re where s_jg='未处理' and s_repair!='未分配'";
 $rs10=mysql_query($sql10,$con);
@@ -248,7 +249,7 @@ if($row12=mysql_fetch_row($rs12))
    }
 ?>
 </table>
-<!---物件详情--->
+<!--物件详情-->
 <?
 if(isset($_GET['wjxq']))
 {

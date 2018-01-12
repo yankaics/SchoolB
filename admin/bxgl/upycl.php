@@ -10,6 +10,7 @@
 include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
+include("../adminse/admin_se.php");
 $time=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 $sid=$_GET['id'];
 $wj=$_GET['wj'];

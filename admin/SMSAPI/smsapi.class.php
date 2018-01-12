@@ -1,4 +1,5 @@
 <?
+include("../adminse/admin_se.php");
 //短信平台：http://www.sms.cn/
 /*
 		

@@ -8,7 +8,7 @@
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
-<!---JSQ--->
+<!--JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <title>校园宝后台</title>

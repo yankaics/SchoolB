@@ -18,6 +18,7 @@
 	include("../../PHP/riqi.php");
 	include("../../SQL/db/db.php");
 	include("../../PHP/adminse.php");
+  include("../adminse/admin_se.php");
 ?>
     	 <div class="layui-container">  
           <div class="layui-row">
@@ -39,8 +40,9 @@
                     <li class="layui-timeline-item">
                         <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                         <div class="layui-timeline-content layui-text">
-                          <h3 class="layui-timeline-title">2018-1-9</h3>
+                          <h3 class="layui-timeline-title">2018-1-12</h3>
                           <p>修复了已知BUG</p>
+                          <p>新增了管理员的安全性</p>
                           <p>新增了维修员能够查看用户上传的报修照片，能更好的做出解决方法。</p>
                         </div>
                       </li>

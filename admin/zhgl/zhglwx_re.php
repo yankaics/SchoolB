@@ -8,7 +8,7 @@
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
-<!---JSQ--->
+<!--JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <title>报修完成记录</title>
@@ -18,7 +18,7 @@ body{ padding-bottom:100px;}
 </head>
 
 <body id=body onscroll=SetCookie("scroll",document.body.scrollTop); onload="scrollback();">
-<!------导航------>
+<!--导航-->
 <div class="layui-header header header-doc">
     <ul class="layui-nav " style="text-align:center;">
     	<div class="layui-container ">
@@ -26,6 +26,7 @@ body{ padding-bottom:100px;}
 			include("../../PHP/riqi.php");
 			include("../../SQL/db/db.php");
 			include("../../PHP/adminse.php");
+      include("../adminse/admin_se.php");
 			$time=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			?>
             <li class="layui-nav-item">
@@ -35,7 +36,7 @@ body{ padding-bottom:100px;}
         </div>
     </ul>
 </div><br><br>
-<!------main------>
+<!--main-->
 <div class="layui-container">
   <div class="layui-row">
   	<blockquote class="layui-elem-quote">
@@ -179,7 +180,7 @@ layui.use('laydate', function(){
   });
 });
 </script>
-<!---物件详情--->
+<!--物件详情-->
 <?
 if(isset($_GET['wjxq']))
 {

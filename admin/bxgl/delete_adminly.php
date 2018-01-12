@@ -15,6 +15,7 @@ $ttime=$_GET['ttime'];
 include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
+include("../adminse/admin_se.php");
 
 $sql="delete from sch_repair_re where s_add='".$tadd."' and s_name='".$tname."' and s_phone='".$tphone."' and s_settime='".$ttime."'";
 $rs=mysql_query($sql,$con);

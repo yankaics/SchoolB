@@ -97,6 +97,7 @@ setTimeout("self.location.reload();",60*10000);
 include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
+include("../adminse/admin_se.php");
 
 $sql1="select count(sid) from sch_repair_re where s_jg='未处理' and s_repair='未分配'";
 $rs1=mysql_query($sql1,$con);

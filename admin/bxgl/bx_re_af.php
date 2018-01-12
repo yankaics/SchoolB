@@ -9,8 +9,8 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!------>
-<!---JSQ--->
+<!---->
+<!--JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="JSQ/index.js"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
@@ -51,20 +51,21 @@ printHtml(html);
 </head>
 
 <body>
-<!------导航
+<!--导航
 <div class="top-index">
 	<div class="logo"><img src="../../UI/logo/logogif.gif"></div>
     <div class="top-dh">
     	<a href="../../index.php"><div class="dh-index">首页</div></a>
         <a href="bxgl_index.php"><div class="dh-index">返回</div></a>
   </div>
-</div>------>
-<!------main------>
+</div>-->
+<!--main-->
 <center>
 <?
 include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
+include("../adminse/admin_se.php");
 ?>
 <div class="ly">
   <h2>维修后统计</h2> <span class="input-group-addon"><p>选择日期，再选择地点进行统计</p><p>时间是维修完成的时间</p><!--<input type="button" class="btn btn-default" id="btnPrint" 
@@ -138,7 +139,7 @@ onclick="onprint()" value="打印本页" />--></span>
 			if(isset($_GET['all']))
 			{
 				?>
-                <!---宿舍--->
+                <!--宿舍-->
                 <?
                 $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='已处理' and s_add='宿舍' and s_settime>='".$da1."-00:00:00' and s_settime<='".$da2."-23:59:59' group by s_tt";
 				$rsa=mysql_query($sqla,$con);
@@ -169,7 +170,7 @@ onclick="onprint()" value="打印本页" />--></span>
                 <?
 					}
 				?>
-                <!---食堂--->
+                <!--食堂-->
                 <?
                 $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='已处理' and s_add='食堂' and s_settime>='".$da1."-00:00:00' and s_settime<='".$da2."-23:59:59' group by s_tt";
 				$rsa=mysql_query($sqla,$con);
@@ -200,7 +201,7 @@ onclick="onprint()" value="打印本页" />--></span>
                 <?
 					}
 				?>
-                <!---运动场--->
+                <!--运动场-->
                 <?
                 $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='已处理' and s_add='运动场' and s_settime>='".$da1."-00:00:00' and s_settime<='".$da2."-23:59:59' group by s_tt";
 				$rsa=mysql_query($sqla,$con);
@@ -231,7 +232,7 @@ onclick="onprint()" value="打印本页" />--></span>
                 <?
                 	}
 				?>
-                <!---图书馆--->
+                <!--图书馆-->
                 <?
                 $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='已处理' and s_add='图书馆' and s_settime>='".$da1."-00:00:00' and s_settime<='".$da2."-23:59:59' group by s_tt";
 				$rsa=mysql_query($sqla,$con);
@@ -262,7 +263,7 @@ onclick="onprint()" value="打印本页" />--></span>
                 <?
 					}
 				?>
-                <!---综合楼--->
+                <!--综合楼-->
                 <?
                 $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='已处理' and s_add='综合楼' and s_settime>='".$da1."-00:00:00' and s_settime<='".$da2."-23:59:59' group by s_tt";
 				$rsa=mysql_query($sqla,$con);
@@ -293,7 +294,7 @@ onclick="onprint()" value="打印本页" />--></span>
                 <?
 					}
 				?>
-                <!---教学楼--->
+                <!--教学楼-->
                 <?
                 $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='已处理' and s_add='教学楼' and s_settime>='".$da1."-00:00:00' and s_settime<='".$da2."-23:59:59' group by s_tt";
 				$rsa=mysql_query($sqla,$con);
@@ -324,7 +325,7 @@ onclick="onprint()" value="打印本页" />--></span>
                 <?
 					}
 				?>
-                <!---实训楼--->
+                <!--实训楼-->
                 <?
                 $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='已处理' and s_add='实训楼' and s_settime>='".$da1."-00:00:00' and s_settime<='".$da2."-23:59:59' group by s_tt";
 				$rsa=mysql_query($sqla,$con);

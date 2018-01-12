@@ -1,5 +1,6 @@
 <?php
-include("../../SQL/db/db.php");		
+include("../../SQL/db/db.php");	
+include("../adminse/admin_se.php");	
 $sql="select s_tt,sid,s_id from sch_repair_rea where sid='".$_GET['photoid']."'";
 $rs=mysql_query($sql,$con);
 if($row=mysql_fetch_row($rs))

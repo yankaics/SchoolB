@@ -8,7 +8,7 @@
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
-<!---JSQ--->
+<!--JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <title>校园宝后台-维修员任务</title>
@@ -34,16 +34,17 @@ body{
 include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
+include("../adminse/admin_se.php");
 ?>
-<!------导航
+<!--导航
 <div class="top-index">
 	<div class="logo"><img src="../../UI/logo/logogif.gif"></div>
     <div class="top-dh">
         <a href="../infor/admincd_index.php"><div class="dh-index">菜单</div></a>
         <a href="wxpfpj.php"><div class="dh-index">评分</div></a>
   </div>
-</div>------>
-<!------main------>
+</div>-->
+<!--main-->
 <blockquote class="layui-elem-quote">
 	维修任务
 	<p>&lt;操作&gt;里是该报修所有详情</p>

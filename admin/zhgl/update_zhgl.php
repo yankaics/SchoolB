@@ -8,7 +8,7 @@
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
-<!---JSQ--->
+<!--JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <title>修改维修员</title>
@@ -103,16 +103,17 @@ function check()
 include"../../PHP/riqi.php";
 include"../../SQL/db/db.php";
 include"../../PHP/adminse.php";
+include("../adminse/admin_se.php");
 ?>
-<!------导航
+<!--导航
 <div class="top-index">
 	<div class="logo"><img src="../../UI/logo/logogif.gif"></div>
     <div class="top-dh">
     	<a href="../../index.php"><div class="dh-index">首页</div></a>
         <a href="zhgl_index.php"><div class="dh-index">返回</div></a>
   </div>
-</div>------>
-<!------main------>
+</div>-->
+<!--main-->
 <?
 if($_GET['zw']=='维修员')
 {
@@ -155,9 +156,9 @@ if($_GET['zw']=='维修员')
           </div>
           
           <div class="layui-form-item">
-            <label class="layui-form-label">部门</label>
+            <label class="layui-form-label">电话</label>
             <div class="layui-input-block">
-              <input type="text" name="userid" required  lay-verify="required" placeholder="请输入所在部门" autocomplete="off" class="layui-input" value="<?=$row[4]?>">
+              <input type="text" name="userid" required  lay-verify="required" placeholder="请输入本人电话" autocomplete="off" class="layui-input" value="<?=$row[4]?>">
             </div>
           </div>
           
@@ -199,7 +200,7 @@ var form = layui.form;
 					$(document).ready(function(e) {
 						layui.use('layer', function(){
 						var layer = layui.layer;
-						layer.confirm('修改成功！<br>姓名：<?=$_POST['name']?><br>账号：<?=$_POST['username']?><br>密码：<?=$_POST['userpass']?><br>部门：<?=$_POST['userid']?>', {
+						layer.confirm('修改成功！<br>姓名：<?=$_POST['name']?><br>账号：<?=$_POST['username']?><br>密码：<?=$_POST['userpass']?><br>电话：<?=$_POST['userid']?>', {
 						btn: ['确定'],
 						title: false,
 						btnAlign: 'c',

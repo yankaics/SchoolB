@@ -8,7 +8,7 @@
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
-<!---JSQ--->
+<!--JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <title>注册维修员</title>
@@ -103,16 +103,17 @@ function check()
 include"../../PHP/riqi.php";
 include"../../SQL/db/db.php";
 include"../../PHP/adminse.php";
+include("../adminse/admin_se.php");
 ?>
-<!------导航
+<!--导航
 <div class="top-index">
 	<div class="logo"><img src="../../UI/logo/logogif.gif"></div>
     <div class="top-dh">
     	<a href="../../index.php"><div class="dh-index">首页</div></a>
         <a href="zhgl_index.php"><div class="dh-index">返回</div></a>
   </div>
-</div>------>
-<!------main------>
+</div>-->
+<!--main-->
 <div class="layui-container">
   <div class="layui-row">
   	 <div class="layui-col-md4 layui-col-md-offset4">
@@ -152,9 +153,9 @@ include"../../PHP/adminse.php";
           </div>
           
           <div class="layui-form-item">
-            <label class="layui-form-label">部门</label>
+            <label class="layui-form-label">电话</label>
             <div class="layui-input-block">
-              <input type="text" name="userid" required  lay-verify="required" placeholder="请输入所在部门" autocomplete="off" class="layui-input">
+              <input type="text" name="userid" required  lay-verify="required" placeholder="请输入本人电话，方便进行通知" autocomplete="off" class="layui-input">
             </div>
           </div>
           

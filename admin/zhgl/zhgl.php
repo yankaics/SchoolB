@@ -8,7 +8,7 @@
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
-<!---JSQ--->
+<!--JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <title>账号管理</title>
@@ -31,20 +31,21 @@ body{
 
 <body id=body onscroll=SetCookie("scroll",document.body.scrollTop); onload="scrollback();">
 
-<!------导航
+<!--导航
 <div class="top-index">
 	<div class="logo"><img src="../../UI/logo/logogif.gif"></div>
     <div class="top-dh">
     	<a href="../../index.php"><div class="dh-index">首页</div></a>
         <a href="zhgl_index.php"><div class="dh-index">返回</div></a>
   </div>
-</div>------>
-<!------main------>
+</div>-->
+<!--main-->
 
 <?
 include"../../PHP/riqi.php";
 include"../../SQL/db/db.php";
 include"../../PHP/adminse.php";
+include("../adminse/admin_se.php");
 ?>
 <div class="layui-container">
           <div class="layui-row layui-col-space10 ">
@@ -217,7 +218,7 @@ while($rowl=mysql_fetch_row($rsl))
 						?>
                     </div>
                     <div class="layui-col-md12 layui-col-xs12">
-                    	部门：<?=$rowl[4]?><br>职位：<?=$rowl[5]?>
+                    	电话：<?=$rowl[4]?><br>职位：<?=$rowl[5]?>
                     </div>
                     <div class="layui-col-md12 layui-col-xs12">
                     	账号：<?=$rowl[1]?><br>密码：<?=$rowl[2]?>
