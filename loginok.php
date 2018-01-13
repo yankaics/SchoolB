@@ -15,7 +15,7 @@
 	<style type="text/css">
 		body{
 			background: #393D49;
-			animation: 6s rainbow;
+			animation: 4s rainbow;
 		}
 		.masked{ 
 			padding-top: 200px;
@@ -56,7 +56,7 @@ if($_SESSION['utype']=="学生")
 	<script type="text/javascript">
 		setTimeout(function(){ 
 			location.href="stu_i.php";
-		}, 5500);
+		}, 3500);
 	</script>
 	<?
 }
