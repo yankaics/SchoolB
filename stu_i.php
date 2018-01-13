@@ -97,7 +97,7 @@ $(document).ready(function(e) {
       <li class="layui-nav-item">
         <!--修改密码-->
       	<?php
-  			$sql="select tid from sch_stub where tpass is null";
+  			$sql="select tid from sch_stub where tpass is null or tpass='' and tno='".$_SESSION['user']."'";
   			$rs=mysql_query($sql,$con);
   			if($row=mysql_fetch_row($rs))
   			{
@@ -141,7 +141,7 @@ $(document).ready(function(e) {
           <dd>
           <!--修改密码-->
           <?php
-            $sql="select tid from sch_stub where tpass is null";
+            $sql="select tid from sch_stub where tpass is null or tpass='' and tno='".$_SESSION['user']."'";
             $rs=mysql_query($sql,$con);
             if($row=mysql_fetch_row($rs))
             {
@@ -165,6 +165,17 @@ $(document).ready(function(e) {
   
   <!--菜单-->
 <div class="layui-row layui-col-space30 layui-anim layui-anim-upbit">
+
+      <div class="layui-col-md3 layui-col-xs6">
+        <div class="layui-row grid-demo">
+        <a href="INDEX/CQDD_CJCX/CJCX_index.php" class="grid-demo">
+          <div class="layui-col-md4">
+            <i class="layui-icon">&#xe63c;</i><p>成绩查询</p>
+          </div>
+        </a>
+        </div>
+      </div>
+
       <div class="layui-col-md3 layui-col-xs6">
         <div class="layui-row grid-demo">
         <a href="INDEX/gwbx/alerts.php" class="grid-demo">
@@ -195,14 +206,14 @@ $(document).ready(function(e) {
         </div>
       </div>
 
-      <div class="layui-col-md3 layui-col-xs6">
+     <!--  <div class="layui-col-md3 layui-col-xs6">
         <div class="layui-row grid-demo">
         <a href="javascript:;" class="grid-demo DE">
           <div class="layui-col-md4">
             <i class="layui-icon">&#xe705;</i><p>敬请期待</p>
           </div>
         </a>
-        </div>
+        </div> -->
       
       
       
