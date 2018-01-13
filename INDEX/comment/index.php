@@ -63,21 +63,7 @@
       <p>反映学院不足处，闲言碎语，自由评论</p>
     </blockquote>
     <!-- 来必力City版安装代码 -->
-    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjk5My85NTU1">
-      <script type="text/javascript">
-       (function(d, s) {
-           var j, e = d.getElementsByTagName(s)[0];
-
-           if (typeof LivereTower === 'function') { return; }
-
-           j = d.createElement(s);
-           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-           j.async = true;
-
-           e.parentNode.insertBefore(j, e);
-       })(document, 'script');
-      </script>
-    </div>
+    <!--嘿嘿-->
     <!-- City版安装代码已完成 -->
   </div>
 </div>
