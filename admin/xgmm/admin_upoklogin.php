@@ -44,7 +44,7 @@ if($rs>0)
 				  title: false,
 				  closeBtn: 0,
 				}, function(){
-					parent.location.href="../../index.php";
+					parent.location.href="../../del_login.php";
 					parent.layer.close(index);
 				});
 				
