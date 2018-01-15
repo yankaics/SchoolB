@@ -66,15 +66,30 @@ $(document).ready(function(e) {
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
       	<li class="layui-nav-item"><a class="ann" id="admin_index.php" href="javascript:;">后台首页</a></li>
       	<?
-    	if($_SESSION['cg']==1 || $_SESSION['zw']=='维修主管')
+    	if($_SESSION['cg']==1 || $_SESSION['zw']=='维修主管' || $_SESSION['zw']=='宿管员')
 		{
 		?>
         <li class="layui-nav-item layui-nav-itemed">
           <a href="javascript:;">账号管理</a>
           <dl class="layui-nav-child">
+            <?
+              if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管员')
+              {
+            ?>
+            <dd><a class="ann" id="../zhgl/stu_all.php" href="javascript:;">学生管理</a></dd>
+            <?
+              }
+            ?>
+            <?
+              if($_SESSION['cg']==1 || $_SESSION['zw']=='维修主管')
+              {
+            ?>
             <dd><a class="ann" id="../zhgl/wxinsert.php" href="javascript:;">增加维修员</a></dd>
             <dd><a class="ann" id="../zhgl/zhgl.php?n=维修员" href="javascript:;">管理维修员</a></dd>
-          	
+          	<?
+              }
+            ?>
+            
           </dl>
         </li>
         <?

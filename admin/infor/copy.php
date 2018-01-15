@@ -40,9 +40,10 @@
                     <li class="layui-timeline-item">
                         <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                         <div class="layui-timeline-content layui-text">
-                          <h3 class="layui-timeline-title">2018-1-12</h3>
+                          <h3 class="layui-timeline-title">2018-1-15</h3>
                           <p>修复了已知BUG</p>
                           <p>新增了管理员的安全性</p>
+                          <p>新增了<账号管理>-<学生管理>,假如有学生信息有变化，宿管方便进行修改。</p>
                           <p>新增了维修员能够查看用户上传的报修照片，能更好的做出解决方法。</p>
                         </div>
                       </li>
