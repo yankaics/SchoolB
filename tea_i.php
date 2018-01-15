@@ -95,7 +95,7 @@ $(document).ready(function(e) {
       <li class="layui-nav-item">
         <!--修改密码-->
         <?php
-        $sql="select tid from sch_stub where tpass is null";
+        $sql="select tid from sch_stub where tpass is null and tjobnum='".$_SESSION['user']."' or tpass=''";
         $rs=mysql_query($sql,$con);
         if($row=mysql_fetch_row($rs))
         {
@@ -139,7 +139,7 @@ $(document).ready(function(e) {
           <dd>
           <!--修改密码-->
           <?php
-            $sql="select tid from sch_stub where tpass is null";
+            $sql="select tid from sch_stub where tpass is null and tjobnum='".$_SESSION['user']."' or tpass=''";
             $rs=mysql_query($sql,$con);
             if($row=mysql_fetch_row($rs))
             {
