@@ -24,62 +24,6 @@
 <link media="(min-width:769px)" href="CSS/top-index.css" rel="stylesheet" type="text/css" />
 <link media="(min-width:769px)" href="CSS/main-index.css" rel="stylesheet" type="text/css" />
 -->
-
-
-<script>
-layui.use('element', function(){
-  var element = layui.element;	
-});
-
-
-layui.use('layer', function(){
-  var layer = layui.layer;
-  $(document).ready(function(e) {
-	$(".DESS").click(function(e) {
-    	layer.msg('测试中', {
-    	time: 2000,
-  		});
-	});
-	$(".DE").click(function(e) {
-    	layer.msg('(｡・`ω´･)', {
-    	time: 2000,
-  		});
-	});
-	//修改密码弹出
-	$(".updatepass").click(function(e) {
-        layer.open({
-		  type: 2,
-		  title: '修改密码',
-		  shadeClose: true,
-		  shade: 0.8,
-		  shadeClose:true,
-		  scrollbar:false,
-		  area: ['320px', '320px'],
-		  content: 'index/xgmm/updatepass.php' //iframe的url
-		}); 
-    });
-});
-});
-
-//退出
-$(document).ready(function(e) {
-  $(".del_login").click(function(e) {
-              layui.use('layer', function(){
-                var layer = layui.layer;
-                parent.layer.confirm('<center>确定退出？<br>下次将不会自动登陆</center>', {
-                  btn: ['确定|·_·)','取消'],
-                  title: false,
-                  btnAlign: 'c',
-                  closeBtn: 0,
-                }, function(){
-                  location.href="del_login.php";
-                },function(){
-                  
-                    });
-                  });
-                });
-              });
-</script>
 <title>同学你好</title>
 </head>
 
@@ -154,71 +98,170 @@ $(document).ready(function(e) {
       </li>
     </ul>
   </div>
-</div><br><br>
+</div>
 <!--main-->
-
-<div class="school_i">
-
-<div class="layui-container">
-
-<center>
-  
-  <!--菜单-->
-<div class="layui-row layui-col-space30 layui-anim layui-anim-upbit">
-
-      <div class="layui-col-md3 layui-col-xs6">
-        <div class="layui-row grid-demo">
-        <a href="INDEX/CQDD_CJCX/CJCX_index.php" class="grid-demo">
-          <div class="layui-col-md4">
-            <i class="layui-icon">&#xe63c;</i><p>成绩查询</p>
-          </div>
-        </a>
+<!--主要功能-->
+<div class="layui-col-md-offset2 paddingtop layui-anim layui-anim-upbit">
+  <div class="layui-col-md12">
+      <div class="layui-row">
+        <div class="layui-col-md3 layui-col-sm5 border_box_icon">
+          <a class="md" id=""></a>
+          <i class="layui-icon">&#xe68e;</i>&nbsp;主要功能
         </div>
-      </div>
-
-      <div class="layui-col-md3 layui-col-xs6">
-        <div class="layui-row grid-demo">
-        <a href="INDEX/gwbx/alerts.php" class="grid-demo">
-          <div class="layui-col-md4">
-            <i class="layui-icon">&#xe631;</i><p>公物报修</p>
-          </div>
-        </a>
-        </div>
-      </div>
-      
-      <div class="layui-col-md3 layui-col-xs6">
-        <div class="layui-row grid-demo">
-        <a href="javascript:;" class="grid-demo DESS">
-          <div class="layui-col-md4">
-            <i class="layui-icon">&#xe636;</i><p>宿舍水电</p>
-          </div>
-       	</a>
-        </div>
-      </div>
-
-      <div class="layui-col-md3 layui-col-xs6">
-        <div class="layui-row grid-demo">
-        <a href="INDEX/comment/index.php" class="grid-demo">
-          <div class="layui-col-md4">
-            <i class="layui-icon">&#xe606;</i><p>评论专区</p>
-          </div>
-        </a>
-        </div>
-      </div>
-
-     <!--  <div class="layui-col-md3 layui-col-xs6">
-        <div class="layui-row grid-demo">
-        <a href="javascript:;" class="grid-demo DE">
-          <div class="layui-col-md4">
-            <i class="layui-icon">&#xe705;</i><p>敬请期待</p>
-          </div>
-        </a>
-        </div> -->
-      
-      
-      
     </div>
-</div> 
+  </div>
+  <!--菜单主要功能-->   
+  <a href="INDEX/gwbx/alerts.php" class="z_index_box">
+  <div class="layui-col-md3 layui-col-sm5 border_box">
+      <div class="layui-row">
+        <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
+          <i class="layui-icon img48">&#xe631;</i>
+        </div>
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
+          &nbsp;&nbsp;公物报修
+        </div>
+        <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
+          针对本学院的公共物品进行报修
+        </div>
+      </div>
+  </div>
+  </a>
+
+  <a href="javascript:;" class="z_index_box DESS">
+  <div class="layui-col-md3 layui-col-sm5 border_box">
+      <div class="layui-row">
+        <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
+          <i class="layui-icon img48">&#xe636;</i>
+        </div>
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
+          &nbsp;&nbsp;宿舍水电
+        </div>
+        <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
+          宿舍水电费查看以及缴费
+        </div>
+      </div>
+  </div>
+  </a>
+
+</div>
+<!--学生功能-->
+<div class="layui-col-md-offset2 paddingtop layui-anim layui-anim-upbit">
+  <div class="layui-col-md12">
+      <div class="layui-row">
+        <div class="layui-col-md3 layui-col-sm5 border_box_icon">
+          <a class="md" id=""></a>
+          <i class="layui-icon">&#xe613;</i>&nbsp;学生功能
+        </div>
+    </div>
+  </div>
+  <!--菜单学生功能-->   
+  <a href="INDEX/CQDD_CJCX/CJCX_index.php" class="z_index_box">
+  <div class="layui-col-md3 layui-col-sm5 border_box">
+      <div class="layui-row">
+        <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
+          <i class="layui-icon img48">&#xe63c;</i>
+        </div>
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
+          &nbsp;&nbsp;成绩查询
+        </div>
+        <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
+          学院官网期末成绩查询
+        </div>
+      </div>
+  </div>
+  </a>
+
+  <a href="INDEX/comment/index.php" class="z_index_box">
+  <div class="layui-col-md3 layui-col-sm5 border_box">
+      <div class="layui-row">
+        <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
+          <i class="layui-icon img48">&#xe606;</i>
+        </div>
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
+          &nbsp;&nbsp;评论专区
+        </div>
+        <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
+          反映学院不足处自由评论
+        </div>
+      </div>
+  </div>
+  </a>
+
+  <a href="javascript:;" class="DE z_index_box">
+  <div class="layui-col-md3 layui-col-sm5 border_box">
+      <div class="layui-row">
+        <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
+          <i class="layui-icon img48">&#xe705;</i>
+        </div>
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
+          &nbsp;&nbsp;敬请期待
+        </div>
+        <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
+          更多实用的功能
+        </div>
+      </div>
+  </div>
+  </a>
+
+
+</div>
+
+
+
+<script>
+layui.use('element', function(){
+  var element = layui.element;  
+});
+
+
+layui.use('layer', function(){
+  var layer = layui.layer;
+  $(document).ready(function(e) {
+  $(".DESS").click(function(e) {
+      layer.msg('测试中', {
+      time: 2000,
+      });
+  });
+  $(".DE").click(function(e) {
+      layer.msg('(｡・`ω´･)', {
+      time: 2000,
+      });
+  });
+  //修改密码弹出
+  $(".updatepass").click(function(e) {
+        layer.open({
+      type: 2,
+      title: '修改密码',
+      shadeClose: true,
+      shade: 0.8,
+      shadeClose:true,
+      scrollbar:false,
+      area: ['320px', '320px'],
+      content: 'index/xgmm/updatepass.php' //iframe的url
+    }); 
+    });
+});
+});
+
+//退出
+$(document).ready(function(e) {
+  $(".del_login").click(function(e) {
+              layui.use('layer', function(){
+                var layer = layui.layer;
+                parent.layer.confirm('<center>确定退出？<br>下次将不会自动登陆</center>', {
+                  btn: ['确定|·_·)','取消'],
+                  title: false,
+                  btnAlign: 'c',
+                  closeBtn: 0,
+                }, function(){
+                  location.href="del_login.php";
+                },function(){
+                  
+                    });
+                  });
+                });
+              });
+</script>
   <?
   //报修成功
   if(isset($_GET['iok']))
@@ -262,8 +305,6 @@ $(document).ready(function(e) {
               history.pushState(null, null, document.URL);
           });
   </script>
-</center>
-</div>
-</div>
+
 </body>
 </html>
