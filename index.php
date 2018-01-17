@@ -28,7 +28,7 @@
 			<span><h1 class="layui-anim layui-anim-upbit"><a href="copy.php" style="color:#FFF;">校园宝</a></h1></span>
 			<form class="form zdlogin layui-anim layui-anim-upbit" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
 				<input type="text" name="user" class="user" placeholder="学号·工号·账号">
-				<input type="password" name="upass" class="upass" placeholder="密码身份证后6位">
+				<input type="password" name="upass" class="upass" placeholder="身份证出生日期8位">
                 <select name="utype" class="utype" size="1">
                   <option value="学生">&nbsp;&nbsp;学生</option>
                   <option value="教师">&nbsp;&nbsp;教师</option>
