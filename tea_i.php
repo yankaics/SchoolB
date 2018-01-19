@@ -25,37 +25,66 @@
 <link media="(min-width:769px)" href="CSS/main-index.css" rel="stylesheet" type="text/css" />
 -->
 
-<title>老师你好</title>
+<title>Hi-老师</title>
 <script>
 layui.use('element', function(){
-  var element = layui.element;
-   
-});	
+  var element = layui.element;  
+});
+
+
 layui.use('layer', function(){
   var layer = layui.layer;
   $(document).ready(function(e) {
-	$(".DESS").click(function(e) {
-    	layer.msg('测试中', {
-    	time: 2000,
-  		});
-	});
-	$(".DE").click(function(e) {
-    	layer.msg('(｡・`ω´･)', {
-    	time: 2000,
-  		});
-	});
-	//修改密码弹出
-	$(".updatepass").click(function(e) {
+  var countDESS=0;
+  $(".DESS").click(function(e) {
+    countDESS++;
+    if(countDESS>5)
+    {
+      layer.msg('都说了测试中', {
+      time: 2000,
+      });
+    }
+    else
+    {
+      layer.msg('测试中', {
+      time: 2000,
+      });
+    }
+  });
+  var countDE=0;
+  $(".DE").click(function(e) {
+      countDE++;
+      if(countDE>20)
+      {
+        layer.msg('(┙>∧<)┙へ┻┻嗷嗷嗷！', {
+        time: 2000,
+        });
+      }
+      else if(countDE>5)
+      {
+        layer.msg('(/= _ =)/~┴┴再点生气了', {
+        time: 2000,
+        });
+      }
+      else
+      {
+        layer.msg('(｡・`ω´･)', {
+        time: 2000,
+        });
+      }
+  });
+  //修改密码弹出
+  $(".updatepass").click(function(e) {
         layer.open({
-		  type: 2,
-		  title: '修改密码',
-		  shadeClose: true,
-		  shade: 0.8,
-		  shadeClose:true,
-		  scrollbar:false,
-		  area: ['320px', '320px'],
-		  content: 'index/xgmm/updatepass.php' //iframe的url
-		}); 
+      type: 2,
+      title: '修改密码',
+      shadeClose: true,
+      shade: 0.8,
+      shadeClose:true,
+      scrollbar:false,
+      area: ['320px', '320px'],
+      content: 'index/xgmm/updatepass.php' //iframe的url
+    }); 
     });
 });
 });
@@ -79,7 +108,6 @@ $(document).ready(function(e) {
                 });
               });
 </script>
-</head>
 
 <body bgcolor="#F0F0F0">
 <!--导航-->

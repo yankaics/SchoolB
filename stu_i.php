@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />-->
 <link rel="shortcut icon" href="favicon.ico" />
 <!--JSQ-->
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+<script src="JSQ/jquery-2.1.1.min.js"></script>
 <script src="JSQ/index.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/stu_index.css" />
@@ -24,7 +24,7 @@
 <link media="(min-width:769px)" href="CSS/top-index.css" rel="stylesheet" type="text/css" />
 <link media="(min-width:769px)" href="CSS/main-index.css" rel="stylesheet" type="text/css" />
 -->
-<title>同学你好</title>
+<title>Hi-同学</title>
 </head>
 
 <body bgcolor="#F0F0F0">
@@ -64,6 +64,12 @@
            <?=$_SESSION['txm'];?>
         </a>
         <dl class="layui-nav-child">
+
+          <dd>
+          <!--个人资料-->
+            <a class="" href="INDEX/user_data/user_data_index.php">个人资料</a>
+          </dd>
+
           <dd>
           <!--报修查询-->
           <?
@@ -217,15 +223,43 @@ layui.use('element', function(){
 layui.use('layer', function(){
   var layer = layui.layer;
   $(document).ready(function(e) {
+  var countDESS=0;
   $(".DESS").click(function(e) {
+    countDESS++;
+    if(countDESS>5)
+    {
+      layer.msg('都说了测试中', {
+      time: 2000,
+      });
+    }
+    else
+    {
       layer.msg('测试中', {
       time: 2000,
       });
+    }
   });
+  var countDE=0;
   $(".DE").click(function(e) {
-      layer.msg('(｡・`ω´･)', {
-      time: 2000,
-      });
+      countDE++;
+      if(countDE>20)
+      {
+        layer.msg('(┙>∧<)┙へ┻┻嗷嗷嗷！', {
+        time: 2000,
+        });
+      }
+      else if(countDE>5)
+      {
+        layer.msg('(/= _ =)/~┴┴再点生气了', {
+        time: 2000,
+        });
+      }
+      else
+      {
+        layer.msg('(｡・`ω´･)', {
+        time: 2000,
+        });
+      }
   });
   //修改密码弹出
   $(".updatepass").click(function(e) {
