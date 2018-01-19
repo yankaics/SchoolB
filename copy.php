@@ -59,6 +59,15 @@
             <li class="layui-timeline-item">
                 <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
                 <div class="layui-timeline-content layui-text">
+                  <h3 class="layui-timeline-title">2018-1-20</h3>
+                  <p>同学的首页样式更改，突出重点功能</p>
+                  <p>新增了首页-右上角-个人资料，方便学生查看自己的信息，如有不符请找辅导员核实。</p>
+                </div>
+              </li>
+
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
+                <div class="layui-timeline-content layui-text">
                   <h3 class="layui-timeline-title">2018-1-10</h3>
                   <p>2018的第一次更新</p>
                   <p>新增了<成绩查询>目前只适用本院学生，爬取的学院官网的成绩，诶嘿！所以哪天出问题了记得给我发邮箱，谢谢</p>

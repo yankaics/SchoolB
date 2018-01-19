@@ -68,10 +68,7 @@
   ?>
 <div class="layui-row">
   <div class="layui-col-md4 layui-col-md-offset4 layui-col-xs-12">
-    <blockquote class="layui-elem-quote">
-      <p>成绩查询</p>
-    </blockquote>
-    <br id="xtips"><br>
+    <br><br id="xtips"><br>
     <?
       if(isset($m[0][1]))
       {
