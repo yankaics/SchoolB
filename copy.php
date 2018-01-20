@@ -41,7 +41,7 @@
           <legend style="color:#009688;">我们</legend>
           <div class="layui-field-box">
             大朋友：罗军老师
-            <br>小朋友：胡珂 <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=YVdRVVdXUVFSWCEQEE8CDgw" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/>主题：校园宝+你的主题</a><br>&copy;
+            <br>小朋友：胡珂 <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=YVdRVVdXUVFSWCEQEE8CDgw" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/>主题：校园宝+你的主题</a><br><br>&copy;
 			<?
 			if($rqY>2017)
 				echo "2017-".$rqY;

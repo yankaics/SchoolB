@@ -66,14 +66,14 @@ $(document).ready(function(e) {
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
       	<li class="layui-nav-item"><a class="ann" id="admin_index.php" href="javascript:;">后台首页</a></li>
       	<?
-    	if($_SESSION['cg']==1 || $_SESSION['zw']=='维修主管' || $_SESSION['zw']=='宿管员')
+    	if($_SESSION['cg']==1 || $_SESSION['zw']=='维修主管' || $_SESSION['zw']=='宿管员' || $_SESSION['zw']=='宿管主管')
 		{
 		?>
         <li class="layui-nav-item layui-nav-itemed">
           <a href="javascript:;">账号管理</a>
           <dl class="layui-nav-child">
             <?
-              if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管员')
+              if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管员' || $_SESSION['zw']=='宿管主管')
               {
             ?>
             <dd><a class="ann" id="../zhgl/stu_all.php" href="javascript:;">学生管理</a></dd>
