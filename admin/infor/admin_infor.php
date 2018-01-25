@@ -65,7 +65,8 @@ $(document).ready(function(e) {
       <!-- 左侧导航 -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
       	<li class="layui-nav-item"><a class="ann" id="admin_index.php" href="javascript:;">后台首页</a></li>
-      	<?
+    <!--账号管理-->
+    <?
     	if($_SESSION['cg']==1 || $_SESSION['zw']=='维修主管' || $_SESSION['zw']=='宿管员' || $_SESSION['zw']=='宿管主管')
 		{
 		?>
@@ -78,6 +79,13 @@ $(document).ready(function(e) {
             ?>
             <dd><a class="ann" id="../zhgl/stu_all.php" href="javascript:;">学生管理</a></dd>
             <?
+                if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管主管')
+                {
+            ?>
+            <dd><a class="ann" id="../zhgl/sginsert.php" href="javascript:;">增加宿管员</a></dd>
+            <dd><a class="ann" id="../zhgl/sg_zhgl.php" href="javascript:;">管理宿管员</a></dd>
+            <?
+                }
               }
             ?>
             <?
@@ -95,6 +103,7 @@ $(document).ready(function(e) {
         <?
 		}
 		?>
+    <!--报修管理-->
         <?
 		if($_SESSION['cg']==1 || $_SESSION['zw']=='维修主管')
 		{
@@ -112,7 +121,8 @@ $(document).ready(function(e) {
         <?
 		}
 		?>
-        <?
+    <!--维修员任务-->
+    <?
 		if($_SESSION['zw']=='维修员')
 		{
 		?>
@@ -126,6 +136,31 @@ $(document).ready(function(e) {
         <?
 		}
 		?>
+    
+    <!--水电费管理-->
+    <?
+    if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管主管' || $_SESSION['zw']=='宿管员')
+    {
+    ?>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">水电费管理</a>
+          <dl class="layui-nav-child">
+            <dd><a class="ann" id="" href="javascript:;">电费缴费</a></dd>
+            <?
+            if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管主管')
+            {
+            ?>
+            <dd><a class="ann" id="" href="javascript:;">电费表excel.csv上传</a></dd>
+            <?
+            }
+            ?>
+            <dd><a class="ann" id="" href="javascript:;">电费详情统计</a></dd>
+          </dl>
+        </li>
+        <?
+    }
+    ?>
+
         <?
 		if($_SESSION['cg']==1)
 		{
