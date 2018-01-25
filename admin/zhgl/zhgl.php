@@ -11,7 +11,7 @@
 <!--JSQ-->
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
 <script src="../../JSQ/index.js"></script>
-<title>账号管理</title>
+<title>维修员管理</title>
 <style>
 body{
 	font-weight:600;
