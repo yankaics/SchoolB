@@ -25,14 +25,15 @@
           	<div class="layui-col-md8">
             	<blockquote class="layui-elem-quote">校园宝后台<br>欢迎<?=$_SESSION['name']?></blockquote>
                 <p><br>
-                <i class="layui-icon" style="font-size: 32px; color: #FF5722;">&#xe60b;</i>目前后台还没有完善更新，有些页面不太好用，望谅解【正在根据使用情况进行更改】~ 
-                </p><br> 
-              <fieldset class="layui-elem-field">
+                <fieldset class="layui-elem-field">
                   <legend>菜单及修改密码</legend>
                   <div class="layui-field-box">
                     点击左上角【校园宝后台】呼出菜单<br>点击右上角【姓名】修改密码<br>还没有修改密码的管理员请及时【修改密码】
                   </div>
                 </fieldset>
+                </p><br>
+                <i class="layui-icon" style="font-size: 32px; color: #FF5722;">&#xe60b;</i>目前后台还没有完善更新，有些页面不太好用，望谅解【正在根据使用情况进行更改】~ 
+              
           	</div>
           </div>
         </div>

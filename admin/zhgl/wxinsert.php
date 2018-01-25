@@ -244,7 +244,7 @@ var form = layui.form;
 					$(document).ready(function(e) {
 						layui.use('layer', function(){
 						var layer = layui.layer;
-						layer.confirm('注册成功！<br>姓名：<?=$_POST['name']?><br>账号：<?=$_POST['username']?><br>密码：<?=$_POST['userpass']?><br>部门：<?=$_POST['userid']?>', {
+						layer.confirm('注册成功！<br>姓名：<?=$_POST['name']?><br>账号：<?=$_POST['username']?><br>密码：<?=$_POST['userpass']?><br>电话：<?=$_POST['userid']?>', {
 						btn: ['确定'],
 						title: false,
 						btnAlign: 'c',

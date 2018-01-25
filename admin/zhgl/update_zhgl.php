@@ -151,7 +151,7 @@ if($_GET['zw']=='维修员')
           <div class="layui-form-item">
             <label class="layui-form-label">确认密码</label>
             <div class="layui-input-block">
-              <input type="password" name="quserpass" required  lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input" value="<?=$row[2]?>">
+              <input type="password" name="quserpass" required  lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input" value="">
             </div>
           </div>
           

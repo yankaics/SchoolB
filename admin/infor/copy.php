@@ -27,7 +27,7 @@
                 <fieldset class="layui-elem-field">
                   <legend>建议反馈</legend>
                   <div class="layui-field-box">
-                    小朋友：胡珂 <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=YVdRVVdXUVFSWCEQEE8CDgw" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/></a>
+                    小朋友：胡珂 <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=YVdRVVdXUVFSWCEQEE8CDgw" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/>主题：校园宝+你的问题</a>
                     建议请发至邮箱呐~感谢来信！
                   </div>
                 </fieldset>
@@ -37,6 +37,17 @@
                   <div class="layui-field-box">
                     <ul class="layui-timeline">
                     
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                        <div class="layui-timeline-content layui-text">
+                          <h3 class="layui-timeline-title">2018-1-25</h3>
+                          <p>修复了已知BUG</p>
+                          <p>新增了<账号管理>-<学生管理>&amp;<增加宿管员>&amp;<管理宿管员> </p>
+                          <p>新增了<水电费管理></p>
+                          <p>新增【宿管主管】以及【宿管员】两种职位</p>
+                        </div>
+                      </li>
+
                     <li class="layui-timeline-item">
                         <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                         <div class="layui-timeline-content layui-text">
