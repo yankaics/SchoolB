@@ -157,7 +157,7 @@ include("../adminse/admin_se.php");
 		        <option value="5">5号楼</option>
 		      </select>
 			      	<script>
-					   document.getElementById("lh").value = "<?=$row[6]?>";//此时会选中第2个
+					   document.getElementById("lh").value = "<?=$row[6]?>";
 					</script>
 		    </div>
 		  </div>
