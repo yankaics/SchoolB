@@ -150,7 +150,7 @@ $(document).ready(function(e) {
             if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管主管')
             {
             ?>
-            <dd><a class="ann" id="" href="javascript:;">电费表excel.csv上传</a></dd>
+            <dd><a class="ann" id="../ele_exp/upload_ele.php" href="javascript:;">电费表excel.csv上传</a></dd>
             <?
             }
             ?>

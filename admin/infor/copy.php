@@ -40,10 +40,10 @@
                     <li class="layui-timeline-item">
                         <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                         <div class="layui-timeline-content layui-text">
-                          <h3 class="layui-timeline-title">2018-1-25</h3>
+                          <h3 class="layui-timeline-title">2018-1-26</h3>
                           <p>修复了已知BUG</p>
                           <p>新增了<账号管理>-<学生管理>&amp;<增加宿管员>&amp;<管理宿管员> </p>
-                          <p>新增了<水电费管理></p>
+                          <p>新增了<水电费管理>-<电费表excel.csv上传></p>
                           <p>新增【宿管主管】以及【宿管员】两种职位</p>
                         </div>
                       </li>
