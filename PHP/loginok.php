@@ -168,7 +168,7 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			$_SESSION['zw']=$row[5];
 			//姓名
 			$_SESSION['name']=$row[3];
-			//部门
+			//电话
 			$_SESSION['nameid']=$row[4];
 			//楼号
 			$_SESSION['poi']=$row[6];

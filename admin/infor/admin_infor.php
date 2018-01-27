@@ -145,7 +145,7 @@ $(document).ready(function(e) {
         <li class="layui-nav-item layui-nav-itemed">
           <a href="javascript:;">水电费管理</a>
           <dl class="layui-nav-child">
-            <dd><a class="ann" id="" href="javascript:;">电费缴费</a></dd>
+            <dd><a class="ann" id="../ele_exp/ele_pay.php" href="javascript:;">电费缴费</a></dd>
             <?
             if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管主管')
             {
