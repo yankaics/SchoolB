@@ -11,8 +11,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />-->
 <link rel="shortcut icon" href="favicon.ico" />
 <!--JSQ-->
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
-<script src="JSQ/index.js"></script>
+<script src="JSQ/jquery-2.1.1.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/tea_index.css" />
 <!--CSS以往版本的样式
