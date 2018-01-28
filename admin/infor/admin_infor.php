@@ -154,7 +154,7 @@ $(document).ready(function(e) {
             <?
             }
             ?>
-            <dd><a class="ann" id="" href="javascript:;">电费详情统计</a></dd>
+            <dd><a class="ann" id="../ele_exp/ele_re.php" href="javascript:;">电费详情统计</a></dd>
           </dl>
         </li>
         <?

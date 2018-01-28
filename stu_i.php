@@ -12,7 +12,6 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <!--JSQ-->
 <script src="JSQ/jquery-2.1.1.min.js"></script>
-<script src="JSQ/index.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/stu_index.css" />
 <!--CSS以往版本的样式

@@ -46,9 +46,9 @@ layui.use('element', function(){
   if (document.getElementById){
    if (iframeid && !window.opera){
     if (iframeid.contentDocument && iframeid.contentDocument.body.offsetHeight){
-     iframeid.height = iframeid.contentDocument.body.offsetHeight+100;
+     iframeid.height = iframeid.contentDocument.body.offsetHeight+500;
     }else if(iframeid.Document && iframeid.Document.body.scrollHeight){
-     iframeid.height = iframeid.Document.body.scrollHeight+100;
+     iframeid.height = iframeid.Document.body.scrollHeight+500;
     }
    }
   }

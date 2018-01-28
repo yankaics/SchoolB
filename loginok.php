@@ -9,8 +9,7 @@
 	<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 	<link rel="shortcut icon" href="favicon.ico" />
 	<!--JSQ-->
-	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
-	<script src="JSQ/index.js"></script>
+	<script src="JSQ/jquery-2.1.1.min.js"></script>
 
 	<style type="text/css">
 		body{

@@ -9,7 +9,7 @@
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
 <!--JSQ-->
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+<script src="../../JSQ/jquery-2.1.1.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <title>宿管管理</title>
 <style>
@@ -29,17 +29,7 @@ body{
 </style>
 </head>
 
-<body id=body onscroll=SetCookie("scroll",document.body.scrollTop); onload="scrollback();">
-
-<!--导航
-<div class="top-index">
-	<div class="logo"><img src="../../UI/logo/logogif.gif"></div>
-    <div class="top-dh">
-    	<a href="../../index.php"><div class="dh-index">首页</div></a>
-        <a href="zhgl_index.php"><div class="dh-index">返回</div></a>
-  </div>
-</div>-->
-<!--main-->
+<body>
 
 <?
 include"../../PHP/riqi.php";
@@ -191,8 +181,17 @@ while($rowl=mysql_fetch_row($rsl))
             	<div class="layui-row layui-col-space10">
                     <div class="layui-col-md12 layui-col-xs12">
                         <span style="font-size:20px; color:#FF5722;"><?=$rowl[3]?></span>
-                        <p><?=$rowl[6]?>号楼</p>
-                        <!-- <p><span class="layui-badge layui-bg-gray">已处理<?=$rowrc[0]?></span> -->
+                        <p><?=$rowl[6]?>号楼
+                        <?
+                        	$sql="select count(*) from sch_dfre where s_username='".$rowl[1]."'";
+							$rs=mysql_query($sql,$con);
+							if($rowrc=mysql_fetch_row($rs))
+							{
+                        ?>
+                        <span class="layui-badge layui-bg-gray">缴费记录<?=$rowrc[0]?>条</span></p>
+                        <?
+                        	}
+                        ?>
                         
                     </div>
                     <div class="layui-col-md12 layui-col-xs12">
@@ -202,7 +201,7 @@ while($rowl=mysql_fetch_row($rsl))
                     	账号：<?=$rowl[1]?><br>密码：<?=$rowl[2]?>
                     </div>
                     <div class="layui-col-md12 layui-col-xs12">
-                    	<p><a href="zhglwx_re.php?nid=<?=$rowl[3]?>" class="layui-btn layui-btn-sm">查看</a><a href="javascript:;" class="layui-btn layui-btn-sm xg_zhgl" id="<?=$rowl[0]?>">修改</a>
+                    	<p><a href="zhglsg_re.php?nid=<?=$rowl[1]?>" class="layui-btn layui-btn-sm">查看</a><a href="javascript:;" class="layui-btn layui-btn-sm xg_zhgl" id="<?=$rowl[0]?>">修改</a>
                    	  <span class="layui-form zw_zhgl" action="">
                             <?
                             $sqlsg="select s_g from sch_admin where sid='".$rowl[0]."'";
