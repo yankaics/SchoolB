@@ -26,10 +26,11 @@
 <div class="layui-container">
   <div class="layui-row">
     <!--日期选择操作-->
-    <div class="layui-col-md6 layui-col-md-offset3">
+    <div class="layui-col-md12">
       <blockquote class="layui-elem-quote">
           <p>电费缴费</p>
           <p>选择操作的电费日期（电费上传的日期）</p>
+          <p>输入寝室号查询后操作</p>
           <p>确认该寝室已经缴费之后再标记为<已缴费></p>
           <p style="color:#FF5722;">已经标记了<已缴费>的寝室，就不能撤销，操作时一定注意。</p>
 
@@ -84,54 +85,63 @@
         {
           $lh="所有楼层";
         }
-        else if($_SESSION['zw']=='宿管')
+        else if($_SESSION['zw']=='宿管员')
         {
           $lh=$_SESSION['poi'];
         }
-        //总费用以及未缴费总和
+        //总费用，未缴费总和未缴费寝室总数，已缴费寝室总数
         if($_SESSION['cg']==1 || $_SESSION['cg']==2)
         {
-          $sumsql="select sum(sushe_money) from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."'";
-          $sumwjf="select sum(sushe_money) from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_jg='未缴费'";
+          $sumsql="select sum(sushe_money),count(user_id) from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."'";
+          $sumwjf="select sum(sushe_money),count(user_id) from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_jg='未缴费'";
           $summoney=mysql_query($sumsql,$con);
           if($rowsum=mysql_fetch_row($summoney))
           {
-            $sumall=$rowsum[0];
+            $sumall=$rowsum[0]; //总费用
+            $call=$rowsum[1]; //总寝室
           }
           else
           {
             $sumall='0';
+            $call='0';
           }
           $sumwjf=mysql_query($sumwjf,$con);
           if($rowwjf=mysql_fetch_row($sumwjf))
           {
-            $wjfs=$rowwjf[0];
+            $wjfs=$rowwjf[0]; //未缴费
+            $cwjf=$rowwjf[1]; //未缴费寝室总数
           }
           else
           {
-            $sumall='0';
+            $wjfs='0';
+            $cwjf='0';
           }
         }
-        else if($_SESSION['zw']=='宿管')
+        else if($_SESSION['zw']=='宿管员')
         {
-          $sumsql="select sum(sushe_money) from sushe_user where sushe_name='".$_SESSION['poi']."' and sushe_Y='".$Y."' and sushe_m='".$m."'";
-          $sumwjf="select sum(sushe_money) from sushe_user where sushe_name='".$_SESSION['poi']."' and sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_jg='未缴费'";
+          $sumsql="select sum(sushe_money),count(user_id) from sushe_user where sushe_name='".$_SESSION['poi']."' and sushe_Y='".$Y."' and sushe_m='".$m."'";
+          $sumwjf="select sum(sushe_money),count(user_id) from sushe_user where sushe_name='".$_SESSION['poi']."' and sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_jg='未缴费'";
+          $summoney=mysql_query($sumsql,$con);
           if($rowsum=mysql_fetch_row($summoney))
           {
-            $sumall=$rowsum[0];
+            $sumall=$rowsum[0]; //总费用
+            $call=$rowsum[1]; //总寝室
           }
           else
           {
             $sumall='0';
+            $call='0';
           }
           $sumwjf=mysql_query($sumwjf,$con);
           if($rowwjf=mysql_fetch_row($sumwjf))
           {
-            $wjfs=$rowwjf[0];
+            $wjfs=$rowwjf[0]; //未缴费
+            $cwjf=$rowwjf[1]; //未缴费寝室总数
           }
           else
           {
-            $sumall='0';
+            $wjfs='0';
+            $cwjf='0';
           }
         }
         else
@@ -149,24 +159,28 @@
                 <th>时间</th>
                 <th>楼号</th>
                 <th>总费用</th>
+                <th>寝室总数</th>
                 <th>未缴费</th>
+                <th>未缴费寝室总数</th>
               </tr> 
             </thead>
             <tbody>
-              <tr>
+              <tr >
                 <td><?=$Y?>年<?=$m?>月</td>
                 <td><?=$lh?>号楼</td>
                 <td><?=$sumall?>元</td>
-                <td><?=$sumall?>元</td>
+                <td><?=$call?>间</td>
+                <td><?=$wjfs?>元</td>
+                <td><?=$cwjf?>间</td>
               </tr>
               <tr>
-                <td colspan="4">
+                <td colspan="6">
                   <!--宿舍查询-->
                   <form id="form1" class="layui-form" name="form1" method="post" action="">
                     <div class="layui-form-item">
                       <label class="layui-form-label">寝室号：</label>
                       <div class="layui-input-inline">
-                        <input type="text" name="tkey" id="tkey" placeholder="请输入寝室号" autocomplete="off" class="layui-input">
+                        <input type="text" name="tkey" id="tkey" placeholder="请输入寝室号" autocomplete="off" class="layui-input" value="<?=$_POST['tkey']?>">
                       </div>
                       <div class="layui-inline">
                           <button class="layui-btn" name="button3" id="button3" lay-submit lay-filter="form">查询</button>
@@ -183,41 +197,46 @@
               </tr>
             </tbody>
           </table>
+          <?
+            if(isset($_POST['tkey']))
+            {
+          ?>
           <!--缴费数据-->
           <form action="" class="layui-form" name="admin" method="post">
             <table lay-filter="elepay" border="1" class="layui-table" cellspacing="0" cellpadding="10">
               <tr class="top">
-                <td align="center" lay-data="{field:'cz', width:100}">操作</td>
-                <td align="center" lay-data="{field:'qsh', width:100}">寝室号</td>
-                <td align="center" lay-data="{field:'df', width:100}">电费</td>
-                <td align="center" lay-data="{field:'ydl', width:100}">用电量</td>
-                <td align="center" lay-data="{field:'del', width:100}">定额量</td>
-                <td align="center" lay-data="{field:'cel', width:100}">超额量</td>
-                <td align="center" lay-data="{field:'dj', width:100}">电价</td>
-                <td align="center" lay-data="{field:'xq', width:100}">是否缴费</td>
+                <td align="center">操作</td>
+                <td align="center" style="color:#FF5722;">寝室号</td>
+                <td align="center" style="color:#FF5722;">电费</td>
+                <td align="center">用电量</td>
+                <td align="center">定额量</td>
+                <td align="center">超额量</td>
+                <td align="center">电价</td>
+                <td align="center">抄表时间</td>
+                <td align="center" style="color:#FF5722;">是否缴费</td>
               </tr>
               <?
               if($_SESSION['cg']==1 || $_SESSION['cg']==2)
               {
                 if(isset($_POST['wjf']))
                 {
-                  $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_jg='未缴费' order by sushe_dor limit 10";
+                  $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_jg='未缴费' order by sushe_dor";
                 }
                 else
                 {
                   if(isset($_POST['yjf']))
                   {
-                    $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_jg='已缴费' order by sushe_dor limit 10";
+                    $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_jg='已缴费' order by sushe_dor";
                   }
                   else
                   {
                     if(isset($_POST['button3']))
                     {
-                      $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_dor like '%".$_POST['tkey']."%' order by sushe_dor limit 10";
+                      $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_dor='".$_POST['tkey']."' order by sushe_dor";
                     }
                     else
                     {
-                      $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' order by sushe_dor";
+                      $jg="";
                     }
                   }
                 }
@@ -238,11 +257,11 @@
                   {
                     if(isset($_POST['button3']))
                     {
-                      $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_name='".$_SESSION['poi']."' and sushe_dor like '%".$_POST['tkey']."%' order by sushe_dor";
+                      $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_name='".$_SESSION['poi']."' and sushe_dor='".$_POST['tkey']."' order by sushe_dor";
                     }
                     else
                     {
-                      $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_name='".$_SESSION['poi']."' order by sushe_dor";
+                      $jg="";
                     
                     }
                   }
@@ -262,27 +281,56 @@
                   else
                   {
                   ?>
-                    <a onclick="return confirm('确定标记为<已缴费>？寝室：<?=$row[2]?> 电费：<?=$row[11]?>');" href="updatejg_index.php?m=<?=$row[2]?>"><button type="button" name="button" class="btn btn-default">已缴费</button></a>
+                    <a class="yjf_pay<?=$row[2]?>"><button type="button" name="button" class="layui-btn">已缴费</button></a>
+                    <script type="text/javascript">
+                      $(document).ready(function(e) {
+                        $(".yjf_pay<?=$row[2]?>").click(function(e) {
+                          layui.use('layer', function(){
+                            var layer = layui.layer;
+                            parent.layer.confirm('<center>确定标记为<已缴费>？寝室：<?=$row[2]?> 电费：<?=$row[11]?></center>', {
+                              btn: ['确定|·_·)','取消'],
+                              title: false,
+                              btnAlign: 'c',
+                              closeBtn: 0,
+                            }, function(){
+                              parent.layer.closeAll();
+                              //因为是parent 所以需要再次进入文件夹访问
+                              location.href="../ele_exp/ele_payok.php?m=<?=$row[2]?>";
+
+                            },function(){
+                              
+                               });
+                          });
+                        });
+                      });
+                    </script>
                   <?
                   }
                   ?>
-                    <a href="dormp.php?dorm=<?=$row[2]?>&sadminY=<?=$Y?>&sadminm=<?=$m?>"><button type="button" name="button" class="btn btn-default">详情</button></a>
+                    <!--dormp.php?dorm=<?=$row[2]?>&sadminY=<?=$Y?>&sadminm=<?=$m?>-->
+                     <a href="javascript:;"><button type="button" name="button" class="layui-btn">详情</button></a>
                 </td>
-                <td align="center" class="qs"><?=$row[2]?></td>
-                <td align="center"><?=$row[11]?>元</td>
+                <td align="center" style="color:#FF5722;"><?=$row[2]?></td>
+                <td align="center" style="color:#FF5722;"><?=$row[11]?>元</td>
                 <td align="center"><?=$row[7]?></td>
                 <td align="center"><?=$row[8]?></td>
                 <td align="center"><?=$row[9]?></td>
                 <td align="center"><?=$row[10]?></td>
-                <td align="center"><?=$row[16]?></td>
+                <td align="center"><?=$row[12]?></td>
+                <td align="center" style="color:#FF5722;"><?=$row[16]?></td>
               </tr>
             <?
             }
+              //没有数据时显示
+              $rs=mysql_query($sql,$con);
+              if(!$row=mysql_fetch_row($rs))
+                echo "<center>没有查询到该寝室或没有数据</center>";
             ?>
              
             </table>
           </form>
       <?
+            }
         }
       ?>
 
@@ -297,10 +345,27 @@ layui.use('form', function(){
 
 });
 
-//时间
-document.getElementById("sadminY").value = "<?=$_GET['sadminY']?>";
-document.getElementById("sadminm").value = "<?=$_GET['sadminm']?>";
 </script>
-
+<?
+//日期判断
+if(isset($_GET['button']))
+{
+?>
+  <script type="text/javascript">
+    document.getElementById("sadminY").value = "<?=$_GET['sadminY']?>";
+    document.getElementById("sadminm").value = "<?=$_GET['sadminm']?>";
+  </script>
+<?
+}
+else
+{
+?>
+  <script type="text/javascript">
+    document.getElementById("sadminY").value = "<?=$rqY?>";
+    document.getElementById("sadminm").value = "<?=$rqm?>";
+  </script>
+<?
+}
+?>
 </body>
 </html>
