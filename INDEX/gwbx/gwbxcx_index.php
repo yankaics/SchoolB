@@ -9,7 +9,7 @@
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
 <!--JSQ-->
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+<script src="../../JSQ/jquery-2.1.1.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <!--CSS以往版本的样式
 <link media="(max-width:650px)" href="CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
@@ -163,7 +163,7 @@
                             </tr>
                             <tr>
                               <td align="right">电话：</td>
-                              <td><?=($row[5]+1)/2?></td>
+                              <td><?=$row[5]?></td>
                             </tr>
                             <tr>
                               <td align="right">
@@ -278,7 +278,7 @@
                             </tr>
                             <tr>
                               <td align="right">电话：</td>
-                              <td><?=($row[5]+1)/2?></td>
+                              <td><?=$row[5]?></td>
                             </tr>
                             <tr>
                               <td align="right">
@@ -392,7 +392,7 @@
                             </tr>
                             <tr>
                               <td align="right">电话：</td>
-                              <td><?=($row[5]+1)/2?></td>
+                              <td><?=$row[5]?></td>
                             </tr>
                             <tr>
                               <td align="right">
