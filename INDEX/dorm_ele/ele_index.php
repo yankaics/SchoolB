@@ -54,7 +54,7 @@
 <!--main-->
 <div class="layui-container">
   <div class="layui-row">
-  	<div class="layui-col-md5">
+  	
     <?
       $dorm=$_SESSION['tdorm']; //寝室
       $sqldf="select * from sushe_user where sushe_dor='".$dorm."' and sushe_Y='".$rqY."' and sushe_m='".$rqm."'";
@@ -63,6 +63,7 @@
       {
         
     ?>
+    <div class="layui-col-md5" >
       	<section class="cd-intro">
           <h1 class="cd-headline clip is-full-width">
             <span></span>
@@ -111,18 +112,80 @@
         </table>
         
       </div>
+      <hr>
       <!--历史-->
       <div class="layui-col-md4 layui-col-md-offset5" style=" padding-top: 60px;">
-          
-          <form class="layui-form" name="elef" id="elef" action="ele_index.php" method="get">
+          <?
+          if(isset($_POST['lst']))
+          {
+            $lstt=$_POST['lst'];
+          }
+          else
+          {
+            $lstt=$rqY.'-'.$rqmm;
+          }
+          ?>
+          <form class="layui-form" name="elef" id="elef" action="ele_index.php" method="post">
             <div class="layui-form-item">
               <label class="layui-form-label" style="font-size: 20px;">历史</label>
-                <div class="layui-input-block">
-                  <input type="text"  class="layui-input" required  lay-verify="required" placeholder="请选择日期" autocomplete="off" name="lst" id="lst" value="<?=$_GET['lst']?>">
+                <div class="layui-input-inline">
+                  <input type="text"  class="layui-input" required  lay-verify="required" placeholder="请选择日期" readonly autocomplete="off" name="lst" id="lst" value="<?=$lstt?>">
                 </div>
               </div>
           </form>
-          
+          <?
+            if(isset($_POST['lst']))
+            {
+              if(substr($lstt,-2,1)==0)
+              {
+                $lstrqm=substr($lstt,-1,1); //月
+                $lstrqY=substr($lstt,0,4); //年
+              }
+              else
+              {
+                $lstrqm=substr($lstt,-1,2);
+                $lstrqY=substr($lstt,0,4);
+              }
+              $cxsql="select * from sushe_user where sushe_dor='".$dorm."' and sushe_Y='".$lstrqY."' and sushe_m='".$lstrqm."'";
+              $cxrs=mysql_query($cxsql,$con);
+              if($cxrow=mysql_fetch_row($cxrs))
+              {
+          ?>
+                <!--历史详情-->
+                <table class="layui-table">
+                  <tr>
+                    <th>电费</th>
+                    <th><?=$cxrow[11].'元'?></th>
+                  </tr> 
+                  <tr>
+                    <td>是否缴费</td>
+                    <td><?=$cxrow[16]?></td>
+                  </tr>
+                  <tr>
+                    <td>抄表时间</td>
+                    <td><?=$cxrow[12]?></td>
+                  </tr>
+                  <tr>
+                    <td>用电量</td>
+                    <td><?=$cxrow[7]?></td>
+                  </tr>
+                  <tr>
+                    <td>超额量</td>
+                    <td><?=$cxrow[9]?></td>
+                  </tr>
+                  <tr>
+                    <td>电价</td>
+                    <td><?=$cxrow[10].'元'?></td>
+                  </tr>
+                </table>
+          <?
+              }
+              else
+              {
+                echo "<center>无数据</center>";
+              }
+            }
+          ?>
 
       </div>
     <?
@@ -186,7 +249,8 @@ layui.use('laydate', function(){
     ,type: 'month'
     ,theme: '#393D49'
     ,done: function(value, date){
-      location.href="ele_index.php?lst="+value;
+      $('#lst').val(value);
+      $("#elef").submit();
     }//选中后提交
   });
 });
