@@ -42,21 +42,19 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			{
 				$spassid=$row[3];
 			}
-			
-			//学号
-			$_SESSION['txh']=$row[7];
-			//姓名
-			$_SESSION['txm']=$row[1];
-			//专业
-			$_SESSION['tzy']=$row[5];
-			//辅导员
-			$_SESSION['tfdy']=$row[6];
-			//电话
-			$_SESSION['tdh']=$row[4];
-			
-			
-			if($mysql['upass']==$spassid && $user==$row[7])
+
+			if($mysql['upass']===$spassid && $user===$row[7])
 			{
+				//学号
+				$_SESSION['txh']=$row[7];
+				//姓名
+				$_SESSION['txm']=$row[1];
+				//专业
+				$_SESSION['tzy']=$row[5];
+				//辅导员
+				$_SESSION['tfdy']=$row[6];
+				//电话
+				$_SESSION['tdh']=$row[4];
 				//学生自动登录
 				setcookie("schoolb_username",$user,time()+86400*30,'/');//30天后cookie失效
 				setcookie("schoolb_password",$upass,time()+86400*30,'/');
@@ -108,15 +106,15 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			{
 				$spassid=$row[3];
 			}
-			//姓名
-			$_SESSION['txm']=$row[1];
-			//电话
-			$_SESSION['tdh']=$row[4];
-			//部门
-			$_SESSION['tjob']=$row[5];
 			
-			if($upass==$spassid && $user==$row[6])
+			if($mysql['upass']===$spassid && $user===$row[6])
 			{
+				//姓名
+				$_SESSION['txm']=$row[1];
+				//电话
+				$_SESSION['tdh']=$row[4];
+				//部门
+				$_SESSION['tjob']=$row[5];
 				//教师自动登录
 				setcookie("schoolb_username",$user,time()+86400*30,'/');//30天后cookie失效
 				setcookie("schoolb_password",$upass,time()+86400*30,'/');
@@ -155,10 +153,15 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 	}
 	else if($utype=="管理员")
 	{
-			$sql="select * from sch_admin where s_username='".$mysql['user']."' and s_userpass='".$mysql['upass']."'";
+		$sql="select * from sch_admin where s_username='".$mysql['user']."'";
 		$rs=mysql_query($sql,$con);
 		if($row=mysql_fetch_row($rs))
-		{	
+		{
+				$spassid=$row[2];
+		}
+		if($mysql['upass']===$spassid && $user===$row[1])
+		{
+			
 			//账号
 			$_SESSION['id']=$user;
 			//密码
@@ -175,10 +178,11 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			$_SESSION['cg']=$row[7];
 
 			//管理员自动登录
-				setcookie("schoolb_username",$user,time()+86400*30,'/');//30天后cookie失效
-				setcookie("schoolb_password",$upass,time()+86400*30,'/');
-				setcookie("schoolb_type",$utype,time()+86400*30,'/');
-
+			setcookie("schoolb_username",$user,time()+86400*30,'/');//30天后cookie失效
+			setcookie("schoolb_password",$upass,time()+86400*30,'/');
+			setcookie("schoolb_type",$utype,time()+86400*30,'/');
+			//密码
+			$_SESSION['spassid']=$spassid;
 			$sqlre="insert into sch_loginre values('','".$row[1]."','".$row[3]."','".$row[5]."','".$da1."','管理员')";
 			$rsre=mysql_query($sqlre,$con);
 			?>

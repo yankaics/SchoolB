@@ -12,10 +12,12 @@ if($utype=="管理员" || $utype=="教师" || $utype=="学生")
 	{
 		if($_SESSION['cg']!=0)
 		{
-			$sql="select * from sch_admin where s_username='".$user."' and s_userpass='".$upass."'";
+			$sql="select * from sch_admin where s_username='".$user."'";
 			$rs=mysql_query($sql,$con);
-			if(!mysql_fetch_row($rs))
-			{	
+			if($row=mysql_fetch_row($rs))
+			{
+				if($upass!==$_SESSION['spassid'] || $user!==$row[1])
+				{	
 				?>
 				<script language="javascript">
 					alert("请先登陆！");
@@ -23,7 +25,7 @@ if($utype=="管理员" || $utype=="教师" || $utype=="学生")
 				</script>
 				<?
 				die();
-				
+				}
 				
 			}
 		}
@@ -45,7 +47,7 @@ if($utype=="管理员" || $utype=="教师" || $utype=="学生")
 		$rs=mysql_query($sql,$con);
 		if($row=mysql_fetch_row($rs))
 		{
-			if($upass!=$_SESSION['spassid'] || $user!=$row[7])
+			if($upass!==$_SESSION['spassid'] || $user!==$row[7])
 			{	
 			?>
 			<script language="javascript">
@@ -65,7 +67,7 @@ if($utype=="管理员" || $utype=="教师" || $utype=="学生")
 		$rs=mysql_query($sql,$con);
 		if($row=mysql_fetch_row($rs))
 		{
-			if($upass!=$_SESSION['spassid'] || $user!=$row[6])
+			if($upass!==$_SESSION['spassid'] || $user!==$row[6])
 			{	
 			?>
 			<script language="javascript">
