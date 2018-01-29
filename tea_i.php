@@ -201,7 +201,7 @@ $(document).ready(function(e) {
       
       <div class="layui-col-md3 layui-col-xs6">
         <div class="layui-row grid-demo">
-        <a href="javascript:;" class="grid-demo DESS">
+        <a href="INDEX/dorm_ele/ele_index.php" class="grid-demo">
           <div class="layui-col-md4">
             <i class="layui-icon">&#xe636;</i><p>宿舍水电</p>
           </div>

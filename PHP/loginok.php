@@ -51,6 +51,8 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 				$_SESSION['txm']=$row[1];
 				//专业
 				$_SESSION['tzy']=$row[5];
+				//寝室
+				$_SESSION['tdorm']=$row[8];
 				//辅导员
 				$_SESSION['tfdy']=$row[6];
 				//电话

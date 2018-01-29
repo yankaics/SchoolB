@@ -132,7 +132,7 @@
   </div>
   </a>
 
-  <a href="javascript:;" class="z_index_box DESS">
+  <a href="INDEX/dorm_ele/ele_index.php" class="z_index_box">
   <div class="layui-col-md3 layui-col-sm5 border_box">
       <div class="layui-row">
         <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
