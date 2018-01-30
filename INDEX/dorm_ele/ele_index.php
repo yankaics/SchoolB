@@ -57,6 +57,42 @@
   	
     <?
       $dorm=$_SESSION['tdorm']; //寝室
+      //木有寝室的
+      if(!is_numeric($dorm) || strlen($dorm) != 4) 
+      {
+        ?>
+        <script type="text/javascript">
+          $(document).ready(function(e) {
+              layui.use('layer', function(){
+                var layer = layui.layer;
+                  layer.confirm('<center>你目前没有寝室或未录入<br>有疑问请咨询辅导员</center>', {
+                  btn: ['菜单|·_·)'],
+                  title: false,
+                  btnAlign: 'c',
+                  closeBtn: 0,
+                }, function(){
+                  <?
+                    if($_SESSION['utype']=="教师")
+                    {
+                    ?>
+                      location.href="../../tea_i.php";
+                    <?
+                    }
+                    else
+                    {
+                    ?>
+                      location.href="../../stu_i.php";
+                    <?
+                    }
+                    ?>
+                  });
+                });
+                
+              });
+        </script>
+        <?
+        die();
+      }
       $sqldf="select * from sushe_user where sushe_dor='".$dorm."' and sushe_Y='".$rqY."' and sushe_m='".$rqm."'";
       $rsdf=mysql_query($sqldf,$con);
       if($rowdf=mysql_fetch_row($rsdf))
@@ -125,7 +161,7 @@
             $lstt=$rqY.'-'.$rqmm;
           }
           ?>
-          <form class="layui-form" name="elef" id="elef" action="ele_index.php" method="post">
+          <form class="layui-form" name="elef" id="elef" action="" method="post">
             <div class="layui-form-item">
               <label class="layui-form-label" style="font-size: 20px;">历史</label>
                 <div class="layui-input-inline">
