@@ -37,6 +37,7 @@
 </head>
 <body>
 <?
+include("PHP/riqi.php");
 include("SQL/db/db.php");
 include("PHP/adminse.php");
 ?>
@@ -44,6 +45,15 @@ include("PHP/adminse.php");
 	<center>
 		<p class="hi">Hi!</p>
 		<p class="name"><?echo $_SESSION['txm'];?></p>
+		<p class="name">
+			<?
+				$nowtime=$rqmm.$rqd;
+				if($_SESSION['tbirth']==$nowtime)
+				{
+					echo "i生日快乐呐i";
+				}
+			?>
+		</p>
 
 	</center>
 </div>

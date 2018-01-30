@@ -49,6 +49,8 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 				$_SESSION['txh']=$row[7];
 				//姓名
 				$_SESSION['txm']=$row[1];
+				//生日
+				$_SESSION['tbirth']=substr($row[3],-4,4);
 				//专业
 				$_SESSION['tzy']=$row[5];
 				//寝室
