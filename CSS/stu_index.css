@@ -11,6 +11,18 @@ body{
 	margin-top:80px;
 	margin-bottom:80px;
 }
+@media screen and (min-width: 768px) {
+	.bt
+	{
+		padding-top: 160px;
+	}
+}
+#bta{
+	color: #F0F0F0;
+}
+#bta:hover{
+	color: #FFF;
+}
 /*锚点上移免除被覆盖*/
 .md{
 	display: block;
@@ -35,7 +47,7 @@ body{
 	-moz-border-radius: 50px;
     -webkit-border-radius: 50px;
     border-radius: 50px;
-    background-color: #BCC5CE;
+    background-color: #F0F0F0;
     transition: all .2s;
     -webkit-transition: all .2s;
 	
@@ -48,7 +60,7 @@ body{
 	font-size: 48px;
 }
 .border_box{
-	background-color:rgba(255,255,255,0.15);
+	background-color:#F0F0F0;
 	padding:10px;
 	margin:10px;
 	z-index: 2;

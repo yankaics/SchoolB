@@ -21,9 +21,34 @@
     <div class="layui-logo"><img class="layui-icon" src="UI/logo/呕吐-1.png"></div>
 	<?
 	include"PHP/riqi.php";
+  include"SQL/db/db.php";
 	?>
     <ul class="layui-nav layui-layout-right">
-      <li class="layui-nav-item "><a href="index.php">登陆</a> </li>
+      <li class="layui-nav-item ">
+        <?
+          if(isset($_SESSION['utype']))
+          {
+            if($_SESSION['utype']=="学生")
+            {
+              ?>
+              <a href="stu_i.php">菜单</a>
+              <?
+            }
+            else
+            {
+              ?>
+              <a href="tea_i.php">菜单</a>
+              <?
+            }
+          }
+          else
+          {
+        ?>
+          <a href="index.php">登陆</a>
+        <?
+          }
+        ?>
+      </li>
       <li class="layui-nav-item layui-this" ><a href="">关于</a> </li>
     </ul>
   </div>
@@ -42,11 +67,11 @@
           <div class="layui-field-box">
             大朋友：罗军老师
             <br>小朋友：胡珂 <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=YVdRVVdXUVFSWCEQEE8CDgw" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/>主题：校园宝+你的主题</a><br><br>&copy;
-			<?
-			if($rqY>2017)
-				echo "2017-".$rqY;
-			else
-				echo "2017";
+      			<?
+      			if($rqY>2017)
+      				echo "2017-".$rqY;
+      			else
+      				echo "2017";
             ?>
           </div>
         </fieldset>

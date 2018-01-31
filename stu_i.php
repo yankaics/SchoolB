@@ -1,29 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-<link rel="stylesheet" href="layui/css/layui.css">
-<script src="layui/layui.js"></script>
-<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <script src="layui/layui.js"></script>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-<!--
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />-->
-<link rel="shortcut icon" href="favicon.ico" />
-<!--JSQ-->
-<script src="JSQ/jquery-2.1.1.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="css/stu_index.css" />
-<!--CSS以往版本的样式
-<link media="(max-width:769px)" href="CSS/mobile-main.css" rel="stylesheet" type="text/css" />
-<link media="(max-width:769px)" href="CSS/mobile-top.css" rel="stylesheet" type="text/css" />
-<link media="(max-width:769px)" href="CSS/mobile-bt.css" rel="stylesheet" type="text/css" />
-<link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
-<link media="(min-width:769px)" href="CSS/z-index-bt.css" rel="stylesheet" type="text/css" />
-<link media="(min-width:769px)" href="CSS/top-index.css" rel="stylesheet" type="text/css" />
-<link media="(min-width:769px)" href="CSS/main-index.css" rel="stylesheet" type="text/css" />
--->
-<title>Hi-同学</title>
+  <link rel="shortcut icon" href="favicon.ico" />
+  <!--JSQ-->
+  <script src="JSQ/jquery-2.1.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/stu_index.css" />
+  <title>Hi-同学</title>
 </head>
 
 <body bgcolor="#F0F0F0">
@@ -211,7 +199,18 @@
 
 </div>
 
-
+<!--底部-->
+<center>
+<div class=" layui-col-md-offset2 paddingtop layui-anim layui-anim-upbit">
+<div class="layui-col-md12 bt">
+    <div class="layui-row">
+      <div class="layui-col-md10 layui-col-sm12 border_box_icon">
+        <a id="bta" href="copy.php">&copy;<? if($rqY>2017) echo "2017-".$rqY; else echo "2017";?>关于</a>
+      </div>
+  </div>
+</div>
+</div>
+</center>
 
 <script>
 layui.use('element', function(){
