@@ -10,8 +10,6 @@
   <link rel="shortcut icon" href="../../favicon.ico" />
   <!--JSQ-->
   <script src="../../JSQ/jquery-2.1.1.min.js"></script>
-  <script src="../../JSQ/index.js"></script>
-
   <link rel="stylesheet" href="css/style.css"> <!-- 轮播 -->
   <script src="js/modernizr.js"></script> <!-- 轮播 -->
 <title>宿舍水电</title>

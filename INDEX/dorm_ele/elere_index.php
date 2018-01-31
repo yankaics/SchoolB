@@ -10,7 +10,6 @@
   <link rel="shortcut icon" href="../../favicon.ico" />
   <!--JSQ-->
   <script src="../../JSQ/jquery-2.1.1.min.js"></script>
-  <script src="../../JSQ/index.js"></script>
 <title>宿舍水电</title>
 </head>
 <body  bgcolor="#F0F0F0">

@@ -1,24 +1,24 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="renderer" content="webkit">
-<link rel="shortcut icon" href="favicon.ico" />
-<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-<link rel="stylesheet" href="layui/css/layui.css">
-<script src="layui/layui.js"></script>
-<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/styles.css">
-<title>校园宝 | Hi~</title>
-<system.webServer>
-    <httpProtocol>
-        <customHeaders>
-            <add name="X-Frame-Options" value="SAMEORIGIN" />
-        </customHeaders>
-    </httpProtocol>
-</system.webServer>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<link rel="shortcut icon" href="favicon.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+	<link rel="stylesheet" href="layui/css/layui.css">
+	<script src="layui/layui.js"></script>
+	<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+	<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<title>校园宝 | Hi~</title>
+	<system.webServer>
+	    <httpProtocol>
+	        <customHeaders>
+	            <add name="X-Frame-Options" value="SAMEORIGIN" />
+	        </customHeaders>
+	    </httpProtocol>
+	</system.webServer>
 </head>
 
 <body>
@@ -47,11 +47,26 @@
 
 <script src="jsq/jquery-2.1.1.min.js" type="text/javascript"></script>
 <script>
-$('#login-button').click(function (event) {
-	event.preventDefault();
-	$('form').fadeOut(500);
-	$('.wrapper').addClass('form-success');
-});
+//Chrome内核才能使用
+var isChrome = navigator.userAgent.toLowerCase().match(/chrome/) != null;
+if (!isChrome) {
+        $(document).ready(function(e) {
+          layui.use('layer', function(){
+            var layer = layui.layer;
+            parent.layer.confirm('<center style="color:#000;">请使用极速模式（Chrome内核）<br>达到更好体验效果<br><img src="Chrome_re.png"></center>', {
+              btn: ['我才不管|·_·)'],
+              title: false,
+              btnAlign: 'c',
+              offset: '60px',
+              closeBtn: 0
+            }, function(){
+            	layer.closeAll();
+            });
+          });
+        });
+}
+
+
 </script>
 <?
 if(isset($_GET['z']))

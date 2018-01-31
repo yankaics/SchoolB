@@ -26,7 +26,7 @@
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item ">
         <?
-          if(isset($_SESSION['utype']))
+          if(isset($_SESSION['txm']))
           {
             if($_SESSION['utype']=="学生")
             {
@@ -87,6 +87,7 @@
                   <h3 class="layui-timeline-title">2018-1-20</h3>
                   <p>同学的首页样式更改，突出重点功能</p>
                   <p>新增了首页-右上角-个人资料，方便学生查看自己的信息，如有不符请找辅导员核实。</p>
+                  <p>新增了<宿舍水电>可查看本月和历史的水电费详情，目前还不能网上缴费</p>
                 </div>
               </li>
 

@@ -1,8 +1,16 @@
 @charset "utf-8";
+@media screen and (min-width: 768px) {
+	.bt
+	{
+		padding-top: 160px;
+	}
+}
+
 body{
 	background-color:#F0F0F0;
 	padding-top:40px;
 }
+
 #layui-logo{
 	color:#FFF;
 	font-size:15px;
@@ -11,12 +19,7 @@ body{
 	margin-top:80px;
 	margin-bottom:80px;
 }
-@media screen and (min-width: 768px) {
-	.bt
-	{
-		padding-top: 160px;
-	}
-}
+
 #bta{
 	color: #F0F0F0;
 }
