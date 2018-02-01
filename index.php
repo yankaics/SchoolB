@@ -27,7 +27,7 @@
 		<div class="container ">
 			<span><h1 class="layui-anim layui-anim-upbit"><a href="copy.php" style="color:#FFF;">校园宝</a></h1></span>
 			<form class="form zdlogin layui-anim layui-anim-upbit" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
-				<input type="text" name="user" class="user" placeholder="学号|工号|账号">
+				<input type="text" name="user" class="user" placeholder="学号|工号|账号" value="<? if(isset($_GET['sname'])) echo $_GET['sname'];?>">
 				<input type="password" name="upass" class="upass" placeholder="身份证8位生日">
                 <select name="utype" class="utype" size="1">
                   <option value="学生">&nbsp;&nbsp;学生</option>
@@ -57,7 +57,7 @@ if (!isChrome) {
               btn: ['我才不管|·_·)'],
               title: false,
               btnAlign: 'c',
-              offset: '60px',
+              offset: '140px',
               closeBtn: 0
             }, function(){
             	layer.closeAll();
@@ -112,53 +112,7 @@ if(isset($_GET['c']))
     <?
 }
 ?>
-<script>
-	function check()
-	{
-		uuser=admin.user.value;
-		upass=admin.upass.value;
-		if(upass=="" || uuser=="")
-		{
-			$(document).ready(function(e) {
-			layui.use('layer', function(){
-  				var layer = layui.layer;
-				layer.msg('填写账号密码', {
-				  title: false,
-				  closeBtn: 0,
-				  time:2000,
-				  maxWidth:160,
-				  anim: 6,
-				  offset: '240px',
-				});
-				
-			});
-		});
-			return false;
-		}
-			var patrn=/^\w{6,20}$/; //数字字母6-20位 符号：下划线 
-		  	var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");//特殊字符判断
-			if(!patrn.exec(upass) || pattern.test(uuser))
-			{
-				$(document).ready(function(e) {
-				layui.use('layer', function(){
-  				var layer = layui.layer;
-				layer.msg('账号·密码<br>格式错误', {
-				  title: false,
-				  closeBtn: 0,
-				  time:2000,
-				  maxWidth:160,
-				  anim: 6,
-				  offset: '240px',
-					
-						});
-					});
-				});
-				 return false;
-			}
-	}
-
-</script>
-
+<script src="JSQ/index_login.js" type="text/javascript"></script>
 <?
 //自动登录
 if(!empty($_COOKIE["schoolb_username"]))

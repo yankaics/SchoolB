@@ -205,7 +205,7 @@
 <div class="layui-col-md12 bt">
     <div class="layui-row">
       <div class="layui-col-md10 layui-col-sm12 border_box_icon">
-        <a id="bta" href="copy.php">&copy;<? if($rqY>2017) echo "2017-".$rqY; else echo "2017";?> | 关于</a>
+        <a id="bta" href="copy.php">&copy;<? if($rqY>2017) echo "2017-".$rqY; else echo "2017";?> | 关于 | 联系 |</a>
       </div>
   </div>
 </div>

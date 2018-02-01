@@ -78,7 +78,7 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			{
 				?>
 				<script language="javascript">
-					location.href="../index.php?c=1";
+					location.href="../index.php?c=1&sname=<?=$user?>";
 				</script>
 				<?
 			}
@@ -138,7 +138,7 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			{
 				?>
 				<script language="javascript">
-					location.href="../index.php?c=1";
+					location.href="../index.php?c=1&sname=<?=$user?>";
 				</script>
 				<?
 			}
