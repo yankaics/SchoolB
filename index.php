@@ -20,7 +20,9 @@
 	    </httpProtocol>
 	</system.webServer>
 </head>
-
+<?
+include"PHP/riqi.php";
+?>
 <body>
 <div class="htmleaf-container">
 	<div class="wrapper">
@@ -36,8 +38,13 @@
                 </select>
 			  <p><button type="submit" name="button" >登陆</button></p>
                 
-		  </form>
-          <a href="copy.php" ><p style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"><span class="layui-badge-dot"></span> 关于校园宝</p></a>
+		  	</form>
+			<p>
+          		<a href="copy.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"><span class="layui-badge-dot"></span> 关于</span></a>
+          		<a href="INDEX/regstu/index.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | 注册</span></a>
+          		<a href="javascript:;" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | &copy;<? if($rqY>2017) echo "2017-".$rqY; else echo "2017"; ?> </span></a>
+          	</p>
+
 		</div>
 		
 		

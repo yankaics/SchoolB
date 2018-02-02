@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="shortcut icon" href="favicon.ico" />
-<meta charset="utf-8">
+  <link rel="shortcut icon" href="favicon.ico" />
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-<link rel="stylesheet" href="layui/css/layui.css">
-<script src="layui/layui.js"></script>
-<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <script src="layui/layui.js"></script>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 
-
-</script>
-<style></style>
-<title>关于校园宝</title>
+  <style></style>
+  <title>关于校园宝</title>
 </head>
 
 <body bgcolor="#F0F0F0">
@@ -49,7 +47,8 @@
           }
         ?>
       </li>
-      <li class="layui-nav-item layui-this" ><a href="">关于</a> </li>
+      <li class="layui-nav-item" ><a href="INDEX/regstu/index.php">注册</a> </li>
+      <li class="layui-nav-item layui-this" ><a href="copy.php">关于</a> </li>
     </ul>
   </div>
 </div>
