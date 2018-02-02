@@ -18,14 +18,25 @@
 <?
 include("../SQL/db/db.php");
 include"riqi.php";
+
 $user=$_POST['user'];
 $mysql['user'] = mysql_real_escape_string($user);
 $_SESSION['user']=$user;
-$upass=$_POST['upass'];
+
+if(isset($_COOKIE['schoolb_password']))
+{
+	$upass=$_COOKIE['schoolb_password'];
+}
+else
+{
+	$upass=sha1(md5($_POST['upass']));
+}
 $mysql['upass'] = mysql_real_escape_string($upass);
 $_SESSION['upass']=$upass;
+
 $utype=$_POST['utype'];
 $_SESSION['utype']=$utype;
+
 $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 	if($utype=="学生")
 	{
@@ -36,11 +47,11 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			if($row[9]!='')
 			{
 				
-				$spassid=$row[9];
+				$spassid=sha1(md5($row[9]));
 			}
 			else
 			{
-				$spassid=$row[3];
+				$spassid=sha1(md5($row[3]));
 			}
 
 			if($mysql['upass']===$spassid && $user===$row[7])
@@ -104,11 +115,11 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			if($row[7]!='')
 			{
 				
-				$spassid=$row[7];
+				$spassid=sha1(md5($row[7]));
 			}
 			else
 			{
-				$spassid=$row[3];
+				$spassid=sha1(md5($row[3]));
 			}
 			
 			if($mysql['upass']===$spassid && $user===$row[6])
@@ -161,7 +172,7 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 		$rs=mysql_query($sql,$con);
 		if($row=mysql_fetch_row($rs))
 		{
-				$spassid=$row[2];
+				$spassid=sha1(md5($row[2]));
 		}
 		if($mysql['upass']===$spassid && $user===$row[1])
 		{

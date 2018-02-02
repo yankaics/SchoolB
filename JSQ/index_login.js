@@ -19,7 +19,7 @@ function check()
 		});
 		return false;
 	}
-		var patrn=/^\w{6,20}$/; //数字字母6-20位 符号：下划线 
+		var patrn=/^\w{6,40}$/; //数字字母6-40位 符号：下划线 
 	  	var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");//特殊字符判断
 		if(!patrn.exec(upass) || pattern.test(uuser))
 		{
@@ -40,3 +40,6 @@ function check()
 			 return false;
 		}
 }
+
+console.log('看代码的小伙伴你好呀！');
+console.log('有机会一起进步呀,QQ604660039');

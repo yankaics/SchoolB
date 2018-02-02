@@ -66,7 +66,6 @@ if (!isChrome) {
         });
 }
 
-
 </script>
 <?
 if(isset($_GET['z']))
@@ -123,7 +122,7 @@ if(!empty($_COOKIE["schoolb_username"]))
 			$(".user").val("<?=$_COOKIE['schoolb_username']?>");
 			$(".upass").val("<?=$_COOKIE['schoolb_password']?>");
 			$(".utype").val("<?=$_COOKIE['schoolb_type']?>");
-			$(".zdlogin").submit()
+			$(".zdlogin").submit();
 		});
 	</script>
 	<?
@@ -132,7 +131,6 @@ if(!empty($_COOKIE["schoolb_username"]))
 ?>
 
 
-<h1></h1>
 </div>
 </body>
 </html>

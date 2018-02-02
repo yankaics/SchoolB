@@ -23,37 +23,37 @@ include"../../PHP/adminse.php";
 if($_SESSION['utype']=="教师")
 {
 	
-	$coldpass=$_POST['toldpass'];
+	$coldpass=sha1(md5($_POST['toldpass']));
 	$cnewpass=$_POST['tnewpass'];
-	if($coldpass==$_SESSION['spassid'])
+	if($coldpass===$_SESSION['spassid'])
 	{
 		$mysql['cnewpass'] = mysql_real_escape_string($cnewpass);//假如有人绕过特殊字符判断，这句防止SQL注入，也会使他不能再次登陆
 		$sql="update sch_teab set tpass='".$mysql['cnewpass']."' where tjobnum='".$_SESSION['user']."'";
-	$rs=mysql_query($sql,$con);
-	if($rs>0)
-	{
-		?>
-		<script>
-		$(document).ready(function(e) {
-			layui.use('layer', function(){
-				var index = parent.layer.getFrameIndex(window.name);
-  				var layer = layui.layer;
-				
-				parent.layer.confirm('修改成功', {
-				  btn: ['重新登录'],
-				  title: false,
-				  closeBtn: 0,
-				}, function(){
-					parent.location.href="del_login.php";
-					parent.layer.close(index);
+		$rs=mysql_query($sql,$con);
+		if($rs>0)
+		{
+			?>
+			<script>
+			$(document).ready(function(e) {
+				layui.use('layer', function(){
+					var index = parent.layer.getFrameIndex(window.name);
+	  				var layer = layui.layer;
+					
+					parent.layer.confirm('修改成功', {
+					  btn: ['重新登录'],
+					  title: false,
+					  closeBtn: 0,
+					}, function(){
+						parent.location.href="del_login.php";
+						parent.layer.close(index);
+					});
+					
 				});
-				
 			});
-		});
-			
-		</script>
-		<?
-	}
+				
+			</script>
+			<?
+		}
 	}
 	else
 	{
@@ -78,9 +78,9 @@ if($_SESSION['utype']=="教师")
 }
 else
 {
-	$coldpass=$_POST['toldpass'];
+	$coldpass=sha1(md5($_POST['toldpass']));
 	$cnewpass=$_POST['tnewpass'];
-	if($coldpass==$_SESSION['spassid'])
+	if($coldpass===$_SESSION['spassid'])
 	{
 		$mysql = mysql_real_escape_string($cnewpass);//假如有人绕过特殊字符判断，这句防止SQL注入，也会使他不能再次登陆
 		$sql="update sch_stub set tpass='".$mysql."' where tno='".$_SESSION['txh']."'";
