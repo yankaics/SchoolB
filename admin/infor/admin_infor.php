@@ -78,6 +78,7 @@ $(document).ready(function(e) {
               {
             ?>
             <dd><a class="ann" id="../zhgl/stu_all.php" href="javascript:;">学生管理</a></dd>
+            <dd><a class="ann" id="../zhgl/stu_whole.php" href="javascript:;">学生整体管理</a></dd>
             <?
                 if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管主管')
                 {

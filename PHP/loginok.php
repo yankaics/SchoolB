@@ -44,56 +44,66 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 		$rs=mysql_query($sql,$con);
 		if($row=mysql_fetch_row($rs))
 		{
-			if($row[9]!='')
+			if($row[10]=="在校")
 			{
-				
-				$spassid=sha1(md5($row[9]));
+				if($row[9]!='')
+				{
+					
+					$spassid=sha1(md5($row[9]));
+				}
+				else
+				{
+					$spassid=sha1(md5($row[3]));
+				}
+
+				if($mysql['upass']===$spassid && $user===$row[7])
+				{
+					//学号
+					$_SESSION['txh']=$row[7];
+					//姓名
+					$_SESSION['txm']=$row[1];
+					//生日
+					$_SESSION['tbirth']=substr($row[3],-4,4);
+					//专业
+					$_SESSION['tzy']=$row[5];
+					//寝室
+					$_SESSION['tdorm']=$row[8];
+					//辅导员
+					$_SESSION['tfdy']=$row[6];
+					//电话
+					$_SESSION['tdh']=$row[4];
+					//学生自动登录
+					setcookie("schoolb_username",$user,time()+86400*30,'/');//30天后cookie失效
+					setcookie("schoolb_password",$upass,time()+86400*30,'/');
+					setcookie("schoolb_type",$utype,time()+86400*30,'/');
+
+					//密码
+					$_SESSION['spassid']=$spassid;
+					$sqlre="insert into sch_loginre values('','".$row[7]."','".$row[1]."','".$row[5]."','".$da1."','学生')";
+					$rsre=mysql_query($sqlre,$con);
+					?>
+					<script language="javascript">
+						location.href="../loginok.php";
+					</script>
+					<?
+				}
+				else
+				{
+					?>
+					<script language="javascript">
+						location.href="../del_login.php?c=1&sname=<?=$user?>";
+					</script>
+					<?
+				}
 			}
 			else
 			{
-				$spassid=sha1(md5($row[3]));
-			}
-
-			if($mysql['upass']===$spassid && $user===$row[7])
-			{
-				//学号
-				$_SESSION['txh']=$row[7];
-				//姓名
-				$_SESSION['txm']=$row[1];
-				//生日
-				$_SESSION['tbirth']=substr($row[3],-4,4);
-				//专业
-				$_SESSION['tzy']=$row[5];
-				//寝室
-				$_SESSION['tdorm']=$row[8];
-				//辅导员
-				$_SESSION['tfdy']=$row[6];
-				//电话
-				$_SESSION['tdh']=$row[4];
-				//学生自动登录
-				setcookie("schoolb_username",$user,time()+86400*30,'/');//30天后cookie失效
-				setcookie("schoolb_password",$upass,time()+86400*30,'/');
-				setcookie("schoolb_type",$utype,time()+86400*30,'/');
-
-				//密码
-				$_SESSION['spassid']=$spassid;
-				$sqlre="insert into sch_loginre values('','".$row[7]."','".$row[1]."','".$row[5]."','".$da1."','学生')";
-				$rsre=mysql_query($sqlre,$con);
 				?>
 				<script language="javascript">
-					location.href="../loginok.php";
+					location.href="../del_login.php?jg=1";
 				</script>
 				<?
 			}
-			else
-			{
-				?>
-				<script language="javascript">
-					location.href="../del_login.php?c=1&sname=<?=$user?>";
-				</script>
-				<?
-			}
-	
 	
 		}
 		else

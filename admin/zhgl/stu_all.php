@@ -9,7 +9,7 @@
 	  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 	<link rel="shortcut icon" href="../../favicon.ico" />
 	<!--JSQ-->
-	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+	<script src="../../JSQ/jquery-2.1.1.min.js"></script>
 	<script src="../../JSQ/index.js"></script>
 	<title>学生管理</title>
 </head>
@@ -145,7 +145,7 @@
 	<?
 		if(isset($_POST['updateok']))
 		{
-			$sql="update sch_stub set tname='".$_POST[txname]."',tsex='".$_POST[txsex]."',tmajor='".$_POST[txmajor]."',tteacher='".$_POST[txtea]."',tdorm='".$_POST[txdorm]."' where tno='".$_POST[txid]."'";
+			$sql="update sch_stub set tname='".$_POST['txname']."',tsex='".$_POST['txsex']."',tmajor='".$_POST['txmajor']."',tteacher='".$_POST['txtea']."',tdorm='".$_POST['txdorm']."' where tno='".$_POST['txid']."'";
 			$rs=mysql_query($sql,$con);
 			if($rs>0)
 			{

@@ -116,6 +116,27 @@ if(isset($_GET['c']))
     </script>
     <?
 }
+if(isset($_GET['jg']))
+{
+	?>
+    <script>
+    $(document).ready(function(e) {
+          layui.use('layer', function(){
+            var layer = layui.layer;
+            parent.layer.confirm('<center style="color:#000;">你的账号已被停用<br>如有疑问请询问辅导员</center>', {
+              btn: ['知道了|·_·)'],
+              title: false,
+              btnAlign: 'c',
+              offset: '140px',
+              closeBtn: 0
+            }, function(){
+            	layer.closeAll();
+            });
+          });
+        });
+    </script>
+    <?
+}
 ?>
 <script src="JSQ/index_login.js" type="text/javascript"></script>
 <?
