@@ -54,9 +54,8 @@ include"PHP/riqi.php";
 
 <script src="jsq/jquery-2.1.1.min.js" type="text/javascript"></script>
 <script>
-//Chrome内核才能使用
-var isChrome = navigator.userAgent.toLowerCase().match(/chrome/) != null;
-if (!isChrome) {
+//Chrome内核更好体验，判断IE浏览器或IE内核
+if (!!window.ActiveXObject || "ActiveXObject" in window) {
         $(document).ready(function(e) {
           layui.use('layer', function(){
             var layer = layui.layer;
