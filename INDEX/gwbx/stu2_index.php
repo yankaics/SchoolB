@@ -9,16 +9,9 @@
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
 <!--JSQ-->
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+<script src="../../JSQ/jquery-2.1.1.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 
-<!--以往的CSS
-<link media="(max-width:650px)" href="CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
-<link media="(max-width:500px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
-<link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
-<link media="(min-width:500px)" href="CSS/ly-admin-index.css" rel="stylesheet" type="text/css"/>
-<link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />
--->
 <style>
 body{ padding-bottom:300px;};
 </style>
@@ -30,7 +23,7 @@ body{ padding-bottom:300px;};
 <!--导航-->
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
-    <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/呕吐-1.png"></div>
+    <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/logo-32-t.png"></div>
 	<?
 	include("../../SQL/db/db.php");
 	include("../../PHP/adminse.php");

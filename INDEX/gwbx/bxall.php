@@ -8,18 +8,9 @@
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
-<!---JSQ--->
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+<!---JSQ-->
+<script src="../../JSQ/jquery-2.1.1.min.js"></script>
 <script src="../../JSQ/index.js"></script>
-<!---以往得CSS
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<link rel="shortcut icon" href="../favicon.ico" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link media="(max-width:650px)" href="CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
-<link media="(max-width:500px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
-<link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
-<link media="(min-width:500px)" href="CSS/ly-admin-index.css" rel="stylesheet" type="text/css"/>
-<link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />--->
 <script>
 function checktime()
 {
@@ -44,10 +35,10 @@ function checktime()
 
 <body bgcolor="#F0F0F0">
 
-<!------导航------>
+<!--导航-->
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
-    <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/呕吐-1.png"></div>
+    <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/logo-32-t.png"></div>
 	<?
 	include("../../SQL/db/db.php");
 	include("../../PHP/adminse.php");
@@ -83,7 +74,7 @@ function checktime()
     </ul>
   </div>
 </div><br><br>
-<!------main------>
+<!--main-->
 <div class="layui-container">
   <div class="layui-row layui-col-md-offset4 layui-col-xs-offset2">
   	<form name="timef" class="layui-form" action="" method="get" onSubmit="return checktime()">
