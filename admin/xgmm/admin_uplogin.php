@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />-->
 <link rel="shortcut icon" href="../../favicon.ico" />
 <!--JSQ-->
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+<script src="../../JSQ/jquery-2.1.1.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <!---以往的CSS
 <link media="(max-width:769px)" href="../../CSS/mobile-main.css" rel="stylesheet" type="text/css" />
@@ -85,7 +85,6 @@ include("../adminse/admin_se.php");
            <div class="layui-form-item">
             <div class="layui-input-block">
               <button class="layui-btn" lay-submit lay-filter="formssb">立即提交</button>
-              <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
           </div>
         </form>
@@ -99,10 +98,6 @@ layui.use('element','form', function(){
 	  var form =layui.form;
 
 	});//模块使用
-	form.on('submit(formssb)', function(data){
-    layer.msg(JSON.stringify(data.field));
-    return false;
-	});
 	
 	function checke()
 	  {
