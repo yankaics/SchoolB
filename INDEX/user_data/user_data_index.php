@@ -19,7 +19,7 @@
 <!--导航-->
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
-    <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/呕吐-1.png"></div>
+    <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/logo-32-t.png"></div>
 	<?
 	include("../../SQL/db/db.php");
 	include("../../PHP/adminse.php");

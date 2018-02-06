@@ -9,7 +9,7 @@
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
 <!--JSQ-->
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+<script src="../../JSQ/jquery-2.1.1.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -36,7 +36,7 @@ a:active{text-decoration:none;}
 <!--导航-->
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
-    <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/呕吐-1.png"></div>
+    <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/logo-32-t.png"></div>
 	<?
 	include("../../SQL/db/db.php");
 	include("../../PHP/adminse.php");

@@ -9,7 +9,7 @@
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <link rel="shortcut icon" href="../../favicon.ico" />
 <!--JSQ-->
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+<script src="../../JSQ/jquery-2.1.1.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <!--以往的CSS
 <link media="(max-width:650px)" href="CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
@@ -24,8 +24,6 @@ a:link{text-decoration:none;}
 a:visited{text-decoration:none;}
 a:hover{text-decoration:none;}
 a:active{text-decoration:none;}
-
-
 .upimg input {
     position: absolute;
     font-size: 100px;
@@ -34,12 +32,12 @@ a:active{text-decoration:none;}
     opacity: 0;
 }
 .show
-            {
-                top:40px;
-                width: 100%;
-                height: 30px;
-                font:normal normal normal 14px/30px 'Microsoft YaHei';
-            }
+{
+    top:40px;
+    width: 100%;
+    height: 30px;
+    font:normal normal normal 14px/30px 'Microsoft YaHei';
+}
 </style>
 <script type="text/javascript">
 
@@ -52,7 +50,7 @@ a:active{text-decoration:none;}
 <!--导航-->
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
-    <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/呕吐-1.png"></div>
+    <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/logo-32-t.png"></div>
 	<?
 	include("../../SQL/db/db.php");
 	include("../../PHP/adminse.php");

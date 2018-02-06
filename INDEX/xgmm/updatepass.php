@@ -8,17 +8,17 @@
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <!---
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />--->
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />-->
 <link rel="shortcut icon" href="../../favicon.ico" />
-<!---JSQ--->
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+<!--JSQ-->
+<script src="../../JSQ/jquery-2.1.1.min.js"></script>
 <script src="../../JSQ/index.js"></script>
 <!---以往的CSS
 <link media="(max-width:769px)" href="../../CSS/mobile-main.css" rel="stylesheet" type="text/css" />
 <link media="(max-width:769px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
 <link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
 <link media="(min-width:769px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />
-<link media="(min-width:769px)" href="../../CSS/main-index.css" rel="stylesheet" type="text/css" />--->
+<link media="(min-width:769px)" href="../../CSS/main-index.css" rel="stylesheet" type="text/css" />-->
 
 <title>修改密码</title>
 </head>
@@ -29,11 +29,11 @@ include"../../PHP/riqi.php";
 include"../../SQL/db/db.php";
 include"../../PHP/adminse.php";
 ?>
-<!------导航
+<!--导航
 <div class="layui-header header header-doc">
     <ul class="layui-nav layui-icon" lay-filter="">
         <div class="layui-container">  
-        	<li class="layui-nav-item logo layui-icon" style="z-index:1;"><a class="logo" href="index.php"><img class="layui-icon" src="../../UI/logo/呕吐-1.png"></a></li>
+        	<li class="layui-nav-item logo layui-icon" style="z-index:1;"><a class="logo" href="index.php"><img class="layui-icon" src="../../UI/logo/logo-32-t.png"></a></li>
         </div> 
     </ul>
     <ul class="layui-nav layui-layout-right" style="text-align:center;">
@@ -56,8 +56,8 @@ include"../../PHP/adminse.php";
         	</li>
         </div>
     </ul>
-</div><br></br>------>
-<!------main------>
+</div><br></br>-->
+<!--main-->
 <div class="school_i">
 <div class="layui-container">
   <div class="layui-row">
