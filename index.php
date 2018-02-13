@@ -26,17 +26,17 @@ include"PHP/riqi.php";
 <body>
 <div class="htmleaf-container">
 	<div class="wrapper">
-		<div class="container ">
-			<span><h1 class="layui-anim layui-anim-upbit"><a href="copy.php" style="color:#FFF;">校 园 宝</a></h1></span>
+		<div class="container">
+			<span><h1 class="layui-anim layui-anim-upbit"><a href="copy.php" style="color:#FFF;">校园宝</a></h1></span>
 			<form class="form zdlogin layui-anim layui-anim-upbit" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
 				<input type="text" name="user" class="user" placeholder="学号 工号 账号" value="<? if(isset($_GET['sname'])) echo $_GET['sname'];?>">
 				<input type="password" name="upass" class="upass" placeholder="身份证八位生日">
-                <select name="utype" class="utype" size="0">
+                <select name="utype" class="utype" size="1">
                   <option value="学生">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学生</option>
                   <option value="教师">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师</option>
                   <option value="管理员">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理</option>
                 </select>
-			  <p><button type="submit" name="button" >登 陆</button></p>
+			  <p><button type="submit" name="button" >登陆</button></p>
                 
 		  	</form>
 			<p>
@@ -156,7 +156,6 @@ if(!empty($_COOKIE["schoolb_username"]))
 }
 
 ?>
-
 
 </div>
 </body>
