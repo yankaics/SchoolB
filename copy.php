@@ -136,7 +136,7 @@
               </li>
             
             <li class="layui-timeline-item">
-                <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
+              <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
                 <div class="layui-timeline-content layui-text">
                   <h3 class="layui-timeline-title">2017-11-4</h3>
                   <p>
@@ -177,6 +177,7 @@ layui.use('element', function(){
   var element = layui.element;
   
 });
+</script>
 
 </body>
 </html>
