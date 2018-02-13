@@ -27,22 +27,22 @@ include"PHP/riqi.php";
 <div class="htmleaf-container">
 	<div class="wrapper">
 		<div class="container ">
-			<span><h1 class="layui-anim layui-anim-upbit"><a href="copy.php" style="color:#FFF;">校园宝</a></h1></span>
+			<span><h1 class="layui-anim layui-anim-upbit"><a href="copy.php" style="color:#FFF;">校 园 宝</a></h1></span>
 			<form class="form zdlogin layui-anim layui-anim-upbit" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
-				<input type="text" name="user" class="user" placeholder="学号|工号|账号" value="<? if(isset($_GET['sname'])) echo $_GET['sname'];?>">
-				<input type="password" name="upass" class="upass" placeholder="身份证8位生日">
-                <select name="utype" class="utype" size="1">
-                  <option value="学生">&nbsp;&nbsp;学生</option>
-                  <option value="教师">&nbsp;&nbsp;教师</option>
-                  <option value="管理员">&nbsp;&nbsp;管理员</option>
+				<input type="text" name="user" class="user" placeholder="学号 工号 账号" value="<? if(isset($_GET['sname'])) echo $_GET['sname'];?>">
+				<input type="password" name="upass" class="upass" placeholder="身份证八位生日">
+                <select name="utype" class="utype" size="0">
+                  <option value="学生">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学生</option>
+                  <option value="教师">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师</option>
+                  <option value="管理员">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理</option>
                 </select>
-			  <p><button type="submit" name="button" >登陆</button></p>
+			  <p><button type="submit" name="button" >登 陆</button></p>
                 
 		  	</form>
 			<p>
-          		<a href="copy.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"><span class="layui-badge-dot"></span> 关于</span></a>
-          		<a href="INDEX/regstu/index.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | 注册</span></a>
-          		<a href="javascript:;" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | &copy;<? if($rqY>2017) echo "2017-".$rqY; else echo "2017"; ?> </span></a>
+          		<a href="copy.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"><span class="layui-badge-dot"></span> 关于 </span></a>
+          		<a href="INDEX/regstu/index.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | 注册 </span></a>
+          		<a href="copy.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | &copy;<? if($rqY>2017) echo "2017-".$rqY; else echo "2017"; ?> </span></a>
           	</p>
 
 		</div>
@@ -85,7 +85,7 @@ if(isset($_GET['z']))
 				  title: false,
 				  closeBtn: 0,
 				  time:2000,
-				  maxWidth:120,
+				  maxWidth:140,
 				  anim: 6,
 				  offset: '240px',
 				});
