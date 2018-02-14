@@ -40,15 +40,24 @@ function check()
 			 return false;
 		}
 }
-
+var h = document.body.scrollHeight;
+    window.onresize = function(){
+        if (document.body.scrollHeight < h) {
+            document.getElementsByTagName("nav")[0].style.display = "none";
+        }else{
+            document.getElementsByTagName("nav")[0].style.display = "block";
+        }
+    };
 //背景图片切换
 $(function(){
      var _width = $(window).width();
+     //获取屏幕高度
+     $('.wrapper').height($(window).height());
      var num = Math.floor(5*Math.random());
      if(_width < 769)
      {
      	$(".wrapper").css({
-			"background":"url(UI/bg/Mobile/webp/bg-"+num+".webp)",
+			"background":"url(UI/bg/Mobile/webp/bg-"+num+".webp) ",
 			"-webkit-background-size": "cover",
 			"-moz-background-size": "cover",
 			"-o-background-size": "cover",
@@ -58,7 +67,7 @@ $(function(){
 		  	"position": "absolute",
 		  	"top": "200px",
 		  	"width": "100%",
-		  	"height": "100%",
+		  	"min-height": "100%",
 		  	"margin-top": "-200px"
 		 });
      }
@@ -75,7 +84,7 @@ $(function(){
 		  	"position": "absolute",
 		  	"top": "200px",
 		  	"width": "100%",
-		  	"height": "100%",
+		  	"min-height": "100%",
 		  	"margin-top": "-200px",
 		  	"padding-top":"100px"
 		 });
