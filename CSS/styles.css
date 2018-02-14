@@ -167,8 +167,11 @@ form input {
      -moz-appearance: none;
           appearance: none;
   outline: 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: rgba(255, 255, 255, 0.2);
+  border-top: 0px;
+  border-bottom:1px solid rgba(255, 255, 255, 1);
+  border-left: 0px;
+  border-right: 0px;
+  background-color: rgba(0, 0, 0, 0);
   width: 240px;
   border-radius: 3px;
   padding: 10px 15px;
@@ -181,19 +184,21 @@ form input {
           transition-duration: 0.25s;
 }
 form input:hover {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(0, 0, 0, 0);
 }
 form input:focus {
-  background-color: white;
-  width: 250px;
-  color: #393D49;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
   
 }
 
 form select {
   outline: 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: rgba(255, 255, 255, 0.2);
+  border-top: 0px;
+  border-bottom:1px solid rgba(255, 255, 255, 1);
+  border-left: 0px;
+  border-right: 0px;
+  background-color: rgba(0, 0, 0, 0);
   width: 240px;
   border-radius: 3px;
   padding: 10px 15px;

@@ -40,6 +40,8 @@ function check()
 			 return false;
 		}
 }
+
+
 //背景图片切换
 $(function(){
      var _width = $(window).width();
