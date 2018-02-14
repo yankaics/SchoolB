@@ -40,14 +40,6 @@ function check()
 			 return false;
 		}
 }
-var h = document.body.scrollHeight;
-    window.onresize = function(){
-        if (document.body.scrollHeight < h) {
-            document.getElementsByTagName("nav")[0].style.display = "none";
-        }else{
-            document.getElementsByTagName("nav")[0].style.display = "block";
-        }
-    };
 //背景图片切换
 $(function(){
      var _width = $(window).width();
@@ -62,6 +54,7 @@ $(function(){
 			"-moz-background-size": "cover",
 			"-o-background-size": "cover",
 			"background-size": "cover",
+			"overflow": "auto",
 		    "max-width":"100%",
 		  	"opacity": "0.8",
 		  	"position": "absolute",
@@ -79,6 +72,7 @@ $(function(){
 			"-moz-background-size": "cover",
 			"-o-background-size": "cover",
 			"background-size": "cover",
+			"overflow": "auto",
 		    "max-width":"100%",
 		  	"opacity": "0.8",
 		  	"position": "absolute",

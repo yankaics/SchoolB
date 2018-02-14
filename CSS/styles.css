@@ -103,15 +103,11 @@ body :-ms-input-placeholder {
   }
   .container {
     background-color:rgba(57,61,73,0.6);
-    border-radius: 6px;
-    max-width: 340px;
+    width: 360px;
     margin: 0 auto;
     padding: 80px 0;
-    height: 540px;
+    height: 636px;
     text-align: center;
-    -moz-box-shadow:4px 4px 14px #393D49; 
-    -webkit-box-shadow:4px 4px 14px #393D49; 
-    box-shadow:4px 4px 14px #393D49;
   }
   
 }
@@ -136,10 +132,10 @@ body :-ms-input-placeholder {
   }
   .container {
     background-color:rgba(57,61,73,0.6);
-    max-width: 100%;
+    min-width: 100%;
     margin: 0 auto;
     padding: 80px 0;
-    height: 100%;
+    min-height: 100%;
     text-align: center;
   }
 
@@ -153,6 +149,7 @@ body :-ms-input-placeholder {
 
 .container h1 {
   font-size: 40px;
+  padding-bottom: 40px;
   -webkit-transition-duration: 1s;
           transition-duration: 1s;
   -webkit-transition-timing-function: ease-in-put;
@@ -162,6 +159,7 @@ body :-ms-input-placeholder {
 form {
   padding: 40px 0;
   position: relative;
+  padding-bottom: 60px;
   z-index: 3;
 }
 form input {
