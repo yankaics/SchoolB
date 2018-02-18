@@ -44,6 +44,17 @@ function check()
 
 //背景图片切换
 $(function(){
+	//消除文本框placeholder
+	$('body').on('focus', 'input[placeholder]', function () {
+        var valueBak = $(this).attr('xplaceholder');
+        if (!valueBak) {
+            $(this).attr('xplaceholder', $(this).attr('placeholder'));
+        }
+        $(this).attr('placeholder', '');
+    }).on('blur', 'input[placeholder]', function () {
+        $(this).attr('placeholder', $(this).attr('xplaceholder'));
+    });
+
      var _width = $(window).width();
      //获取屏幕高度
      $('.wrapper').height($(window).height());
