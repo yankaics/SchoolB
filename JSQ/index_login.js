@@ -54,13 +54,13 @@ $(function(){
     }).on('blur', 'input[placeholder]', function () {
         $(this).attr('placeholder', $(this).attr('xplaceholder'));
     });
-
-     var _width = $(window).width();
-     //获取屏幕高度
-     $('.wrapper').height($(window).height());
-     var num = Math.floor(5*Math.random());
-     if(_width < 769)
-     {
+    //获取屏幕宽度
+    var _width = $(window).width();
+    //获取屏幕高度
+    $('.wrapper').height($(window).height());
+    var num = Math.floor(5*Math.random());
+    if(_width < 769)
+    {
      	$(".wrapper").css({
 			"background":"url(UI/bg/Mobile/webp/bg-"+num+".webp) ",
 			"-webkit-background-size": "cover",
@@ -76,9 +76,9 @@ $(function(){
 		  	"min-height": "100%",
 		  	"margin-top": "-200px"
 		 });
-     }
-     if(_width>768)
-     {
+    }
+    if(_width>768)
+    {
 		$(".wrapper").css({
 			"background":"url(UI/bg/PC/webp/bg-"+num+".webp)",
 			"-webkit-background-size": "cover",
@@ -95,7 +95,7 @@ $(function(){
 		  	"margin-top": "-200px",
 		  	"padding-top":"100px"
 		 });
-     }
+    }
 });
 console.log('看代码的小伙伴你好呀！');
 console.log('有机会一起进步呀,QQ604660039');

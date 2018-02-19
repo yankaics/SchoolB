@@ -27,7 +27,7 @@ include"PHP/riqi.php";
 <div class="htmleaf-container">
 	<div class="wrapper">
 		<div class="container">
-			<span><h1 class="layui-anim layui-anim-upbit"><a href="copy.php" style="color:#FFF;">校园宝</a></h1></span>
+			<span><h1 class="layui-anim layui-anim-upbit"><a href="copy.php" style="color:#FFF;font-weight: 600;">校园宝</a></h1></span>
 			<form class="form zdlogin layui-anim layui-anim-upbit" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
 				<input type="text" name="user" class="user" placeholder="学号 工号 账号" value="<? if(isset($_GET['sname'])) echo $_GET['sname'];?>">
 				<input type="password" name="upass" class="upass" placeholder="身份证八位生日">
