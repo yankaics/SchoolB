@@ -123,7 +123,7 @@
     <?
       }
       else
-        echo "对不起该成绩查询只适用本校学生<br>或官方网站不能访问";
+        echo "对不起该成绩查询只适用本校学生<br>或官方网站不能访问<br>官方链接：<a target='_blank' href='http://www.cqsea.com/cjcx/'>点击</a>";
     ?>
   </div>
 </div>

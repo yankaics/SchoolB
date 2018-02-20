@@ -21,7 +21,7 @@
 			color: #F0F0F0;
 		}
 		.hi{
-			font-size:48px;
+			font-size:24px;
 		}
 		.name{
 			font-size:24px;
@@ -43,7 +43,7 @@ include("PHP/adminse.php");
 ?>
 <div class="masked">
 	<center>
-		<p class="hi"><span style="color:#E9BF60; font-weight: 600;">H</span><span style="color:#EB8F7A;font-weight: 600;">i</span><span style="color:#66C2AE;font-weight: 600;">!</span></p>
+		<p class="hi">Hi!</p>
 		<p class="name"><?echo $_SESSION['txm'];?></p>
 		<p class="name">
 			<?
