@@ -25,10 +25,10 @@ include"PHP/riqi.php";
 ?>
 <body>
 <div class="htmleaf-container">
-	<div class="wrapper">
+	<div class="wrapper layui-anim layui-anim-fadein">
 		<div class="container">
-			<span><h1 class="layui-anim layui-anim-upbit"><a href="copy.php" style="color:#FFF;font-weight: 600;">校园宝</a></h1></span>
-			<form class="form zdlogin layui-anim layui-anim-upbit" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
+			<span><h1 class="layui-anim layui-anim-fadein"><a href="copy.php" style="color:#FFF;font-weight: 100;">校园宝</a></h1></span>
+			<form class="form zdlogin layui-anim layui-anim-fadein" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
 				<input type="text" name="user" class="user" placeholder="学号 工号 账号" value="<? if(isset($_GET['sname'])) echo $_GET['sname'];?>">
 				<input type="password" name="upass" class="upass" placeholder="身份证八位生日">
                 <select name="utype" class="utype" size="1">
@@ -36,7 +36,7 @@ include"PHP/riqi.php";
                   <option value="教师">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师</option>
                   <option value="管理员">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理</option>
                 </select>
-			  <p><button type="submit" name="button" >登陆</button></p>
+			  <p><button type="submit" name="button" >登 陆</button></p>
                 
 		  	</form>
 			<p>
