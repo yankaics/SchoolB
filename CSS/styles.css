@@ -169,12 +169,11 @@ form input {
           appearance: none;
   outline: 0;
   border-top: 0px;
-  border-bottom:1px solid rgba(255, 255, 255, 1);
+  border-bottom:1px solid rgba(255, 255, 255, 0.4);
   border-left: 0px;
   border-right: 0px;
   background-color: rgba(0, 0, 0, 0);
   width: 240px;
-  border-radius: 3px;
   padding: 10px 15px;
   margin: 0 auto 10px auto;
   display: block;
@@ -196,12 +195,11 @@ form input:focus {
 form select {
   outline: 0;
   border-top: 0px;
-  border-bottom:1px solid rgba(255, 255, 255, 1);
+  border-bottom:1px solid rgba(255, 255, 255, 0.4);
   border-left: 0px;
   border-right: 0px;
   background-color: rgba(0, 0, 0, 0);
   width: 240px;
-  border-radius: 3px;
   padding: 10px 15px;
   margin: 0 auto 10px auto;
   display: block;
