@@ -61,7 +61,7 @@
 			<blockquote class="layui-elem-quote">
 				<p>如何给学生注册</p>
 				<p>邮箱：amoshuke@qq.com</p>
-				<p>示例文档：<a href="校名+学生年级+辅导员名字.xlsx">下载</a></p>
+				<p>示例文档：<a href="zc.xlsx" download="校名+学生年级+辅导员名字.xlsx">下载</a></p>
 			</blockquote>
 			<p>
 				&nbsp;&nbsp;&nbsp;&nbsp;1.辅导员如何给学生进行注册，只需要下载示例文档并按照示例文档的要求进行填写（最好不要有其他格式），一个年级一份文档。<br>
