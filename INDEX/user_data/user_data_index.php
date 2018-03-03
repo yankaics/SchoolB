@@ -6,8 +6,6 @@
 	<link rel="stylesheet" href="../../layui/css/layui.css">
   <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
 	<script src="../../layui/layui.js"></script>
-	<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-	<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 	<link rel="shortcut icon" href="../../favicon.ico" />
 	<!--JSQ-->
 	<script src="../../JSQ/jquery-2.1.1.min.js"></script>

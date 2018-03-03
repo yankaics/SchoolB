@@ -41,7 +41,6 @@ function check()
 		}
 }
 
-
 //背景图片切换
 $(function(){
 	//消除文本框placeholder
