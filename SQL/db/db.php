@@ -16,7 +16,3 @@ ini_set('display_errors', 'off');
 error_reporting(0);
 error_reporting(E_ALL^E_NOTICE^E_WARNING);
 ?>
-<script type="text/javascript">
-	console.log('看代码的小伙伴你好呀！');
-	console.log('有机会一起进步呀,QQ604660039');
-</script>
