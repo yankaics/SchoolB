@@ -80,7 +80,7 @@ body{ padding-bottom:300px;};
                               <option value="实训楼">实训楼</option>
                               <option value="教学楼">教学楼</option>
                               <option value="综合楼">综合楼</option>
-                              
+                              <option value="其他区域">其他区域</option>
                            </select>
                         </div>
                     </div>
