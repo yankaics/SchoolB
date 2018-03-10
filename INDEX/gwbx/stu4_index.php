@@ -135,9 +135,9 @@ a:active{text-decoration:none;}
                         </div>
                      </div>
 					
-					 <blockquote class="layui-elem-quote">照片格式JPG,PNG,JPEG,大小不能超过4MB<br>不符合的照片，自动删除</blockquote>	
+					 <blockquote class="layui-elem-quote">照片格式JPG,PNG,JPEG,大小不能超过10MB<br>不符合的照片，自动删除</blockquote>	
 					<!--图片大小-->
-                    <input name="MAX_FILE_SIZE" type="hidden" value="409600" />
+                    
                     
                     <table class="layui-table">
                       <colgroup>
@@ -160,6 +160,7 @@ a:active{text-decoration:none;}
 					  for($i=0;$i<=$nbc1;$i++)
 					  {
 					  ?>
+					  	<input name="MAX_FILE_SIZE" type="hidden" value="10240000" />
                         <tr>
                         	<td align="left">
                         		<a href="javascript:;" class="upimg fupimg<?=$i?> layui-btn">选择
