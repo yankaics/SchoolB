@@ -12,6 +12,7 @@
 <center>
 <div style="padding-top:100px;">
 <?
+header("Content-Type: text/html;charset=gb2312");
 include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
