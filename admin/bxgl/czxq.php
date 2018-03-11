@@ -102,19 +102,26 @@
 										if($rowwj[8]!="")
 										{
 									?>
-									<div class="layui-btn layui-btn-sm xq_photo<?=$rowwj[0]?>">照片</div>
+									<!--照片显示-->
+									<button type="button" class="layui-btn layui-btn-sm xq_photo<?=$rowwj[0]?>">照片</button>
+									<div id="tpxq_photo<?=$rowwj[0]?>" class="tpxq_photo<?=$rowwj[0]?>">
+										
+										<img id="<?=$rowwj[0]?>" layer-pid="<?=$rowwj[0]?>" layer-src="../../<?=$rowwj[8]?>" src="" alt="<?=$rowwj[1]?>" style="display: none;">
+									</div>
 									<script type="text/javascript">
+									layer.ready(function(){
 										layui.use('layer', function(){
-								  			var layer = layui.layer;
-											$(".xq_photo<?=$rowwj[0]?>").click(function(){
-												$.getJSON('xq_photo.php?photoid=<?=$rowwj[0]?>', function(json){
-												  layer.photos({
-												    photos: json 
-												    ,anim: 5 
-												  });
+	  										var layer = layui.layer;
+												layer.photos({
+												  photos: '#tpxq_photo<?=$rowwj[0]?>'
+												  ,anim: 5
 												});
 											});
+									});
+										$('.xq_photo<?=$rowwj[0]?>').on('click', function(){
+										  $('#tpxq_photo<?=$rowwj[0]?>').find('img').eq(0).trigger('click');
 										});
+									
 									</script>
 									<?
 										}

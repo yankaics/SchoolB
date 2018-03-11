@@ -1,25 +1,26 @@
 <?php
-include("../../SQL/db/db.php");	
-include("../adminse/admin_se.php");	
-$sql="select s_tt,sid,s_id from sch_repair_rea where sid='".$_GET['photoid']."'";
-$rs=mysql_query($sql,$con);
-if($row=mysql_fetch_row($rs))
-{
-	echo $a = '{
-	  "title": "维修照片",
-	  "id": '.$_GET['photoid'].',
-	  "start": 0,
-	  "data": [
-	    {
-	      "alt": "'.$row[0].'",
-	      "pid": '.$row[1].',
-	      "src": "../../'.$row[2].'",
-	      "thumb": ""
-	    }
-	  ]
-	}';
+// 这个也没用咯，服务器不支持json，直接改用js
+// include("../../SQL/db/db.php");
+// include("../adminse/admin_se.php");	
+// $sql="select s_tt,sid,s_id from sch_repair_rea where sid='".$_GET['photoid']."'";
+// $rs=mysql_query($sql,$con);
+// if($row=mysql_fetch_row($rs))
+// {
+// 	echo $a = '{
+// 	  "title": "维修照片",
+// 	  "id": '.$_GET['photoid'].',
+// 	  "start": 0,
+// 	  "data": [
+// 	    {
+// 	      "alt": "'.$row[0].'",
+// 	      "pid": '.$row[1].',
+// 	      "src": "../../'.$row[2].'",
+// 	      "thumb": ""
+// 	    }
+// 	  ]
+// 	}';
 
-}
+// }
 		
 		//作废咯下面的方法
 		// class xqphoto
