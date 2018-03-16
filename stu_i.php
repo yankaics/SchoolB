@@ -146,7 +146,7 @@
     </div>
   </div>
   <!--菜单学生功能-->   
-  <a href="INDEX/CQDD_CJCX/CJCX_index.php" class="z_index_box">
+  <a href="INDEX/CQDD_CJCX/CJCX_index.php" class="z_index_box CJCX">
   <div class="layui-col-md3 layui-col-sm5 border_box">
       <div class="layui-row">
         <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
@@ -162,7 +162,7 @@
   </div>
   </a>
 
-  <a href="INDEX/comment/index.php" class="z_index_box">
+  <a href="INDEX/comment/index.php" class="z_index_box ">
   <div class="layui-col-md3 layui-col-sm5 border_box">
       <div class="layui-row">
         <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
@@ -235,7 +235,8 @@ layui.use('layer', function(){
       });
     }
   });
-  var countDE=0;
+  //点击敬请期待的小彩蛋
+  var countDE=1;
   $(".DE").click(function(e) {
       countDE++;
       if(countDE>20)
@@ -244,7 +245,7 @@ layui.use('layer', function(){
         time: 2000,
         });
       }
-      else if(countDE>5)
+      else if(countDE>3)
       {
         layer.msg('(/= _ =)/~┴┴再点生气了', {
         time: 2000,
@@ -257,20 +258,27 @@ layui.use('layer', function(){
         });
       }
   });
+
+  $(".CJCX").click(function(e) {
+        layer.msg('抓取学院数据中。。。', {
+        time: 0,
+        });
+  });
+
   //修改密码弹出
   $(".updatepass").click(function(e) {
         layer.open({
-      type: 2,
-      title: '修改密码',
-      shadeClose: true,
-      shade: 0.8,
-      shadeClose:true,
-      scrollbar:false,
-      area: ['320px', '320px'],
-      content: 'index/xgmm/updatepass.php' //iframe的url
-    }); 
+        type: 2,
+        title: '修改密码',
+        shadeClose: true,
+        shade: 0.8,
+        shadeClose:true,
+        scrollbar:false,
+        area: ['320px', '320px'],
+        content: 'index/xgmm/updatepass.php' //iframe的url
+      }); 
     });
-});
+  });
 });
 
 //退出
