@@ -111,7 +111,9 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 					setcookie("schoolb_username",$user,time()+86400*30,'/');//30天后cookie失效
 					setcookie("schoolb_password",$upass,time()+86400*30,'/');
 					setcookie("schoolb_type",$utype,time()+86400*30,'/');
-
+					//登陆失败清除次数
+					setcookie("schoolb_username_sd",0,time()-1800,'/');
+					
 					//密码
 					$_SESSION['spassid']=$spassid;
 					$sqlre="insert into sch_loginre values('','".$row[7]."','".$row[1]."','".$row[5]."','".$da1."','学生')";
@@ -181,7 +183,9 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 				setcookie("schoolb_username",$user,time()+86400*30,'/');//30天后cookie失效
 				setcookie("schoolb_password",$upass,time()+86400*30,'/');
 				setcookie("schoolb_type",$utype,time()+86400*30,'/');
-
+				//登陆失败清除次数
+				setcookie("schoolb_username_sd",0,time()-1800,'/');
+				
 				//密码
 				$_SESSION['spassid']=$spassid;
 				$sqlre="insert into sch_loginre values('','".$row[6]."','".$row[1]."','".$row[5].$row[8]."','".$da1."','教师')";
@@ -246,6 +250,9 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			setcookie("schoolb_username",$user,time()+86400*30,'/');//30天后cookie失效
 			setcookie("schoolb_password",$upass,time()+86400*30,'/');
 			setcookie("schoolb_type",$utype,time()+86400*30,'/');
+			//登陆失败清除次数
+			setcookie("schoolb_username_sd",0,time()-1800,'/');
+			
 			//密码
 			$_SESSION['spassid']=$spassid;
 			$sqlre="insert into sch_loginre values('','".$row[1]."','".$row[3]."','".$row[5]."','".$da1."','管理员')";
