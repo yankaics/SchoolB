@@ -84,6 +84,7 @@
                 <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
                 <div class="layui-timeline-content layui-text">
                   <h3 class="layui-timeline-title">2018-3-16</h3>
+                  <p>增加了登陆失败五次锁定30分钟</p>
                   <p>修改了部分兼容问题</p>
                 </div>
               </li>
