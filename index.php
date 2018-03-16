@@ -28,7 +28,7 @@ include"PHP/riqi.php";
 			<span><h1 class="layui-anim layui-anim-fadein"><a href="copy.php" style="color:#FFF;font-weight: 100;">校园宝</a></h1></span>
 			<form class="form zdlogin layui-anim layui-anim-fadein" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
 				<input type="text" name="user" class="user" placeholder="学号 工号 账号" value="<? if(isset($_GET['sname'])) echo $_GET['sname'];?>">
-				<input type="password" name="upass" class="upass" placeholder="身份证八位生日">
+				<input type="password" name="upass" class="upass" placeholder="生日八位身份证">
                 <select name="utype" class="utype" size="1">
                   <option value="学生">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学生</option>
                   <option value="教师">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师</option>
@@ -51,26 +51,9 @@ include"PHP/riqi.php";
 </div>
 
 <script src="jsq/jquery-2.1.1.min.js" type="text/javascript"></script>
-<script>
-//Chrome内核更好体验，判断IE浏览器或IE内核
-if (!!window.ActiveXObject || "ActiveXObject" in window) {
-        $(document).ready(function(e) {
-          layui.use('layer', function(){
-            var layer = layui.layer;
-            parent.layer.confirm('<center style="color:#000;">请使用极速模式（Chrome内核）<br>达到更好体验效果<br><img src="Chrome_re.png"></center>', {
-              btn: ['我才不管|·_·)'],
-              title: false,
-              btnAlign: 'c',
-              offset: '140px',
-              closeBtn: 0
-            }, function(){
-            	layer.closeAll();
-            });
-          });
-        });
-}
+<!--placeholder兼容及IE提示-->
+<script src="jsq/placeholder_ie.js" type="text/javascript"></script>
 
-</script>
 <?
 if(isset($_GET['z']))
 {
