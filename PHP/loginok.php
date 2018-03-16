@@ -19,6 +19,41 @@
 include("../SQL/db/db.php");
 include"riqi.php";
 
+//登陆超过五次错误锁定30分钟
+if($_COOKIE['schoolb_username_sd']>=5)
+{
+	?>
+	<script language="javascript">
+		location.href="../del_login.php?sd5=1";
+	</script>
+	<?
+	die();
+}
+//登陆错误处理
+function sdcl()
+{
+	//登陆错误五次锁定30分钟（暂时用cookie，以后有时间弄成数据库）
+	$sd=1+$_COOKIE['schoolb_username_sd'];
+	setcookie("schoolb_username_sd",$sd,time()+1800,'/');
+	//登陆错误提示
+	if($_COOKIE['schoolb_username_sd']==3)
+	{
+		?>
+		<script language="javascript">
+			location.href="../del_login.php?sd3=1";
+		</script>
+		<?
+	}
+	else if($_COOKIE['schoolb_username_sd']==4)
+	{
+		?>
+		<script language="javascript">
+			location.href="../del_login.php?sd4=1";
+		</script>
+		<?
+	}
+}
+
 $user=$_POST['user'];
 $mysql['user'] = mysql_real_escape_string($user);
 $_SESSION['user']=$user;
@@ -89,6 +124,8 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 				}
 				else
 				{
+					//登陆错误处理
+					sdcl();
 					?>
 					<script language="javascript">
 						location.href="../del_login.php?c=1&sname=<?=$user?>";
@@ -157,6 +194,9 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			}
 			else
 			{
+				//登陆错误处理
+				sdcl();
+				
 				?>
 				<script language="javascript">
 					location.href="../index.php?c=1&sname=<?=$user?>";
@@ -219,7 +259,8 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			 
 		else
 		{
-			  
+			//登陆错误处理
+			sdcl();
 			?>
 			<script language="javascript">
 				location.href="../index.php?c=1";
@@ -234,7 +275,16 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			alert("非法接入！");
 			window.location.href="../index.php";
 		</script>
-				<?
+		<?
+	}
+	if($user=="" || $upass=="")
+	{
+		?>
+		<script language="javascript">
+			alert("非法接入！");
+			window.location.href="../index.php";
+		</script>
+		<?
 	}
 	?>
 

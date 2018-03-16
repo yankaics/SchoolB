@@ -17,6 +17,21 @@ else if(isset($_GET['jg']))
 {
 	header("location:index.php?jg=1");
 }
+else if(isset($_GET['sd5']))
+{
+	//登陆错误5次
+	header("location:index.php?sd5=1");
+}
+else if(isset($_GET['sd4']))
+{
+	//登陆错误4次
+	header("location:index.php?sd4=1");
+}
+else if(isset($_GET['sd3']))
+{
+	//登陆错误3次
+	header("location:index.php?sd3=1");
+}
 else
 {
 	header("location:index.php");

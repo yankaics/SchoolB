@@ -118,6 +118,70 @@ if(isset($_GET['jg']))
     </script>
     <?
 }
+if(isset($_GET['sd5']))
+{
+	?>
+    <script>
+    $(document).ready(function(e) {
+			layui.use('layer', function(){
+  				var layer = layui.layer;
+				layer.msg('登陆失败5次<br>已被锁定30分钟', {
+				  title: false,
+				  closeBtn: 0,
+				  time:5000,
+				  maxWidth:220,
+				  anim: 6,
+				  offset: '240px',
+				});
+				
+			});
+		});
+    </script>
+    <?
+}
+if(isset($_GET['sd4']))
+{
+	?>
+    <script>
+    $(document).ready(function(e) {
+			layui.use('layer', function(){
+  				var layer = layui.layer;
+				layer.msg('登陆失败4次<br>最后1次机会', {
+				  title: false,
+				  closeBtn: 0,
+				  time:4000,
+				  maxWidth:220,
+				  anim: 6,
+				  offset: '240px',
+				});
+				
+			});
+		});
+    </script>
+    <?
+}
+if(isset($_GET['sd3']))
+{
+	?>
+    <script>
+    $(document).ready(function(e) {
+			layui.use('layer', function(){
+  				var layer = layui.layer;
+				layer.msg('登陆失败3次<br>还剩2次机会', {
+				  title: false,
+				  closeBtn: 0,
+				  time:4000,
+				  maxWidth:220,
+				  anim: 6,
+				  offset: '240px',
+				});
+				
+			});
+		});
+    </script>
+    <?
+}
+
 ?>
 <script src="JSQ/index_login.js" type="text/javascript"></script>
 <?
