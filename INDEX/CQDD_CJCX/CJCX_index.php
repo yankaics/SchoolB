@@ -1,23 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-<link rel="stylesheet" href="../../layui/css/layui.css">
-<script src="../../layui/layui.js"></script>
-<link rel="shortcut icon" href="../../favicon.ico" />
-<!--JSQ-->
-<script src="../../JSQ/jquery-2.1.1.min.js"></script>
-<script src="../../JSQ/index.js"></script>
-
-<!---以往的CSS
-<link media="(max-width:650px)" href="CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
-<link media="(max-width:500px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
-<link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
-<link media="(min-width:500px)" href="CSS/ly-admin-index.css" rel="stylesheet" type="text/css"/>
-<link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />
--->
-<title>成绩查询</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+  <link rel="stylesheet" href="../../layui/css/layui.css">
+  <script src="../../layui/layui.js"></script>
+  <link rel="shortcut icon" href="../../favicon.ico" />
+  <!--JSQ-->
+  <script src="../../JSQ/jquery-2.1.1.min.js"></script>
+  <script src="../../JSQ/index.js"></script>
+  <title>成绩查询</title>
 </head>
 
 <body  bgcolor="#F0F0F0">
@@ -62,7 +54,7 @@
     $data=$snoopy->results;   
     //单独取出数据
     preg_match_all('#<td>(.+?)</td>#',$data,$m);
-    // print_r($m);
+    //print_r($m);
   ?>
 <div class="layui-row">
   <div class="layui-col-md4 layui-col-md-offset4 layui-col-xs-12">
@@ -70,23 +62,27 @@
     <?
       if(isset($m[0][1]))
       {
+        //科目数量,统计多维数组
+        $count_km=(count($m[0],true)-8)/8;
     ?>
     <table class="layui-table">
       <colgroup>
         <col width="600">
         <col width="100">
-        <col width="200">
+        <col width="150">
+        <col width="250">
       </colgroup>
       <thead>
         <tr>
           <th>科目</th>
           <th>成绩</th>
           <th>详情</th>
+          <th>补考费</th>
         </tr> 
       </thead>
       <tbody>
         <?
-          for($i=0;$i<32;$i++)
+          for($i=0;$i<=$count_km;$i++)
           {
             if($m[0][17+12*$i]=="<td>未开考</td>")
             {
@@ -105,6 +101,7 @@
           <?=$m[0][13+12*$i]?>
           <?=$m[0][16+12*$i]?>
           <?=$m[0][17+12*$i]?>
+          <?=$m[0][18+12*$i]?>
         </tr>
         <?
           }
