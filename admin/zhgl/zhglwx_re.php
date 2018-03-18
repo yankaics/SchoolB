@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-<link rel="stylesheet" href="../../layui/css/layui.css">
-<script src="../../layui/layui.js"></script>
-<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-<link rel="shortcut icon" href="../../favicon.ico" />
-<!--JSQ-->
-<script src="../../JSQ/jquery-2.1.1.min.js"></script>
-<script src="../../JSQ/index.js"></script>
-<title>报修完成记录</title>
-<style>
-body{ padding-bottom:100px;}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+  <link rel="stylesheet" href="../../layui/css/layui.css">
+  <script src="../../layui/layui.js"></script>
+  <link rel="shortcut icon" href="../../favicon.ico" />
+  <!--JSQ-->
+  <script src="../../JSQ/jquery-2.1.1.min.js"></script>
+  <script src="../../JSQ/index.js"></script>
+  <title>报修完成记录</title>
+  <style>
+  body{ padding-bottom:100px;}
+  </style>
 </head>
 
-<body id=body onscroll=SetCookie("scroll",document.body.scrollTop); onload="scrollback();">
+<body>
 <!--导航-->
 <div class="layui-header header header-doc">
     <ul class="layui-nav " style="text-align:center;">

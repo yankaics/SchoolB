@@ -1,53 +1,47 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!---->
-<!---JSQ-->
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
-<script src="JSQ/index.js"></script>
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<link rel="shortcut icon" href="../../favicon.ico" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>维修前统计</title>
-<link media="(max-width:650px)" href="../../CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
-<link media="(max-width:500px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
-<link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
-<link media="(min-width:500px)" href="../../CSS/ly-admin-index.css" rel="stylesheet" type="text/css"/>
-<link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-a:link {
-	text-decoration: none;
-}
-a:visited {
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: underline;
-}
-a:active {
-	text-decoration: none;
-}
-</style>
-<script type="text/javascript">
-function printHtml(html) {
-var bodyHtml = document.body.innerHTML;
-document.body.innerHTML = html;
-window.print();
-document.body.innerHTML = bodyHtml;
-}
-function onprint() {
-var html = $("#dy").html();
-printHtml(html);
-}
-</script>
+	<script src="../../JSQ/jquery-2.1.1.min.js"></script>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="../../bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!---->
+	<script src="../../JSQ/index.js"></script>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<link rel="shortcut icon" href="../../favicon.ico" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>维修前统计</title>
+	<link media="(max-width:650px)" href="../../CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
+	<link media="(max-width:500px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
+	<link media="(min-width:500px)" href="../../CSS/ly-admin-index.css" rel="stylesheet" type="text/css"/>
+	<link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+	a:link {
+		text-decoration: none;
+	}
+	a:visited {
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+	a:active {
+		text-decoration: none;
+	}
+	</style>
+	<script type="text/javascript">
+	function printHtml(html) {
+	var bodyHtml = document.body.innerHTML;
+	document.body.innerHTML = html;
+	window.print();
+	document.body.innerHTML = bodyHtml;
+	}
+	function onprint() {
+	var html = $("#dy").html();
+	printHtml(html);
+	}
+	</script>
 </head>
 
 <body>
@@ -102,6 +96,7 @@ onclick="onprint()" value="打印本页" /></span>
           <button type="submit" name="zhl" class="btn btn-default">综合楼</button>
           <button type="submit" name="jxl" class="btn btn-default">教学楼</button>
           <button type="submit" name="sxl" class="btn btn-default">实训楼</button>
+          <button type="submit" name="qtqy" class="btn btn-default">其他区域</button>
 	  </p>
         
     </form>
@@ -325,6 +320,37 @@ onclick="onprint()" value="打印本页" /></span>
                 <?
 					}
 				?>
+				<!--其他区域-->
+                <?
+                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='其他区域' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+				$rsa=mysql_query($sqla,$con);
+					if($rowa=mysql_fetch_row($rsa))
+					{
+				?>
+                <h2>其 他 区 域</h2>
+                <table border="1" class="table" cellspacing="0" cellpadding="10">
+                
+                <tr class="top">
+                    <td align="center">物件</td>
+                    <td align="center">数量</td>
+                </tr>
+                <?
+                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='其他区域' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+				$rsa=mysql_query($sqla,$con);
+					while($rowa=mysql_fetch_row($rsa))
+					{
+				?>
+                <tr class="top">
+                    <td align="center"><?=$rowa[1]?></td>
+                    <td align="center"><?=$rowa[0]?></td>
+                </tr>
+                <?
+					}
+				?>
+                </table>
+                <?
+					}
+				?>
                 <!--实训楼-->
                 <?
                 $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='实训楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
@@ -385,6 +411,10 @@ onclick="onprint()" value="打印本页" /></span>
 			{
 				echo "教 学 楼";
 			}
+			else if(isset($_GET['qtqy']))
+			{
+				echo "其 他 区 域";
+			}
 			else if(isset($_GET['sxl']))
 			{
 				echo "实 训 楼";
@@ -399,49 +429,57 @@ onclick="onprint()" value="打印本页" /></span>
                 </tr>
 				<?
                 $da1=$_GET['da1'];
-				$da2=$_GET['da2']; 
-				if(isset($_GET['ss']))
+				$da2=$_GET['da2'];
+				if(isset($_GET['qtqy']))
 				{
 					
-					$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='宿舍' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+					$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='其他区域' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
 				}
 				else
 				{
-					if(isset($_GET['st']))
+					if(isset($_GET['ss']))
 					{
-					$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='食堂' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+						
+						$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='宿舍' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
 					}
 					else
 					{
-						if(isset($_GET['ydc']))
+						if(isset($_GET['st']))
 						{
-						$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='运动场' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+						$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='食堂' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
 						}
 						else
 						{
-							if(isset($_GET['tsg']))
+							if(isset($_GET['ydc']))
 							{
-							$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='图书馆' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+							$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='运动场' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
 							}
 							else
 							{
-								if(isset($_GET['zhl']))
+								if(isset($_GET['tsg']))
 								{
-								$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='综合楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+								$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='图书馆' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
 								}
 								else
 								{
-									if(isset($_GET['jxl']))
+									if(isset($_GET['zhl']))
 									{
-									$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='教学楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+									$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='综合楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
 									}
 									else
 									{
-										if(isset($_GET['sxl']))
+										if(isset($_GET['jxl']))
 										{
-										$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='实训楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+										$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='教学楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
 										}
-										
+										else
+										{
+											if(isset($_GET['sxl']))
+											{
+											$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='实训楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+											}
+											
+										}
 									}
 								}
 							}

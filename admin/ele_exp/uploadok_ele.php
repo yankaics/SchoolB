@@ -4,7 +4,7 @@
 <!---->
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <link rel="shortcut icon" href="../../favicon.ico" />
-<meta http-equiv="Content-Type" content="text/html; charset=GB2312" />
+<meta http-equiv="Content-Type" content="text/html"; charset="GB2312" />
 <title>上传处理</title>
 </head>
 

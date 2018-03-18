@@ -1,18 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="../../layui/css/layui.css">
-<script src="../../layui/layui.js"></script>
-<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-<!---
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />-->
-<link rel="shortcut icon" href="../../favicon.ico" />
-<!---JSQ-->
-<script src="../../JSQ/jquery-2.1.1.min.js"></script>
-<script src="../../JSQ/index.js"></script>
-<title>修改密码</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../../layui/css/layui.css">
+	<script src="../../layui/layui.js"></script>
+	<!---
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />-->
+	<link rel="shortcut icon" href="../../favicon.ico" />
+	<!---JSQ-->
+	<script src="../../JSQ/jquery-2.1.1.min.js"></script>
+	<script src="../../JSQ/index.js"></script>
+	<title>修改密码</title>
 </head>
 
 <body>

@@ -1,85 +1,80 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="../../JSQ/jquery-2.1.1.min.js"></script>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="../../bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!---->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<link rel="shortcut icon" href="../../favicon.ico" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>报修分配</title>
+	<link media="(max-width:650px)" href="../../CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
+	<link media="(max-width:500px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
+	<link media="(min-width:500px)" href="../../CSS/ly-admin-index.css" rel="stylesheet" type="text/css"/>
+	<link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+	a:link {
+		text-decoration: none;
+	}
+	a:visited {
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+	a:active {
+		text-decoration: none;
+	}
+	</style>
+	<title>留言查看</title>
+	<script type="text/javascript">
+	function Trim(strValue) 
+	{ 
+	//return strValue.replace(/^s*|s*$/g,""); 
+	return strValue;  
+	}
 
-<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	function SetCookie(sName,sValue) 
+	{ 
+	document.cookie = sName + "=" + escape(sValue); 
+	} 
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!---->
-<script src="../../JSQ/jquery-2.1.1.min.js"></script>
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<link rel="shortcut icon" href="../../favicon.ico" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>报修分配</title>
-<link media="(max-width:650px)" href="../../CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
-<link media="(max-width:500px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
-<link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
-<link media="(min-width:500px)" href="../../CSS/ly-admin-index.css" rel="stylesheet" type="text/css"/>
-<link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-a:link {
-	text-decoration: none;
-}
-a:visited {
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: underline;
-}
-a:active {
-	text-decoration: none;
-}
-</style>
-<title>留言查看</title>
-<script type="text/javascript">
-function Trim(strValue) 
-{ 
-//return strValue.replace(/^s*|s*$/g,""); 
-return strValue;  
-}
+	function GetCookie(sName) 
+	{ 
+	var aCookie = document.cookie.split(";"); 
+	for(var　i=0;　i　< aCookie.length;　i++) 
+	{ 
+	var aCrumb = aCookie[i].split("="); 
+	if(sName　== Trim(aCrumb[0])) 
+	{ 
+	return unescape(aCrumb[1]); 
+	} 
+	} 
 
-function SetCookie(sName,sValue) 
-{ 
-document.cookie = sName + "=" + escape(sValue); 
-} 
+	　　return null; 
+	} 
 
-function GetCookie(sName) 
-{ 
-var aCookie = document.cookie.split(";"); 
-for(var　i=0;　i　< aCookie.length;　i++) 
-{ 
-var aCrumb = aCookie[i].split("="); 
-if(sName　== Trim(aCrumb[0])) 
-{ 
-return unescape(aCrumb[1]); 
-} 
-} 
+	function scrollback() 
+	{ 
+	if(GetCookie("scroll")!=null){document.body.scrollTop=GetCookie("scroll")} 
+	} 
 
-　　return null; 
-} 
-
-function scrollback() 
-{ 
-if(GetCookie("scroll")!=null){document.body.scrollTop=GetCookie("scroll")} 
-} 
-
-function checkfp()
-{
-	if(!$(".choo").is(":checked"))
+	function checkfp()
 	{
-		alert("请勾选需要分配的任务");
-		return false;
-	}		
-}
-</script>
+		if(!$(".choo").is(":checked"))
+		{
+			alert("请勾选需要分配的任务");
+			return false;
+		}		
+	}
+	</script>
 
-<script language="javascript">
-setTimeout("self.location.reload();",60*10000);
-</script>
+	<script language="javascript">
+	setTimeout("self.location.reload();",60*10000);
+	</script>
 </head>
 
 <body id=body onscroll=SetCookie("scroll",document.body.scrollTop); onload="scrollback();">
@@ -131,6 +126,10 @@ $sql8="select count(sid) from sch_repair_re where s_add='实训楼' and s_jg='�
 $rs8=mysql_query($sql8,$con);
 if($row8=mysql_fetch_row($rs8))
 	$num8=$row8[0];
+$sql9="select count(sid) from sch_repair_re where s_add='其他区域' and s_jg='未处理' and s_repair='未分配'";
+$rs9=mysql_query($sql9,$con);
+if($row9=mysql_fetch_row($rs9))
+	$num9=$row9[0];
 ?>
 <div class="ly">
 	<h2>报修分配</h2>
@@ -143,8 +142,10 @@ if($row8=mysql_fetch_row($rs8))
           <button type="submit" name="tsg" class="btn btn-default">图书馆<span class="badge"><?=$num5?></span></button>
           <button type="submit" name="zhl" class="btn btn-default">综合楼<span class="badge"><?=$num6?></span></button>
           <button type="submit" name="jxl" class="btn btn-default">教学楼<span class="badge"><?=$num7?></span></button>
-          <button type="submit" name="sxl" class="btn btn-default">实训楼<span class="badge"><?=$num8?></span></button></p>
-          </form>
+          <button type="submit" name="sxl" class="btn btn-default">实训楼<span class="badge"><?=$num8?></span></button>
+          <button type="submit" name="qtqy" class="btn btn-default">其他区域<span class="badge"><?=$num9?></span></button>
+      </p>
+    </form>
           <form name="wxyfp" action="" method="get" onsubmit="return checkfp()">
           <span class="input-group-addon">
           	<p>默认显示所有未分配</p><p>选择进行分配</p>
@@ -196,7 +197,13 @@ if($row8=mysql_fetch_row($rs8))
   	
 		
 			
-				
+				if(isset($_GET['qtqy']))
+				{
+					$sqlre="select * from sch_repair_re where s_add='其他区域' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+					$b='qtqy=';
+				}
+				else
+				{
 					if(isset($_GET['sxl']))
 					{
 						$sqlre="select * from sch_repair_re where s_add='实训楼' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
@@ -262,6 +269,7 @@ if($row8=mysql_fetch_row($rs8))
 							}
 						}
 					}
+				}
 				
 			
 		

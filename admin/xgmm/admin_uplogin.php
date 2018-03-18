@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-<link rel="stylesheet" href="../../layui/css/layui.css">
-<script src="../../layui/layui.js"></script>
-<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-<!---
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />-->
-<link rel="shortcut icon" href="../../favicon.ico" />
-<!--JSQ-->
-<script src="../../JSQ/jquery-2.1.1.min.js"></script>
-<script src="../../JSQ/index.js"></script>
-<!---以往的CSS
-<link media="(max-width:769px)" href="../../CSS/mobile-main.css" rel="stylesheet" type="text/css" />
-<link media="(max-width:769px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
-<link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
-<link media="(min-width:769px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />
-<link media="(min-width:769px)" href="../../CSS/main-index.css" rel="stylesheet" type="text/css" />-->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+	<link rel="stylesheet" href="../../layui/css/layui.css">
+	<script src="../../layui/layui.js"></script>
+	<!---
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />-->
+	<link rel="shortcut icon" href="../../favicon.ico" />
+	<!--JSQ-->
+	<script src="../../JSQ/jquery-2.1.1.min.js"></script>
+	<script src="../../JSQ/index.js"></script>
+	<!---以往的CSS
+	<link media="(max-width:769px)" href="../../CSS/mobile-main.css" rel="stylesheet" type="text/css" />
+	<link media="(max-width:769px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
+	<link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
+	<link media="(min-width:769px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />
+	<link media="(min-width:769px)" href="../../CSS/main-index.css" rel="stylesheet" type="text/css" />-->
 
-<title>修改密码</title>
+	<title>修改密码</title>
 </head>
 
 <body bgcolor="#F0F0F0">

@@ -1,75 +1,71 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="../../JSQ/jquery-2.1.1.min.js"></script>
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="../../bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!---->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link rel="shortcut icon" href="../../favicon.ico" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>报修状态查询</title>
+  <link media="(max-width:650px)" href="../../CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
+  <link media="(max-width:500px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
+  <link media="(min-width:500px)" href="../../CSS/ly-admin-index.css" rel="stylesheet" type="text/css"/>
+  <link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+  a:link {
+  	text-decoration: none;
+  }
+  a:visited {
+  	text-decoration: none;
+  }
+  a:hover {
+  	text-decoration: underline;
+  }
+  a:active {
+  	text-decoration: none;
+  }
+  </style>
 
-<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script type="text/javascript">
+  function Trim(strValue) 
+  { 
+  //return strValue.replace(/^s*|s*$/g,""); 
+  return strValue;  
+  }
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!---->
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<link rel="shortcut icon" href="../../favicon.ico" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>报修状态查询</title>
-<link media="(max-width:650px)" href="../../CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
-<link media="(max-width:500px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
-<link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
-<link media="(min-width:500px)" href="../../CSS/ly-admin-index.css" rel="stylesheet" type="text/css"/>
-<link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-a:link {
-	text-decoration: none;
-}
-a:visited {
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: underline;
-}
-a:active {
-	text-decoration: none;
-}
-</style>
+  function SetCookie(sName,sValue) 
+  { 
+  document.cookie = sName + "=" + escape(sValue); 
+  } 
 
-<script type="text/javascript">
-function Trim(strValue) 
-{ 
-//return strValue.replace(/^s*|s*$/g,""); 
-return strValue;  
-}
+  function GetCookie(sName) 
+  { 
+  var aCookie = document.cookie.split(";"); 
+  for(var　i=0;　i　< aCookie.length;　i++) 
+  { 
+  var aCrumb = aCookie[i].split("="); 
+  if(sName　== Trim(aCrumb[0])) 
+  { 
+  return unescape(aCrumb[1]); 
+  } 
+  } 
 
-function SetCookie(sName,sValue) 
-{ 
-document.cookie = sName + "=" + escape(sValue); 
-} 
+  　　return null; 
+  } 
 
-function GetCookie(sName) 
-{ 
-var aCookie = document.cookie.split(";"); 
-for(var　i=0;　i　< aCookie.length;　i++) 
-{ 
-var aCrumb = aCookie[i].split("="); 
-if(sName　== Trim(aCrumb[0])) 
-{ 
-return unescape(aCrumb[1]); 
-} 
-} 
+  function scrollback() 
+  { 
+  if(GetCookie("scroll")!=null){document.body.scrollTop=GetCookie("scroll")} 
+  } 
+  </script>
 
-　　return null; 
-} 
-
-function scrollback() 
-{ 
-if(GetCookie("scroll")!=null){document.body.scrollTop=GetCookie("scroll")} 
-} 
-</script>
-
-<script language="javascript">
-setTimeout("self.location.reload();",60*10000);
-</script>
+  <script language="javascript">
+  setTimeout("self.location.reload();",60*10000);
+  </script>
 </head>
 
 <body id=body onscroll=SetCookie("scroll",document.body.scrollTop); onload="scrollback();">
