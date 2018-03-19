@@ -31,6 +31,12 @@ if($utype=="管理员" || $utype=="教师" || $utype=="学生")
 		}
 		else
 		{
+			session_start(); 
+			session_destroy(); 
+			//自动登录删除
+			setcookie("schoolb_username","",time()-86400*31,'/');//30天后cookie失效
+			setcookie("schoolb_password","",time()-86400*31,'/');
+			setcookie("schoolb_type","",time()-86400*31,'/');
 			?>
             <script language="javascript">
 					alert(" 该账号已离职 \n 如有疑问请询问部门主管");
