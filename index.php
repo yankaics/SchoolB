@@ -41,6 +41,7 @@ include"PHP/riqi.php";
           		<a href="copy.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"><span class="layui-badge-dot"></span> 关于 </span></a>
           		<a href="INDEX/regstu/index.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | 注册 </span></a>
           		<a href="copy.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | &copy;<? if($rqY>2017) echo "2017-".$rqY; else echo "2017"; ?> </span></a>
+          		<p>建议使用主流浏览器·极速模式</p>
           	</p>
 
 		</div>
@@ -104,7 +105,7 @@ if(isset($_GET['jg']))
     $(document).ready(function(e) {
           layui.use('layer', function(){
             var layer = layui.layer;
-            parent.layer.confirm('<center style="color:#000;">你的账号已被停用<br>如有疑问请询问辅导员</center>', {
+            parent.layer.confirm('<center style="color:#000;">你的账号已被停用<br>如有疑问请询问辅导员或主管</center>', {
               btn: ['知道了|·_·)'],
               title: false,
               btnAlign: 'c',
