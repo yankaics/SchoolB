@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
   <link rel="stylesheet" href="layui/css/layui.css">
   <script src="layui/layui.js"></script>
-  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 
   <style></style>
   <title>关于校园宝</title>
@@ -85,6 +83,7 @@
                 <div class="layui-timeline-content layui-text">
                   <h3 class="layui-timeline-title">2018-3-16</h3>
                   <p>增加了登陆失败五次锁定30分钟</p>
+                  <p>优化了连接校园网但无网络的小伙伴访问速度</p>
                   <p>修改了部分兼容问题</p>
                 </div>
               </li>
