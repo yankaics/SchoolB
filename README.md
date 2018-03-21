@@ -12,11 +12,11 @@
 ### 预览
 > PC首页
 
-![Schoolb_PC]
+![Schoolb_PC.PNG]
 
 > Mobile首页
 
-![Schoolb_Mobile]
+![Schoolb_Mobile.PNG]
 
 ### 问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
