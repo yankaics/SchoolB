@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -261,7 +261,7 @@ layui.use('layer', function(){
 
   $(".CJCX").click(function(e) {
         layer.msg('抓取学院数据中。。。', {
-        time: 0,
+        time: 3000,
         });
   });
 

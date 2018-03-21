@@ -137,17 +137,17 @@ var version=b_version.split(";");
 var trim_Version=version[1].replace(/[ ]/g,""); 
 if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE6.0") 
 { 
-alert("建议使用主流浏览器"); 
+alert("建议使用主流浏览器极速模式-6"); 
 } 
 else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE7.0") 
 { 
-alert("建议使用主流浏览器");
+alert("建议使用主流浏览器极速模式-7");
 } 
 else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0") 
 { 
-alert("建议使用主流浏览器"); 
+alert("建议使用主流浏览器极速模式-8"); 
 } 
 else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE9.0") 
 { 
-alert("建议使用主流浏览器"); 
+alert("建议使用主流浏览器极速模式-9"); 
 }
