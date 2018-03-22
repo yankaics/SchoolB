@@ -207,9 +207,9 @@ $(document).ready(function(e) {
       
       <div class="layui-col-md3 layui-col-xs6">
         <div class="layui-row grid-demo">
-        <a href="INDEX/comment/index.php" class="grid-demo">
+        <a href="INDEX/online_chat_room/chat_index.php" class="grid-demo">
           <div class="layui-col-md4">
-            <i class="layui-icon">&#xe606;</i><p>评论专区</p>
+            <i class="layui-icon">&#xe606;</i><p>聊天室</p>
           </div>
         </a>
         </div>

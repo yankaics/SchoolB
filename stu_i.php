@@ -162,17 +162,17 @@
   </div>
   </a>
 
-  <a href="INDEX/comment/index.php" class="z_index_box ">
+  <a href="INDEX/online_chat_room/chat_index.php" class="z_index_box ">
   <div class="layui-col-md3 layui-col-sm5 border_box">
       <div class="layui-row">
         <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
           <i class="layui-icon img48">&#xe606;</i>
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          &nbsp;&nbsp;评论专区
+          &nbsp;&nbsp;匿名聊天室
         </div>
         <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          反映学院不足处自由评论
+          就小小的一个聊天室
         </div>
       </div>
   </div>
