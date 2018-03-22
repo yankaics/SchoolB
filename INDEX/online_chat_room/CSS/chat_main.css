@@ -1,0 +1,28 @@
+@charset "utf-8";
+body{
+	font-size:20px;
+	padding-bottom: 100px;
+}
+
+.main{
+	width: 90%;
+	height: 90px;
+	color: #F0F0F0;
+	padding-top:50px;
+	padding-left:24px;
+}
+.ctime{
+	clear:both;
+	color:#c2c2c2;
+}
+.cname{
+	word-break: break-all; 
+	word-wrap:break-word;
+	float: left;
+}
+.cnr{
+	word-break: break-all; 
+	word-wrap:break-word;
+	float: left;
+	clear: right;
+}
