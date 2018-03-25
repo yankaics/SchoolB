@@ -28,7 +28,7 @@ include"PHP/riqi.php";
 			<span><h1 class="layui-anim layui-anim-fadein"><a href="copy.php" style="color:#FFF;font-weight: 100;">校园宝</a></h1></span>
 			<form class="form zdlogin layui-anim layui-anim-fadein" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
 				<input type="text" name="user" class="user" placeholder="学号 工号 账号" value="<? if(isset($_GET['sname'])) echo $_GET['sname'];?>">
-				<input type="password" name="upass" class="upass" placeholder="生日八位身份证">
+				<input type="password" name="upass" class="upass" placeholder="出生日期八位">
                 <select name="utype" class="utype" size="1">
                   <option value="学生">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学生</option>
                   <option value="教师">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师</option>
