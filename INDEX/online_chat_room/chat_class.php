@@ -14,11 +14,11 @@ header("content-type:text/html;charset=utf-8");
 		//写入内容(新的写在前面)
 		function chat_fwtie($cnr){
 			//过滤不文明语言
-			$str = "/你大爷|你麻痹|SB|日你妈|我日你妈|我日你|你他妈/";
+			$str = "/你大爷|你麻痹|SB|日你妈|我日你妈|我日你|草你|你他妈/";
 			//内容(特殊字符转实体，过滤不文明语言)
 			$znr=htmlspecialchars(preg_replace($str, "*么么哒*", mb_substr($cnr,0,30,"UTF8")));
 			//生成随机名字后缀
-			$zname = array("可爱","大佬","嘿嘿","小朋友"); 
+			$zname = array("大佬","嘿嘿","小朋友","大朋友"); 
 			$sj=rand(0,3);
 			$uname=mb_substr($this->cname_chat,0,1,"UTF8");
 			//姓+随机组成名字
