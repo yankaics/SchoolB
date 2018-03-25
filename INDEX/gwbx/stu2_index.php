@@ -163,7 +163,7 @@ function checkadd(){
 		cadd=stu2.tadd.value;
 		caddr=stu2.taddr.value;
 		cphone=stu2.tphone.value;
-		var yz=/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+		var yz=/1(3\d|47|5((?!4)\d)|7(0|1|[6-8])|8\d)\d{8,8}/;
 		if(cadd=='宿舍')
 			if(caddr.length!=4 ||isNaN(caddr))
 			{
