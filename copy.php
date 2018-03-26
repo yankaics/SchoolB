@@ -81,6 +81,15 @@
             <li class="layui-timeline-item">
                 <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
                 <div class="layui-timeline-content layui-text">
+                  <h3 class="layui-timeline-title">2018-3-26</h3>
+                  <p>修改了匿名聊天室为聊天室</p>
+                  <p>增加了聊天室可输入房间进行房间私人聊天</p>
+                </div>
+              </li>
+
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
+                <div class="layui-timeline-content layui-text">
                   <h3 class="layui-timeline-title">2018-3-22</h3>
                   <p>增加了匿名聊天室，原留言区，实时聊天，不定期清除</p>
                   <p>增加了登陆失败五次锁定30分钟</p>
