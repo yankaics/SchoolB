@@ -162,17 +162,17 @@
   </div>
   </a>
 
-  <a href="INDEX/online_chat_room/chat_index.php" class="z_index_box ">
+  <a href="javascript:;" class="z_index_box chat_room">
   <div class="layui-col-md3 layui-col-sm5 border_box">
       <div class="layui-row">
         <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
           <i class="layui-icon img48">&#xe606;</i>
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          &nbsp;&nbsp;匿名聊天室
+          &nbsp;&nbsp;聊天室
         </div>
         <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          就小小的一个聊天室
+          聊天室不定期清除
         </div>
       </div>
   </div>
@@ -210,6 +210,23 @@
 </div>
 </center>
 
+  <?
+    //房间错误判断
+    if(isset($_GET['roomcw']))
+    {
+        ?>
+        <script type="text/javascript">
+        layui.use('layer', function(){
+          var layer = layui.layer;
+          layer.msg('房间号只能是字母数字<br>小于30字符', {
+          time: 2000,
+          });
+        });
+        </script>
+        <?
+    }
+  ?>
+
 <script>
 layui.use('element', function(){
   var element = layui.element;  
@@ -218,6 +235,14 @@ layui.use('element', function(){
 
 layui.use('layer', function(){
   var layer = layui.layer;
+  //聊天室房间号弹出
+  $(".chat_room").click(function(e) {
+    layer.prompt({title: '输入房间号(字母，数字)', formType: 0},function(val, index){
+      location.href="INDEX/online_chat_room/chat_index.php?room="+val;
+    });
+  });
+
+  //
   $(document).ready(function(e) {
   var countDESS=0;
   $(".DESS").click(function(e) {
