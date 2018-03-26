@@ -9,7 +9,6 @@
 	<link rel="shortcut icon" href="../../favicon.ico" />
 	<!--JSQ-->
 	<script src="../../JSQ/jquery-2.1.1.min.js"></script>
-	<script src="../../JSQ/index.js"></script>
 	<title>聊天室</title>
 </head>
 <body bgcolor="#393D49" onload="Javascript:document.chatf.nr.focus()">
@@ -18,9 +17,8 @@
   <div class="layui-header">
     <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/logo-32-t.png"></div>
 	<?
-	include("../../SQL/db/db.php");
-	include("../../PHP/adminse.php");
-  include("Snoopy.class.php");
+		include("../../SQL/db/db.php");
+		include("../../PHP/adminse.php");
 	?>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item ">
@@ -31,11 +29,33 @@
 </div>
 
 <!--main-->
+
 <?php
 	//聊天处理
 	include("chat_class.php");
+	//房间号处理
+	if(isset($_GET["room"]))
+	{
+		$croom=$_GET["room"];
+		//只能是字母和数字
+		if(!preg_match("/^\d*$/",$croom) && !preg_match("/^[a-z]*$/i",$croom))
+		{
+			header("Location: ../../stu_i.php?roomcw");
+			die();
+		}
+		else if(strlen($croom)>30)
+		{
+			header("Location: ../../stu_i.php?roomcw");
+			die();
+		}
+	}
+	else
+	{
+		header("Location: ../../stu_i.php?roomcw");
+		die();
+	}
 	//实例化聊天
-	$chats=new chat_class($_SESSION['txm'],$_SESSION['txh']);
+	$chats=new chat_class($croom,$_SESSION['txm'],$_SESSION['txh']);
 	//内容
 	if(isset($_POST['nr']))
 	{
@@ -43,12 +63,13 @@
 		//写入内容
 		$chats->chat_fwtie($nr);
 		//提交后刷新网页
-		header("Location: chat_index.php");
+		header("Location: chat_index.php?room=".$croom);
 	}
 	
 ?>
-<div class="chats">
 
+<div class="chats">
+<p style="padding-left: 20px; padding-top: 20px;">已进入：<?=$croom?>房间</p>
 <?php
 	//在chats内局部刷新	
 	$chats->chat_say();
