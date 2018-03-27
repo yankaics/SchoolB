@@ -130,6 +130,18 @@ $sql9="select count(sid) from sch_repair_re where s_add='其他区域' and s_jg=
 $rs9=mysql_query($sql9,$con);
 if($row9=mysql_fetch_row($rs9))
 	$num9=$row9[0];
+$sql10="select count(sid) from sch_repair_re where s_add='超市' and s_jg='未处理' and s_repair='未分配'";
+$rs10=mysql_query($sql10,$con);
+if($row10=mysql_fetch_row($rs10))
+	$num10=$row10[0];
+$sql11="select count(sid) from sch_repair_re where s_add='洗澡堂' and s_jg='未处理' and s_repair='未分配'";
+$rs11=mysql_query($sql11,$con);
+if($row11=mysql_fetch_row($rs11))
+	$num11=$row11[0];
+$sql12="select count(sid) from sch_repair_re where s_add='锅炉房' and s_jg='未处理' and s_repair='未分配'";
+$rs12=mysql_query($sql12,$con);
+if($row12=mysql_fetch_row($rs12))
+	$num12=$row11[0];
 ?>
 <div class="ly">
 	<h2>报修分配</h2>
@@ -144,6 +156,9 @@ if($row9=mysql_fetch_row($rs9))
           <button type="submit" name="jxl" class="btn btn-default">教学楼<span class="badge"><?=$num7?></span></button>
           <button type="submit" name="sxl" class="btn btn-default">实训楼<span class="badge"><?=$num8?></span></button>
           <button type="submit" name="qtqy" class="btn btn-default">其他区域<span class="badge"><?=$num9?></span></button>
+          <button type="submit" name="cs" class="btn btn-default">超市<span class="badge"><?=$num10?></span></button>
+          <button type="submit" name="xzt" class="btn btn-default">洗澡堂<span class="badge"><?=$num11?></span></button>
+          <button type="submit" name="glf" class="btn btn-default">锅炉房<span class="badge"><?=$num12?></span></button>
       </p>
     </form>
           <form name="wxyfp" action="" method="get" onsubmit="return checkfp()">
@@ -194,9 +209,27 @@ if($row9=mysql_fetch_row($rs9))
     <td align="center" class="text-danger">物件详情</td>
   </tr>
   <?
-  	
-		
-			
+  	if(isset($_GET['glf']))
+	{
+		$sqlre="select * from sch_repair_re where s_add='锅炉房' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+		$b='glf=';
+	}
+	else
+	{
+		if(isset($_GET['xzt']))
+		{
+			$sqlre="select * from sch_repair_re where s_add='洗澡堂' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+			$b='xzt=';
+		}
+		else
+		{
+			if(isset($_GET['cs']))
+			{
+				$sqlre="select * from sch_repair_re where s_add='超市' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+				$b='cs=';
+			}
+			else
+			{
 				if(isset($_GET['qtqy']))
 				{
 					$sqlre="select * from sch_repair_re where s_add='其他区域' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
@@ -270,7 +303,9 @@ if($row9=mysql_fetch_row($rs9))
 						}
 					}
 				}
-				
+			}
+		}
+	}
 			
 		
 

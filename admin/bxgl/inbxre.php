@@ -91,6 +91,21 @@ include("../adminse/admin_se.php");
 		  	$t='qtqy';
 			$tt='其他区域';
 		}
+		if(isset($_GET['cs']))
+		{
+		  	$t='cs';
+			$tt='超市';
+		}
+		if(isset($_GET['xzt']))
+		{
+		  	$t='xzt';
+			$tt='洗澡堂';
+		}
+		if(isset($_GET['glf']))
+		{
+		  	$t='glf';
+			$tt='锅炉房';
+		}
 				
 		  
 ?>
@@ -119,6 +134,9 @@ function c()
           <button type="submit" name="jxl" class="btn btn-default">教学楼<span class="badge"></span></button>
           <button type="submit" name="sxl" class="btn btn-default">实训楼<span class="badge"></span></button>
           <button type="submit" name="qtqy" class="btn btn-default">其他区域<span class="badge"></span></button>
+          <button type="submit" name="cs" class="btn btn-default">超市<span class="badge"></span></button>
+          <button type="submit" name="xzt" class="btn btn-default">洗澡堂<span class="badge"></span></button>
+          <button type="submit" name="glf" class="btn btn-default">锅炉房<span class="badge"></span></button>
       </p>
     </form>
           
