@@ -25,7 +25,11 @@ include"PHP/riqi.php";
 <div class="htmleaf-container">
 	<div class="wrapper layui-anim layui-anim-fadein">
 		<div class="container">
-			<span><h1 class="layui-anim layui-anim-fadein"><a href="copy.php" style="color:#FFF;font-weight: 100;">校园宝</a></h1></span>
+			<span>
+				<h1 class="layui-anim layui-anim-fadein">
+					<a href="copy.php" style="color:#FFF;font-weight: 100;">校园宝</a>
+				</h1>
+			</span>
 			<form class="form zdlogin layui-anim layui-anim-fadein" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
 				<input type="text" name="user" class="user" placeholder="学号 工号 账号" value="<? if(isset($_GET['sname'])) echo $_GET['sname'];?>">
 				<input type="password" name="upass" class="upass" placeholder="出生日期八位">
@@ -38,9 +42,11 @@ include"PHP/riqi.php";
                 
 		  	</form>
 			<p>
-          		<a href="copy.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"><span class="layui-badge-dot"></span> 关于 </span></a>
+				<a href="SchoolB.mobile.apk" download="校园宝.apk"><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"><span class="layui-badge-dot"></span> 安卓下载 </span></a>
+          		<a href="copy.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | <span class="layui-badge-dot"></span> 关于 </span></a>
           		<a href="INDEX/regstu/index.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | 注册 </span></a>
           		<a href="copy.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | &copy;<? if($rqY>2017) echo "2017-".$rqY; else echo "2017"; ?> </span></a>
+          		
           		<p>建议使用主流浏览器·极速模式</p>
           	</p>
 
