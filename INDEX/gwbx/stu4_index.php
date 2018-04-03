@@ -162,7 +162,7 @@ a:active{text-decoration:none;}
                         <tr>
                         	<td align="left">
                         		<a href="javascript:;" class="upimg fupimg<?=$i?> layui-btn">选择
-									<input name="ttp<?=$i?>" class="fileimg<?=$i?>" type="file" accept="image/jpeg,image/jpg,image/png"/>
+									<input name="ttp<?=$i?>" class="fileimg<?=$i?>" type="file" accept="image/jpeg,image/jpg,image/png;capture=camera"/>
 									
 								</a>
 								<div class="show<?=$i?>"></div>
