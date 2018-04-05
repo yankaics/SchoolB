@@ -237,10 +237,16 @@ layui.use('layer', function(){
   var layer = layui.layer;
   //聊天室房间号弹出
   $(".chat_room").click(function(e) {
-    layer.prompt({title: '输入房间号(字母，数字)', formType: 0},function(val, index){
-      location.href="INDEX/online_chat_room/chat_index.php?room="+val;
+    layer.confirm('选择需要进入的房间', {
+      btn: ['官方','私人'] //按钮
+    }, function(){
+      location.href="INDEX/online_chat_room/chat_index.php?room=1"
+    }, function(){
+      layer.prompt({title: '输入房间号(字母，数字)', formType: 0},function(val, index){
+          location.href="INDEX/online_chat_room/chat_index.php?room="+val;
+        });
+      });
     });
-  });
 
   //
   $(document).ready(function(e) {
