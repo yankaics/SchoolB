@@ -1,9 +1,14 @@
 @charset "utf-8";
 body{
-	font-size:20px;
+	font-size:18px;
 	padding-bottom: 100px;
+	padding-top:40px;
 }
-
+.layui-header{
+	position: fixed;
+	width:100%;
+	top:0;
+}
 .main{
 	width: 90%;
 	height: 90px;

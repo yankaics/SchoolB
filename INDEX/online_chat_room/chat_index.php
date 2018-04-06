@@ -11,7 +11,7 @@
 	<script src="../../JSQ/jquery-2.1.1.min.js"></script>
 	<title>聊天室</title>
 </head>
-<body bgcolor="#393D49" onload="Javascript:document.chatf.nr.focus()">
+<body bgcolor="#393D49" onload="Javascript:document.chatf.nr.focus();">
 <!--导航-->
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
@@ -99,12 +99,25 @@ $(function(){
 		function aa(){
 			$(".chats").load(location.href+" .chats");
 		}
+});
+//顶部阴影
+$(function(){
+	$(window).scroll(function(){
+	//获取滚动条的滑动距离
+	  var scroH = $(this).scrollTop();
+	  if(scroH>=50){
+	    $(".layui-header").css({"box-shadow":"0px 1px 6px #333745"});
+	  }else if(scroH<50){
+	    $(".layui-header").css({"box-shadow":"0px 0px 0px"});
+	  }
+	});
+
 	//点击输入框跳回顶部
-	$(".tnr").click(function() {
+	$(".tnr").click(function () { 
       $("html,body").animate({scrollTop:0}, 500);
   	});
-	
 });
+
 </script>
 </body>
 </html>

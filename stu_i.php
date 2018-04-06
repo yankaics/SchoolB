@@ -368,6 +368,18 @@ $(document).ready(function(e) {
   }
   ?>
   <script language="javascript">
+          //顶部阴影
+          $(function(){
+            $(window).scroll(function(){
+            //获取滚动条的滑动距离
+              var scroH = $(this).scrollTop();
+              if(scroH>=50){
+                $(".layui-header").css({"box-shadow":"0px 1px 6px #333745"});
+              }else if(scroH<50){
+                $(".layui-header").css({"box-shadow":"0px 0px 0px"});
+              }
+            });
+          });
           //防止页面后退
           history.pushState(null, null, document.URL);
           window.addEventListener('popstate', function () {
