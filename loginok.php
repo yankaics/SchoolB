@@ -38,20 +38,51 @@
 include("PHP/riqi.php");
 include("SQL/db/db.php");
 include("PHP/adminse.php");
+date_default_timezone_set("Asia/Shanghai");
+$time=date("G");
 ?>
 <div class="masked">
 	<center>
-		<p class="hi">Hi!</p>
-		<p class="name"><?echo $_SESSION['txm'];?></p>
-		<p class="name">
-			<?
-				$nowtime=$rqmm.$rqd;
-				if($_SESSION['tbirth']==$nowtime)
-				{
-					echo "生日快乐呐";
-				}
-			?>
+		<p class="hi">
+			<span>
+				<?php
+					$nowtime=$rqmm.$rqd;
+					if($_SESSION['tbirth']==$nowtime)
+					{
+						echo "生日快乐呐";
+					}
+					else
+					{
+						if($time>=5 && $time<=8)
+						{
+							echo "早呀";
+						}
+						if($time>=9 && $time<=11)
+						{
+							echo "上午好";
+						}
+						if($time>=12 && $time<=13)
+						{
+							echo "午好";
+						}
+						if($time>=14 && $time<=17)
+						{
+							echo "下午好";
+						}
+						if($time>=18 && $time<=24)
+						{
+							echo "晚上好";
+						}
+						if($time>=1 && $time<=4)
+						{
+							echo "夜深了";
+						}
+					}
+				?>
+			</span>
 		</p>
+		<p class="name"><?echo $_SESSION['txm'];?></p>
+		<p class="name"></p>
 
 	</center>
 </div>
