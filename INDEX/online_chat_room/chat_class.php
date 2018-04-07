@@ -3,6 +3,7 @@ ini_set('display_errors', 'off');
 error_reporting(0);
 error_reporting(E_ALL^E_NOTICE^E_WARNING);
 header("content-type:text/html;charset=utf-8"); 
+date_default_timezone_set("Asia/Shanghai");
 session_start();
 //聊天
 	class chat_class{
