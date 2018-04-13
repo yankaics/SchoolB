@@ -161,5 +161,13 @@ else
     <?
 }
 ?>
+<script language="javascript">
+        //防止页面后退
+        history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+
+    </script>
 </body>
 </html>

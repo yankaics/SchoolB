@@ -300,7 +300,11 @@ layui.use('form', function(){
 									  title: false,
 									  closeBtn: 0,
 									}, function(){
+										layer.msg('正在提交...', {
+									      time: 10000,
+									    });
 										$(".form4").submit();
+										
 									},function(){
 										$(document).ready(function(e) {
 											layui.use('layer', function(){
