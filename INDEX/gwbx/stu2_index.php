@@ -89,7 +89,7 @@ body{ padding-bottom:300px;};
                     <div class="layui-form-item">
                         <label class="layui-form-label">详细地址</label>
                         <div class="layui-input-block">
-                          <input type="text" name="taddr" required  lay-verify="required" placeholder="宿舍·教室·办公室号或地点" maxlength="25" autocomplete="off" class="layui-input" id="taddr">
+                          <input type="text" name="taddr" required  lay-verify="required" placeholder="宿舍·教室·办公室号或地点" maxlength="30" autocomplete="off" class="layui-input" id="taddr">
                         </div>
                     </div>
                     
@@ -167,40 +167,6 @@ function checkadd(){
 		caddr=stu2.taddr.value;
 		cphone=stu2.tphone.value;
 		var yz=/1(3\d|47|5((?!4)\d)|7(0|1|[6-8])|8\d)\d{8,8}/;
-		if(cadd=='宿舍')
-			if(caddr.length!=4 ||isNaN(caddr))
-			{
-				$(document).ready(function(e) {
-					layui.use('layer', function(){
-					var layer = layui.layer;
-					layer.msg('宿舍为4位数字!!!∑(ﾟДﾟノ)ノ', {
-					title: false,
-					closeBtn: 0,
-									
-						});
-					});
-				});
-				//延迟弹出
-				setTimeout(function(){ 
-				$(document).ready(function(e) {
-								layui.use('layer', function(){
-								var layer = layui.layer;
-								layer.msg('<button onclick="openf()" type="submit" class="layui-btn">下一步</button>', {
-								title: false,
-								closeBtn: 0,
-								time:0,
-								anim: 2,
-								shadeClose :false,
-								offset: 'b',
-								area: ['100%', '60px']	
-									});	
-								});
-								
-							});
-				
-				 }, 2000);
-				return false;
-			}
 			//不能空
 			if(caddr=="")
 			{

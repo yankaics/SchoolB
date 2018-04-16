@@ -116,7 +116,7 @@ a:active{text-decoration:none;}
                                 <td align="center">
                                   
                                     <span class="layui-btn layui-btn-sm jian"><a class="jian" style="color:#FFF;">-</a></span>
-                                    <input name="nb[]" type="text" disabled="disabled" class="lskdo btn " style="width:40px;" value="0" size="1" />
+                                    <input name="nb[]" type="text" disabled="disabled" class="lskdo btn " style="width:38px;" value="0" size="1" />
                                   <span class="layui-btn layui-btn-sm jia"><a class="jia" style="color:#FFF;">+</a></span>
                                 
                                 
@@ -131,7 +131,7 @@ a:active{text-decoration:none;}
                                 <td align="center">其他</td>
                                 <td align="center">
                                     <span class="layui-btn layui-btn-sm jian"><a class="jian" style="color:#FFF;">-</a></span>
-                                    <input name="nb[]" type="text" disabled="disabled" class="lskdo btn " style="width:40px;" value="0" size="1" />
+                                    <input name="nb[]" type="text" disabled="disabled" class="lskdo btn " style="width:38px;" value="0" size="1" />
                                   <span class="layui-btn layui-btn-sm jia"><a class="jia" style="color:#FFF;">+</a></span>
                                 
                                 
