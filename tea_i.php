@@ -21,89 +21,6 @@
 -->
 
 <title>Hi-老师</title>
-<script>
-layui.use('element', function(){
-  var element = layui.element;  
-});
-
-
-layui.use('layer', function(){
-  var layer = layui.layer;
-  $(document).ready(function(e) {
-  var countDESS=0;
-  $(".DESS").click(function(e) {
-    countDESS++;
-    if(countDESS>5)
-    {
-      layer.msg('都说了测试中', {
-      time: 2000,
-      });
-    }
-    else
-    {
-      layer.msg('测试中', {
-      time: 2000,
-      });
-    }
-  });
-  var countDE=0;
-  $(".DE").click(function(e) {
-      countDE++;
-      if(countDE>20)
-      {
-        layer.msg('(┙>∧<)┙へ┻┻嗷嗷嗷！', {
-        time: 2000,
-        });
-      }
-      else if(countDE>5)
-      {
-        layer.msg('(/= _ =)/~┴┴再点生气了', {
-        time: 2000,
-        });
-      }
-      else
-      {
-        layer.msg('(｡・`ω´･)', {
-        time: 2000,
-        });
-      }
-  });
-  //修改密码弹出
-  $(".updatepass").click(function(e) {
-        layer.open({
-      type: 2,
-      title: '修改密码',
-      shadeClose: true,
-      shade: 0.8,
-      shadeClose:true,
-      scrollbar:false,
-      area: ['320px', '320px'],
-      content: 'index/xgmm/updatepass.php' //iframe的url
-    }); 
-    });
-});
-});
-
-//退出
-$(document).ready(function(e) {
-  $(".del_login").click(function(e) {
-              layui.use('layer', function(){
-                var layer = layui.layer;
-                parent.layer.confirm('<center>确定退出？<br>下次将不会自动登陆</center>', {
-                  btn: ['确定|·_·)','取消'],
-                  title: false,
-                  btnAlign: 'c',
-                  closeBtn: 0,
-                }, function(){
-                  location.href="del_login.php";
-                },function(){
-                  
-                    });
-                  });
-                });
-              });
-</script>
-
 <body bgcolor="#F0F0F0">
 <!--导航-->
 <div class="layui-layout layui-layout-admin">
@@ -177,83 +94,257 @@ $(document).ready(function(e) {
   </div>
 </div><br><br>
 <!--main-->
-
-<div class="school_i">
-  
-<div class="layui-container">
-
-<center>
-  <!--菜单-->
-<div class="layui-row layui-col-space30 layui-anim layui-anim-upbit">
-      <div class="layui-col-md3 layui-col-xs6">
-        <div class="layui-row grid-demo">
-        <a href="INDEX/gwbx/alerts.php" class="grid-demo">
-          <div class="layui-col-md4">
-            <i class="layui-icon">&#xe631;</i><p>公物报修</p>
-          </div>
-        </a>
+<!--主要功能-->
+<div class="layui-col-md-offset2 paddingtop layui-anim layui-anim-upbit">
+  <div class="layui-col-md12">
+      <div class="layui-row">
+        <div class="layui-col-md3 layui-col-sm5 border_box_icon">
+          <a class="md" id=""></a>
+          <i class="layui-icon">&#xe68e;</i>&nbsp;主要功能
         </div>
-      </div>
-      
-      <div class="layui-col-md3 layui-col-xs6">
-        <div class="layui-row grid-demo">
-        <a href="INDEX/dorm_ele/ele_index.php" class="grid-demo">
-          <div class="layui-col-md4">
-            <i class="layui-icon">&#xe636;</i><p>宿舍水电</p>
-          </div>
-        </a>
-        </div>
-      </div>
-      
-      <div class="layui-col-md3 layui-col-xs6">
-        <div class="layui-row grid-demo">
-        <a href="javascript:;" class="grid-demo">
-          <div class="layui-col-md4">
-            <i class="layui-icon">&#xe606;</i><p>聊天室(关闭中)</p>
-          </div>
-        </a>
-        </div>
-      </div>
-
-      <div class="layui-col-md3 layui-col-xs6">
-        <div class="layui-row grid-demo">
-        <a href="javascript:;" class="grid-demo DE">
-          <div class="layui-col-md4">
-            <i class="layui-icon">&#xe705;</i><p>敬请期待</p>
-          </div>
-        </a>
-        </div>
-      
-      
-      
     </div>
-</div>  
-<?
-//报修成功
-if(isset($_GET['iok']))
-{
-	?>
-    <script>
-	$(document).ready(function(e) {
-								layui.use('layer', function(){
-									var layer = layui.layer;
-									parent.layer.confirm('<center>提交成功<br>【报修查询】查看报修</center>', {
-									  btn: ['前往|·_·)','菜单'],
-									  title: false,
-									  btnAlign: 'c',
-									  closeBtn: 0,
-									}, function(){
-										location.href="INDEX/gwbx/gwbxcx_index.php";
-									},function(){
-										location.href="tea_i.php";
-										});
-									});
-									
-								});
-							
-	</script>
-	<?
-}
+  </div>
+  <!--菜单主要功能-->   
+  <a href="INDEX/gwbx/alerts.php" class="z_index_box">
+  <div class="layui-col-md3 layui-col-sm5 border_box">
+      <div class="layui-row">
+        <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
+          <i class="layui-icon img48">&#xe631;</i>
+        </div>
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
+          &nbsp;&nbsp;公物报修
+        </div>
+        <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
+          针对本学院的公共物品进行报修
+        </div>
+      </div>
+  </div>
+  </a>
+
+  <a href="INDEX/dorm_ele/ele_index.php" class="z_index_box">
+  <div class="layui-col-md3 layui-col-sm5 border_box">
+      <div class="layui-row">
+        <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
+          <i class="layui-icon img48">&#xe636;</i>
+        </div>
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
+          &nbsp;&nbsp;宿舍水电
+        </div>
+        <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
+          宿舍水电费查看以及缴费
+        </div>
+      </div>
+  </div>
+  </a>
+
+</div>
+<!--教师功能-->
+<div class="layui-col-md-offset2 paddingtop layui-anim layui-anim-upbit">
+  <div class="layui-col-md12">
+      <div class="layui-row">
+        <div class="layui-col-md3 layui-col-sm5 border_box_icon">
+          <a class="md" id=""></a>
+          <i class="layui-icon">&#xe613;</i>&nbsp;教师功能
+        </div>
+    </div>
+  </div>
+  <!--菜单教师功能-->   
+
+  <a href="javascript:;" class="z_index_box chat_room">
+  <div class="layui-col-md3 layui-col-sm5 border_box">
+      <div class="layui-row">
+        <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
+          <i class="layui-icon img48">&#xe606;</i>
+        </div>
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
+          &nbsp;&nbsp;聊天室
+        </div>
+        <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
+          聊天室不定期清除
+        </div>
+      </div>
+  </div>
+  </a>
+
+  <a href="javascript:;" class="DE z_index_box">
+  <div class="layui-col-md3 layui-col-sm5 border_box">
+      <div class="layui-row">
+        <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
+          <i class="layui-icon img48">&#xe705;</i>
+        </div>
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
+          &nbsp;&nbsp;敬请期待
+        </div>
+        <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
+          更多实用的功能
+        </div>
+      </div>
+  </div>
+  </a>
+
+
+</div>
+
+<!--底部-->
+<center>
+<div class=" layui-col-md-offset2 paddingtop layui-anim layui-anim-upbit">
+<div class="layui-col-md12 bt">
+    <div class="layui-row">
+      <div class="layui-col-md10 layui-col-sm12 border_box_icon">
+        <a id="bta" href="copy.php">&copy;<? if($rqY>2017) echo "2017-".$rqY; else echo "2017";?> | 关于 | 联系 |</a>
+      </div>
+  </div>
+</div>
+</div>
+</center>
+
+  <?
+    //房间错误判断
+    if(isset($_GET['roomcw']))
+    {
+        ?>
+        <script type="text/javascript">
+        layui.use('layer', function(){
+          var layer = layui.layer;
+          layer.msg('房间号只能是字母数字<br>小于30字符', {
+          time: 2000,
+          });
+        });
+        </script>
+        <?
+    }
+  ?>
+
+<script>
+layui.use('element', function(){
+  var element = layui.element;  
+});
+
+
+layui.use('layer', function(){
+  var layer = layui.layer;
+  //聊天室房间号弹出
+  $(".chat_room").click(function(e) {
+    layer.confirm('选择需要进入的房间', {
+      btn: ['官方','私人'] //按钮
+    }, function(){
+      location.href="INDEX/online_chat_room/chat_index.php?room=1"
+    }, function(){
+      layer.prompt({title: '输入房间号(字母，数字)', formType: 0},function(val, index){
+          location.href="INDEX/online_chat_room/chat_index.php?room="+val;
+        });
+      });
+    });
+
+  //
+  $(document).ready(function(e) {
+  var countDESS=0;
+  $(".DESS").click(function(e) {
+    countDESS++;
+    if(countDESS>5)
+    {
+      layer.msg('都说了测试中', {
+      time: 2000,
+      });
+    }
+    else
+    {
+      layer.msg('测试中', {
+      time: 2000,
+      });
+    }
+  });
+  //点击敬请期待的小彩蛋
+  var countDE=1;
+  $(".DE").click(function(e) {
+      countDE++;
+      if(countDE>20)
+      {
+        layer.msg('(┙>∧<)┙へ┻┻嗷嗷嗷！', {
+        time: 2000,
+        });
+      }
+      else if(countDE>3)
+      {
+        layer.msg('(/= _ =)/~┴┴再点生气了', {
+        time: 2000,
+        });
+      }
+      else
+      {
+        layer.msg('(｡・`ω´･)', {
+        time: 2000,
+        });
+      }
+  });
+
+  $(".CJCX").click(function(e) {
+        layer.msg('抓取学院数据中。。。', {
+        time: 3000,
+        });
+  });
+
+  //修改密码弹出
+  $(".updatepass").click(function(e) {
+        layer.open({
+        type: 2,
+        title: '修改密码',
+        shadeClose: true,
+        shade: 0.8,
+        shadeClose:true,
+        scrollbar:false,
+        area: ['320px', '320px'],
+        content: 'index/xgmm/updatepass.php' //iframe的url
+      }); 
+    });
+  });
+});
+
+//退出
+$(document).ready(function(e) {
+  $(".del_login").click(function(e) {
+              layui.use('layer', function(){
+                var layer = layui.layer;
+                parent.layer.confirm('<center>确定退出？<br>下次将不会自动登陆</center>', {
+                  btn: ['确定|·_·)','取消'],
+                  title: false,
+                  btnAlign: 'c',
+                  closeBtn: 0,
+                }, function(){
+                  location.href="del_login.php";
+                },function(){
+                  
+                    });
+                  });
+                });
+              });
+</script>
+  <?
+  //报修成功
+  if(isset($_GET['iok']))
+  {
+    ?>
+      <script>
+    $(document).ready(function(e) {
+                  layui.use('layer', function(){
+                    var layer = layui.layer;
+                    parent.layer.confirm('<center>提交成功<br>【报修查询】查看报修</center>', {
+                      btn: ['前往|·_·)','菜单'],
+                      title: false,
+                      btnAlign: 'c',
+                      closeBtn: 0,
+                    }, function(){
+                      location.href="INDEX/gwbx/gwbxcx_index.php";
+                    },function(){
+                      location.href="stu_i.php";
+                      });
+                    });
+                    
+                  });
+                
+    </script>
+    <?
+  }
 if($_SESSION['utype']=="学生")
 {
 	?>
