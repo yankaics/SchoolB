@@ -69,11 +69,11 @@ $time=date("G");
 						{
 							echo "下午好";
 						}
-						if($time>=18 && $time<=24)
+						if($time>=18 && $time<=23)
 						{
 							echo "晚上好";
 						}
-						if($time>=1 && $time<=4)
+						if($time>=0 && $time<=4)
 						{
 							echo "夜深了";
 						}

@@ -22,7 +22,22 @@
 	?>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item ">
-          <a href="../../stu_i.php"><div class="xz-index">菜单</div></a>
+          <?
+          if($_SESSION['utype']=="教师")
+          {
+          ?>
+          <a href="../../tea_i.php">
+          <div class="xz-index">菜单</div></a>
+          <?
+          }
+          else
+          {
+          ?>
+          <a href="../../stu_i.php">
+          <div class="xz-index">菜单</div></a>
+          <?
+          }
+          ?>
       </li>
     </ul>
   </div>
