@@ -171,6 +171,8 @@ $da1=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
 			
 			if($mysql['upass']===$spassid && $user===$row[6])
 			{
+				//账号
+				$_SESSION['txh']=$row[6];
 				//姓名
 				$_SESSION['txm']=$row[1];
 				//电话
