@@ -9,6 +9,7 @@
 	<!--JSQ-->
 	<script src="../../JSQ/jquery-2.1.1.min.js"></script>
 	<script src="../../JSQ/index.js"></script>
+
 	<title>报修详情</title>
 </head>
 
@@ -74,7 +75,7 @@
                      </div>
                     <table class="layui-table">
                       <colgroup>
-                        <col width="110">
+                        <col width="80">
                         <col width="60">
                         <col >
                       </colgroup>
@@ -138,8 +139,8 @@
                             else
                             {
                             ?>
-                            <a href="upycl.php?wj=<?=$rowwj[1]?>&id=<?=$_GET['id']?>"><button  onclick="return confirm('确定<?=$rowwj[1]?>已处理？');" type="button" class="layui-btn">完成</button></a>
-                            <button type="button" class="layui-btn bncl_btn<?=$rowwj[0]?>">暂停</button>
+                            <a href="upycl.php?wj=<?=$rowwj[1]?>&id=<?=$_GET['id']?>"><button  onclick="return confirm('确定<?=$rowwj[1]?>已处理？');" type="button" class="layui-btn layui-btn-sm">完成</button></a>
+                            <button type="button" class="layui-btn layui-btn-sm bncl_btn<?=$rowwj[0]?>">暂停</button>
                             
                             <?
                             }
@@ -178,7 +179,7 @@
 							  var layer = layui.layer;
 								//原因
 								$(".bncl_btn<?=$rowwj1[0]?>").click(function(e) {
-                            	layer.prompt({
+                            	parent.layer.prompt({
 								  formType: 2,
 								  title: '不能处理的原因',
 								  value:'<?=$rowwj1[5]?>'
@@ -193,7 +194,7 @@
 									{
 										$(".tresm").val(value);
 										$("#tjyy_a<?=$rowwj1[0]?>").submit();
-										layer.close(index);
+										parent.layer.close(index);
 									}
 										
 								  
@@ -284,6 +285,8 @@
   	</div>
   </div>
 </div> 
-            
+<script type="text/javascript">
+
+</script> 
 </body>
 </html>
