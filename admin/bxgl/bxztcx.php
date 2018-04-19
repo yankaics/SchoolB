@@ -152,7 +152,7 @@ if($row12=mysql_fetch_row($rs12))
   <?
   	if(isset($_GET['bncl']))
 	{
-		$sqlre="select a.s_class,a.s_addr,b.* from sch_repair_re a,sch_repair_rea b where b.s_jg='不能处理' and a.s_name=b.s_name and a.s_add=b.s_add and a.s_phone=b.s_phone and a.s_settime=b.s_time order by s_settime asc";
+		$sqlre="select a.sid,a.s_class,a.s_addr,b.* from sch_repair_re a,sch_repair_rea b where b.s_jg='不能处理' and a.s_name=b.s_name and a.s_add=b.s_add and a.s_phone=b.s_phone and a.s_settime=b.s_time order by s_settime asc";
 		$b='bncl=';
 	}
 	else
@@ -181,17 +181,31 @@ if($row12=mysql_fetch_row($rs12))
     if(isset($_GET['bncl']))
 	{
 		?>
-    <td align="center">不能处理</td>
-    <td align="center"><?=$rowre[9].$rowre[1]?></td>
-    <td align="center"><?=$rowre[11]?></td>
+    <td align="center">
+      <?php
+        if($rowre[7]!="零星维修")
+        {
+      ?>
+      <a href="bxztcx.php?lxwx=<?=$rowre[0]?>" onclick="return confirm('确定转入？');"><button type="button" name="lxwx" class="btn btn-default">转<零星维修>处理</button></a>
+      <?
+        }
+        else
+        {
+          echo "零星维修处理中";
+        }
+      ?>
+
+    </td>
+    <td align="center"><?=$rowre[10].$rowre[2]?></td>
     <td align="center"><?=$rowre[12]?></td>
-    <td align="center"><?=$rowre[0]?></td>
-    <td align="center"><?=$rowre[3]?></td>
+    <td align="center"><?=$rowre[13]?></td>
+    <td align="center"><?=$rowre[1]?></td>
     <td align="center"><?=$rowre[4]?></td>
-    <td align="center" class="text-danger"><?=$rowre[7]?></td>
-    <td align="center"><?=$rowre[14]?></td>
-    <td align="center"><?=$rowre[6]?></td>
-    <td align="center"><?=$rowre[8]?></td>
+    <td align="center"><?=$rowre[5]?></td>
+    <td align="center" class="text-danger"><?=$rowre[8]?></td>
+    <td align="center"><?=$rowre[15]?></td>
+    <td align="center"><?=$rowre[7]?></td>
+    <td align="center"><?=$rowre[9]?></td>
         <?
 	}
 	else
@@ -269,6 +283,39 @@ if(isset($_GET['wjxq']))
 </div>
     </p>
 </div>
+<!--转<零星维修>处理-->
+<?php
+if(isset($_GET['lxwx']))
+{
+  // $selectsql="select s_schid,s_settime from sch_repair_re where sid='".$_GET['lxwx']."'";
+  // $selectrs=mysql_query($selectsql,$con);
+  // if($selectrow=mysql_fetch_row($selectrs))
+  // {
+  //   $tid=$selectrow[0];
+  //   $ttime=$selectrow[1];
+  // }
+  $sql="update sch_repair_re as a,sch_repair_rea as b set a.s_repair='零星维修',b.s_repair='零星维修' where a.sid='".$_GET['lxwx']."' and a.s_settime=b.s_time and a.s_schid=b.s_schid";
+  $rs=mysql_query($sql,$con);
+  if($rs>0)
+  {
+    ?>
+    <script type="text/javascript">
+      alert("已转入<零星维修>");
+      location.href="bxztcx.php?bncl";
+    </script>
+    <?
+
+  }
+  else
+  {
+    ?>
+    <script type="text/javascript">
+      alert("转入<零星维修>失败，请联系技术人员");
+    </script>
+    <?
+  }
+}
+?>
 </center>
 </body>
 </html>
