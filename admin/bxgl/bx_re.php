@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 	<script src="../../JSQ/jquery-2.1.1.min.js"></script>
 	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
@@ -60,10 +60,18 @@ include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
 include("../adminse/admin_se.php");
+//必须相对的定义地点和地点代码，比如宿舍=ss
+$arrayall=array('宿舍','食堂','运动场','图书馆','综合楼','教学楼','实训楼','其他区域','超市','洗澡堂','锅炉房');
+$arrayalldm=array('ss','st','ydc','tsg','zhl','jxl','sxl','qtqy','cs','xzt','glf');
 ?>
 <div class="ly">
   <h2>维修前物件</h2> <span class="input-group-addon"><p>选择日期，再选择地点进行统计</p><p>时间是用户报修的时间</p><input type="button" class="btn btn-default" id="btnPrint" 
-onclick="onprint()" value="打印本页" /></span>
+onclick="onprint()" value="打印本页" />
+    <form action="" method="get" name="bxre">
+
+    </form>
+
+    </span>
     <p>
     <form action="" method="get" name="bxre">
     	<p>
@@ -88,18 +96,18 @@ onclick="onprint()" value="打印本页" /></span>
     	  <input name="da1" type="date" value="<?=$da1?>"/>
     	  至<input name="da2" type="date" value="<?=$da2?>"/>
    	  <p>
-      	<button type="submit" name="all" class="btn btn-default">所有</button>
-   	    <button type="submit" name="ss" class="btn btn-default">宿舍</button>
-          <button type="submit" name="st" class="btn btn-default">食堂</button>
-          <button type="submit" name="ydc" class="btn btn-default">运动场</button>
-          <button type="submit" name="tsg" class="btn btn-default">图书馆</button>
-          <button type="submit" name="zhl" class="btn btn-default">综合楼</button>
-          <button type="submit" name="jxl" class="btn btn-default">教学楼</button>
-          <button type="submit" name="sxl" class="btn btn-default">实训楼</button>
-          <button type="submit" name="qtqy" class="btn btn-default">其他区域</button>
-          <button type="submit" name="cs" class="btn btn-default">超市</button>
-          <button type="submit" name="xzt" class="btn btn-default">洗澡堂</button>
-          <button type="submit" name="glf" class="btn btn-default">锅炉房</button>
+      	<button type="submit" name="all" class="btn btn-default">所有详情</button>
+        <button type="submit" name="alltj" class="btn btn-default">所有统计</button>
+        <p>
+        <?php
+            for($i=0;$i<count($arrayall);$i++)
+            {
+        ?>
+   	        <button type="submit" name="<?=$arrayalldm[$i]?>" class="btn btn-default"><?=$arrayall[$i]?></button>
+        <?php
+            }
+        ?>
+        </p>
 	  </p>
         
     </form>
@@ -108,10 +116,10 @@ onclick="onprint()" value="打印本页" /></span>
     
     <div class="container">
 	<div class="row clearfix">
-		<div class="col-md-4 column">
+		<div class="col-md-2 column">
 		</div>
-		<div class="col-md-4 column" id="dy" style="font-weight:700;">
-        <h1 align="center">维修前所需物价单</h1>
+		<div class="col-md-8 column" id="dy" style="font-weight:700;">
+        <h1 align="center">维修前所需清单</h1>
         <h5 align="center">物件报修时间：
         <?
 		if($da1==$da2)
@@ -136,398 +144,147 @@ onclick="onprint()" value="打印本页" /></span>
 		{
 			if(isset($_GET['all']))
 			{
-				?>
-				<!--锅炉房-->
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='锅炉房' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					if($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <h2>锅 炉 房</h2>
-                <table border="1" class="table" cellspacing="0" cellpadding="10">
                 
-                <tr class="top">
-                    <td align="center">物件</td>
-                    <td align="center">数量</td>
-                </tr>
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='锅炉房' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					while($rowa=mysql_fetch_row($rsa))
-					{
+                for($i=0;$i<count($arrayall);$i++)
+                {
+
 				?>
-                <tr class="top">
-                    <td align="center"><?=$rowa[1]?></td>
-                    <td align="center"><?=$rowa[0]?></td>
-                </tr>
-                <?
-					}
-				?>
-                </table>
-                <?
-					}
-				?>
-                <!--宿舍-->
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='宿舍' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					if($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <h2>宿 舍</h2>
-                <table border="1" class="table" cellspacing="0" cellpadding="10">
+    				
+                    <?
+                    //详情
+                    $sqlrepair="select s_name from sch_admin where s_position='维修员'";
+                    $rsrepair=mysql_query($sqlrepair,$con);
+                    while($rowrepair=mysql_fetch_row($rsrepair))
+                    {
+
+                        $sqla="select sum(s_num),s_tt,s_repair from sch_repair_rea where s_jg='未处理' and s_repair!='未分配' and s_add='".$arrayall[$i]."' and s_repair='".$rowrepair[0]."' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt,s_repair";
+        				$rsa=mysql_query($sqla,$con);
+        					if($rowa=mysql_fetch_row($rsa))
+        					{
+
+        			?>
+                        <h2><?php echo $arrayall[$i]."：".$rowa[2]?></h2>
+                        <table border="1" class="table" cellspacing="0" cellpadding="10">
+                        
+                        <tr class="top">
+                            <td align="center">地点</td>
+                            <td align="center">姓名</td>
+                            <td align="center">物件</td>
+                            <td align="center">数量</td>
+                            <td align="center">报修时间</td>
+                        </tr>
+                        <?
+                            $sqla1="select s_settime,s_add,s_schid,s_addr from sch_repair_re where s_jg='未处理' and s_repair!='未分配' and s_add='".$arrayall[$i]."' and s_repair='".$rowa[2]."' and s_settime>='".$da1."-00:00:00' and s_settime<='".$da2."-23:59:59'";
+        				    $rsa1=mysql_query($sqla1,$con);
+        					while($rowa1=mysql_fetch_row($rsa1))
+        					{
+                                $sqlr="select s_name,s_time,s_tt,s_num from sch_repair_rea where s_jg='未处理' and s_repair!='未分配' and s_add='".$rowa1[1]."' and s_repair='".$rowa[2]."' and s_schid='".$rowa1[2]."' and s_time='".$rowa1[0]."' ";
+                                $rsr=mysql_query($sqlr,$con);
+                                while($rowr=mysql_fetch_row($rsr))
+                                {
+                                    
+
+        				?>
+                        <tr class="top">
+                            <td align="center"><?=$arrayall[$i].$rowa1[3]?></td>
+                            <td align="center"><?=$rowr[0]?></td>
+                            <td align="center"><?=$rowr[2]?></td>
+                            <td align="center"><?=$rowr[3]?></td>
+                            <td align="center"><?=$rowa1[0]?></td>
+                        </tr>
+                        <?
+                                         
+                                }
+        					}
+        				?>
+                        </table>
+                    <?
+    					   }
+                    }
+
+                    //所有
+                    $sqla="select sum(s_num),s_tt,s_repair from sch_repair_rea where s_jg='未处理' and s_repair!='未分配' and s_add='".$arrayall[$i]."' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+                        $rsa=mysql_query($sqla,$con);
+                            if($rowa=mysql_fetch_row($rsa))
+                            {
+                    ?>
+                        <h2><?php echo '<'.$arrayall[$i].'总计>'?></h2>
+                        <table border="1" class="table" cellspacing="0" cellpadding="10">
+                        
+                        <tr class="top">
+                            <td align="center">物件</td>
+                            <td align="center">数量</td>
+                        </tr>
+                        <?
+                       $sqla="select sum(s_num),s_tt,s_repair from sch_repair_rea where s_jg='未处理' and s_repair!='未分配' and s_add='".$arrayall[$i]."' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+                        $rsa=mysql_query($sqla,$con);
+                            while($rowa=mysql_fetch_row($rsa))
+                            {
+                        ?>
+                        <tr class="top">
+                            <td align="center"><?=$rowa[1]?></td>
+                            <td align="center"><?=$rowa[0]?></td>
+                        </tr>
+                        <?
+                            }
+                        ?>
+                        </table>
+                        <hr style="background-color:#000;height: 1px;border:none;"/>
+                    <?
+                           }
+    				?>
                 
-                <tr class="top">
-                    <td align="center">物件</td>
-                    <td align="center">数量</td>
-                </tr>
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='宿舍' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					while($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <tr class="top">
-                    <td align="center"><?=$rowa[1]?></td>
-                    <td align="center"><?=$rowa[0]?></td>
-                </tr>
-                <?
-					}
-				?>
-                </table>
-                <?
-					}
-				?>
-                <!--食堂-->
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='食堂' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					if($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <h2>食 堂</h2>
-                <table border="1" class="table" cellspacing="0" cellpadding="10">
-                
-                <tr class="top">
-                    <td align="center">物件</td>
-                    <td align="center">数量</td>
-                </tr>
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='食堂' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					while($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <tr class="top">
-                    <td align="center"><?=$rowa[1]?></td>
-                    <td align="center"><?=$rowa[0]?></td>
-                </tr>
-                <?
-					}
-				?>
-                </table>
-                <?
-					}
-				?>
-                <!--运动场-->
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='运动场' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					if($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <h2>运 动 场</h2>
-                <table border="1" class="table" cellspacing="0" cellpadding="10">
-                
-                <tr class="top">
-                    <td align="center">物件</td>
-                    <td align="center">数量</td>
-                </tr>
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='运动场' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					while($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <tr class="top">
-                    <td align="center"><?=$rowa[1]?></td>
-                    <td align="center"><?=$rowa[0]?></td>
-                </tr>
-                <?
-					}
-				?>
-                </table>
-                <?
-					}
-				?>
-                <!--图书馆-->
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='图书馆' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					if($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <h2>图 书 馆</h2>
-                <table border="1" class="table" cellspacing="0" cellpadding="10">
-                
-                <tr class="top">
-                    <td align="center">物件</td>
-                    <td align="center">数量</td>
-                </tr>
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='图书馆' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					while($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <tr class="top">
-                    <td align="center"><?=$rowa[1]?></td>
-                    <td align="center"><?=$rowa[0]?></td>
-                </tr>
-                <?
-					}
-				?>
-                </table>
-                <?
-					}
-				?>
-                <!--综合楼-->
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='综合楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					if($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <h2>综 合 楼</h2>
-                <table border="1" class="table" cellspacing="0" cellpadding="10">
-                
-                <tr class="top">
-                    <td align="center">物件</td>
-                    <td align="center">数量</td>
-                </tr>
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='综合楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					while($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <tr class="top">
-                    <td align="center"><?=$rowa[1]?></td>
-                    <td align="center"><?=$rowa[0]?></td>
-                </tr>
-                <?
-					}
-				?>
-                </table>
-                <?
-					}
-				?>
-                <!--教学楼-->
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='教学楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					if($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <h2>教 学 楼</h2>
-                <table border="1" class="table" cellspacing="0" cellpadding="10">
-                
-                <tr class="top">
-                    <td align="center">物件</td>
-                    <td align="center">数量</td>
-                </tr>
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='教学楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					while($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <tr class="top">
-                    <td align="center"><?=$rowa[1]?></td>
-                    <td align="center"><?=$rowa[0]?></td>
-                </tr>
-                <?
-					}
-				?>
-                </table>
-                <?
-					}
-				?>
-				<!--其他区域-->
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='其他区域' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					if($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <h2>其 他 区 域</h2>
-                <table border="1" class="table" cellspacing="0" cellpadding="10">
-                
-                <tr class="top">
-                    <td align="center">物件</td>
-                    <td align="center">数量</td>
-                </tr>
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='其他区域' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					while($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <tr class="top">
-                    <td align="center"><?=$rowa[1]?></td>
-                    <td align="center"><?=$rowa[0]?></td>
-                </tr>
-                <?
-					}
-				?>
-                </table>
-                <?
-					}
-				?>
-				<!--超市-->
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='超市' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					if($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <h2>超 市</h2>
-                <table border="1" class="table" cellspacing="0" cellpadding="10">
-                
-                <tr class="top">
-                    <td align="center">物件</td>
-                    <td align="center">数量</td>
-                </tr>
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='超市' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					while($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <tr class="top">
-                    <td align="center"><?=$rowa[1]?></td>
-                    <td align="center"><?=$rowa[0]?></td>
-                </tr>
-                <?
-					}
-				?>
-                </table>
-                <?
-					}
-				?>
-				<!--洗澡堂-->
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='洗澡堂' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					if($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <h2>洗 澡 堂</h2>
-                <table border="1" class="table" cellspacing="0" cellpadding="10">
-                
-                <tr class="top">
-                    <td align="center">物件</td>
-                    <td align="center">数量</td>
-                </tr>
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='洗澡堂' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					while($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <tr class="top">
-                    <td align="center"><?=$rowa[1]?></td>
-                    <td align="center"><?=$rowa[0]?></td>
-                </tr>
-                <?
-					}
-				?>
-                </table>
-                <?
-					}
-				?>
-                <!--实训楼-->
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='实训楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					if($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <h2>实 训 楼</h2>
-                <table border="1" class="table" cellspacing="0" cellpadding="10">
-                
-                <tr class="top">
-                    <td align="center">物件</td>
-                    <td align="center">数量</td>
-                </tr>
-                <?
-                $sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='实训楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				$rsa=mysql_query($sqla,$con);
-					while($rowa=mysql_fetch_row($rsa))
-					{
-				?>
-                <tr class="top">
-                    <td align="center"><?=$rowa[1]?></td>
-                    <td align="center"><?=$rowa[0]?></td>
-                </tr>
-                <?
-					}
-				?>
-                </table>
                 <?
 				}
 			}
+            else if(isset($_GET['alltj']))
+            {
+                for($i=0;$i<count($arrayall);$i++)
+                {
+                //所有
+                    $sqla="select sum(s_num),s_tt,s_repair from sch_repair_rea where s_jg='未处理' and s_repair!='未分配' and s_add='".$arrayall[$i]."' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+                        $rsa=mysql_query($sqla,$con);
+                            if($rowa=mysql_fetch_row($rsa))
+                            {
+                    ?>
+                        <h2><?php echo '<'.$arrayall[$i].'总计>'?></h2>
+                        <table border="1" class="table" cellspacing="0" cellpadding="10">
+                        
+                        <tr class="top">
+                            <td align="center">物件</td>
+                            <td align="center">数量</td>
+                        </tr>
+                        <?
+                       $sqla="select sum(s_num),s_tt,s_repair from sch_repair_rea where s_jg='未处理' and s_repair!='未分配' and s_add='".$arrayall[$i]."' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+                        $rsa=mysql_query($sqla,$con);
+                            while($rowa=mysql_fetch_row($rsa))
+                            {
+                        ?>
+                        <tr class="top">
+                            <td align="center"><?=$rowa[1]?></td>
+                            <td align="center"><?=$rowa[0]?></td>
+                        </tr>
+                        <?
+                            }
+                        ?>
+                        </table>
+                    <?
+                    }
+                }
+
+            }
 			else
 			{
 		?>
         	<h2>
 			<?
-			if(isset($_GET['ss']))
-			{
-				echo "宿 舍";
+            for($i=0;$i<count($arrayall);$i++)
+            {
+    			if(isset($_GET[$arrayalldm[$i]]))
+    			{
+    				echo $arrayall[$i];
+                }
 			}
-			else if(isset($_GET['st']))
-			{
-				echo "食 堂";
-			}
-			else if(isset($_GET['ydc']))
-			{
-				echo "运 动 场";
-			}
-			else if(isset($_GET['tsg']))
-			{
-				echo "图 书 馆";
-			}
-			else if(isset($_GET['zhl']))
-			{
-				echo "综 合 楼";
-			}
-			else if(isset($_GET['jxl']))
-			{
-				echo "教 学 楼";
-			}
-			else if(isset($_GET['qtqy']))
-			{
-				echo "其 他 区 域";
-			}
-			else if(isset($_GET['cs']))
-			{
-				echo "超 市";
-			}
-			else if(isset($_GET['xzt']))
-			{
-				echo "洗 澡 堂";
-			}
-			else if(isset($_GET['glf']))
-			{
-				echo "锅 炉 房";
-			}
-			else if(isset($_GET['sxl']))
-			{
-				echo "实 训 楼";
-			}
-			else
 			?>
             </h2>
             <table border="1" class="table" cellspacing="0" cellpadding="10">
@@ -536,88 +293,17 @@ onclick="onprint()" value="打印本页" /></span>
                     <td align="center">数量</td>
                 </tr>
 				<?
-                $da1=$_GET['da1'];
-				$da2=$_GET['da2'];
-				if(isset($_GET['glf']))
-				{
-					
-					$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='锅炉房' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-				}
-				else
-				{
-					if(isset($_GET['xzt']))
-					{
-						
-						$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='洗澡堂' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-					}
-					else
-					{
-						if(isset($_GET['cs']))
-						{
-							
-							$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='超市' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-						}
-						else
-						{
-							if(isset($_GET['qtqy']))
-							{
-								
-								$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='其他区域' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-							}
-							else
-							{
-								if(isset($_GET['ss']))
-								{
-									
-									$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='宿舍' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-								}
-								else
-								{
-									if(isset($_GET['st']))
-									{
-									$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='食堂' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-									}
-									else
-									{
-										if(isset($_GET['ydc']))
-										{
-										$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='运动场' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-										}
-										else
-										{
-											if(isset($_GET['tsg']))
-											{
-											$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='图书馆' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-											}
-											else
-											{
-												if(isset($_GET['zhl']))
-												{
-												$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='综合楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-												}
-												else
-												{
-													if(isset($_GET['jxl']))
-													{
-													$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='教学楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-													}
-													else
-													{
-														if(isset($_GET['sxl']))
-														{
-														$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='实训楼' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
-														}
-														
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+                    $da1=$_GET['da1'];
+    				$da2=$_GET['da2'];
+                    for($i=0;$i<count($arrayall);$i++)
+                    {
+        				if(isset($_GET[$arrayalldm[$i]]))
+        				{
+        					
+        					$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='".$arrayall[$i]."' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
+        				}
+                    
+
 					$rsa=mysql_query($sqla,$con);
 					while($rowa=mysql_fetch_row($rsa))
 					{
@@ -626,8 +312,8 @@ onclick="onprint()" value="打印本页" /></span>
                     <td align="center"><?=$rowa[1]?></td>
                     <td align="center"><?=$rowa[0]?></td>
                 </tr>
-        <?			
-					}	
+        <?			}
+				    }	
 		}
 		
 		?>
@@ -640,8 +326,9 @@ onclick="onprint()" value="打印本页" /></span>
 		</div>
         <?
 		}
+
 		  ?>
-		<div class="col-md-4 column">
+		<div class="col-md-2 column">
 		</div>
 	</div>
 </div>
