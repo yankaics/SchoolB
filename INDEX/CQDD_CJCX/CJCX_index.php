@@ -39,8 +39,8 @@
     $formvars["txtStudentName"] = $_SESSION['txm'];
     $formvars["__EVENTTARGET"] = ""; 
     $formvars["__EVENTARGUMENT"] = "";
-    $formvars["__VIEWSTATE"] = "/wEPDwULLTEyODE2MTMzNjUPZBYCAgMPZBYGAhYPEGRkFgBkAhgPPCsAEQBkAhoPPCsAEQEBEBYAFgAWAGQYAgUHZ3ZTY29yZQ9nZAUIZ3ZDcmVkaXQPZ2Q0vZ9kcrUU+TZE61Bo6Cj1/MAPlBQAKHwTNWddmQ6OlA==";
-    $formvars["__EVENTVALIDATION"] = "/wEWBgLlvo2iCALOj4fxBwL9p/noCwLdkpmPAQKLk6mvAgKXt+TzAXM3720UDhWcPUtOLX8Il0quPlehyyQNYIBW67NbdoWi";
+    $formvars["__VIEWSTATE"] = "/wEPDwUJODIwOTI2MDg0D2QWAgIDD2QWCAIWDxBkZBYAZAIYDw8WBB4EVGV4dAUnMjAxNy0yMDE45a2m5bm056ys5LqM5a2m5pyf6ICD6K+V6K6h5YiSHgtOYXZpZ2F0ZVVybAVCSFRUUDovL3d3dy5jcXNlYS5jb20vRmlsZXMvUmVzb3VyY2VEb3dubG9hZC8yMDE4LTQtMjQtMTQtNTctMTYueGxzZGQCGg88KwARAGQCHA88KwARAQEQFgAWABYAZBgCBQdndlNjb3JlD2dkBQhndkNyZWRpdA9nZE3dn+l8mobv9M6sSEyTQi7GO8CkGvKM9Y+wRyy8XLbe";
+    $formvars["__EVENTVALIDATION"] = "/wEWBgKavrjxCQLOj4fxBwL9p/noCwLdkpmPAQKLk6mvAgKXt+TzAeusENGeEABywYcu8MMn25M3dkw4+FCWUhvhXMiynkAk";
     $formvars["btnOK"] = "确定";
     //抓取地址
     $action = "http://www.cqsea.com/cjcx/";  
@@ -54,17 +54,21 @@
     $data=$snoopy->results;   
     //单独取出数据
     preg_match_all('#<td>(.+?)</td>#',$data,$m);
+    //查看取出的数组
     //print_r($m);
   ?>
 <div class="layui-row">
   <div class="layui-col-md4 layui-col-md-offset4 layui-col-xs-12">
     <br><br id="xtips"><br>
+
     <?
       if(isset($m[0][1]))
       {
         //科目数量,统计多维数组
         $count_km=(count($m[0],true)-8)/8;
     ?>
+    <p>官方链接：<a target='_blank' href='http://www.cqsea.com/cjcx/'>点击</a></p>
+    <p>校园宝抓取修复时间：20180425</p>
     <table class="layui-table">
       <colgroup>
         <col width="600">
@@ -98,10 +102,10 @@
             }
         ?>
         <tr bgcolor="<?=$trbgcolor?>">
-          <?=$m[0][13+12*$i]?>
-          <?=$m[0][16+12*$i]?>
-          <?=$m[0][17+12*$i]?>
-          <?=$m[0][18+12*$i]?>
+          <?=$m[0][5+12*$i]?>
+          <?=$m[0][8+12*$i]?>
+          <?=$m[0][9+12*$i]?>
+          <?=$m[0][10+12*$i]?>
         </tr>
         <?
           }
@@ -110,10 +114,10 @@
     </table>
 
     <script type="text/javascript">
-      layui.use('layer', function(){
-      var layer = layui.layer;
-      layer.tips('喏~拿好你的成绩单', '#xtips');
-    });
+    //   layui.use('layer', function(){
+    //   var layer = layui.layer;
+    //   layer.tips('喏~拿好你的成绩单', '#xtips');
+    // });
     </script> 
     <?
       }
