@@ -38,6 +38,17 @@
                     <li class="layui-timeline-item">
                         <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                         <div class="layui-timeline-content layui-text">
+                          <h3 class="layui-timeline-title">2018-4-25</h3>
+                          <p>增加了 报修状态查询中不能处理可转入<零星维修>进行维修</p>
+                          <p>修改了报修前统计，所有详情：统计所选报修时间内，所有的报修详情。所以统计：统计所选报修时间内所有地区物件</p>
+                          <p>修复了维修员任务中不能点击暂停后不能输入的bug</p>
+                          <p>优化了维修员小屏手机的使用体验</p>
+                        </div>
+                      </li>
+
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                        <div class="layui-timeline-content layui-text">
                           <h3 class="layui-timeline-title">2018-1-26</h3>
                           <p>修复了已知BUG</p>
                           <p>新增了<账号管理>-<学生管理>&amp;<增加宿管员>&amp;<管理宿管员> </p>
