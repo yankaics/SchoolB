@@ -15,10 +15,10 @@
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
     <div class="layui-logo"><img class="layui-icon" src="UI/logo/logo-32-t.png"></div>
-	<?
-	include"PHP/riqi.php";
+  <?
+  include"PHP/riqi.php";
   include"SQL/db/db.php";
-	?>
+  ?>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item ">
         <?
@@ -62,14 +62,15 @@
       <fieldset class="layui-elem-field">
           <legend style="color:#009688;">我们</legend>
           <div class="layui-field-box">
-            大朋友：罗军老师
+            大朋友：罗军
             <br>小朋友：胡珂 <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=YQAMDhIJFAoEIRAQTwIODA" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/>主题：校园宝+你的主题</a><br><br>&copy;
-      			<?
-      			if($rqY>2017)
-      				echo "2017-".$rqY;
-      			else
-      				echo "2017";
+            <?
+            if($rqY>2017)
+              echo "2017-".$rqY;
+            else
+              echo "2017";
             ?>
+    <span><br>重庆广德学校后勤服务有限公司.版权所有</span>
           </div>
         </fieldset>
          
@@ -78,6 +79,24 @@
           <div class="layui-field-box">
             <ul class="layui-timeline">
             
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
+                <div class="layui-timeline-content layui-text">
+                  <h3 class="layui-timeline-title">2018-4-28</h3>
+                  <p>修复了公物报修中的电话填写错误bug</p>
+                  <p>修复了报修查询中已处理查询电话显示错误</p>
+                  <p>全面修改了教师界面，并在学生和教师界面中增加小细节</p>
+                </div>
+              </li>
+
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
+                <div class="layui-timeline-content layui-text">
+                  <h3 class="layui-timeline-title">2018-4-17</h3>
+                  <p>校园宝正式在学生人群中测试使用</p>
+                </div>
+              </li>
+
             <li class="layui-timeline-item">
                 <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
                 <div class="layui-timeline-content layui-text">
