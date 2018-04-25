@@ -303,7 +303,7 @@ onclick="onprint()" value="打印本页" />
         					$sqla="select sum(s_num),s_tt from sch_repair_rea where s_jg='未处理' and s_add='".$arrayall[$i]."' and s_time>='".$da1."-00:00:00' and s_time<='".$da2."-23:59:59' group by s_tt";
         				}
                     
-
+                    }
 					$rsa=mysql_query($sqla,$con);
 					while($rowa=mysql_fetch_row($rsa))
 					{
@@ -313,7 +313,7 @@ onclick="onprint()" value="打印本页" />
                     <td align="center"><?=$rowa[0]?></td>
                 </tr>
         <?			}
-				    }	
+				    	
 		}
 		
 		?>
