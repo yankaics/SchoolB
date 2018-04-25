@@ -166,7 +166,7 @@ function checkadd(){
 		cadd=stu2.tadd.value;
 		caddr=stu2.taddr.value;
 		cphone=stu2.tphone.value;
-		var yz=/1(3\d|47|5((?!4)\d)|7(0|1|[6-8])|8\d)\d{8,8}/;
+		var yz=/^(\d{11}|\d{11})$/;
 			//不能空
 			if(caddr=="")
 			{

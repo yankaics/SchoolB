@@ -21,6 +21,7 @@
 -->
 
 <title>Hi-老师</title>
+</head>
 <body bgcolor="#F0F0F0">
 <!--导航-->
 <div class="layui-layout layui-layout-admin">
