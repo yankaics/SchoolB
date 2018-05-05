@@ -85,10 +85,23 @@
 
 <div class="chats">
 <p style="padding-left: 20px; padding-top: 20px;">已进入：<?=$croom?>房间</p>
-<?php
-	//在chats内局部刷新	
-	$chats->chat_say();
-?>
+	<?php
+		//在chats内局部刷新
+		//如果没有文件则创建
+		if(!file_exists($croom.'.xml'))
+		{
+			$chats->chat_say("name",0);
+		}
+		//循环输出
+		for($i=$chats->count_p()-1;$i>0;$i--)
+		{
+			$cname=$chats->chat_say("name",$i); //姓名
+			$ctime=$chats->chat_say("chattime",$i); //时间
+			$cnr=$chats->chat_say("chatnr",$i); //内容
+			echo '<div class="main "> <div class="ctime">'.$ctime.'</div> <div class="cname">'.$cname.'：</div> <div class="cnr">'.$cnr.'</div> </div>';
+		}
+		
+	?>
 </div>
 
 <script>
