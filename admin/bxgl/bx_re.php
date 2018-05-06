@@ -82,7 +82,12 @@ onclick="onprint()" value="打印本页" />
 			}
 			else
 			{
-				$da1=$rqY.'-'.$rqmm.'-'.$rqd;
+                $sqla="select s_settime from sch_repair_re where s_jg='未处理' and s_repair!='未分配' order by s_settime asc";
+                $rsa=mysql_query($sqla,$con);
+                if($rowa=mysql_fetch_row($rsa))
+                {
+				    $da1=substr($rowa[0],0,10);
+                }
 			}
 			if(isset($_GET['da2']))
 		  	{
