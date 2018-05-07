@@ -66,7 +66,13 @@ body{ padding-bottom:300px;};
                           <input type="text" name="tphone" required  lay-verify="required" placeholder="电话" maxlength="11" autocomplete="off" class="layui-input" value="<?=$_SESSION['tdh']?>">
                         </div>
                     </div>
-                	
+                	<?
+                	//如果是教师默认选择
+                	function js()
+                	{
+                		if($_SESSION['utype']=="教师") echo "selected";
+                	}
+                	?>
                     <div class="layui-form-item">
                         <label class="layui-form-label">地点</label>
                         <div class="layui-input-block">
@@ -77,7 +83,8 @@ body{ padding-bottom:300px;};
                               <option value="图书馆">图书馆</option>
                               <option value="实训楼">实训楼</option>
                               <option value="教学楼">教学楼</option>
-                              <option value="综合楼">综合楼</option>
+                              <option value="综合楼" <?=js();?> >综合楼</option>
+                              <option value="6号楼">6号楼</option>
                               <option value="其他区域">其他区域</option>
                               <option value="超市">超市</option>
                               <option value="洗澡堂">洗澡堂</option>
