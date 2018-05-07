@@ -60,9 +60,7 @@ include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
 include("../adminse/admin_se.php");
-//必须相对的定义地点和地点代码，比如宿舍=ss
-$arrayall=array('宿舍','食堂','运动场','图书馆','综合楼','教学楼','实训楼','其他区域','超市','洗澡堂','锅炉房','6号楼');
-$arrayalldm=array('ss','st','ydc','tsg','zhl','jxl','sxl','qtqy','cs','xzt','glf','lhl');
+include("address.php");//地点
 ?>
 <div class="ly">
   <h2>维修前物件</h2> <span class="input-group-addon"><p>选择日期，再选择地点进行统计</p><p>时间是用户报修的时间</p><input type="button" class="btn btn-default" id="btnPrint" 

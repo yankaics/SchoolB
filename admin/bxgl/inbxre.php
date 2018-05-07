@@ -47,70 +47,19 @@ include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
 include("../adminse/admin_se.php");
+include("address.php");//地点
 		
 		
-			$t='ss';
-			$tt='宿舍';
-        if(isset($_GET['ss']))
-		{
-		  	$t='ss';
-			$tt='宿舍';
-		}
-		if(isset($_GET['ydc']))
-		{
-		  	$t='ydc';
-			$tt='运动场';
-		}
-		if(isset($_GET['tsg']))
-		{
-		  	$t='tsg';
-			$tt='图书馆';
-		}
-		if(isset($_GET['zhl']))
-		{
-			$t='zhl';
-			$tt='综合楼';
-		}
-		if(isset($_GET['jxl']))
-		{
-		  	$t='jxl';
-			$tt='教学楼';
-		}
-		if(isset($_GET['st']))
-		{
-		  	$t='st';
-			$tt='食堂';
-		}
-		if(isset($_GET['sxl']))
-		{
-		  	$t='sxl';
-			$tt='实训楼';
-		}
-		if(isset($_GET['qtqy']))
-		{
-		  	$t='qtqy';
-			$tt='其他区域';
-		}
-		if(isset($_GET['cs']))
-		{
-		  	$t='cs';
-			$tt='超市';
-		}
-		if(isset($_GET['xzt']))
-		{
-		  	$t='xzt';
-			$tt='洗澡堂';
-		}
-		if(isset($_GET['glf']))
-		{
-		  	$t='glf';
-			$tt='锅炉房';
-		}
-		if(isset($_GET['lhl']))
-		{
-		  	$t='lhl';
-			$tt='6号楼';
-		}
+$t='ss';
+$tt='宿舍';
+for($i=0;$i<count($arrayall);$i++)
+{
+    if(isset($_GET[$arrayalldm[$i]]))
+	{
+	  	$t=$arrayalldm[$i];
+		$tt=$arrayall[$i];
+	}
+}	
 				
 		  
 ?>
@@ -131,18 +80,14 @@ function c()
           </span>
     <form class="form-horizontal" action="" method="get" role="form">
       <p>
-          <button type="submit" name="ss" class="btn btn-default">宿舍<span class="badge"></span></button>
-          <button type="submit" name="st" class="btn btn-default">食堂<span class="badge"></span></button>
-          <button type="submit" name="ydc" class="btn btn-default">运动场<span class="badge"></span></button>
-          <button type="submit" name="tsg" class="btn btn-default">图书馆<span class="badge"></span></button>
-          <button type="submit" name="zhl" class="btn btn-default">综合楼<span class="badge"></span></button>
-          <button type="submit" name="jxl" class="btn btn-default">教学楼<span class="badge"></span></button>
-          <button type="submit" name="sxl" class="btn btn-default">实训楼<span class="badge"></span></button>
-          <button type="submit" name="qtqy" class="btn btn-default">其他区域<span class="badge"></span></button>
-          <button type="submit" name="cs" class="btn btn-default">超市<span class="badge"></span></button>
-          <button type="submit" name="xzt" class="btn btn-default">洗澡堂<span class="badge"></span></button>
-          <button type="submit" name="glf" class="btn btn-default">锅炉房<span class="badge"></span></button>
-          <button type="submit" name="lhl" class="btn btn-default">6号楼<span class="badge"></span></button>
+      	<?php
+      		for($i=0;$i<count($arrayall);$i++)
+			{
+      	?>
+          	<button type="submit" name="<?=$arrayalldm[$i]?>" class="btn btn-default"><?=$arrayall[$i]?><span class="badge"></span></button>
+         <?php
+     		}
+         ?>
       </p>
     </form>
           

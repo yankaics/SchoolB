@@ -92,77 +92,35 @@ include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
 include("../adminse/admin_se.php");
+include("address.php");//地点
 
-$sql1="select count(sid) from sch_repair_re where s_jg='未处理' and s_repair='未分配'";
-$rs1=mysql_query($sql1,$con);
-if($row1=mysql_fetch_row($rs1))
-	$num1=$row1[0];
-$sql2="select count(sid) from sch_repair_re where s_add='宿舍' and s_jg='未处理' and s_repair='未分配'";
-$rs2=mysql_query($sql2,$con);
-if($row2=mysql_fetch_row($rs2))
-	$num2=$row2[0];
-$sql3="select count(sid) from sch_repair_re where s_add='食堂' and s_jg='未处理' and s_repair='未分配'";
-$rs3=mysql_query($sql3,$con);
-if($row3=mysql_fetch_row($rs3))
-	$num3=$row3[0];
-$sql4="select count(sid) from sch_repair_re where s_add='运动场' and s_jg='未处理' and s_repair='未分配'";
-$rs4=mysql_query($sql4,$con);
-if($row4=mysql_fetch_row($rs4))
-	$num4=$row4[0];
-$sql5="select count(sid) from sch_repair_re where s_add='图书馆' and s_jg='未处理' and s_repair='未分配'";
-$rs5=mysql_query($sql5,$con);
-if($row5=mysql_fetch_row($rs5))
-	$num5=$row5[0];
-$sql6="select count(sid) from sch_repair_re where s_add='综合楼' and s_jg='未处理' and s_repair='未分配'";
-$rs6=mysql_query($sql6,$con);
-if($row6=mysql_fetch_row($rs6))
-	$num6=$row6[0];
-$sql7="select count(sid) from sch_repair_re where s_add='教学楼' and s_jg='未处理' and s_repair='未分配'";
-$rs7=mysql_query($sql7,$con);
-if($row7=mysql_fetch_row($rs7))
-	$num7=$row7[0];
-$sql8="select count(sid) from sch_repair_re where s_add='实训楼' and s_jg='未处理' and s_repair='未分配'";
-$rs8=mysql_query($sql8,$con);
-if($row8=mysql_fetch_row($rs8))
-	$num8=$row8[0];
-$sql9="select count(sid) from sch_repair_re where s_add='其他区域' and s_jg='未处理' and s_repair='未分配'";
-$rs9=mysql_query($sql9,$con);
-if($row9=mysql_fetch_row($rs9))
-	$num9=$row9[0];
-$sql10="select count(sid) from sch_repair_re where s_add='超市' and s_jg='未处理' and s_repair='未分配'";
-$rs10=mysql_query($sql10,$con);
-if($row10=mysql_fetch_row($rs10))
-	$num10=$row10[0];
-$sql11="select count(sid) from sch_repair_re where s_add='洗澡堂' and s_jg='未处理' and s_repair='未分配'";
-$rs11=mysql_query($sql11,$con);
-if($row11=mysql_fetch_row($rs11))
-	$num11=$row11[0];
-$sql12="select count(sid) from sch_repair_re where s_add='锅炉房' and s_jg='未处理' and s_repair='未分配'";
-$rs12=mysql_query($sql12,$con);
-if($row12=mysql_fetch_row($rs12))
-	$num12=$row12[0];
-$sql13="select count(sid) from sch_repair_re where s_add='6号楼' and s_jg='未处理' and s_repair='未分配'";
-$rs13=mysql_query($sql13,$con);
-if($row13=mysql_fetch_row($rs13))
-	$num13=$row13[0];
+$sqlall="select count(sid) from sch_repair_re where s_jg='未处理' and s_repair='未分配'";
+$rsall=mysql_query($sqlall,$con);
+if($rowall=mysql_fetch_row($rsall))
+	$numall=$rowall[0];
+
+for($i=0;$i<count($arrayall);$i++)
+{
+	$sql="select count(sid) from sch_repair_re where s_add='".$arrayall[$i]."' and s_jg='未处理' and s_repair='未分配'";
+	$rs=mysql_query($sql,$con);
+	if($row=mysql_fetch_row($rs))
+		$arraycount[$i]=$row[0];//计数
+}
+
 ?>
 <div class="ly">
 	<h2>报修分配</h2>
     <p>
     <form class="form-horizontal" action="" method="get" role="form">
-      <p><button type="submit" name="all" class="btn btn-default">所有<span class="badge"><?=$num1?></span></button>
-          <button type="submit" name="ss" class="btn btn-default">宿舍<span class="badge"><?=$num2?></span></button>
-          <button type="submit" name="st" class="btn btn-default">食堂<span class="badge"><?=$num3?></span></button>
-          <button type="submit" name="ydc" class="btn btn-default">运动场<span class="badge"><?=$num4?></span></button>
-          <button type="submit" name="tsg" class="btn btn-default">图书馆<span class="badge"><?=$num5?></span></button>
-          <button type="submit" name="zhl" class="btn btn-default">综合楼<span class="badge"><?=$num6?></span></button>
-          <button type="submit" name="jxl" class="btn btn-default">教学楼<span class="badge"><?=$num7?></span></button>
-          <button type="submit" name="sxl" class="btn btn-default">实训楼<span class="badge"><?=$num8?></span></button>
-          <button type="submit" name="qtqy" class="btn btn-default">其他区域<span class="badge"><?=$num9?></span></button>
-          <button type="submit" name="cs" class="btn btn-default">超市<span class="badge"><?=$num10?></span></button>
-          <button type="submit" name="xzt" class="btn btn-default">洗澡堂<span class="badge"><?=$num11?></span></button>
-          <button type="submit" name="glf" class="btn btn-default">锅炉房<span class="badge"><?=$num12?></span></button>
-          <button type="submit" name="lhl" class="btn btn-default">6号楼<span class="badge"><?=$num13?></span></button>
+      <p><button type="submit" name="all" class="btn btn-default">所有<span class="badge"><?=$numall?></span></button>
+      	<?php
+      		for($i=0;$i<count($arrayall);$i++)
+			{
+      	?>
+          <button type="submit" name="<?=$arrayalldm[$i]?>" class="btn btn-default"><?=$arrayall[$i]?><span class="badge"><?=$arraycount[$i]?></span></button>
+        <?
+        	}
+        ?>
       </p>
     </form>
           <form name="wxyfp" action="" method="get" onsubmit="return checkfp()">
@@ -213,114 +171,25 @@ if($row13=mysql_fetch_row($rs13))
     <td align="center" class="text-danger">物件详情</td>
   </tr>
   <?
-  if(isset($_GET['lhl']))
+  
+	if(isset($_GET['all']))
 	{
-		$sqlre="select * from sch_repair_re where s_add='6号楼' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-		$b='lhl=';
+		$sqlre="select * from sch_repair_re where s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+		$b='all=';
 	}
 	else
 	{
-	  	if(isset($_GET['glf']))
+		$sqlre="select * from sch_repair_re where s_repair='未分配' and s_jg='未处理' order by s_settime asc";
+	}
+
+	for($i=0;$i<count($arrayall);$i++)
+	{
+		if(isset($_GET[$arrayalldm[$i]]))
 		{
-			$sqlre="select * from sch_repair_re where s_add='锅炉房' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-			$b='glf=';
-		}
-		else
-		{
-			if(isset($_GET['xzt']))
-			{
-				$sqlre="select * from sch_repair_re where s_add='洗澡堂' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-				$b='xzt=';
-			}
-			else
-			{
-				if(isset($_GET['cs']))
-				{
-					$sqlre="select * from sch_repair_re where s_add='超市' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-					$b='cs=';
-				}
-				else
-				{
-					if(isset($_GET['qtqy']))
-					{
-						$sqlre="select * from sch_repair_re where s_add='其他区域' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-						$b='qtqy=';
-					}
-					else
-					{
-						if(isset($_GET['sxl']))
-						{
-							$sqlre="select * from sch_repair_re where s_add='实训楼' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-							$b='sxl=';
-						}
-						else
-						{
-							if(isset($_GET['jxl']))
-							{
-								$sqlre="select * from sch_repair_re where s_add='教学楼' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-								$b='jxl=';
-							}
-							else
-							{
-								if(isset($_GET['zhl']))
-								{
-									$sqlre="select * from sch_repair_re where s_add='综合楼' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-									$b='zhl=';
-								}
-								else
-								{
-									if(isset($_GET['tsg']))
-									{
-										$sqlre="select * from sch_repair_re where s_add='图书馆' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-										$b='tsg=';
-									}
-									else
-									{
-										if(isset($_GET['ydc']))
-										{
-											$sqlre="select * from sch_repair_re where s_add='运动场' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-											$b='ydc=';
-										}
-										else
-										{
-											if(isset($_GET['st']))
-											{
-												$sqlre="select * from sch_repair_re where s_add='食堂' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-												$b='st=';
-											}
-											else
-											{
-												 if(isset($_GET['ss']))
-												 {
-													$sqlre="select * from sch_repair_re where s_add='宿舍' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-													$b='ss=';
-												}
-												else
-												{
-													if(isset($_GET['all']))
-													{
-														$sqlre="select * from sch_repair_re where s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-														$b='all=';
-													}
-													else
-													{
-														$sqlre="select * from sch_repair_re where s_repair='未分配' and s_jg='未处理' order by s_settime asc";
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
+			$sqlre="select * from sch_repair_re where s_add='".$arrayall[$i]."' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+			$b=$arrayalldm[$i];
 		}
 	}
-			
-		
-
    $rsre=mysql_query($sqlre,$con);
    while($rowre=mysql_fetch_row($rsre))
    {
