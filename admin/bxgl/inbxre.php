@@ -106,6 +106,11 @@ include("../adminse/admin_se.php");
 		  	$t='glf';
 			$tt='锅炉房';
 		}
+		if(isset($_GET['lhl']))
+		{
+		  	$t='lhl';
+			$tt='6号楼';
+		}
 				
 		  
 ?>
@@ -137,6 +142,7 @@ function c()
           <button type="submit" name="cs" class="btn btn-default">超市<span class="badge"></span></button>
           <button type="submit" name="xzt" class="btn btn-default">洗澡堂<span class="badge"></span></button>
           <button type="submit" name="glf" class="btn btn-default">锅炉房<span class="badge"></span></button>
+          <button type="submit" name="lhl" class="btn btn-default">6号楼<span class="badge"></span></button>
       </p>
     </form>
           

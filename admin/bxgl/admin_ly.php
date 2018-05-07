@@ -29,7 +29,6 @@
 		text-decoration: none;
 	}
 	</style>
-	<title>留言查看</title>
 	<script type="text/javascript">
 	function Trim(strValue) 
 	{ 
@@ -141,7 +140,11 @@ if($row11=mysql_fetch_row($rs11))
 $sql12="select count(sid) from sch_repair_re where s_add='锅炉房' and s_jg='未处理' and s_repair='未分配'";
 $rs12=mysql_query($sql12,$con);
 if($row12=mysql_fetch_row($rs12))
-	$num12=$row11[0];
+	$num12=$row12[0];
+$sql13="select count(sid) from sch_repair_re where s_add='6号楼' and s_jg='未处理' and s_repair='未分配'";
+$rs13=mysql_query($sql13,$con);
+if($row13=mysql_fetch_row($rs13))
+	$num13=$row13[0];
 ?>
 <div class="ly">
 	<h2>报修分配</h2>
@@ -159,6 +162,7 @@ if($row12=mysql_fetch_row($rs12))
           <button type="submit" name="cs" class="btn btn-default">超市<span class="badge"><?=$num10?></span></button>
           <button type="submit" name="xzt" class="btn btn-default">洗澡堂<span class="badge"><?=$num11?></span></button>
           <button type="submit" name="glf" class="btn btn-default">锅炉房<span class="badge"><?=$num12?></span></button>
+          <button type="submit" name="lhl" class="btn btn-default">6号楼<span class="badge"><?=$num13?></span></button>
       </p>
     </form>
           <form name="wxyfp" action="" method="get" onsubmit="return checkfp()">
@@ -209,91 +213,99 @@ if($row12=mysql_fetch_row($rs12))
     <td align="center" class="text-danger">物件详情</td>
   </tr>
   <?
-  	if(isset($_GET['glf']))
+  if(isset($_GET['lhl']))
 	{
-		$sqlre="select * from sch_repair_re where s_add='锅炉房' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-		$b='glf=';
+		$sqlre="select * from sch_repair_re where s_add='6号楼' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+		$b='lhl=';
 	}
 	else
 	{
-		if(isset($_GET['xzt']))
+	  	if(isset($_GET['glf']))
 		{
-			$sqlre="select * from sch_repair_re where s_add='洗澡堂' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-			$b='xzt=';
+			$sqlre="select * from sch_repair_re where s_add='锅炉房' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+			$b='glf=';
 		}
 		else
 		{
-			if(isset($_GET['cs']))
+			if(isset($_GET['xzt']))
 			{
-				$sqlre="select * from sch_repair_re where s_add='超市' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-				$b='cs=';
+				$sqlre="select * from sch_repair_re where s_add='洗澡堂' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+				$b='xzt=';
 			}
 			else
 			{
-				if(isset($_GET['qtqy']))
+				if(isset($_GET['cs']))
 				{
-					$sqlre="select * from sch_repair_re where s_add='其他区域' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-					$b='qtqy=';
+					$sqlre="select * from sch_repair_re where s_add='超市' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+					$b='cs=';
 				}
 				else
 				{
-					if(isset($_GET['sxl']))
+					if(isset($_GET['qtqy']))
 					{
-						$sqlre="select * from sch_repair_re where s_add='实训楼' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-						$b='sxl=';
+						$sqlre="select * from sch_repair_re where s_add='其他区域' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+						$b='qtqy=';
 					}
 					else
 					{
-						if(isset($_GET['jxl']))
+						if(isset($_GET['sxl']))
 						{
-							$sqlre="select * from sch_repair_re where s_add='教学楼' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-							$b='jxl=';
+							$sqlre="select * from sch_repair_re where s_add='实训楼' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+							$b='sxl=';
 						}
 						else
 						{
-							if(isset($_GET['zhl']))
+							if(isset($_GET['jxl']))
 							{
-								$sqlre="select * from sch_repair_re where s_add='综合楼' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-								$b='zhl=';
+								$sqlre="select * from sch_repair_re where s_add='教学楼' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+								$b='jxl=';
 							}
 							else
 							{
-								if(isset($_GET['tsg']))
+								if(isset($_GET['zhl']))
 								{
-									$sqlre="select * from sch_repair_re where s_add='图书馆' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-									$b='tsg=';
+									$sqlre="select * from sch_repair_re where s_add='综合楼' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+									$b='zhl=';
 								}
 								else
 								{
-									if(isset($_GET['ydc']))
+									if(isset($_GET['tsg']))
 									{
-										$sqlre="select * from sch_repair_re where s_add='运动场' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-										$b='ydc=';
+										$sqlre="select * from sch_repair_re where s_add='图书馆' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+										$b='tsg=';
 									}
 									else
 									{
-										if(isset($_GET['st']))
+										if(isset($_GET['ydc']))
 										{
-											$sqlre="select * from sch_repair_re where s_add='食堂' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-											$b='st=';
+											$sqlre="select * from sch_repair_re where s_add='运动场' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+											$b='ydc=';
 										}
 										else
 										{
-											 if(isset($_GET['ss']))
-											 {
-												$sqlre="select * from sch_repair_re where s_add='宿舍' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-												$b='ss=';
+											if(isset($_GET['st']))
+											{
+												$sqlre="select * from sch_repair_re where s_add='食堂' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+												$b='st=';
 											}
 											else
 											{
-												if(isset($_GET['all']))
-												{
-													$sqlre="select * from sch_repair_re where s_jg='未处理' and s_repair='未分配' order by s_settime asc";
-													$b='all=';
+												 if(isset($_GET['ss']))
+												 {
+													$sqlre="select * from sch_repair_re where s_add='宿舍' and s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+													$b='ss=';
 												}
 												else
 												{
-													$sqlre="select * from sch_repair_re where s_repair='未分配' and s_jg='未处理' order by s_settime asc";
+													if(isset($_GET['all']))
+													{
+														$sqlre="select * from sch_repair_re where s_jg='未处理' and s_repair='未分配' order by s_settime asc";
+														$b='all=';
+													}
+													else
+													{
+														$sqlre="select * from sch_repair_re where s_repair='未分配' and s_jg='未处理' order by s_settime asc";
+													}
 												}
 											}
 										}
