@@ -86,6 +86,10 @@ onclick="onprint()" value="打印本页" />
                 {
 				    $da1=substr($rowa[0],0,10);
                 }
+                else
+                {
+                    $da1=$rqY.'-'.$rqmm.'-'.$rqd;
+                }
 			}
 			if(isset($_GET['da2']))
 		  	{
