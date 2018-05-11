@@ -30,4 +30,4 @@
 
 ***
 
-&copy; AmosHuKe
+&copy; AmosHuKe. All Rights Reserved.
