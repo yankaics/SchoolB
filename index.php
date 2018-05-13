@@ -1,3 +1,17 @@
+<!--
+/**
+ * This file is part of SchoolB.
+ *
+ * Licensed under The Apache License, Version 2.0
+ * For full copyright and license information, please see the LICENSE
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @author    AmosHuKe<amoshuke@qq.com>
+ * @copyright AmosHuKe<amoshuke@qq.com>
+ * @link      https://github.com/AmosHuKe/SchoolB
+ * @license   https://opensource.org/licenses/Apache-2.0 (Apache License, Version 2.0)
+ */
+-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -48,7 +62,7 @@ include"PHP/riqi.php";
           		<a href="INDEX/regstu/index.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | 注册 </span></a>
           		<a href="copy.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | &copy;<? if($rqY>2017) echo "2017-".$rqY; else echo "2017"; ?> </span></a>
           		
-          		<p>建议使用主流浏览器·极速模式</p>
+          		<p></p>
           	</p>
 
 		</div>

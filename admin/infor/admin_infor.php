@@ -1,3 +1,17 @@
+<!--
+/**
+ * This file is part of SchoolB.
+ *
+ * Licensed under The Apache License, Version 2.0
+ * For full copyright and license information, please see the LICENSE
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @author    AmosHuKe<amoshuke@qq.com>
+ * @copyright AmosHuKe<amoshuke@qq.com>
+ * @link      https://github.com/AmosHuKe/SchoolB
+ * @license   https://opensource.org/licenses/Apache-2.0 (Apache License, Version 2.0)
+ */
+-->
 <!--对src获取 class="ann" id="src"  这样进行跳转-->
   <div class="layui-header">
     <div class="layui-logo" style="color:#FFF;"><a style="color:#FFF;" href="javascript:;"><i class="layui-icon" >&#xe671;</i>校园宝后台</a></div>
