@@ -175,7 +175,16 @@ $(document).ready(function(e) {
         <?
     }
     ?>
-
+        <!--聊天室管理-->
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">聊天室管理</a>
+          <dl class="layui-nav-child">
+            <dd><a class="ann" id="../admin_chat_room/chatroom_admin.php" href="javascript:;">房间管理</a></dd>
+            <!-- <dd><a class="ann" id="../admin_chat_room/chatroom_re.php" href="javascript:;">聊天室统计</a></dd> -->
+            
+          </dl>
+        </li>
+        
         <?
 		if($_SESSION['cg']==1)
 		{
