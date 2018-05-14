@@ -27,13 +27,12 @@
 </head>
 <body>
 	<?php
-    
     include("../../PHP/riqi.php");
     include("../../SQL/db/db.php");
     include("../../PHP/adminse.php");
     include("../adminse/admin_se.php");
-  
 		include("chatroom_admin_class.php");//房间管理类
+    include("chatroom_config.php");//聊天室配置文件
 		$chat_class=new chatroom_admin_class();//实例化
     $room=$chat_class->chatroom_all();//接收房间数组
     
@@ -130,7 +129,8 @@
 
         }); 
       </script>
-      
+
+
 
     </div>
   </div>
@@ -165,7 +165,7 @@ if(isset($_GET['del']))
     <?
   }
 }
-//后台进入或创建放假
+//后台进入或创建房间
 if(isset($_GET['roomid']))
 {
   ?>
@@ -184,7 +184,6 @@ if(isset($_GET['roomid']))
   </script>
   <?
 }
-
 ?>
 
 </body>

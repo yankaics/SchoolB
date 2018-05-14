@@ -18,13 +18,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
 	<link rel="stylesheet" href="../../layui/css/layui.css">
-	<link rel="stylesheet" href="../../index/online_chat_room/css/chat_main.css">
+	<link rel="stylesheet" href="../../INDEX/online_chat_room/css/chat_main.css">
 	<script src="../../layui/layui.js"></script>
 	<link rel="shortcut icon" href="../../favicon.ico" />
 	<title>聊天室</title>
 </head>
 <body bgcolor="#393D49" onload="Javascript:document.chatf.nr.focus();">
-<?
+<?php
 include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
@@ -55,6 +55,7 @@ function dclose()
 </script>
 <?php
 	include("chat_class.php");//加载聊天处理
+	include("chatroom_config.php");//聊天室配置文件
 	
 	//房间号处理
 	if(isset($_GET["room"]))
@@ -103,7 +104,7 @@ function dclose()
 	<?php
 		//在chats内局部刷新
 		//如果没有文件则创建
-		if(!file_exists('../../index/online_chat_roomchat_room/'.$croom.'.xml'))
+		if(!file_exists($chatroom_location.$croom.'.xml'))
 		{
 			$chats->chat_say("name",0);
 		}

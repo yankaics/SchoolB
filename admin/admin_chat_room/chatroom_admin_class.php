@@ -11,17 +11,19 @@
  * @link      https://github.com/AmosHuKe/Hi/tree/master/Online_Chat_Room
  * @license   http://www.opensource.org/licenses/mit-license.php (MIT License)
  */
-//屏蔽错误
-ini_set('display_errors', 'off');
-error_reporting(0);
-error_reporting(E_ALL^E_NOTICE^E_WARNING);
+
 include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
 include("../adminse/admin_se.php");
+//屏蔽错误
+ini_set('display_errors', 'off');
+error_reporting(0);
+error_reporting(E_ALL^E_NOTICE^E_WARNING);
 //
 header("content-type:text/html;charset=utf-8"); 
 date_default_timezone_set("Asia/Shanghai");
+include("chatroom_config.php");//聊天室配置文件
 //房间管理类
 class chatroom_admin_class
 {
@@ -29,7 +31,8 @@ class chatroom_admin_class
 	function __construct()
 	{
 		//构造函数
-		$this->chatroom_wjj="../../index/online_chat_room/chat_room"; //文件夹位置
+		include("chatroom_config.php");//聊天室配置文件
+		$this->chatroom_wjj=$chatroom_location; //文件夹位置
 	}
 	//查出所有房间名字
 	function chatroom_all()
@@ -61,7 +64,7 @@ class chatroom_admin_class
 	{
 		$wjj=$this->chatroom_wjj; //文件夹位置
 		$xmldoc = new DOMDocument();
-		$xmldoc->load($wjj.'/'.$room);
+		$xmldoc->load($wjj.$room);
 		return $xmldoc->getElementsByTagName("ChatRoom")->item(0)->childNodes->length;
 	}
 	//查询房间的创建时间($room=房间号)
@@ -69,7 +72,7 @@ class chatroom_admin_class
 	{
 		$wjj=$this->chatroom_wjj; //文件夹位置
 		$xmldoc = new DOMDocument();
-		$xmldoc->load($wjj.'/'.$room);
+		$xmldoc->load($wjj.$room);
 		$stus =$xmldoc->getElementsByTagName("chat");
 		return $stus->item(0)->getElementsByTagName("chattime")->item(0)->nodeValue;
 	}
@@ -79,7 +82,7 @@ class chatroom_admin_class
 //删除文件(delroom=房间号)
 if(isset($_GET['delroom']))
 {
-	$filedz="../../index/online_chat_room/chat_room/".$_GET['delroom'].".xml";
+	$filedz=$chatroom_location.$_GET['delroom'].".xml";
 	if(unlink($filedz))
 	{
 		header("Location:chatroom_admin.php?del=ok");
@@ -94,7 +97,7 @@ if(isset($_GET['delroom']))
 if(isset($_GET['nroom']))
 {
 	$dom = new DOMDocument();
-	$dom->load("../../index/online_chat_room/chat_room/".$_GET['nroom'].".xml");
+	$dom->load($chatroom_location.$_GET['nroom'].".xml");
 
 	$stu_nodes =$dom->getElementsByTagName("chat");
 
@@ -102,7 +105,7 @@ if(isset($_GET['nroom']))
 
 	$stu_node->parentNode->removeChild($stu_node);
 
-	$dom->save("../../index/online_chat_room/chat_room/".$_GET['nroom'].".xml");
+	$dom->save($chatroom_location.$_GET['nroom'].".xml");
 
 	header("Location:chatroom_index.php?room=".$_GET['nroom']."");
 }

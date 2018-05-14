@@ -11,17 +11,19 @@
  * @link      https://github.com/AmosHuKe/Hi/tree/master/Online_Chat_Room
  * @license   http://www.opensource.org/licenses/mit-license.php (MIT License)
  */
-ini_set('display_errors', 'off');
-error_reporting(0);
-error_reporting(E_ALL^E_NOTICE^E_WARNING);
 
 include("../../PHP/riqi.php");
 include("../../SQL/db/db.php");
 include("../../PHP/adminse.php");
 include("../adminse/admin_se.php");
 
+ini_set('display_errors', 'off');
+error_reporting(0);
+error_reporting(E_ALL^E_NOTICE^E_WARNING);
+
 header("content-type:text/html;charset=utf-8"); 
 date_default_timezone_set("Asia/Shanghai");
+
 //后台聊天显示
 	class chat_class{
 		var $room_name;//房间名
@@ -31,8 +33,9 @@ date_default_timezone_set("Asia/Shanghai");
 		var $cid_chat;//学号
 		var $cnr_chat;//内容
 		function __construct($croom,$cname,$cid){
+			include("chatroom_config.php");//聊天室配置文件
 			$this->room_name=$croom.".xml";//房间名
-			$this->room_chat="../../INDEX/online_chat_room/chat_room/".$croom.".xml";//房间地址
+			$this->room_chat=$chatroom_location.$croom.".xml";//房间地址
 			$this->cname_chat=$cname; //姓名
 			$this->cid_chat=$cid;//学号
 			$this->ctime_chat=date("Y.m.d H:i:s");//年月日
