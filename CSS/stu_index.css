@@ -20,11 +20,11 @@ body{
 	margin-bottom:80px;
 }
 
-#bta{
-	color: #F0F0F0;
+.bta{
+	 color: #F0F0F0 !important;
 }
-#bta:hover{
-	color: #FFF;
+.bta:hover{
+	color: #FFF !important;
 }
 /*锚点上移免除被覆盖*/
 .md{
