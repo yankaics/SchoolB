@@ -53,16 +53,21 @@
 						    <div class="layui-input-inline">
 						      <select name="stu_whole_se" id="stu_whole_se"  lay-verify="required">
 						      	<?
-						      		for($tn=2014;$tn<=$rqY;$tn++)
+						      		for($tn=2010;$tn<=$rqY;$tn++)
 						      		{
 						      			$tnj=substr($tn,-2,2);
-						      			$sql="select tjg from sch_stub where tno like '".$tnj."%' limit 1";
+						      			$sql="select tjg,count(*) from sch_stub where tno like '".$tnj."%' or tno like '0".$tn."%' or tno like '".$tn."%' limit 1";
 										$rs=mysql_query($sql,$con);
 										if($row=mysql_fetch_row($rs))
+										{
 											$jg=$row[0];
+											$cjg=$row[1]!=0?$row[1]:"暂无";
+										}
+										else
+											$jg="暂无"
 												
 						      	?>
-						        <option value="<?=$tnj?>"><?=$tn?>级（<?=$jg?>）</option>
+						        <option value="<?=$tn?>"><?=$tn?>级（<?=$jg.":".$cjg."人"?>）</option>
 						        <?
 						    			
 						        	}
@@ -152,7 +157,8 @@
 	<?
 		if(isset($_POST['njjg_update']))
 		{
-			$sql="update sch_stub set tjg='".$_POST['stu_whole_jg']."' where tno like '".$_POST['stu_whole_se']."%'";
+			$tnj=substr($_POST['stu_whole_se'],-2,2);
+			$sql="update sch_stub set tjg='".$_POST['stu_whole_jg']."' where tno like '".$tnj."%' or tno like '0".$_POST['stu_whole_se']."%' or tno like '".$_POST['stu_whole_se']."%'";
 			$rs=mysql_query($sql,$con);
 			if($rs>0)
 			{
