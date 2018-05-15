@@ -59,6 +59,7 @@
           }
         ?>
       </li>
+      <li class="layui-nav-item" ><a href="INDEX/User_Helper/index.php">常见问题</a> </li>
       <li class="layui-nav-item" ><a href="INDEX/regstu/index.php">注册</a> </li>
       <li class="layui-nav-item layui-this" ><a href="copy.php">关于</a> </li>
     </ul>
@@ -70,21 +71,21 @@
       <fieldset class="layui-elem-field">
           <legend style="color:#009688;">你好</legend>
           <div class="layui-field-box">
-            初次见面-多多指教<br>校园宝须登陆校园网后才能访问（测试）<br>感谢来信提出建议~<br><a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=YQAMDhIJFAoEIRAQTwIODA" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/>主题：校园宝+你的主题</a> 
+            初次见面-多多指教<br>校园宝须登陆校园网后才能访问（测试）<br>感谢来信提出建议~<br><a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=YQAMDhIJFAoEIRAQTwIODA" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/>主题：校园宝+你的问题</a> 
           </div>
       </fieldset>
       <fieldset class="layui-elem-field">
           <legend style="color:#009688;">我们</legend>
           <div class="layui-field-box">
             大朋友：罗军
-            <br>小朋友：胡珂 <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=YQAMDhIJFAoEIRAQTwIODA" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/>主题：校园宝+你的主题</a><br><br>&copy;
+            <br>小朋友：胡珂 <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=YQAMDhIJFAoEIRAQTwIODA" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/>主题：校园宝+你的问题</a><br><br>&copy;
             <?
             if($rqY>2017)
               echo "2017-".$rqY;
             else
               echo "2017";
             ?>
-    <span><br>重庆广德学校后勤服务有限公司.版权所有</span>
+    <span><br>AmosHuKe.版权所有</span>
           </div>
         </fieldset>
          
