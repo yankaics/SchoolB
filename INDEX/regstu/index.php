@@ -60,6 +60,7 @@
           }
         ?>
       </li>
+      <li class="layui-nav-item" ><a href="../User_Helper/index.php">常见问题</a> </li>
       <li class="layui-nav-item layui-this" ><a href="index.php">注册</a> </li>
       <li class="layui-nav-item" ><a href="../../copy.php">关于</a> </li>
     </ul>
