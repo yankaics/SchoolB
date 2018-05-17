@@ -15,26 +15,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-<link rel="stylesheet" href="layui/css/layui.css">
-<script src="layui/layui.js"></script>
-<link rel="shortcut icon" href="favicon.ico" />
-<!--JSQ-->
-<script src="JSQ/jquery-2.1.1.min.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <script src="layui/layui.js"></script>
+  <link rel="shortcut icon" href="favicon.ico" />
+  <!--JSQ-->
+  <script src="JSQ/jquery-2.1.1.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/tea_index.css" />
-<!--CSS以往版本的样式
-<link media="(max-width:769px)" href="CSS/mobile-main.css" rel="stylesheet" type="text/css" />
-<link media="(max-width:769px)" href="CSS/mobile-top.css" rel="stylesheet" type="text/css" />
-<link media="(max-width:769px)" href="CSS/mobile-bt.css" rel="stylesheet" type="text/css" />
-<link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
-<link media="(min-width:769px)" href="CSS/z-index-bt.css" rel="stylesheet" type="text/css" />
-<link media="(min-width:769px)" href="CSS/top-index.css" rel="stylesheet" type="text/css" />
-<link media="(min-width:769px)" href="CSS/main-index.css" rel="stylesheet" type="text/css" />
--->
+  <link rel="stylesheet" type="text/css" href="css/tea_index.css" />
 
-<title>Hi-老师</title>
+  <title>Hi-老师</title>
 </head>
 <body bgcolor="#F0F0F0">
 <!--导航-->
@@ -124,13 +115,14 @@
   <div class="layui-col-md3 layui-col-sm5 border_box">
       <div class="layui-row">
         <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
-          <i class="layui-icon img48">&#xe631;</i>
+          <img src="UI/index/service.svg">
+          <!-- <i class="layui-icon img48">&#xe631;</i> -->
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          &nbsp;&nbsp;公物报修
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;公物报修
         </div>
         <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          针对本学院的公共物品进行报修
+          <br/>&nbsp;&nbsp;学院公共物品报修
         </div>
       </div>
   </div>
@@ -140,13 +132,14 @@
   <div class="layui-col-md3 layui-col-sm5 border_box">
       <div class="layui-row">
         <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
-          <i class="layui-icon img48">&#xe636;</i>
+          <img src="UI/index/water.svg">
+          <!-- <i class="layui-icon img48">&#xe636;</i> -->
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          &nbsp;&nbsp;宿舍水电
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;宿舍水电
         </div>
         <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          宿舍水电费查看以及缴费
+          <br/>&nbsp;&nbsp;水电费查看及缴费
         </div>
       </div>
   </div>
@@ -169,13 +162,14 @@
   <div class="layui-col-md3 layui-col-sm5 border_box">
       <div class="layui-row">
         <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
-          <i class="layui-icon img48">&#xe606;</i>
+          <img src="UI/index/chat.svg">
+          <!-- <i class="layui-icon img48">&#xe606;</i> -->
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          &nbsp;&nbsp;聊天室
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;聊天室
         </div>
         <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          聊天室不定期清除
+          <br/>&nbsp;&nbsp;多聊天私人聊天室
         </div>
       </div>
   </div>
@@ -185,13 +179,14 @@
   <div class="layui-col-md3 layui-col-sm5 border_box">
       <div class="layui-row">
         <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
-          <i class="layui-icon img48">&#xe705;</i>
+          <img src="UI/index/more.svg">
+          <!-- <i class="layui-icon img48">&#xe705;</i> -->
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          &nbsp;&nbsp;敬请期待
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;敬请期待
         </div>
         <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          更多实用的功能
+          <br/>&nbsp;&nbsp;更多功能
         </div>
       </div>
   </div>

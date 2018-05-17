@@ -23,6 +23,7 @@
   <!--JSQ-->
   <script src="JSQ/jquery-2.1.1.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/stu_index.css" />
+
   <title>Hi-同学</title>
 </head>
 
@@ -120,13 +121,14 @@
   <div class="layui-col-md3 layui-col-sm5 border_box">
       <div class="layui-row">
         <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
-          <i class="layui-icon img48">&#xe631;</i>
+          <img src="UI/index/service.svg">
+          <!-- <i class="layui-icon img48">&#xe631;</i> -->
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          &nbsp;&nbsp;公物报修
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;公物报修
         </div>
         <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          针对本学院的公共物品进行报修
+          <br/>&nbsp;&nbsp;学院公共物品报修
         </div>
       </div>
   </div>
@@ -136,13 +138,14 @@
   <div class="layui-col-md3 layui-col-sm5 border_box">
       <div class="layui-row">
         <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
-          <i class="layui-icon img48">&#xe636;</i>
+          <img src="UI/index/water.svg">
+          <!-- <i class="layui-icon img48">&#xe636;</i> -->
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          &nbsp;&nbsp;宿舍水电
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;宿舍水电
         </div>
         <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          宿舍水电费查看以及缴费
+          <br/>&nbsp;&nbsp;水电费查看及缴费
         </div>
       </div>
   </div>
@@ -164,13 +167,14 @@
   <div class="layui-col-md3 layui-col-sm5 border_box">
       <div class="layui-row">
         <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
-          <i class="layui-icon img48">&#xe63c;</i>
+          <img src="UI/index/result.svg">
+          <!-- <i class="layui-icon img48">&#xe63c;</i> -->
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          &nbsp;&nbsp;成绩查询
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;成绩查询
         </div>
         <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          学院官网期末成绩查询
+          <br/>&nbsp;&nbsp;学院官网成绩查询
         </div>
       </div>
   </div>
@@ -180,13 +184,14 @@
   <div class="layui-col-md3 layui-col-sm5 border_box">
       <div class="layui-row">
         <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
-          <i class="layui-icon img48">&#xe606;</i>
+          <img src="UI/index/chat.svg">
+          <!-- <i class="layui-icon img48">&#xe606;</i> -->
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          &nbsp;&nbsp;聊天室
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;聊天室
         </div>
         <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          聊天室不定期清除
+          <br/>&nbsp;&nbsp;多聊天私人聊天室
         </div>
       </div>
   </div>
@@ -196,13 +201,14 @@
   <div class="layui-col-md3 layui-col-sm5 border_box">
       <div class="layui-row">
         <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
-          <i class="layui-icon img48">&#xe705;</i>
+          <img src="UI/index/more.svg">
+          <!-- <i class="layui-icon img48">&#xe705;</i> -->
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          &nbsp;&nbsp;敬请期待
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;敬请期待
         </div>
         <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          更多实用的功能
+          <br/>&nbsp;&nbsp;更多功能
         </div>
       </div>
   </div>
