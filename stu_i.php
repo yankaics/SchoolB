@@ -106,6 +106,71 @@
   </div>
 </div>
 <!--main-->
+
+<!--轮播-->
+<div class="layui-container layui-col-md-offset2 paddingtop layui-anim layui-anim-upbit">
+  <div class="layui-row">
+    <div class="layui-col-md10">
+
+      <div class="layui-carousel" id="sylb" >
+          <div carousel-item class="lb">
+            <!--1-->
+            <div>
+              <div class="tlb1">
+                <p class="ptlb1">校 园 报 修</p>
+                <a class="atlb1" href="INDEX/gwbx/alerts.php">进入</a>
+              </div>
+            </div>
+            <!--2-->
+            <div class="tlb2">
+              <p class="ptlb2">校 园 聊 天 室</p>
+              <a class="atlb2 chat_room" href="javascript:;">进入</a>
+            </div>
+
+          </div>
+        </div>
+        <script>
+        layui.use('carousel', function(){
+          var carousel = layui.carousel;
+          //获取屏幕宽度
+          var _width = $(window).width();
+          //获取屏幕高度
+          $('.wrapper').height($(window).height());
+          var num = Math.floor(5*Math.random());
+          if(_width < 768)
+          {
+            //建造实例
+            carousel.render({
+              elem: '#sylb'
+              ,width: '100%' //设置容器宽度
+              ,height: '160px'
+              ,arrow: 'none' //始终显示箭头
+              ,autoplay:'true'
+              ,interval:'4000'
+              ,anim: 'fade' //切换动画方式
+            });
+          }
+          if(_width>767)
+          {
+            //建造实例
+            carousel.render({
+              elem: '#sylb'
+              ,width: '100%' //设置容器宽度
+              ,arrow: 'none' //始终显示箭头
+              ,autoplay:'true'
+              ,interval:'4000'
+              ,anim: 'fade', //切换动画方式
+            });
+          }
+          
+        });
+        </script>
+      </div>
+
+    </div>
+  </div>
+  
+
 <!--主要功能-->
 <div class="layui-col-md-offset2 paddingtop layui-anim layui-anim-upbit">
   <div class="layui-col-md12">
