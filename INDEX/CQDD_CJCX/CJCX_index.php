@@ -53,8 +53,8 @@
     $formvars["txtStudentName"] = $_SESSION['txm'];
     $formvars["__EVENTTARGET"] = ""; 
     $formvars["__EVENTARGUMENT"] = "";
-    $formvars["__VIEWSTATE"] = "/wEPDwUJODIwOTI2MDg0D2QWAgIDD2QWCAIWDxBkZBYAZAIYDw8WBB4EVGV4dAUnMjAxNy0yMDE45a2m5bm056ys5LqM5a2m5pyf6ICD6K+V6K6h5YiSHgtOYXZpZ2F0ZVVybAVCSFRUUDovL3d3dy5jcXNlYS5jb20vRmlsZXMvUmVzb3VyY2VEb3dubG9hZC8yMDE4LTQtMjQtMTQtNTctMTYueGxzZGQCGg88KwARAGQCHA88KwARAQEQFgAWABYAZBgCBQdndlNjb3JlD2dkBQhndkNyZWRpdA9nZE3dn+l8mobv9M6sSEyTQi7GO8CkGvKM9Y+wRyy8XLbe";
-    $formvars["__EVENTVALIDATION"] = "/wEWBgKavrjxCQLOj4fxBwL9p/noCwLdkpmPAQKLk6mvAgKXt+TzAeusENGeEABywYcu8MMn25M3dkw4+FCWUhvhXMiynkAk";
+    $formvars["__VIEWSTATE"] = "/wEPDwUKMTM5NjExMTEzOA9kFgICAw9kFggCFg8QZGQWAGQCGA88KwARAGQCGg8PFgIeBFRleHQFPOW9k+WJjeaXoOiAg+ivleiuoeWIkuaIluW3sui/h+aKpeiAg+acn+mZkO+8jOS4jeiDveaKpeiAg++8gWRkAhwPPCsAEQEBEBYAFgAWAGQYAgUHZ3ZTY29yZQ9nZAUIZ3ZDcmVkaXQPZ2S9zJBEkPNOe9P1QyilL8oiN31L5eTBKqffnRSsuqs45Q==";
+    $formvars["__EVENTVALIDATION"] = "/wEWBgKGwZ2hBwLOj4fxBwL9p/noCwLdkpmPAQKLk6mvAgKXt+TzAUB3T6cTL40dKK1sKL4PeCve3pYAGEig7dEDsgAPyAx+";
     $formvars["btnOK"] = "确定";
     //抓取地址
     $action = "http://www.cqsea.com/cjcx/";  
@@ -81,8 +81,8 @@
         //科目数量,统计多维数组
         $count_km=(count($m[0],true)-8)/8;
     ?>
-    <p>官方链接：<a target='_blank' href='http://www.cqsea.com/cjcx/'>点击</a></p>
-    <p>校园宝抓取修复时间：20180425</p>
+    <p>官方链接：<a target='_blank' href='http://www.cqsea.com/cjcx/'>点击</a>（补考报名）</p>
+    <p>校园宝抓取修复时间：20180517</p>
     <table class="layui-table">
       <colgroup>
         <col width="600">
@@ -102,11 +102,11 @@
         <?
           for($i=0;$i<=$count_km;$i++)
           {
-            if($m[0][17+12*$i]=="<td>未开考</td>")
+            if($m[0][9+16*$i]=="<td>未开考</td>")
             {
               $trbgcolor="#393D49";
             }
-            elseif($m[0][17+12*$i]=="<td>不合格</td>")
+            elseif($m[0][9+16*$i]=="<td>不合格</td>")
             {
               $trbgcolor="#FF5722";
             }
@@ -116,10 +116,10 @@
             }
         ?>
         <tr bgcolor="<?=$trbgcolor?>">
-          <?=$m[0][5+12*$i]?>
-          <?=$m[0][8+12*$i]?>
-          <?=$m[0][9+12*$i]?>
-          <?=$m[0][10+12*$i]?>
+          <?=$m[0][5+16*$i]?>
+          <?=$m[0][8+16*$i]?>
+          <?=$m[0][9+16*$i]?>
+          <?=$m[0][10+16*$i]?>
         </tr>
         <?
           }
