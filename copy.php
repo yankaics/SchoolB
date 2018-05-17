@@ -97,6 +97,15 @@
             <li class="layui-timeline-item">
                 <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
                 <div class="layui-timeline-content layui-text">
+                  <h3 class="layui-timeline-title">2018-5-17</h3>
+                  <p>学生首页样式修改，新增了轮播图</p>
+                  <p>修改了已知bug</p>
+                </div>
+              </li>
+
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis"  style=" background-color:#F0F0F0;">&#xe63f;</i>
+                <div class="layui-timeline-content layui-text">
                   <h3 class="layui-timeline-title">2018-4-28</h3>
                   <p>修复了公物报修中的电话填写错误bug</p>
                   <p>修复了报修查询中已处理查询电话显示错误</p>
