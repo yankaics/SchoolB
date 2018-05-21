@@ -52,6 +52,7 @@ function checktime()
   <div class="layui-header">
     <div class="layui-logo"><img class="layui-icon" src="../../UI/logo/logo-32-t.png"></div>
 	<?
+  include("../../PHP/riqi.php");
 	include("../../SQL/db/db.php");
 	include("../../PHP/adminse.php");
 	//报修查询数量
@@ -88,33 +89,43 @@ function checktime()
 </div><br><br>
 <!--main-->
 <div class="layui-container">
-  <div class="layui-row layui-col-md-offset4 layui-col-xs-offset2">
-  	<form name="timef" class="layui-form" action="" method="get" onSubmit="return checktime()">
-  		<div class="layui-col-md3 layui-col-xs6">
+  <div class="layui-row layui-col-md-offset4">
+  	<form name="timef" id="elef" class="layui-form" action="" method="post" onSubmit="return checktime()">
+
+  		<div class="layui-col-md4 layui-col-xs10">
+
         <?
-        if(isset($_GET['timesql']))
-		{
-		?>
-            <input type="text" readOnly =  "readOnly" name="timesql" placeholder="时间" class="layui-input" id="timetext" value="<?=$_GET['timesql']?>">
-        <?
-		}
-		else
-		{
-        ?>
-        <input type="text" readOnly =  "readOnly" name="timesql" placeholder="时间" class="layui-input" id="timetext">
-        <?
-		}
-		?>
+          if(isset($_POST['timesql']))
+          {
+            $lstt=$_POST['timesql'];
+          }
+          else
+          {
+            $lstt=$rqY.'-'.$rqmm;
+            ?>
+            <script type="text/javascript">
+              $(document).ready(function(){
+                $("#elef").submit();
+              });
+            </script>
+            <?
+          }
+          
+    		?>
+            <div class="layui-form-item">
+              <label class="layui-form-label">日期</label>
+              <div class="layui-input-block">
+                <input type="text"  class="layui-input" required  lay-verify="required" placeholder="请选择日期" readonly autocomplete="off" name="timesql" id="timetext" value="<?=$lstt?>">
+            </div>
+            
         </div>
-        <div class="layui-col-md4 layui-col-xs6">
-            <button name="buttons" type="submit" class="layui-btn">查询</button>
-        </div>
+        
   	</form>
   </div>
 </div>  
 
 <? 
-if(isset($_GET['buttons']))
+if(isset($_POST['timesql']))
 {
 
 	?>
@@ -123,11 +134,8 @@ if(isset($_GET['buttons']))
   <div class="layui-row">
   	<div class="layui-col-md8 layui-col-md-offset2">
 <?
-
-		$timea=$_GET['timesql'].'-00:00:00';
-		$timeb=$_GET['timesql'].'-23:59:59';
 		//已处理无数据
-		$countsql="select count(*) from sch_repair_re where s_schid='".$_SESSION['user']."' and s_jg='已处理' and s_settime between '".$timea."' and '".$timeb."'";
+		$countsql="select count(*) from sch_repair_re where s_schid='".$_SESSION['user']."' and s_jg='已处理' and s_settime like '".$_POST['timesql']."%'";
 		$countrs=mysql_query($countsql,$con);
 		if($countrow=mysql_fetch_row($countrs))
 		if($countrow[0]==0)
@@ -137,7 +145,7 @@ if(isset($_GET['buttons']))
 			$(document).ready(function(e) {
 				  	layui.use('layer', function(){
   					var layer = layui.layer;
-					layer.msg('无记录(｡・`ω´･)', {
+					layer.msg('当前日期无记录(｡・`ω´･)', {
 					time: 2000,
 					area: ['240px','50px'],
 					});
@@ -147,13 +155,13 @@ if(isset($_GET['buttons']))
             <?
 		}
 		//查询已处理
-		$sql="select * from sch_repair_re a where s_schid='".$_SESSION['user']."' and s_settime between '".$timea."' and '".$timeb."' and s_jg='已处理'";
+		$sql="select * from sch_repair_re a where s_schid='".$_SESSION['user']."' and s_settime like '".$_POST['timesql']."%' and s_jg='已处理'";
 		  $rs=mysql_query($sql,$con);
 		  while($row=mysql_fetch_row($rs))
 		  {
 		?>
-<blockquote class="layui-elem-quote" style="font-size:20px; background-color:#F0F0F0;">
-时间：<?=substr($row[10],11,8)?>
+<blockquote class="layui-elem-quote" style="font-size:18px; background-color:#F0F0F0;">
+<?=$row[10]?>
 </blockquote>
 <table class="layui-table" lay-even lay-skin="nob" >
         	<colgroup>
@@ -240,11 +248,15 @@ layui.use('element', function(){
 layui.use('laydate', function(){
   var laydate = layui.laydate;
   
-  //时间
   laydate.render({
-    elem: '#timetext' //指定元素
+    elem: '#timetext'
+    ,type: 'month'
+    ,theme: '#393D49'
+    ,done: function(value, date){
+      $('#timetext').val(value);
+      $("#elef").submit();
+    }//选中后提交
   });
-  
 });
 </script>
 
