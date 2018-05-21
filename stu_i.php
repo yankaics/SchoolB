@@ -114,6 +114,13 @@
 
       <div class="layui-carousel" id="sylb" >
           <div carousel-item class="lb">
+            <!--3-->
+            <div>
+              <div class="tlb3">
+                <p class="ptlb3">有 奖 问 卷 调 查</p>
+                <a class="atlb3" target="_blank" href="https://wj.qq.com/s/2111491/269d">进入</a>
+              </div>
+            </div>
             <!--1-->
             <div>
               <div class="tlb1">
@@ -144,10 +151,11 @@
               elem: '#sylb'
               ,width: '100%' //设置容器宽度
               ,height: '160px'
-              ,arrow: 'none' //始终显示箭头
+              ,arrow: 'always' //始终显示箭头
               ,autoplay:'true'
               ,interval:'4000'
               ,anim: 'fade' //切换动画方式
+              ,indicator:'none'
             });
           }
           if(_width>767)
@@ -156,7 +164,7 @@
             carousel.render({
               elem: '#sylb'
               ,width: '100%' //设置容器宽度
-              ,arrow: 'none' //始终显示箭头
+              ,arrow: 'hove' //始终显示箭头
               ,autoplay:'true'
               ,interval:'4000'
               ,anim: 'fade', //切换动画方式
@@ -326,9 +334,11 @@ layui.use('layer', function(){
       btn: ['官方','私人'] //按钮
     }, function(){
       location.href="INDEX/online_chat_room/chat_index.php?room=1"
+      layer.closeAll();
     }, function(){
       layer.prompt({title: '输入房间号(字母，数字)', formType: 0},function(val, index){
           location.href="INDEX/online_chat_room/chat_index.php?room="+val;
+          layer.closeAll();
         });
       });
     });
