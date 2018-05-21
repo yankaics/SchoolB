@@ -15,46 +15,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-<link rel="stylesheet" href="../../layui/css/layui.css">
-<script src="../../layui/layui.js"></script>
-<link rel="shortcut icon" href="../../favicon.ico" />
-<!--JSQ-->
-<script src="../../JSQ/jquery-2.1.1.min.js"></script>
-<script src="../../JSQ/index.js"></script>
-<!--以往的CSS
-<link media="(max-width:650px)" href="CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
-<link media="(max-width:500px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
-<link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
-<link media="(min-width:500px)" href="CSS/ly-admin-index.css" rel="stylesheet" type="text/css"/>
-<link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />-->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+	<link rel="stylesheet" href="../../layui/css/layui.css">
+	<script src="../../layui/layui.js"></script>
+	<link rel="shortcut icon" href="../../favicon.ico" />
+	<!--JSQ-->
+	<script src="../../JSQ/jquery-2.1.1.min.js"></script>
+	<script src="../../JSQ/index.js"></script>
 
-<style>
-body{ background-color:#F0F0F0; padding-bottom:200px;};
-a:link{text-decoration:none;}
-a:visited{text-decoration:none;}
-a:hover{text-decoration:none;}
-a:active{text-decoration:none;}
-.upimg input {
-    position: absolute;
-    font-size: 100px;
-    right: 0;
-    top: 0;
-    opacity: 0;
-}
-.show
-{
-    top:40px;
-    width: 100%;
-    height: 30px;
-    font:normal normal normal 14px/30px 'Microsoft YaHei';
-}
-</style>
-<script type="text/javascript">
+	<style>
+	body{ background-color:#F0F0F0; padding-bottom:200px;};
+	a:link{text-decoration:none;}
+	a:visited{text-decoration:none;}
+	a:hover{text-decoration:none;}
+	a:active{text-decoration:none;}
+	.upimg input {
+	    position: absolute;
+	    font-size: 100px;
+	    right: 0;
+	    top: 0;
+	    opacity: 0;
+	}
+	.show
+	{
+	    top:40px;
+	    width: 100%;
+	    height: 30px;
+	    font:normal normal normal 14px/30px 'Microsoft YaHei';
+	}
+	</style>
+	<script type="text/javascript">
 
-</script>
-<title>预览报修订单</title>
+	</script>
+	<title>预览报修订单</title>
 </head>
 
 <body>
@@ -281,70 +275,62 @@ a:active{text-decoration:none;}
                 
                 </p>
              </div>
+
 <script type="text/javascript">
-
-
 //提示，提交部分  
 layui.use('form', function(){
-  		var form = layui.form;
+	var form = layui.form;
+});
+
+tc();
+
+//底部弹出
+function tc(){
+	$(document).ready(function(e) {
+		layui.use('layer', function(){
+		var layer = layui.layer;
+		layer.msg('<button onclick="opens()" type="submit" class="layui-btn">上一步</button><button onclick="openf()" type="submit" class="layui-btn">提交报修</button>', {
+		title: false,
+		closeBtn: 0,
+		time:0,
+		anim: 2,
+		shadeClose :false,
+		offset: 'b',
+		area: ['100%', '60px']	
+			});	
+		});
+		
 	});
-							//底部弹出
-                        	$(document).ready(function(e) {
-								layui.use('layer', function(){
-								var layer = layui.layer;
-								layer.msg('<button onclick="opens()" type="submit" class="layui-btn">上一步</button><button onclick="openf()" type="submit" class="layui-btn">提交报修</button>', {
-								title: false,
-								closeBtn: 0,
-								time:0,
-								anim: 2,
-								shadeClose :false,
-								offset: 'b',
-								area: ['100%', '60px']	
-									});	
-								});
-								
-							});
-							//表单提交
-							function openf(){
-								$(document).ready(function(e) {
-								layui.use('layer', function(){
-									var layer = layui.layer;
-									parent.layer.confirm('确定提交？', {
-									  btn: ['提交','取消'],
-									  title: false,
-									  closeBtn: 0,
-									}, function(){
-										layer.msg('正在提交...', {
-									      time: 10000,
-									    });
-										$(".form4").submit();
-										
-									},function(){
-										$(document).ready(function(e) {
-											layui.use('layer', function(){
-											var layer = layui.layer;
-											layer.msg('<button onclick="opens()" type="submit" class="layui-btn">上一步</button><button onclick="openf()" type="submit" class="layui-btn">提交报修</button>', {
-											title: false,
-											closeBtn: 0,
-											time:0,
-											anim: 2,
-											shadeClose :false,
-											offset: 'b',
-											area: ['100%', '60px']	
-												});	
-											});
-											
-										});
-									});
-									
-								});
-							});
-								 
-							}
-							//上一步
-							function opens(){
-								 $(".forms").submit()
-							}
+}
+							
+                        	
+//表单提交
+function openf(){
+	$(document).ready(function(e) {
+	layui.use('layer', function(){
+		var layer = layui.layer;
+		parent.layer.confirm('确定提交？', {
+		  btn: ['提交','取消'],
+		  title: false,
+		  closeBtn: 0,
+		}, function(){
+			layer.msg('正在提交...', {
+		      time: 10000,
+		    });
+			$(".form4").submit();
+			
+		},function(){
+			tc();
+		});
+		
+	});
+});
+	 
+}
+//上一步
+function opens(){
+	 $(".forms").submit()
+}
 //判断
 function check()
 {
@@ -352,68 +338,34 @@ function check()
 	if(tw=="")
 	{
 		$(document).ready(function(e) {
-					layui.use('layer', function(){
-					var layer = layui.layer;
-					layer.msg('损坏描述必填~', {
-					title: false,
-					closeBtn: 0,
-									
-						});
-					});
+			layui.use('layer', function(){
+			var layer = layui.layer;
+			layer.msg('损坏描述必填~', {
+			title: false,
+			closeBtn: 0,
+							
 				});
-				//延迟弹出
-				setTimeout(function(){ 
-				$(document).ready(function(e) {
-								layui.use('layer', function(){
-								var layer = layui.layer;
-								layer.msg('<button onclick="opens()" type="submit" class="layui-btn">上一步</button><button onclick="openf()" type="submit" class="layui-btn">提交报修</button>', {
-								title: false,
-								closeBtn: 0,
-								time:0,
-								anim: 2,
-								shadeClose :false,
-								offset: 'b',
-								area: ['100%', '60px']	
-									});	
-								});
-								
-							});
-				
-				 }, 2000);
+			});
+		});
+		//延迟弹出
+		setTimeout(function(){ tc(); }, 2000);
 		return false;
 	}
 	var pattern = new RegExp("[`~!@#$^&*()=|{}':;'\\[\\].<>/~@#￥……&*——|{}【】‘；：”“'、？]");//特殊字符判断
 	if(tw.length>100 || pattern.test(tw))
 	{
 		$(document).ready(function(e) {
-					layui.use('layer', function(){
-					var layer = layui.layer;
-					layer.msg('损坏描述最多100字非特殊字符', {
-					title: false,
-					closeBtn: 0,
-									
-						});
-					});
+			layui.use('layer', function(){
+			var layer = layui.layer;
+			layer.msg('损坏描述最多100字非特殊字符', {
+			title: false,
+			closeBtn: 0,
+							
 				});
-				//延迟弹出
-				setTimeout(function(){ 
-				$(document).ready(function(e) {
-								layui.use('layer', function(){
-								var layer = layui.layer;
-								layer.msg('<button onclick="opens()" type="submit" class="layui-btn">上一步</button><button onclick="openf()" type="submit" class="layui-btn">提交报修</button>', {
-								title: false,
-								closeBtn: 0,
-								time:0,
-								anim: 2,
-								shadeClose :false,
-								offset: 'b',
-								area: ['100%', '60px']	
-									});	
-								});
-								
-							});
-				
-				 }, 2000);
+			});
+		});
+		//延迟弹出
+		setTimeout(function(){ tc(); }, 2000);
 		return false;
 	}
 }
@@ -432,14 +384,11 @@ function check()
        	</div>
 </div>
 <script language="javascript">
-        //防止页面后退
-        history.pushState(null, null, document.URL);
-        window.addEventListener('popstate', function () {
-            history.pushState(null, null, document.URL);
-        });
-
-    	
-
-    </script>
+	//防止页面后退
+	history.pushState(null, null, document.URL);
+	window.addEventListener('popstate', function () {
+    history.pushState(null, null, document.URL);
+	});
+</script>
 </body>
 </html>

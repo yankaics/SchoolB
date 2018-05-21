@@ -15,32 +15,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-<link rel="stylesheet" href="../../layui/css/layui.css">
-<script src="../../layui/layui.js"></script>
-<link rel="shortcut icon" href="../../favicon.ico" />
-<!--JSQ-->
-<script src="../../JSQ/jquery-2.1.1.min.js"></script>
-<script src="../../JSQ/index.js"></script>
-<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-<link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="../../bootstrap/js/bootstrap.min.js"></script>
-<!--以往的CSS
-<link media="(max-width:650px)" href="CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
-<link media="(max-width:500px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
-<link href="http://cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
-<link media="(min-width:500px)" href="CSS/ly-admin-index.css" rel="stylesheet" type="text/css"/>
-<link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />-->
-<style>
-body{ background-color:#F0F0F0; padding-bottom:200px;};
-a:link{text-decoration:none;}
-a:visited{text-decoration:none;}
-a:hover{text-decoration:none;}
-a:active{text-decoration:none;}
-</style>
-<title>报修选择</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+	<link rel="stylesheet" href="../../layui/css/layui.css">
+	<script src="../../layui/layui.js"></script>
+	<link rel="shortcut icon" href="../../favicon.ico" />
+	<!--JSQ-->
+	<script src="../../JSQ/jquery-2.1.1.min.js"></script>
+	<script src="../../JSQ/index.js"></script>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="../../bootstrap/js/bootstrap.min.js"></script>
+
+	<style>
+	body{ background-color:#F0F0F0; padding-bottom:200px;};
+	a:link{text-decoration:none;}
+	a:visited{text-decoration:none;}
+	a:hover{text-decoration:none;}
+	a:active{text-decoration:none;}
+	</style>
+	<title>报修选择</title>
 
 </head>
 
@@ -248,71 +243,57 @@ $(".lskdo").on('input propertychange',function(){
 			  $("#sp_num").text(loel);
 			})
 </script>
+
 <script>
-							//底部弹出
-                        	$(document).ready(function(e) {
-								layui.use('layer', function(){
-								var layer = layui.layer;
-								layer.msg('<button onclick="opens()" type="submit" class="layui-btn">上一步</button><button onclick="openf()" type="submit" class="layui-btn">下一步预览订单</button>', {
-								title: false,
-								closeBtn: 0,
-								time:0,
-								anim: 2,
-								shadeClose :false,
-								offset: 'b',
-								area: ['100%', '60px']	
-									});	
-								});
-								
-							});
-							//表单提交
-							function openf(){
-								 $(".form3").submit();
-							}
-							//上一步
-							function opens(){
-								 $(".forms").submit()
-							}
-//物件选择
-function checknum()
-	{
+
+//底部弹出
+function tc(){
+	$(document).ready(function(e) {
+		layui.use('layer', function(){
+		var layer = layui.layer;
+		layer.msg('<button onclick="opens()" type="submit" class="layui-btn">上一步</button><button onclick="openf()" type="submit" class="layui-btn">下一步预览订单</button>', {
+		title: false,
+		closeBtn: 0,
+		time:0,
+		anim: 2,
+		shadeClose :false,
+		offset: 'b',
+		area: ['100%', '60px']	
+			});	
+		});
 		
-		if(!$('.choo').is(':checked'))
-		 {
-    			$(document).ready(function(e) {
-					layui.use('layer', function(){
-					var layer = layui.layer;
-					layer.msg('请选择物件', {
-					title: false,
-					closeBtn: 0,
-					time:2000,
-						
-						});
-					});
+	});
+}
+tc();
+//表单提交
+function openf(){
+	 $(".form3").submit();
+}
+//上一步
+function opens(){
+	 $(".forms").submit()
+}
+//物件选择
+function checknum(){		
+	if(!$('.choo').is(':checked'))
+	{
+		$(document).ready(function(e) {
+			layui.use('layer', function(){
+			var layer = layui.layer;
+			layer.msg('请选择物件', {
+			title: false,
+			closeBtn: 0,
+			time:2000,
+				
 				});
-				
-				//延迟弹出
-				setTimeout(function(){ 
-				$(document).ready(function(e) {
-								layui.use('layer', function(){
-								var layer = layui.layer;
-								layer.msg('<button onclick="opens()" type="submit" class="layui-btn">上一步</button><button onclick="openf()" type="submit" class="layui-btn">下一步预览订单</button>', {
-								title: false,
-								closeBtn: 0,
-								time:0,
-								anim: 2,
-								shadeClose :false,
-								offset: 'b',
-								area: ['100%', '60px']	
-									});	
-								});
-								
-							});
-				
-				 }, 2000);
-				return false;
-		}
+			});
+		});
+		
+		//延迟弹出
+		setTimeout(function(){ tc(); }, 2000);
+		return false;
 	}
+}
 							
 </script>
           	<?
@@ -328,13 +309,14 @@ function checknum()
 		?>
 		</div>
 	</div>
+
 <script language="javascript">
-        //防止页面后退
-        history.pushState(null, null, document.URL);
-        window.addEventListener('popstate', function () {
-            history.pushState(null, null, document.URL);
-        });
-    </script>
+	//防止页面后退
+	history.pushState(null, null, document.URL);
+	window.addEventListener('popstate', function () {
+	    history.pushState(null, null, document.URL);
+	});
+</script>
 
 </body>
 </html>

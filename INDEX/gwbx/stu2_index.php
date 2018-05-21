@@ -182,6 +182,28 @@ layui.use('form', function(){
 
 });
 
+//底部弹出
+function tc(){
+	$(document).ready(function(e) {
+		layui.use('layer', function(){
+		var layer = layui.layer;
+		layer.msg('<button onclick="openf()" type="submit" class="layui-btn">下一步</button>', {
+		title: false,
+		closeBtn: 0,
+		time:0,
+		anim: 2,
+		shadeClose :false,
+		offset: 'b',
+		area: ['100%', '60px']	
+			});	
+		});
+	
+	});
+}
+
+//底部弹出
+tc();
+
 //判断
 function checkadd(){
 		cadd=stu2.tadd.value;
@@ -202,24 +224,7 @@ function checkadd(){
 					});
 				});
 				//延迟弹出
-				setTimeout(function(){ 
-				$(document).ready(function(e) {
-								layui.use('layer', function(){
-								var layer = layui.layer;
-								layer.msg('<button onclick="openf()" type="submit" class="layui-btn">下一步</button>', {
-								title: false,
-								closeBtn: 0,
-								time:0,
-								anim: 2,
-								shadeClose :false,
-								offset: 'b',
-								area: ['100%', '60px']	
-									});	
-								});
-								
-							});
-				
-				 }, 2000);
+				setTimeout(function(){ tc(); },2000);
 				return false;
 			}
 			if(!yz.exec(cphone))
@@ -235,47 +240,15 @@ function checkadd(){
 					});
 				});
 				//延迟弹出
-				setTimeout(function(){ 
-				$(document).ready(function(e) {
-								layui.use('layer', function(){
-								var layer = layui.layer;
-								layer.msg('<button onclick="openf()" type="submit" class="layui-btn">下一步</button>', {
-								title: false,
-								closeBtn: 0,
-								time:0,
-								anim: 2,
-								shadeClose :false,
-								offset: 'b',
-								area: ['100%', '60px']	
-									});	
-								});
-								
-							});
-				
-				 }, 2000);
+				setTimeout(function(){ tc(); },2000);
 				return false;
 			}
-		}
-		//弹出
-		$(document).ready(function(e) {
-								layui.use('layer', function(){
-								var layer = layui.layer;
-								layer.msg('<button onclick="openf()" type="submit" class="layui-btn">下一步</button>', {
-								title: false,
-								closeBtn: 0,
-								time:0,
-								anim: 2,
-								shadeClose :false,
-								offset: 'b',
-								area: ['100%', '60px']	
-									});	
-								});
-								
-							});
-							//表单提交
-							function openf(){
-								 $(".form2").submit();
-							}
+}
+
+//表单提交
+function openf(){
+	 $(".form2").submit();
+}
 </script>
         	<?
 		}
