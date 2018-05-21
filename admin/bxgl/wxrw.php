@@ -22,21 +22,24 @@
   <link rel="shortcut icon" href="../../favicon.ico" />
   <!--JSQ-->
   <script src="../../JSQ/jquery-2.1.1.min.js"></script>
+  <script src="../../JSQ/jquery.cookie.js"></script>
   <script src="../../JSQ/index.js"></script>
   <title>校园宝后台-维修员任务</title>
   <style>
   body{
-  	font-weight:600;
-  	font-family:"宋体";
+  	font-weight:200;
+  	font-family:"微软雅黑";
   }
   .af{
   	border-radius:5px;
-  	-moz-box-shadow:0px 3px 20px  #DEDEDE; 
-  	-webkit-box-shadow:0px 3px 20px  #DEDEDE; 
-  	box-shadow:0px 3px 20px  #DEDEDE;
+  	-moz-box-shadow:0px 10px 40px rgba(102,102,102,0.8);
+    -webkit-box-shadow:0px 10px 40px rgba(102,102,102,0.8);
+    box-shadow:0px 10px 40px rgba(102,102,102,0.8);
   	background-color:#393D49;
   	color:#FFF;
   	font-size:16px;
+    word-wrap: break-word; 
+    word-break: normal; 
   }
   </style>
 </head>
@@ -89,36 +92,53 @@ if($rowle=mysql_fetch_row($rsle))
 	?><br><br>
 <div class="layui-container" >
   <div class="layui-row layui-col-space10" >
-  	<div class="af layui-col-md4 layui-col-md-offset4 ">
+  	<div class="af layui-col-md4 layui-col-md-offset4 layui-anim layui-anim-fadein">
     	<div class="layui-row layui-col-space10">
           <div class="layui-col-md12 layui-col-xs12">
-          	<p><?=$rowl[1].$rowl[2]?></p>
-            <p><?=$rowl[10]?></p>
-            <p style="color:#FF5722;"><?=$rowl[11]?></p>
+          	<p><?=$rowl[1].'-'.$rowl[2]?></p>    
           </div>
           <div class="layui-col-md12 layui-col-xs12">
-            <a href="czxq.php?id=<?=$rowl[0]?>"><button name="button" class="layui-btn" type="button">操作</button></a>
+            <p>姓名：<?=$rowl[3]?> | 电话：<?=$rowl[5]?></p>
           </div>
           <div class="layui-col-md12 layui-col-xs12">
-            姓名:<?=$rowl[3]?> | 电话:<?=$rowl[5]?>
-          </div>
-          <div class="layui-col-md12 layui-col-xs12">
-          <form style="color:#333; " class="layui-form" action="">
-            <select  name="admin_city" lay-verify="required">
-            	<option value="0">点击查看物件</option>
             <?
-			$sqlwj="select * from sch_repair_rea where s_repair='".$_SESSION['name']."' and s_jg!='已处理' and s_add='".$rowl[1]."' and s_name='".$rowl[3]."' and s_phone='".$rowl[5]."' and s_time='".$rowl[10]."'";
-			$rswj=mysql_query($sqlwj,$con);
-			while($rowwj=mysql_fetch_row($rswj))
-			{
-				?>
-                <option value="<?=$rowwj[1]?>"><?=$rowwj[1]?> | <?=$rowwj[2]?>件</option>
-				<? 
-			}
-			?> 
-                
-            </select>
-          </form>
+                if($rowl[11]!='不能处理')
+                {
+                  echo "<span class='layui-badge'>".$rowl[11]."</span>";
+                }
+                else
+                {
+                  echo "<span class='layui-badge layui-bg-orange'>".$rowl[11]."</span>";
+                }
+              
+            ?>
+            <?=$rowl[10]?>
+          </div>
+          <div class="layui-col-md12 layui-col-xs12">
+            
+            <a href="czxq.php?id=<?=$rowl[0]?>"><button name="button" class="layui-btn layui-btn-sm " type="button">操作</button></a>
+            <button name="button" class=" layui-btn-sm layui-btn zwj<?=$rowl[0]?>" type="button">物件详情</button>
+            <script>
+              layui.use('layer', function(){
+               var layer = layui.layer;
+              $(".zwj<?=$rowl[0]?>").click(function(e) {
+                parent.layer.open({
+                   title:'<?=$rowl[3]?>物件详情' ,
+                   type: 1,
+                   shadeClose: true,
+                   area: ['200px'], //宽高
+                   content: '<?
+                    $sqlrea="select * from sch_repair_rea where s_repair='".$_SESSION['name']."' and s_jg!='已处理' and s_add='".$rowl[1]."' and s_name='".$rowl[3]."' and s_phone='".$rowl[5]."' and s_time='".$rowl[10]."'";
+                  $rsrea=mysql_query($sqlrea,$con);
+                  while($rowrea=mysql_fetch_row($rsrea))
+                  {
+                    ?><center style="padding:10px;"><p><?=$rowrea[1]?> <?=$rowrea[2]?>件</p></center><? 
+                  } ?>'
+                  });
+                });
+              });
+            </script>
+          
           </div>
         </div>
         
@@ -136,12 +156,27 @@ echo "<h2>暂无任务</h2>";
 layui.use('form', function(){
   var form = layui.form;
 });
-//每半小时刷新一次
-$(document).ready(function(e) {
-    setTimeout(function () {
-		location.reload();
-	},1800000);
-});
+
+/*返回上次浏览位置*/
+$(function () {
+var str = window.location.href;
+str = str.substring(str.lastIndexOf("/") + 1);
+if ($.cookie(str)) {
+
+$("html,body").animate({ scrollTop: $.cookie(str) }, 1000);
+}
+else {
+}
+})
+
+$(window).scroll(function () {
+var str = window.location.href;
+str = str.substring(str.lastIndexOf("/") + 1);
+var top = $(document).scrollTop();
+$.cookie(str, top, { path: '/' });
+return $.cookie(str);
+})
+/*返回上次浏览位置*/
 </script>
 
 </body>

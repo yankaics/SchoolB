@@ -23,7 +23,6 @@
 	<!--JSQ-->
 	<script src="../../JSQ/jquery-2.1.1.min.js"></script>
 	<script src="../../JSQ/index.js"></script>
-
 	<title>报修详情</title>
 </head>
 
@@ -154,9 +153,20 @@
                             {
                             ?>
                             <a href="upycl.php?wj=<?=$rowwj[1]?>&id=<?=$_GET['id']?>"><button  onclick="return confirm('确定<?=$rowwj[1]?>已处理？');" type="button" class="layui-btn layui-btn-sm">完成</button></a>
+                            <?
+                            	if($rowwj[5]!="")
+                            	{
+                            		?>
+                            		<button type="button" class="layui-btn layui-btn-sm layui-bg-orange bncl_btn<?=$rowwj[0]?>">查看</button>
+                            		<?
+                            	}
+                            	else
+                            	{
+                            ?>
                             <button type="button" class="layui-btn layui-btn-sm bncl_btn<?=$rowwj[0]?>">暂停</button>
                             
                             <?
+                        		}
                             }
                             ?>
                             </td>
@@ -300,7 +310,7 @@
   </div>
 </div> 
 <script type="text/javascript">
-
+		
 </script> 
 </body>
 </html>
