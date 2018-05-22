@@ -27,7 +27,7 @@
   <title>校园宝后台-维修员任务</title>
   <style>
   body{
-  	font-weight:200;
+  	font-weight:400;
   	font-family:"微软雅黑";
   }
   .af{
@@ -37,9 +37,12 @@
     box-shadow:0px 10px 40px rgba(102,102,102,0.8);
   	background-color:#393D49;
   	color:#FFF;
-  	font-size:16px;
+  	font-size:18px;
     word-wrap: break-word; 
     word-break: normal; 
+  }
+  .csm{
+    font-size: 16px;
   }
   </style>
 </head>
@@ -95,13 +98,9 @@ if($rowle=mysql_fetch_row($rsle))
   	<div class="af layui-col-md4 layui-col-md-offset4 layui-anim layui-anim-fadein">
     	<div class="layui-row layui-col-space10">
           <div class="layui-col-md12 layui-col-xs12">
-          	<p><?=$rowl[1].'-'.$rowl[2]?></p>    
-          </div>
-          <div class="layui-col-md12 layui-col-xs12">
-            <p>姓名：<?=$rowl[3]?> | 电话：<?=$rowl[5]?></p>
-          </div>
-          <div class="layui-col-md12 layui-col-xs12">
-            <?
+          	<p align="center"><?=$rowl[1].' - '.$rowl[2]?></p>
+            <p align="center">
+              <?
                 if($rowl[11]!='不能处理')
                 {
                   echo "<span class='layui-badge'>".$rowl[11]."</span>";
@@ -111,13 +110,22 @@ if($rowle=mysql_fetch_row($rsle))
                   echo "<span class='layui-badge layui-bg-orange'>".$rowl[11]."</span>";
                 }
               
-            ?>
-            <?=$rowl[10]?>
+              ?>
+            </p> 
+          </div>     
+          <div class="layui-col-md12 layui-col-xs12">
+            <p class="csm">姓名：<?=$rowl[3]?></p>
+          </div>
+          <div class="layui-col-md12 layui-col-xs12">
+            <p class="csm">电话：<?=$rowl[5]?></p>
+          </div>
+          <div class="layui-col-md12 layui-col-xs12">
+            <p class="csm">时间：<?=$rowl[10]?></p>
           </div>
           <div class="layui-col-md12 layui-col-xs12">
             
-            <a href="czxq.php?id=<?=$rowl[0]?>"><button name="button" class="layui-btn layui-btn-sm " type="button">操作</button></a>
-            <button name="button" class=" layui-btn-sm layui-btn zwj<?=$rowl[0]?>" type="button">物件详情</button>
+            <a href="czxq.php?id=<?=$rowl[0]?>"><button name="button" class="layui-btn layui-btn-md " type="button">操作</button></a>
+            <button name="button" class=" layui-btn-md layui-btn zwj<?=$rowl[0]?>" type="button">物件详情</button>
             <script>
               layui.use('layer', function(){
                var layer = layui.layer;
@@ -138,7 +146,7 @@ if($rowle=mysql_fetch_row($rsle))
                 });
               });
             </script>
-          
+            <a href="tel:<?=$rowl[5]?>" class="layui-btn layui-btn-md">拨打电话</a>
           </div>
         </div>
         
