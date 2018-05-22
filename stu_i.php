@@ -443,14 +443,20 @@ $(document).ready(function(e) {
   									}, function(){
   										location.href="INDEX/gwbx/gwbxcx_index.php";
   									},function(){
-  										  if($_SESSION['utype']=="教师")
+  										<?
+                        if($_SESSION['utype']=="教师")
                         {
+                          ?>
                           location.href="tea_i.php";
+                          <?
                         }
                         else
                         {
+                          ?>
                           location.href="stu_i.php";
+                          <?
                         }
+                      ?>
   										});
   									});
   									
