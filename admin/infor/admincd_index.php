@@ -29,11 +29,19 @@
 <div class="layui-layout layui-layout-admin ">
 <?
 include("admin_infor.php");
+if($_SESSION['zw']=="维修员")
+{
+  $dz="../bxgl/wxrw.php";
+}
+else
+{
+  $dz="admin_index.php";
+}
 ?>
 <div class="layui-body main_admin">
     <!-- 内容主体区域 -->
     <div>
-         <iframe src="admin_index.php" frameborder="0"  id="iframeid_admin" onload="Javascript:SetCwinHeight()" width="100%"></iframe>     
+         <iframe src="<?=$dz?>" frameborder="0"  id="iframeid_admin" onload="Javascript:SetCwinHeight()" width="100%"></iframe>     
     </div>
   </div>
   <div class="layui-footer main_admin">
