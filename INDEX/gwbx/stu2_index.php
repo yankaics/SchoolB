@@ -110,7 +110,7 @@ body{ padding-bottom:300px;};
                     <div class="layui-form-item">
                         <label class="layui-form-label">详细地址</label>
                         <div class="layui-input-block">
-                          <input type="text" name="taddr" required  lay-verify="required" placeholder="宿舍·教室·办公室号或地点" maxlength="30" autocomplete="off" class="layui-input" id="taddr">
+                          <input type="text" name="taddr" required  lay-verify="required" placeholder="宿舍·教室·办公室号或地点" maxlength="30" autocomplete="off" class="layui-input" id="taddr" value="<? if($_SESSION['utype']=='学生'){echo $_SESSION['tdorm'];}?>">
                         </div>
                     </div>
                     
