@@ -133,15 +133,18 @@ if($row12=mysql_fetch_row($rs12))
 	{
 		?>
     <td align="center" class="text-danger">操作</td>
+    <td align="center" class="text-danger">原因</td>
+    <td align="center" class="text-danger">维修员</td>
+    <td align="center" class="text-danger">维修时间</td>
     <td align="center" class="text-danger">地点</td>
     <td align="center" class="text-danger">姓名</td>
     <td align="center" class="text-danger">电话</td>
     <td align="center" class="text-danger">专业</td>
     <td align="center" class="text-danger">物件</td>
     <td align="center" class="text-danger">数量</td>
-    <td align="center" class="text-danger">原因</td>
-    <td align="center" class="text-danger">维修时间</td>
-    <td align="center" class="text-danger">维修员</td>
+    
+    
+    
     <td align="center" class="text-danger">报修时间</td>
     
         <?
@@ -149,7 +152,7 @@ if($row12=mysql_fetch_row($rs12))
 	else
 	{
 	?>
-    <td align="center" class="text-danger">操作</td>
+    <td align="center" class="text-danger">操作</td> 
     <td align="center" class="text-danger">地点</td>
     <td align="center" class="text-danger">姓名</td>
     <td align="center" class="text-danger">电话</td>
@@ -166,7 +169,7 @@ if($row12=mysql_fetch_row($rs12))
   <?
   	if(isset($_GET['bncl']))
 	{
-		$sqlre="select a.sid,a.s_class,a.s_addr,b.* from sch_repair_re a,sch_repair_rea b where b.s_jg='不能处理' and a.s_name=b.s_name and a.s_add=b.s_add and a.s_phone=b.s_phone and a.s_settime=b.s_time order by s_settime asc";
+		$sqlre="select a.sid,a.s_class,a.s_addr,b.*,a.s_wxxq from sch_repair_re a,sch_repair_rea b where b.s_jg='不能处理' and a.s_name=b.s_name and a.s_add=b.s_add and a.s_phone=b.s_phone and a.s_settime=b.s_time order by s_settime asc";
 		$b='bncl=';
 	}
 	else
@@ -200,7 +203,7 @@ if($row12=mysql_fetch_row($rs12))
         if($rowre[7]!="零星维修")
         {
       ?>
-      <a href="bxztcx.php?lxwx=<?=$rowre[0]?>" onclick="return confirm('确定转入？');"><button type="button" name="lxwx" class="btn btn-default">转<零星维修>处理</button></a>
+      <a href="bxztcx.php?lxwx=<?=$rowre[0]?>" onclick="return confirm('确定转入？');"><button type="button" name="lxwx" class="btn btn-default">转<零星维修>处理</button></a><button type="button" onclick="return confirm('<?=$rowre[17]?>');" name="shms" class="btn btn-default">损坏描述</button>
       <?
         }
         else
@@ -210,15 +213,18 @@ if($row12=mysql_fetch_row($rs12))
       ?>
 
     </td>
+    <td align="center" class="text-danger"><?=$rowre[8]?></td>
+    <td align="center"><?=$rowre[7]?></td>
+    <td align="center"><?=$rowre[15]?></td>
     <td align="center"><?=$rowre[10].$rowre[2]?></td>
     <td align="center"><?=$rowre[12]?></td>
     <td align="center"><?=$rowre[13]?></td>
     <td align="center"><?=$rowre[1]?></td>
     <td align="center"><?=$rowre[4]?></td>
     <td align="center"><?=$rowre[5]?></td>
-    <td align="center" class="text-danger"><?=$rowre[8]?></td>
-    <td align="center"><?=$rowre[15]?></td>
-    <td align="center"><?=$rowre[7]?></td>
+    
+    
+    
     <td align="center"><?=$rowre[9]?></td>
         <?
 	}
