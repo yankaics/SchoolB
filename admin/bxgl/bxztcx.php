@@ -176,7 +176,7 @@ if($row12=mysql_fetch_row($rs12))
 	{
 		if(isset($_GET['ycl']))
 		{
-			$sqlre="select * from sch_repair_re where s_jg='已处理' order by s_settime asc";
+			$sqlre="select * from sch_repair_re where s_jg='已处理' order by s_settime desc";
 			$b='ycl=';
 		}
 		else
