@@ -155,7 +155,7 @@
 			<div class="layui-form layui-form-pane">
 
 		    	<div class="layui-form-item">
-				    <label class="layui-form-label" style="width:100px;">维修员</label>
+				    <label class="layui-form-label">维修员</label>
 				    <div class="layui-input-inline">
 				      	<select name="wxy" class="" id="tt2">
 							<?php
