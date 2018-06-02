@@ -180,8 +180,7 @@ for($i=0;$i<count($arrayall);$i++)
     <td align="center" class="text-danger">电话</td>
     <td align="center" class="text-danger">专业或部门</td>
     <td align="center" class="text-danger">报修时间 </td>
-    <td align="center" class="text-danger">维修员</td>
-    <td align="center" class="text-danger">处理情况</td>
+    <td align="center" class="text-danger">损坏描述</td>
     <td align="center" class="text-danger">物件详情</td>
   </tr>
   <?
@@ -221,8 +220,7 @@ for($i=0;$i<count($arrayall);$i++)
     <td align="center"><?=$rowre[5]?></td>
     <td align="center"><?=$rowre[4]?></td>
     <td align="center"><?=$rowre[10]?></td>
-    <td align="center"><?=$rowre[7]?></td>
-    <td align="center"><?=$rowre[11]?></td>
+    <td align="center"><button type="button" onclick="return confirm('<?=$rowre[14]?>');" name="shms" class="btn btn-default">损坏描述</button></td>
     
     <td align="center">
     <form action="" method="get">

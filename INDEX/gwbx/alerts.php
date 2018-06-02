@@ -74,8 +74,9 @@
           <div class=" layui-anim layui-anim-upbit">
             <blockquote class="layui-elem-quote">报修须知</blockquote><br>
             <p>可选：拍好你需要维修的照片。</p><br>
-            <p>报修请严格按照提示进行填写！</p><br>
-            <p>不可乱填，不可用别人的信息！</p><br>
+            <p>维修员工作时间：星期1-星期5</p><br>
+            <p>维修员工作时间：8:30-17:00</p><br>
+            <p>请别乱填以及重复报修！</p><br>
             <p>发现违规行为，将会进行处罚！</p><br>
             <p>点击&lt;知道了&gt;开始填写( • ̀ω•́ )✧</p><br>
             <p>
