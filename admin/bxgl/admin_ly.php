@@ -86,7 +86,10 @@
 		{
 			if(!$(".choo").is(":checked"))
 			{
-				alert("请勾选需要分配的任务");
+				layui.use('layer', function(){
+				  var layer = layui.layer;
+				  parent.layer.msg('请勾选需要分配的任务');
+				});
 				return false;
 			}		
 		}
@@ -150,7 +153,7 @@
 	    </form>
 	</blockquote>
 	<!--维修员分配-->
-	<form name="wxyfp" action="" method="get" onsubmit="return checkfp()">
+	<form name="wxyfp" id="wxyfp" action="" method="get" onsubmit="return checkfp()">
 		<blockquote class="layui-elem-quote">
 			<div class="layui-form layui-form-pane">
 
@@ -170,7 +173,7 @@
 							?>
 				        </select>
 				    </div>
-				    <button name="buttonfp" onclick="return confirm('确定分配？');" type="submit" class="layui-btn layui-form-mid" style="width: 80px;">分配</button>
+				    <button name="buttonfp" id="buttonfp" type="button" class="layui-btn layui-form-mid" style="width: 80px;">分配</button>
 				</div>
 			</div>
 		</blockquote>
@@ -239,16 +242,16 @@
 
 							<span>&nbsp;<a href="delete_adminly.php?tname=<?=$rowre[3]?>&tphone=<?=$rowre[5]?>&tadd=<?=$rowre[1]?>&ttime=<?=$rowre[10]?>&b=<?=$b?>"><button onclick="return confirm('确定删除？');" type="button" class="layui-btn layui-btn-xs layui-btn-danger">删除</button></a></span>
 						</td>
-						<td align="center"><button type="button" onclick="return confirm('<?=$rowre[14]?>');" name="shms" class="layui-btn">损坏描述</button></td>
+						<td align="center"><button type="button" onclick="consay('<?=$rowre[14]?>');" name="shms" class="layui-btn">损坏描述</button></td>
 					    
 					    <td align="center">
-							    <button type="button" onclick="return confirm('<? 
+							    <button type="button" onclick="consay('<? 
 			    $sqlrea="select * from sch_repair_rea where s_time='".$rowre[10]."' and s_name='".$rowre[3]."' and s_phone='".$rowre[5]."' and s_add='".$rowre[1]."'";
 				$rsrea=mysql_query($sqlrea,$con);
 				while($rowrea=mysql_fetch_row($rsrea))
 				{
-					echo "（物件:".$rowrea[1];
-					echo "-数量:".$rowrea[2]."）\\n";
+					echo "（".$rowrea[1];
+					echo " - 数量：".$rowrea[2]."）<br>";
 				}
 				?>');" name="wjxq" class="layui-btn">物件详情</button>
 					    </td>
@@ -293,7 +296,7 @@
 	</script>
 	<!--分配-->
 	<?php
-		if(isset($_GET['buttonfp']))
+		if(isset($_GET['wxy']))
 		{	
 			$nc=$_GET['c'];
 			$n=count($_GET['c']);
@@ -328,7 +331,22 @@
 			    */
 				?>
 		        <script language="javascript">
-		        	alert("分配成功：<?=$wxy?>");
+		        	layui.use('layer', function(){
+					  var layer = layui.layer;
+					  parent.layer.msg('成功分配到 - <?=$wxy?>');
+					});
+					location.href="admin_ly.php?<?=$tb?>";
+		        </script>
+		        <?
+			}
+			else
+			{
+				?>
+		        <script language="javascript">
+		        	layui.use('layer', function(){
+					  var layer = layui.layer;
+					  parent.layer.msg('分配失败');
+					});
 					location.href="admin_ly.php?<?=$tb?>";
 		        </script>
 		        <?
@@ -342,6 +360,38 @@
 	layui.use('form', function(){
 	  var form = layui.form;
 	});
+	//询问框
+	//tnr=内容
+	function consay(tnr)
+	{
+		layui.use('layer', function(){
+		  var layer = layui.layer;
+
+		  parent.layer.confirm(tnr, {
+		    btn: ['关闭'] //按钮
+		    ,title:false
+		  },function(){
+		    parent.layer.closeAll();
+		  });
+		}); 
+	}
+	//维修员分配询问框
+	$("#buttonfp").click(function(e) {
+		layui.use('layer', function(){
+			var layer = layui.layer;
+
+			parent.layer.confirm("分配给 - "+$("#tt2").find("option:selected").text()+"？", {
+			btn: ['确认','取消'] //按钮
+			,title:"分配任务"
+			}, function(){
+				$("#wxyfp").submit();
+				
+			}, function(){
+			  	parent.layer.closeAll();
+			});
+		}); 
+	});
 	</script>
+
 </body>
 </html>

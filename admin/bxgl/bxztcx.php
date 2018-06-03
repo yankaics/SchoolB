@@ -12,77 +12,84 @@
  * @license   https://opensource.org/licenses/Apache-2.0 (Apache License, Version 2.0)
  */
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <script src="../../JSQ/jquery-2.1.1.min.js"></script>
-  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-  <script src="../../bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <!---->
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+  <link rel="stylesheet" href="../../layui/css/layui.css">
+  <script src="../../layui/layui.js"></script>
   <link rel="shortcut icon" href="../../favicon.ico" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!--JSQ-->
+  <script src="../../JSQ/jquery-2.1.1.min.js"></script>
+  <script src="../../JSQ/index.js"></script>
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="../../bootstrap/js/bootstrap.min.js"></script>
   <title>报修状态查询</title>
-  <link media="(max-width:650px)" href="../../CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
+  <!-- <link media="(max-width:650px)" href="../../CSS/mobile-ly-admin-index.css" rel="stylesheet" type="text/css" />
   <link media="(max-width:500px)" href="../../CSS/mobile-top.css" rel="stylesheet" type="text/css" />
   <link media="(min-width:500px)" href="../../CSS/ly-admin-index.css" rel="stylesheet" type="text/css"/>
-  <link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" />
+  <link media="(min-width:500px)" href="../../CSS/top-index.css" rel="stylesheet" type="text/css" /> -->
   <style type="text/css">
-  a:link {
-  	text-decoration: none;
-  }
-  a:visited {
-  	text-decoration: none;
-  }
-  a:hover {
-  	text-decoration: underline;
-  }
-  a:active {
-  	text-decoration: none;
-  }
+    a:link {
+    	text-decoration: none;
+    }
+    a:visited {
+    	text-decoration: none;
+    }
+    a:hover {
+    	text-decoration: underline;
+    }
+    a:active {
+    	text-decoration: none;
+    }
+    body{ 
+      
+      margin:10px;
+    }
   </style>
 
   <script type="text/javascript">
-  function Trim(strValue) 
-  { 
-  //return strValue.replace(/^s*|s*$/g,""); 
-  return strValue;  
-  }
+    function Trim(strValue) 
+    { 
+      //return strValue.replace(/^s*|s*$/g,""); 
+      return strValue;  
+    }
 
-  function SetCookie(sName,sValue) 
-  { 
-  document.cookie = sName + "=" + escape(sValue); 
-  } 
+    function SetCookie(sName,sValue) 
+    { 
+      document.cookie = sName + "=" + escape(sValue); 
+    } 
 
-  function GetCookie(sName) 
-  { 
-  var aCookie = document.cookie.split(";"); 
-  for(var　i=0;　i　< aCookie.length;　i++) 
-  { 
-  var aCrumb = aCookie[i].split("="); 
-  if(sName　== Trim(aCrumb[0])) 
-  { 
-  return unescape(aCrumb[1]); 
-  } 
-  } 
+    function GetCookie(sName) 
+    { 
+      var aCookie = document.cookie.split(";"); 
+      for(var　i=0;　i　< aCookie.length;　i++) 
+      { 
+        var aCrumb = aCookie[i].split("="); 
+        if(sName　== Trim(aCrumb[0])) 
+        { 
+          return unescape(aCrumb[1]); 
+        } 
+      } 
 
-  　　return null; 
-  } 
+    　　return null; 
+    } 
 
-  function scrollback() 
-  { 
-  if(GetCookie("scroll")!=null){document.body.scrollTop=GetCookie("scroll")} 
-  } 
+    function scrollback() 
+    { 
+      if(GetCookie("scroll")!=null){document.body.scrollTop=GetCookie("scroll")} 
+    } 
   </script>
 
   <script language="javascript">
-  setTimeout("self.location.reload();",60*10000);
+    setTimeout("self.location.reload();",60*10000);
   </script>
 </head>
 
-<body id=body onscroll=SetCookie("scroll",document.body.scrollTop); onload="scrollback();">
+<body>
 <!--导航
 <div class="top-index">
 	<div class="logo"><img src="../../UI/logo/logogif.gif"></div>
@@ -92,217 +99,227 @@
   </div>
 </div>-->
 <!--main-->
-<center>
-<?
-include("../../PHP/riqi.php");
-include("../../SQL/db/db.php");
-include("../../PHP/adminse.php");
-include("../adminse/admin_se.php");
-error_reporting(E_ALL^E_NOTICE^E_WARNING);
-$sql10="select count(sid) from sch_repair_re where s_jg='未处理' and s_repair!='未分配'";
-$rs10=mysql_query($sql10,$con);
-if($row10=mysql_fetch_row($rs10))
-	$num10=$row10[0];
-$sql11="select count(sid) from sch_repair_re where s_jg='已处理'";
-$rs11=mysql_query($sql11,$con);
-if($row11=mysql_fetch_row($rs11))
-	$num11=$row11[0];
-$sql12="select count(sid) from sch_repair_rea where s_jg='不能处理'";
-$rs12=mysql_query($sql12,$con);
-if($row12=mysql_fetch_row($rs12))
-	$num12=$row12[0];
+
+<?php
+  include("../../PHP/riqi.php");
+  include("../../SQL/db/db.php");
+  include("../../PHP/adminse.php");
+  include("../adminse/admin_se.php");
+
+  //未处理数量
+  $sql10="select count(sid) from sch_repair_re where s_jg='未处理' and s_repair!='未分配'";
+  $rs10=mysql_query($sql10,$con);
+  if($row10=mysql_fetch_row($rs10))
+  	$num10=$row10[0];
+  //已处理数量
+  $sql11="select count(sid) from sch_repair_re where s_jg='已处理'";
+  $rs11=mysql_query($sql11,$con);
+  if($row11=mysql_fetch_row($rs11))
+  	$num11=$row11[0];
+  //不能处理数量
+  $sql12="select count(sid) from sch_repair_rea where s_jg='不能处理'";
+  $rs12=mysql_query($sql12,$con);
+  if($row12=mysql_fetch_row($rs12))
+  	$num12=$row12[0];
 ?>
+
 <div class="ly">
-	<h2>报修状态查询</h2>
-    <p>
+  <!--状态选择-->
+  <blockquote class="layui-elem-quote">
+    <h2>报修状态查询</h2>
+
     <form class="form-horizontal" action="" method="get" role="form">
-       <p>
-       <button type="submit" name="wcl" class="btn btn-default">未处理<span class="badge"><?=$num10?></span></button>
-       <button type="submit" name="ycl" class="btn btn-default">已处理<span class="badge"><?=$num11?></span></button>
-       <button type="submit" name="bncl" class="btn btn-default">不能处理<span class="badge"><?=$num12?></span></button>
-       </p>
+      <div class="table-responsive">
+          <table width="100%" class="table" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td>
+                <button type="submit" name="bncl" class="layui-btn layui-btn-sm layui-btn-danger">不能处理<span class="layui-badge layui-bg-black"><?=$num12?></span></button>
+                <button type="submit" name="wcl" class="layui-btn layui-btn-sm layui-btn-warm">未处理<span class="layui-badge layui-bg-black"><?=$num10?></span></button>
+                <button type="submit" name="ycl" class="layui-btn layui-btn-sm layui-btn-normal">已处理<span class="layui-badge layui-bg-black"><?=$num11?></span></button>
+       
+              </td>
+            </tr>
+          </table>
+        </div>
     </form>
-    </p>
-    <p>
-    <div class="table-responsive">
-      <table width="90%" class="table" border="1" cellspacing="0" cellpadding="0">
-   
-  <tr>
-  	<?
-    if(isset($_GET['bncl']))
-	{
-		?>
-    <td align="center" class="text-danger">操作</td>
-    <td align="center" class="text-danger">原因</td>
-    <td align="center" class="text-danger">维修员</td>
-    <td align="center" class="text-danger">维修时间</td>
-    <td align="center" class="text-danger">地点</td>
-    <td align="center" class="text-danger">姓名</td>
-    <td align="center" class="text-danger">电话</td>
-    <td align="center" class="text-danger">专业</td>
-    <td align="center" class="text-danger">物件</td>
-    <td align="center" class="text-danger">数量</td>
-    
-    
-    
-    <td align="center" class="text-danger">报修时间</td>
-    
-        <?
-	}
-	else
-	{
-	?>
-    <td align="center" class="text-danger">操作</td> 
-    <td align="center" class="text-danger">地点</td>
-    <td align="center" class="text-danger">姓名</td>
-    <td align="center" class="text-danger">电话</td>
-    <td align="center" class="text-danger">专业</td>
-    <td align="center" class="text-danger">报修时间 </td>
-    <td align="center" class="text-danger">维修员</td>
-    <td align="center" class="text-danger">处理情况</td>
-    <td align="center" class="text-danger">维修时间</td>
-    <td align="center" class="text-danger">物件详情</td>
-    <?
-	}
-	?>
-  </tr>
-  <?
-  	if(isset($_GET['bncl']))
-	{
-		$sqlre="select a.sid,a.s_class,a.s_addr,b.*,a.s_wxxq from sch_repair_re a,sch_repair_rea b where b.s_jg='不能处理' and a.s_name=b.s_name and a.s_add=b.s_add and a.s_phone=b.s_phone and a.s_settime=b.s_time order by s_settime asc";
-		$b='bncl=';
-	}
-	else
-	{
-		if(isset($_GET['ycl']))
-		{
-			$sqlre="select * from sch_repair_re where s_jg='已处理' order by s_settime desc";
-			$b='ycl=';
-		}
-		else
-		{
-			if(isset($_GET['wcl']))
-			{
-				$sqlre="select * from sch_repair_re where s_jg='未处理' and s_repair!='未分配' order by s_settime asc";
-				$b='wcl=';
-			}
-		}
-	}
-		
+
+  </blockquote>
+  <!--详情-->
+  <div class="table-responsive">
+    <table width="100%" class="layui-table table" lay-even>
+      <thead>
+        <tr>
+        	<?php
+            if(isset($_GET['ycl']) || isset($_GET['wcl']) || isset($_GET['yclall']))
+            {
+      		?>
+            <td align="center" class="">操作</td> 
+            <td align="center" class="">地点</td>
+            <td align="center" class="">姓名</td>
+            <td align="center" class="">电话</td>
+            <td align="center" class="">专业</td>
+            <td align="center" class="">报修时间</td>
+            <td align="center" class="">维修员</td>
+            <td align="center" class="">处理情况</td>
+            <td align="center" class="">维修时间</td>
+            <td align="center" class="">物件详情</td>
+          
+          <?php
+          	}
+          	else
+          	{
+          ?>
+            
+            <td align="center" class="">操作</td>
+            <td align="center" class="layui-bg-red">原因</td>
+            <td align="center" class="">损坏描述</td>
+            <td align="center" class="">地点</td>
+            <td align="center" class="">物件</td>
+            <td align="center" class="">数量</td> 
+            <td align="center" class="">维修员</td>
+            <td align="center" class="">维修时间</td>
+            <td align="center" class="">姓名</td>
+            <td align="center" class="">电话</td>
+            <td align="center" class="">专业</td>
+            
+            <td align="center" class="">报修时间</td>
+          <?php
+            }
+          ?>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+      	if(isset($_GET['bncl']))
+        {
+    		  $sqlre="select a.sid,a.s_class,a.s_addr,b.*,a.s_wxxq from sch_repair_re a,sch_repair_rea b where b.s_jg='不能处理' and a.s_name=b.s_name and a.s_add=b.s_add and a.s_phone=b.s_phone and a.s_settime=b.s_time order by s_settime asc";
+    		  $b='bncl=';
+      	}
+      	else if(isset($_GET['ycl']))
+      	{
+
+      		$sqlre="select * from sch_repair_re where s_jg='已处理' order by s_settime desc limit 20";
+          $b='ycl=';
+        }
+        else if(isset($_GET['yclall']))
+        {
+          $sqlre="select * from sch_repair_re where s_jg='已处理' order by s_settime desc";
+          $b='yclall=';
+        }
+    		else if(isset($_GET['wcl']))
+    		{
+    			
+    			$sqlre="select * from sch_repair_re where s_jg='未处理' and s_repair!='未分配' order by s_settime asc";
+    			$b='wcl=';
+    		}
+    		else
+        {
+          $sqlre="select a.sid,a.s_class,a.s_addr,b.*,a.s_wxxq from sch_repair_re a,sch_repair_rea b where b.s_jg='不能处理' and a.s_name=b.s_name and a.s_add=b.s_add and a.s_phone=b.s_phone and a.s_settime=b.s_time order by s_settime asc";
+          $b='bncl=';
+        }
         $rsre=mysql_query($sqlre,$con);
-   while($rowre=mysql_fetch_row($rsre))
-   {
-   ?>
-  <tr>
-  	<?
-    if(isset($_GET['bncl']))
-	{
-		?>
-    <td align="center">
+        while($rowre=mysql_fetch_row($rsre))
+        {
+        ?>
+        <tr>
+        	<?php
+            if(isset($_GET['ycl']) || isset($_GET['wcl']) || isset($_GET['yclall']))
+            {
+      		?>
+            <td align="center">
+              <?php
+              if(isset($_GET['wcl']))
+                echo "未处理";
+              else
+                echo "已处理";
+              ?>
+            </td>
+            <td align="center"><?=$rowre[1].$rowre[2]?></td>
+            <td align="center"><?=$rowre[3]?></td>
+            <td align="center"><?=$rowre[5]?></td>
+            <td align="center"><?=$rowre[4]?></td>
+            <td align="center"><?=$rowre[10]?></td>
+            <td align="center"><?=$rowre[7]?></td>
+            <td align="center"><?=$rowre[11]?></td>
+            <td align="center"><?=$rowre[12]?></td>
+            <td align="center">
+              <button type="button" onclick="consay('<? 
+          $sqlrea="select * from sch_repair_rea where s_time='".$rowre[10]."' and s_name='".$rowre[3]."' and s_phone='".$rowre[5]."' and s_add='".$rowre[1]."'";
+        $rsrea=mysql_query($sqlrea,$con);
+        while($rowrea=mysql_fetch_row($rsrea))
+        {
+          echo "（".$rowrea[1];
+          echo " - 数量：".$rowrea[2]."）<br>";
+        }
+        ?>');" name="wjxq" class="layui-btn">物件详情</button>
+            </td>
+          <?php
+          	}
+          	else
+          	{
+        	?>
+            <td align="center">
+            <?php
+              if($rowre[7]!="零星维修")
+              {
+            ?>
+              <button type="button" onclick="zlxwx(<?=$rowre[0]?>)" name="lxwx" class="layui-btn layui-btn-warm">转【零星维修】处理</button>
+              
+            <?php
+              }
+              else
+              {
+                echo "零星维修处理中";
+              }
+            ?>
+
+            </td>
+            <td align="center" class="text-danger"><?=$rowre[8]?></td>
+
+            <td align="center">
+              <button type="button" onclick="consay('<?=$rowre[17]?>')" name="shms" class="layui-btn">损坏描述</button>
+            </td>
+            <td align="center"><?=$rowre[10].$rowre[2]?></td>
+            <td align="center"><?=$rowre[4]?></td>
+            <td align="center"><?=$rowre[5]?></td>
+            
+            <td align="center"><?=$rowre[7]?></td>
+            <td align="center"><?=$rowre[15]?></td>
+            
+            <td align="center"><?=$rowre[12]?></td>
+            <td align="center"><?=$rowre[13]?></td>
+            <td align="center"><?=$rowre[1]?></td>
+            
+            <td align="center"><?=$rowre[9]?></td>
+                   
+          <?php
+            }
+        	?>
+          
+        </tr>
       <?php
-        if($rowre[7]!="零星维修")
-        {
-      ?>
-      <a href="bxztcx.php?lxwx=<?=$rowre[0]?>" onclick="return confirm('确定转入？');"><button type="button" name="lxwx" class="btn btn-default">转<零星维修>处理</button></a><button type="button" onclick="return confirm('<?=$rowre[17]?>');" name="shms" class="btn btn-default">损坏描述</button>
-      <?
-        }
-        else
-        {
-          echo "零星维修处理中";
         }
       ?>
+          <!--已处理查看所有-->
+          <?
+            if(isset($_GET['ycl']))
+            {
+          ?>
+          <td colspan="10" align="center">
+            <form class="" action="" method="get" role="form">
+              <button type="submit" name="yclall" class="layui-btn layui-btn-sm layui-btn-normal">查看所有</button>
+            </form>
+          </td>
+          <?
+            }
+          ?>
 
-    </td>
-    <td align="center" class="text-danger"><?=$rowre[8]?></td>
-    <td align="center"><?=$rowre[7]?></td>
-    <td align="center"><?=$rowre[15]?></td>
-    <td align="center"><?=$rowre[10].$rowre[2]?></td>
-    <td align="center"><?=$rowre[12]?></td>
-    <td align="center"><?=$rowre[13]?></td>
-    <td align="center"><?=$rowre[1]?></td>
-    <td align="center"><?=$rowre[4]?></td>
-    <td align="center"><?=$rowre[5]?></td>
-    
-    
-    
-    <td align="center"><?=$rowre[9]?></td>
-        <?
-	}
-	else
-	{
-	?>
-    <td align="center">
-    <?
-    if(isset($_GET['wcl']))
-		echo "未处理";
-		else
-		echo "已处理";
-	?>
-    </td>
-    <td align="center"><?=$rowre[1].$rowre[2]?></td>
-    <td align="center"><?=$rowre[3]?></td>
-    <td align="center"><?=$rowre[5]?></td>
-    <td align="center"><?=$rowre[4]?></td>
-    <td align="center"><?=$rowre[10]?></td>
-    <td align="center"><?=$rowre[7]?></td>
-    <td align="center"><?=$rowre[11]?></td>
-    <td align="center"><?=$rowre[12]?></td>
-    <td align="center">
-    <form action="" method="get">
-    <?
-    if(isset($_GET['tb']))
-	{
-	?>
-    <input name="tb" type="hidden" value="<?=$_GET['tb']?>" />
-    <?
-	}
-	else
-	{
-	?>
-    <input name="tb" type="hidden" value="<?=$b?>" />
-    <?
-	}
-	?>
-    <input name="tname" type="hidden" value="<?=$rowre[3]?>" />
-    <input name="tphone" type="hidden" value="<?=$rowre[5]?>" />
-    <input name="tadd" type="hidden" value="<?=$rowre[1]?>" />
-    <input name="ttime" type="hidden" value="<?=$rowre[10]?>" />
-    <button type="submit" name="wjxq" class="btn btn-default">物件详情</button>
-    </form>
-    </td>
-    <?
-	}
-	?>
-    
-  </tr>
-  <?
-   }
-?>
-</table>
-<!--物件详情-->
-<?
-if(isset($_GET['wjxq']))
-{
-?>
-<script language="javascript">
-	alert('<? 
-    $sqlrea="select * from sch_repair_rea where s_time='".$_GET['ttime']."' and s_name='".$_GET['tname']."' and s_phone='".$_GET['tphone']."' and s_add='".$_GET['tadd']."'";
-	$rsrea=mysql_query($sqlrea,$con);
-	while($rowrea=mysql_fetch_row($rsrea))
-	{
-		echo "（物件:".$rowrea[1];
-		echo "-数量:".$rowrea[2]."）\\n";
-	}
-	?>');
-	location.href="bxztcx.php?<?=$_GET['tb']?>";
-</script>
-<?
-}
-?>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-</div>
-    </p>
-</div>
+
 <!--转<零星维修>处理-->
 <?php
 if(isset($_GET['lxwx']))
@@ -320,7 +337,10 @@ if(isset($_GET['lxwx']))
   {
     ?>
     <script type="text/javascript">
-      alert("已转入<零星维修>");
+      layui.use('layer', function(){
+        var layer = layui.layer;
+        parent.layer.msg('成功转到 - 零星维修');
+      });
       location.href="bxztcx.php?bncl";
     </script>
     <?
@@ -330,12 +350,51 @@ if(isset($_GET['lxwx']))
   {
     ?>
     <script type="text/javascript">
-      alert("转入<零星维修>失败，请联系技术人员");
+      layui.use('layer', function(){
+        var layer = layui.layer;
+        parent.layer.msg('转任务失败');
+      });
+      location.href="bxztcx.php?bncl";
     </script>
     <?
   }
 }
 ?>
-</center>
+
+<script type="text/javascript">
+  //询问框
+  //tnr=内容
+  function consay(tnr)
+  {
+    layui.use('layer', function(){
+      var layer = layui.layer;
+
+      parent.layer.confirm(tnr, {
+        btn: ['关闭'] //按钮
+        ,title:false
+      },function(){
+        parent.layer.closeAll();
+      });
+    }); 
+  }
+  //转为零星维修
+  //tid=任务id
+  function zlxwx(tid)
+  {
+    layui.use('layer', function(){
+      var layer = layui.layer;
+
+      parent.layer.confirm("确认转给零星维修处理？", {
+      btn: ['确认','取消'] //按钮
+      ,title:"转零星维修"
+      }, function(){
+        location.href="../bxgl/bxztcx.php?lxwx="+tid;
+      }, function(){
+          parent.layer.closeAll();
+      });
+    }); 
+  }
+</script>
+
 </body>
 </html>
