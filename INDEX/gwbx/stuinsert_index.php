@@ -20,7 +20,7 @@
 </head>
 
 <body>
-<?
+<?php
 include("../../SQL/db/db.php");
 include("../../php/riqi.php");
 include("../../PHP/adminse.php");
@@ -66,6 +66,10 @@ if(!isset($_POST['tea']))
 		}
 		if($rsrea>0)
 		{
+			//修改学生表的电话
+			$sqlp="update sch_stub set tphone='".$tphone."' where tno='".$_SESSION['txh']."'";
+			$rsp=mysql_query($sqlp,$con);
+
 			?>
             <script language="javascript">
 				//提交成功
@@ -129,6 +133,10 @@ else
 		}
 		if($rsrea>0)
 		{
+
+			//修改教师表电话
+			$sqlp="update sch_teab set tphone='".$tphone."' where tjobnum='".$_SESSION['user']."'";
+			$rsp=mysql_query($sqlp,$con);
 			?>
             <script language="javascript">
 				//提交成功
