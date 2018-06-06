@@ -26,24 +26,14 @@
 	<title>报修详情</title>
 </head>
 
-<body>     
-<div class="layui-header header header-doc">
-    <ul class="layui-nav " style="text-align:center;">
-    	<div class="layui-container ">
-        	<?
-			include("../../PHP/riqi.php");
-			include("../../SQL/db/db.php");
-			include("../../PHP/adminse.php");
-			include("../adminse/admin_se.php");
-			$time=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
-			?>
-            <li class="layui-nav-item">
-				<a href="wxrw.php"><div class="xz-index">返回 </div></a>	
-            </li>
-            
-        </div>
-    </ul>
-</div><br><br>
+<body> 
+<?
+	include("../../PHP/riqi.php");
+	include("../../SQL/db/db.php");
+	include("../../PHP/adminse.php");
+	include("../adminse/admin_se.php");
+	$time=$rqY.'-'.$rqmm.'-'.$rqd.'-'.$rqH.':'.$rqi.':'.$rqs;
+?>    
 <!--main-->
 <div class="layui-container">
   <div class="layui-row">
@@ -309,8 +299,27 @@
   	</div>
   </div>
 </div> 
+
 <script type="text/javascript">
-		
+
+//底部弹出
+$(document).ready(function(e) {
+	layui.use('layer', function(){
+		var layer = layui.layer;
+		parent.layer.msg('<button onclick="window.parent.ifsrc();" type="button" class="layui-btn">返回</button>', {
+		title: false,
+		closeBtn: 0,
+		time:0,
+		anim: 2,
+		shadeClose :false,
+		offset: 'b',
+		area: ['100%', '60px']	
+		});	
+	});
+});
+
+
+
 </script> 
 </body>
 </html>
