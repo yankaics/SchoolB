@@ -118,6 +118,26 @@ $(".ann").click(function(e) {
 });
 
 });
+//子页面../bxgl/czxq.php页面底部返回
+function ifsrc()
+{
+  $(document).ready(function(){
+    $('#iframeid_admin').attr('src',"../bxgl/wxrw.php");
+    //延时左侧收缩
+    setTimeout(function () {
+      var a = $('.dynamic-navigation');   
+    a && (a.attr("tg") ? (a.animate({
+          left: -200,
+          opacity: "show"
+      }, 300), a.removeAttr("tg")) : (a.animate({
+          left: -200,
+          opacity: "show"
+      }, 300), a.attr("tg", "1")))
+    },500); 
+    //关闭所有弹出层
+    layer.closeAll();
+  });
+}
 
 //点击logo收缩
 $('body').on('click', '.layui-logo', function(){
