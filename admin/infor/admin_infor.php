@@ -81,14 +81,14 @@ $(document).ready(function(e) {
       	<li class="layui-nav-item"><a class="ann" id="admin_index.php" href="javascript:;">后台首页</a></li>
     <!--账号管理-->
     <?
-    	if($_SESSION['cg']==1 || $_SESSION['zw']=='维修主管' || $_SESSION['zw']=='宿管员' || $_SESSION['zw']=='宿管主管')
+    	if($_SESSION['cg']==1 || $_SESSION['zw']=='维修主管' || $_SESSION['zw']=='宿管主管')
 		{
 		?>
         <li class="layui-nav-item layui-nav-itemed">
           <a href="javascript:;">账号管理</a>
           <dl class="layui-nav-child">
             <?
-              if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管员' || $_SESSION['zw']=='宿管主管')
+              if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管主管')
               {
             ?>
             <dd><a class="ann" id="../zhgl/stu_all.php" href="javascript:;">学生管理</a></dd>
@@ -152,6 +152,21 @@ $(document).ready(function(e) {
 		}
 		?>
     
+    <!--水电费缴费-->
+    <?
+    if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管主管' || $_SESSION['zw']=='宿管员')
+    {
+    ?>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">水电费缴费</a>
+          <dl class="layui-nav-child">
+            <dd><a class="ann" id="../ele_exp/ele_pay.php" href="javascript:;">电费缴费</a></dd>
+            
+          </dl>
+        </li>
+        <?
+    }
+    ?>
     <!--水电费管理-->
     <?
     if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管主管' || $_SESSION['zw']=='宿管员')
@@ -160,7 +175,6 @@ $(document).ready(function(e) {
         <li class="layui-nav-item layui-nav-itemed">
           <a href="javascript:;">水电费管理</a>
           <dl class="layui-nav-child">
-            <dd><a class="ann" id="../ele_exp/ele_pay.php" href="javascript:;">电费缴费</a></dd>
             <?
             if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管主管')
             {
