@@ -137,7 +137,7 @@
                     <div class="layui-form-item layui-form-text">
                         <label class="layui-form-label"><span class="layui-badge-dot"></span>损坏描述</label>
                         <div class="layui-input-block">
-                          <textarea name="twxxq" placeholder="如：桌子腿坏了，水管裂开了，尽量详细。" class="layui-textarea"></textarea>
+                          <textarea name="twxxq" placeholder="如：水管裂开了，尽量详细，详细的描述会让维修员更好的处理" class="layui-textarea"></textarea>
                         </div>
                      </div>
 					

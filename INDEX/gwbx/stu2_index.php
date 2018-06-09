@@ -71,7 +71,10 @@ body{ padding-bottom:300px;};
 			?>
             
               <div class="layui-field-box layui-anim layui-anim-upbit">
-              	<blockquote class="layui-elem-quote">联系 · 报修地址</blockquote>
+              	<blockquote class="layui-elem-quote">
+                  <p>联系 · 报修地址</p>
+                  <p><span class="layui-badge-dot layui-bg-orange"></span>错误的详细地址可能会导致延期</p>
+                </blockquote>
               	<p>
                 <form class="layui-form layui-form-pane form2" name="stu2" action="stu3_index.php" method="post" role="form" onsubmit="return checkadd()">
                 	<div class="layui-form-item">
