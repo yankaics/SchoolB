@@ -370,6 +370,7 @@
 		  parent.layer.confirm(tnr, {
 		    btn: ['关闭'] //按钮
 		    ,title:false
+		    ,shadeClose:true
 		  },function(){
 		    parent.layer.closeAll();
 		  });
