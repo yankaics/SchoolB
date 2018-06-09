@@ -52,7 +52,7 @@
           <div class="layui-input-block">
             <select name="sadminY" id="sadminY" lay-verify="required">
               <?
-              for($j=2017;$j<=$rqY;$j++)
+              for($j=2018;$j<=$rqY;$j++)
               {
               ?>
                 <option value="<?=$j?>"><?=$j?>Äê</option>
@@ -123,6 +123,7 @@ function checkload()
 }
 
 document.getElementById("sadminY").value = "<?=$rqY?>";
+document.getElementById("sadminm").value = "<?=$rqm?>";
 
 layui.use('form', function(){
   var form = layui.form;
@@ -137,6 +138,7 @@ $(document).ready(function(e) {
                   title: false,
                   btnAlign: 'c',
                   closeBtn: 0,
+                  offset: 't',
                 }, function(){
                   layer.close(layer.index);
                   $(".fromload").submit();

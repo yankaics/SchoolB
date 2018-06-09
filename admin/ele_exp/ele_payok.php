@@ -30,60 +30,144 @@
 	include("../../SQL/db/db.php");
 	include("../../PHP/adminse.php");
 	include("../adminse/admin_se.php");
-
-  	$qs=$_GET['m'];
-	$sqlcx="select * from sushe_user where  sushe_Y='".$_SESSION['Y']."' and sushe_m='".$_SESSION['m']."' and sushe_dor='".$qs."'";
-	$rscx=mysql_query($sqlcx,$con);
-	while($rowcx=mysql_fetch_row($rscx))
+	//微秒
+	function  microtime_float ()
 	{
-		$sql="update sushe_user set sushe_jg='已缴费' where sushe_Y='".$_SESSION['Y']."' and sushe_m='".$_SESSION['m']."' and sushe_dor='".$qs."'";
-		$q=(mysql_query($sql));
-		if($q>0)
+	    list( $usec ,  $sec ) =  explode ( " " ,  microtime ());
+	    $sec=(string)$sec;
+	    $sec=substr($sec,0);
+	    return ((int) $sec +(int)$usec);
+	}
+	//已缴费
+	if(isset($_GET['m']))
+	{
+	  	$qs=$_GET['m'];
+		$sqlcx="select * from sushe_user where  sushe_Y='".$_SESSION['Y']."' and sushe_m='".$_SESSION['m']."' and sushe_dor='".$qs."'";
+		$rscx=mysql_query($sqlcx,$con);
+		while($rowcx=mysql_fetch_row($rscx))
 		{
-			$settime=$rqY."-".$rqm."-".$rqd;
-			$sql="insert into sch_dfre values('','".$_SESSION['id']."','".$_SESSION['name']."','".$_SESSION['nameid']."','".$qs."','".$rowcx[11]."','".$_SESSION['Y']."-".$_SESSION['m']."','".$settime."')";
-			$rs=mysql_query($sql,$con);
-			if($rs>0)
+			$sql="update sushe_user set sushe_jg='已缴费' where sushe_Y='".$_SESSION['Y']."' and sushe_m='".$_SESSION['m']."' and sushe_dor='".$qs."'";
+			$q=(mysql_query($sql));
+			if($q>0)
 			{
-			?>
-		    <script language="javascript">
-		    		$(document).ready(function(e) {
-						layui.use('layer', function(){
-			  				var layer = layui.layer;
-							parent.layer.msg('处理结果为：已缴费', {
-							  title: false,
-							  closeBtn: 0,
-							  time:2000,
-							  maxWidth:200,
-							  anim: 0,
-							  offset: '240px',
+				//操作日期
+				$settime=$rqY."-".$rqm."-".$rqd."-".$rqH.":".$rqi.":".$rqs;
+				//水电流水号
+				$serial=$rqY.$rqmm.$rqd.$rqH.$rqi.$rqs.microtime_float();
+				$sql="insert into sch_dfre values('','".$_SESSION['id']."','".$_SESSION['name']."','收款','".$qs."','".$rowcx[11]."','".$_SESSION['Y']."-".$_SESSION['m']."','".$settime."','".$serial."','未扎帐')";
+				$rs=mysql_query($sql,$con);
+				if($rs>0)
+				{
+				?>
+			    <script language="javascript">
+			    		$(document).ready(function(e) {
+							layui.use('layer', function(){
+				  				var layer = layui.layer;
+								parent.layer.msg('处理结果为：已缴费', {
+								  title: false,
+								  closeBtn: 0,
+								  time:2000,
+								  maxWidth:200,
+								  anim: 0,
+								  offset: '240px',
+								});
+								
 							});
-							
 						});
-					});
-					location.href="ele_pay.php?sadminY=<?=$_SESSION['Y']?>&sadminm=<?=$_SESSION['m']?>&button=操作";
-		        </script>
-		    <?
+						location.href="ele_pay.php?sadminY=<?=$_SESSION['Y']?>&sadminm=<?=$_SESSION['m']?>&button=操作";
+			        </script>
+			    <?
+				}
+				else
+				{
+				?>
+			    <script language="javascript">
+			        	alert("处理结果更新失败，请联系技术人员#1");
+						location.href="ele_pay.php?sadminY=<?=$_SESSION['Y']?>&sadminm=<?=$_SESSION['m']?>&button=操作";
+			        </script>
+			    <?
+				}
 			}
 			else
 			{
-			?>
-		    <script language="javascript">
-		        	alert("处理结果更新失败，请联系技术人员#1");
-					location.href="ele_pay.php?sadminY=<?=$_SESSION['Y']?>&sadminm=<?=$_SESSION['m']?>&button=操作";
-		        </script>
-		    <?
+				?>
+			    <script language="javascript">
+			        	alert("处理结果更新失败，请联系技术人员");
+						location.href="ele_pay.php?sadminY=<?=$_SESSION['Y']?>&sadminm=<?=$_SESSION['m']?>&button=操作";
+			        </script>
+			    <?
 			}
 		}
-		else
+	}
+
+	//退款
+	else if(isset($_GET['mtk']))
+	{
+	  	$qs=$_GET['mtk'];
+		$sqlcx="select * from sushe_user where  sushe_Y='".$_SESSION['Y']."' and sushe_m='".$_SESSION['m']."' and sushe_dor='".$qs."'";
+		$rscx=mysql_query($sqlcx,$con);
+		while($rowcx=mysql_fetch_row($rscx))
 		{
-			?>
-		    <script language="javascript">
-		        	alert("处理结果更新失败，请联系技术人员");
-					location.href="ele_pay.php?sadminY=<?=$_SESSION['Y']?>&sadminm=<?=$_SESSION['m']?>&button=操作";
-		        </script>
-		    <?
+			$sql="update sushe_user set sushe_jg='未缴费' where sushe_Y='".$_SESSION['Y']."' and sushe_m='".$_SESSION['m']."' and sushe_dor='".$qs."'";
+			$q=(mysql_query($sql));
+			if($q>0)
+			{
+				//操作日期
+				$settime=$rqY."-".$rqm."-".$rqd."-".$rqH.":".$rqi.":".$rqs;
+				//水电流水号
+				$serial=$rqY.$rqmm.$rqd.$rqH.$rqi.$rqs.microtime_float();
+				$sql="insert into sch_dfre values('','".$_SESSION['id']."','".$_SESSION['name']."','退款','".$qs."','".$rowcx[11]."','".$_SESSION['Y']."-".$_SESSION['m']."','".$settime."','".$serial."','未扎帐')";
+				$rs=mysql_query($sql,$con);
+				if($rs>0)
+				{
+				?>
+			    <script language="javascript">
+			    		$(document).ready(function(e) {
+							layui.use('layer', function(){
+				  				var layer = layui.layer;
+								parent.layer.msg('处理结果为：已退款', {
+								  title: false,
+								  closeBtn: 0,
+								  time:2000,
+								  maxWidth:200,
+								  anim: 0,
+								  offset: '240px',
+								});
+								
+							});
+						});
+						location.href="ele_pay.php?sadminY=<?=$_SESSION['Y']?>&sadminm=<?=$_SESSION['m']?>&button=操作";
+			        </script>
+			    <?
+				}
+				else
+				{
+				?>
+			    <script language="javascript">
+			        	alert("处理结果更新失败，请联系技术人员#1");
+						location.href="ele_pay.php?sadminY=<?=$_SESSION['Y']?>&sadminm=<?=$_SESSION['m']?>&button=操作";
+			        </script>
+			    <?
+				}
+			}
+			else
+			{
+				?>
+			    <script language="javascript">
+			        	alert("处理结果更新失败，请联系技术人员");
+						location.href="ele_pay.php?sadminY=<?=$_SESSION['Y']?>&sadminm=<?=$_SESSION['m']?>&button=操作";
+			        </script>
+			    <?
+			}
 		}
+	}
+	else
+	{
+		?>
+		<script language="javascript">
+			location.href="ele_pay.php";
+        </script>
+		<?
 	}
 ?>
 

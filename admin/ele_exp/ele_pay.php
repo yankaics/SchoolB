@@ -44,7 +44,7 @@
           <p>选择操作的电费日期（电费上传的日期）</p>
           <p>输入寝室号查询后操作</p>
           <p>确认该寝室已经缴费之后再标记为<已缴费></p>
-          <p style="color:#FF5722;">已经标记了<已缴费>的寝室，就不能撤销，操作时一定注意。</p>
+          <p style="color:#FF5722;">已经标记了<已缴费>的寝室，只能退款，操作时一定注意。</p>
 
           <form class="layui-form" action="" name="admin" method="get">
           <div class="layui-inline">
@@ -289,18 +289,43 @@
                   if($row[16]=='已缴费')
                   {
                     echo "已缴费";
+                    ?>
+                    <a href="javascript:;" class="tk_pay<?=$row[2]?>"><button type="button" name="button" class="layui-btn layui-btn-danger">退款</button></a>
+                    <script type="text/javascript">
+                      $(document).ready(function(e) {
+                        $(".tk_pay<?=$row[2]?>").click(function(e) {
+                          layui.use('layer', function(){
+                            var layer = layui.layer;
+                            parent.layer.confirm('<center><div style="color:#FF5722;">确定退款？将会标记为【未缴费】！</div><br>寝室：<?=$row[2]?> 电费：<?=$row[11]?></center>', {
+                              btn: ['确定','取消'],
+                              title: false,
+                              btnAlign: 'c',
+                              closeBtn: 0,
+                            }, function(){
+                              parent.layer.closeAll();
+                              //因为是parent 所以需要再次进入文件夹访问
+                              location.href="../ele_exp/ele_payok.php?mtk=<?=$row[2]?>";
+
+                            },function(){
+                              
+                               });
+                          });
+                        });
+                      });
+                    </script>
+                    <?
                   }
                   else
                   {
                   ?>
-                    <a class="yjf_pay<?=$row[2]?>"><button type="button" name="button" class="layui-btn">已缴费</button></a>
+                    <a class="yjf_pay<?=$row[2]?>"><button type="button" name="button" class="layui-btn">缴费</button></a>
                     <script type="text/javascript">
                       $(document).ready(function(e) {
                         $(".yjf_pay<?=$row[2]?>").click(function(e) {
                           layui.use('layer', function(){
                             var layer = layui.layer;
                             parent.layer.confirm('<center>确定标记为<已缴费>？寝室：<?=$row[2]?> 电费：<?=$row[11]?></center>', {
-                              btn: ['确定|·_·)','取消'],
+                              btn: ['确定','取消'],
                               title: false,
                               btnAlign: 'c',
                               closeBtn: 0,
@@ -319,8 +344,16 @@
                   <?
                   }
                   ?>
-                    <!--dormp.php?dorm=<?=$row[2]?>&sadminY=<?=$Y?>&sadminm=<?=$m?>-->
-                     <a href="javascript:;"><button type="button" name="button" class="layui-btn">详情</button></a>
+                     <button type="button" onclick="consay('<? 
+          $sqlrea="select * from sch_stub where tdorm='".$row[2]."' and tjg='在校' order by tno desc limit 8";
+        $rsrea=mysql_query($sqlrea,$con);
+        while($rowrea=mysql_fetch_row($rsrea))
+        {
+          echo "学号：".$rowrea[7];
+          echo " - 姓名：".$rowrea[1]."<br>";
+        }
+        ?>')" name="button" class="layui-btn">人员</button>
+
                 </td>
                 <td align="center" style="color:#FF5722;"><?=$row[2]?></td>
                 <td align="center" style="color:#FF5722;"><?=$row[11]?>元</td>
@@ -379,5 +412,23 @@ else
 <?
 }
 ?>
+<script type="text/javascript">
+  //询问框
+  //tnr=内容
+  function consay(tnr)
+  {
+    layui.use('layer', function(){
+      var layer = layui.layer;
+
+      parent.layer.confirm(tnr, {
+        btn: ['关闭'] //按钮
+        ,title:false
+        ,shadeClose:true
+      },function(){
+        parent.layer.closeAll();
+      });
+    }); 
+  }
+</script>
 </body>
 </html>

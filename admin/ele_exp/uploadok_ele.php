@@ -48,7 +48,7 @@ if($row=mysql_fetch_row($cxrs))
 {
   ?>
   <script type="text/javascript">
-    alert("所录入的表已经存在，录入中断。\n======================\n<?=$cxstring[0]?>号楼,抄表时间：<?=$cxstring[11]?>");
+    alert("所录入的表已经存在，录入中断。\n======================\n抄表时间：<?=$cxstring[11]?>");
     location.href="upload_ele.php";
   </script>
   <?
