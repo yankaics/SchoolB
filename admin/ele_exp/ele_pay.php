@@ -345,12 +345,22 @@
                   }
                   ?>
                      <button type="button" onclick="consay('<? 
-          $sqlrea="select * from sch_stub where tdorm='".$row[2]."' and tjg='在校' order by tno desc limit 8";
+          $sqlrea="select * from sch_stub where tdorm='".$row[2]."' and tjg='在校' group by tno order by tno desc limit 8";
         $rsrea=mysql_query($sqlrea,$con);
         while($rowrea=mysql_fetch_row($rsrea))
         {
-          echo "学号：".$rowrea[7];
-          echo " - 姓名：".$rowrea[1]."<br>";
+          if(substr($rowrea[7],0,1)!=0)
+          {
+            echo "学号：".$rowrea[7];
+            echo " - 姓名：".$rowrea[1]."<br>";
+          }
+        }
+        $sqlr="select distinct * from sch_stub where tdorm='".$row[2]."' and tno like '0%' and tjg='在校' group by tno order by tno desc limit 8";
+        $rsr=mysql_query($sqlr,$con);
+        while($rowr=mysql_fetch_row($rsr))
+        {
+            echo "报名号：".$rowr[7];
+            echo " - 姓名：".$rowr[1]."<br>";
         }
         ?>')" name="button" class="layui-btn">人员</button>
 
