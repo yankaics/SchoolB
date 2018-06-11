@@ -108,9 +108,9 @@
 <!--main-->
 
 <!--轮播-->
-<div class="layui-container layui-col-md-offset2 paddingtop layui-anim layui-anim-upbit">
+<div class="layui-container paddingtop layui-anim layui-anim-upbit">
   <div class="layui-row">
-    <div class="layui-col-md10">
+    <div class="layui-col-md12">
 
       <div class="layui-carousel" id="sylb" >
           <div carousel-item class="lb">
@@ -180,7 +180,7 @@
   
 
 <!--主要功能-->
-<div class="layui-col-md-offset2 paddingtop layui-anim layui-anim-upbit">
+<div class="layui-container paddingtop layui-anim layui-anim-upbit">
   <div class="layui-col-md12">
       <div class="layui-row">
         <div class="layui-col-md3 layui-col-sm5 border_box_icon">
@@ -198,10 +198,10 @@
           <!-- <i class="layui-icon img48">&#xe631;</i> -->
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          <br/>&nbsp;&nbsp;&nbsp;&nbsp;公物报修
+          &nbsp;&nbsp;&nbsp;&nbsp;公物报修
         </div>
-        <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          <br/>&nbsp;&nbsp;学院公共物品报修
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10 yy">
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;学院公共物品报修
         </div>
       </div>
   </div>
@@ -215,10 +215,10 @@
           <!-- <i class="layui-icon img48">&#xe636;</i> -->
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          <br/>&nbsp;&nbsp;&nbsp;&nbsp;宿舍水电
+          &nbsp;&nbsp;&nbsp;&nbsp;宿舍水电
         </div>
-        <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          <br/>&nbsp;&nbsp;水电费查看及缴费
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10 yy">
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;水电费查看及缴费
         </div>
       </div>
   </div>
@@ -226,7 +226,7 @@
 
 </div>
 <!--学生功能-->
-<div class="layui-col-md-offset2 paddingtop layui-anim layui-anim-upbit">
+<div class="layui-container paddingtop layui-anim layui-anim-upbit">
   <div class="layui-col-md12">
       <div class="layui-row">
         <div class="layui-col-md3 layui-col-sm5 border_box_icon">
@@ -244,10 +244,10 @@
           <!-- <i class="layui-icon img48">&#xe63c;</i> -->
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          <br/>&nbsp;&nbsp;&nbsp;&nbsp;成绩查询
+          &nbsp;&nbsp;&nbsp;&nbsp;成绩查询
         </div>
-        <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          <br/>&nbsp;&nbsp;学院官网成绩查询
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10 yy">
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;学院官网成绩查询
         </div>
       </div>
   </div>
@@ -261,10 +261,10 @@
           <!-- <i class="layui-icon img48">&#xe606;</i> -->
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          <br/>&nbsp;&nbsp;&nbsp;&nbsp;聊天室
+          &nbsp;&nbsp;&nbsp;&nbsp;聊天室
         </div>
-        <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          <br/>&nbsp;&nbsp;多聊天私人聊天室
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10 yy">
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;多聊天私人聊天室
         </div>
       </div>
   </div>
@@ -278,10 +278,10 @@
           <!-- <i class="layui-icon img48">&#xe705;</i> -->
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
-          <br/>&nbsp;&nbsp;&nbsp;&nbsp;敬请期待
+          &nbsp;&nbsp;&nbsp;&nbsp;敬请期待
         </div>
-        <div class="layui-col-md12 layui-col-xs12 layui-col-sm10 yy">
-          <br/>&nbsp;&nbsp;更多功能
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10 yy">
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;更多功能
         </div>
       </div>
   </div>
@@ -292,14 +292,11 @@
 
 <!--底部-->
 <center>
-<div class=" layui-col-md-offset2 paddingtop layui-anim layui-anim-upbit">
-<div class="layui-col-md12 bt">
-    <div class="layui-row">
-      <div class="layui-col-md10 layui-col-sm12 border_box_icon">
-        <div id="bta" href="copy.php">&copy;<? if($rqY>2017) echo "2017-".$rqY; else echo "2017";?> | <a class="bta" href="INDEX/User_Helper/index.php">常见问题</a> | <a class="bta" href="copy.php">关于</a></div>
+<div class="layui-container paddingtop layui-anim layui-anim-upbit ">
+      <div class="layui-col-md12 layui-col-sm12 border_box_icon bt">
+        <div id="bta" href="copy.php">&copy;<? if($rqY>2017) echo "2017-".$rqY; else echo "2017";?> | <a class="bta" href="INDEX/User_Helper/index.php">常见问题</a> | <a class="bta" href="copy.php">关于</a>
+        </div>
       </div>
-  </div>
-</div>
 </div>
 </center>
 
