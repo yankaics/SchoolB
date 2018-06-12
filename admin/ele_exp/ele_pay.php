@@ -44,7 +44,7 @@
           <p>选择操作的电费日期（电费上传的日期）</p>
           <p>输入寝室号查询后操作</p>
           <p>确认该寝室已经缴费之后再标记为<已缴费></p>
-          <p style="color:#FF5722;">已经标记了<已缴费>的寝室，只能退款，操作时一定注意。</p>
+          <p style="color:#FF5722;">已经标记了<已缴费>的寝室，【只能退款一次】，操作时一定注意。</p>
 
           <form class="layui-form" action="" name="admin" method="get">
           <div class="layui-inline">
@@ -92,6 +92,7 @@
         $_SESSION['Y']=$Y;
         $m=$_GET['sadminm'];
         $_SESSION['m']=$m;
+        $YM=$Y."-".$m;
         //人员楼号
         if($_SESSION['cg']==1 || $_SESSION['cg']==2)
         {
@@ -104,8 +105,8 @@
         //总费用，未缴费总和未缴费寝室总数，已缴费寝室总数
         if($_SESSION['cg']==1 || $_SESSION['cg']==2)
         {
-          $sumsql="select sum(sushe_money),count(user_id) from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."'";
-          $sumwjf="select sum(sushe_money),count(user_id) from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_jg='未缴费'";
+          $sumsql="select sum(sushe_money),count(user_id) from sushe_user where sushe_Y='".$YM."'";
+          $sumwjf="select sum(sushe_money),count(user_id) from sushe_user where sushe_Y='".$YM."' and sushe_jg='未缴费'";
           $summoney=mysql_query($sumsql,$con);
           if($rowsum=mysql_fetch_row($summoney))
           {
@@ -131,8 +132,8 @@
         }
         else if($_SESSION['zw']=='宿管员')
         {
-          $sumsql="select sum(sushe_money),count(user_id) from sushe_user where sushe_name='".$_SESSION['poi']."' and sushe_Y='".$Y."' and sushe_m='".$m."'";
-          $sumwjf="select sum(sushe_money),count(user_id) from sushe_user where sushe_name='".$_SESSION['poi']."' and sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_jg='未缴费'";
+          $sumsql="select sum(sushe_money),count(user_id) from sushe_user where sushe_name='".$_SESSION['poi']."' and sushe_Y='".$YM."'";
+          $sumwjf="select sum(sushe_money),count(user_id) from sushe_user where sushe_name='".$_SESSION['poi']."' and sushe_Y='".$YM."' and sushe_jg='未缴费'";
           $summoney=mysql_query($sumsql,$con);
           if($rowsum=mysql_fetch_row($summoney))
           {
@@ -232,19 +233,19 @@
               {
                 if(isset($_POST['wjf']))
                 {
-                  $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_jg='未缴费' order by sushe_dor";
+                  $sql="select * from sushe_user where sushe_Y='".$YM."' and sushe_jg='未缴费' order by sushe_dor";
                 }
                 else
                 {
                   if(isset($_POST['yjf']))
                   {
-                    $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_jg='已缴费' order by sushe_dor";
+                    $sql="select * from sushe_user where sushe_Y='".$YM."' and sushe_jg='已缴费' order by sushe_dor";
                   }
                   else
                   {
                     if(isset($_POST['button3']))
                     {
-                      $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_dor='".$_POST['tkey']."' order by sushe_dor";
+                      $sql="select * from sushe_user where sushe_Y='".$YM."' and sushe_dor='".$_POST['tkey']."' order by sushe_dor";
                     }
                     else
                     {
@@ -257,19 +258,19 @@
               {
                 if(isset($_POST['wjf']))
                 {
-                  $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_name='".$_SESSION['poi']."' and sushe_jg='未缴费' order by sushe_dor";
+                  $sql="select * from sushe_user where sushe_Y='".$YM."' and sushe_name='".$_SESSION['poi']."' and sushe_jg='未缴费' order by sushe_dor";
                 }
                 else
                 {
                   if(isset($_POST['yjf']))
                   {
-                    $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_name='".$_SESSION['poi']."' and sushe_jg='已缴费' order by sushe_dor";
+                    $sql="select * from sushe_user where sushe_Y='".$YM."' and sushe_name='".$_SESSION['poi']."' and sushe_jg='已缴费' order by sushe_dor";
                   }
                   else
                   {
                     if(isset($_POST['button3']))
                     {
-                      $sql="select * from sushe_user where sushe_Y='".$Y."' and sushe_m='".$m."' and sushe_name='".$_SESSION['poi']."' and sushe_dor='".$_POST['tkey']."' order by sushe_dor";
+                      $sql="select * from sushe_user where sushe_Y='".$YM."' and sushe_name='".$_SESSION['poi']."' and sushe_dor='".$_POST['tkey']."' order by sushe_dor";
                     }
                     else
                     {
@@ -289,31 +290,40 @@
                   if($row[16]=='已缴费')
                   {
                     echo "已缴费";
+                    if($row[15]!="已退款" && $row[15]!="已上缴")
+                    {
                     ?>
-                    <a href="javascript:;" class="tk_pay<?=$row[2]?>"><button type="button" name="button" class="layui-btn layui-btn-danger">退款</button></a>
-                    <script type="text/javascript">
-                      $(document).ready(function(e) {
-                        $(".tk_pay<?=$row[2]?>").click(function(e) {
-                          layui.use('layer', function(){
-                            var layer = layui.layer;
-                            parent.layer.confirm('<center><div style="color:#FF5722;">确定退款？将会标记为【未缴费】！</div><br>寝室：<?=$row[2]?> 电费：<?=$row[11]?></center>', {
-                              btn: ['确定','取消'],
-                              title: false,
-                              btnAlign: 'c',
-                              closeBtn: 0,
-                            }, function(){
-                              parent.layer.closeAll();
-                              //因为是parent 所以需要再次进入文件夹访问
-                              location.href="../ele_exp/ele_payok.php?mtk=<?=$row[2]?>";
+                      <a href="javascript:;" class="tk_pay<?=$row[2]?>"><button type="button" name="button" class="layui-btn layui-btn-danger">退款</button></a>
+                      <script type="text/javascript">
+                        $(document).ready(function(e) {
+                          $(".tk_pay<?=$row[2]?>").click(function(e) {
+                            layui.use('layer', function(){
+                              var layer = layui.layer;
+                              parent.layer.confirm('<center><div style="color:#FF5722;">确定退款（只有一次）？将会标记为【未缴费】！</div><br>寝室：<?=$row[2]?> 电费：<?=$row[11]?></center>', {
+                                btn: ['确定','取消'],
+                                title: false,
+                                btnAlign: 'c',
+                                closeBtn: 0,
+                              }, function(){
+                                parent.layer.closeAll();
+                                //因为是parent 所以需要再次进入文件夹访问
+                                location.href="../ele_exp/ele_payok.php?mtk=<?=$row[2]?>";
 
-                            },function(){
-                              
-                               });
+                              },function(){
+                                
+                                 });
+                            });
                           });
                         });
-                      });
-                    </script>
+                      </script>
                     <?
+                    }
+                    else
+                    {
+                      ?>
+                      <a href="javascript:;" onclick="consay('只能退款一次或已轧账')"><button type="button" name="button" class="layui-btn layui-btn-disabled">退款</button></a>
+                      <?
+                    }
                   }
                   else
                   {

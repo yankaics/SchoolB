@@ -42,11 +42,12 @@
 	if(isset($_GET['m']))
 	{
 	  	$qs=$_GET['m'];
-		$sqlcx="select * from sushe_user where  sushe_Y='".$_SESSION['Y']."' and sushe_m='".$_SESSION['m']."' and sushe_dor='".$qs."'";
+	  	$YM=$_SESSION['Y']."-".$_SESSION['m'];
+		$sqlcx="select * from sushe_user where  sushe_Y='".$YM."' and sushe_dor='".$qs."'";
 		$rscx=mysql_query($sqlcx,$con);
 		while($rowcx=mysql_fetch_row($rscx))
 		{
-			$sql="update sushe_user set sushe_jg='已缴费' where sushe_Y='".$_SESSION['Y']."' and sushe_m='".$_SESSION['m']."' and sushe_dor='".$qs."'";
+			$sql="update sushe_user set sushe_jg='已缴费' where sushe_Y='".$YM."' and sushe_dor='".$qs."'";
 			$q=(mysql_query($sql));
 			if($q>0)
 			{
@@ -54,7 +55,7 @@
 				$settime=$rqY."-".$rqm."-".$rqd."-".$rqH.":".$rqi.":".$rqs;
 				//水电流水号
 				$serial=$rqY.$rqmm.$rqd.$rqH.$rqi.$rqs.microtime_float();
-				$sql="insert into sch_dfre values('','".$_SESSION['id']."','".$_SESSION['name']."','收款','".$qs."','".$rowcx[11]."','".$_SESSION['Y']."-".$_SESSION['m']."','".$settime."','".$serial."','未扎帐')";
+				$sql="insert into sch_dfre values('','".$_SESSION['id']."','".$_SESSION['name']."','收款','".$qs."','".$rowcx[11]."','".$YM."','".$settime."','".$serial."','未轧账','')";
 				$rs=mysql_query($sql,$con);
 				if($rs>0)
 				{
@@ -104,11 +105,12 @@
 	else if(isset($_GET['mtk']))
 	{
 	  	$qs=$_GET['mtk'];
-		$sqlcx="select * from sushe_user where  sushe_Y='".$_SESSION['Y']."' and sushe_m='".$_SESSION['m']."' and sushe_dor='".$qs."'";
+	  	$YM=$_SESSION['Y']."-".$_SESSION['m'];
+		$sqlcx="select * from sushe_user where  sushe_Y='".$YM."' and sushe_dor='".$qs."'";
 		$rscx=mysql_query($sqlcx,$con);
 		while($rowcx=mysql_fetch_row($rscx))
 		{
-			$sql="update sushe_user set sushe_jg='未缴费' where sushe_Y='".$_SESSION['Y']."' and sushe_m='".$_SESSION['m']."' and sushe_dor='".$qs."'";
+			$sql="update sushe_user set sushe_jg='未缴费',sushe_m='已退款' where sushe_Y='".$YM."' and sushe_dor='".$qs."'";
 			$q=(mysql_query($sql));
 			if($q>0)
 			{
@@ -116,7 +118,7 @@
 				$settime=$rqY."-".$rqm."-".$rqd."-".$rqH.":".$rqi.":".$rqs;
 				//水电流水号
 				$serial=$rqY.$rqmm.$rqd.$rqH.$rqi.$rqs.microtime_float();
-				$sql="insert into sch_dfre values('','".$_SESSION['id']."','".$_SESSION['name']."','退款','".$qs."','".$rowcx[11]."','".$_SESSION['Y']."-".$_SESSION['m']."','".$settime."','".$serial."','未扎帐')";
+				$sql="insert into sch_dfre values('','".$_SESSION['id']."','".$_SESSION['name']."','退款','".$qs."','".$rowcx[11]."','".$YM."','".$settime."','".$serial."','未轧账','')";
 				$rs=mysql_query($sql,$con);
 				if($rs>0)
 				{

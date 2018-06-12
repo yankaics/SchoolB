@@ -60,7 +60,7 @@ else
   { 
     $string=explode(",",$temp[$i]);//通过循环得到EXCEL文件中每行记录的值 
     //将EXCEL文件中每行记录的值插入到数据库中 
-    $q="insert into sushe_user (sushe_name,sushe_dor,sushe_number,sushe_uname,sushe_mbase,sushe_mreading,sushe_ele,sushe_quota,sushe_excess,sushe_emoney,sushe_money,sushe_date,sushe_people,sushe_Y,sushe_m) values('$string[0]','$string[1]','$string[2]','$string[3]','$string[4]','$string[5]','$string[6]','$string[7]','$string[8]','$string[9]','$string[10]','$string[11]','$string[12]','$adminY','$adminm')"; 
+    $q="insert into sushe_user (sushe_name,sushe_dor,sushe_number,sushe_uname,sushe_mbase,sushe_mreading,sushe_ele,sushe_quota,sushe_excess,sushe_emoney,sushe_money,sushe_date,sushe_people,sushe_Y) values('$string[0]','$string[1]','$string[2]','$string[3]','$string[4]','$string[5]','$string[6]','$string[7]','$string[8]','$string[9]','$string[10]','$string[11]','$string[12]','".$adminY."-".$adminm."')"; 
     $rs=mysql_query($q) or die (mysql_error()); 
 
     if (mysql_error())

@@ -81,15 +81,16 @@
 			//日期
 			$taY=$_GET['sadminY'];
 			$tam=$_GET['sadminm']; 
+			$YM=$taY."-".$tam;
 
-			$zdf="select sum(sushe_money),count(user_id) from sushe_user where sushe_Y='".$taY."' and sushe_m='".$tam."'";
+			$zdf="select sum(sushe_money),count(user_id) from sushe_user where sushe_Y='".$YM."'";
             $rszdf=mysql_query($zdf,$con);
             if($rzdf=mysql_fetch_row($rszdf))
             {
 				$sumall=$rzdf[0]; //总费用
 				$call=$rzdf[1]; //总寝室
             }
-			$wjf="select sum(sushe_money),count(user_id) from sushe_user where sushe_Y='".$taY."' and sushe_m='".$tam."' and sushe_jg='未缴费'";
+			$wjf="select sum(sushe_money),count(user_id) from sushe_user where sushe_Y='".$YM."' and sushe_jg='未缴费'";
             $rswjf=mysql_query($wjf,$con);
             if($rwjf=mysql_fetch_row($rswjf))
             {
@@ -126,7 +127,7 @@
       		</table>
 				<!--每号楼总电费,抄表时间,总寝室-->
                 <?
-                $z1="select sum(sushe_money),sushe_date,count(user_id) from sushe_user where sushe_name=1 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+                $z1="select sum(sushe_money),sushe_date,count(user_id) from sushe_user where sushe_name=1 and sushe_Y='".$YM."'";
 				$rsz1=mysql_query($z1,$con);
 				if($rowz1=mysql_fetch_row($rsz1))
 				{
@@ -140,7 +141,7 @@
 					$dod1='暂无数据';
 					$cdo1='暂无数据';
 				}
-				$z2="select sum(sushe_money),sushe_date,count(user_id) from sushe_user where sushe_name=2 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+				$z2="select sum(sushe_money),sushe_date,count(user_id) from sushe_user where sushe_name=2 and sushe_Y='".$YM."'";
 				$rsz2=mysql_query($z2,$con);
 				if($rowz2=mysql_fetch_row($rsz2))
 				{
@@ -154,7 +155,7 @@
 					$dod2='暂无数据';
 					$cdo2='暂无数据';
 				}
-				$z3="select sum(sushe_money),sushe_date,count(user_id) from sushe_user where sushe_name=3 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+				$z3="select sum(sushe_money),sushe_date,count(user_id) from sushe_user where sushe_name=3 and sushe_Y='".$YM."'";
 				$rsz3=mysql_query($z3,$con);
 				if($rowz3=mysql_fetch_row($rsz3))
 				{
@@ -168,7 +169,7 @@
 					$dod3='暂无数据';
 					$cdo3='暂无数据';
 				}
-				$z4="select sum(sushe_money),sushe_date,count(user_id) from sushe_user where sushe_name=4 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+				$z4="select sum(sushe_money),sushe_date,count(user_id) from sushe_user where sushe_name=4 and sushe_Y='".$YM."'";
 				$rsz4=mysql_query($z4,$con);
 				if($rowz4=mysql_fetch_row($rsz4))
 				{
@@ -182,7 +183,7 @@
 					$dod4='暂无数据';
 					$cdo4='暂无数据';
 				}
-				$z5="select sum(sushe_money),sushe_date,count(user_id) from sushe_user where sushe_name=5 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+				$z5="select sum(sushe_money),sushe_date,count(user_id) from sushe_user where sushe_name=5 and sushe_Y='".$YM."'";
 				$rsz5=mysql_query($z5,$con);
 				if($rowz5=mysql_fetch_row($rsz5))
 				{
@@ -199,7 +200,7 @@
 				?>
                 <!--每号楼未缴费，未缴费总寝室-->
                 <?
-                $zw1="select sum(sushe_money),count(user_id) from sushe_user where sushe_name=1 and sushe_Y='".$taY."' and sushe_m='".$tam."' and sushe_jg='未缴费'";
+                $zw1="select sum(sushe_money),count(user_id) from sushe_user where sushe_name=1 and sushe_Y='".$YM."' and sushe_jg='未缴费'";
 				$rszw1=mysql_query($zw1,$con);
 				if($rowzw1=mysql_fetch_row($rszw1))
 				{
@@ -211,7 +212,7 @@
 					$dow1='暂无数据';
 					$cdow1='暂无数据';
 				}
-				$zw2="select sum(sushe_money),count(user_id) from sushe_user where sushe_name=2 and sushe_Y='".$taY."' and sushe_m='".$tam."' and sushe_jg='未缴费'";
+				$zw2="select sum(sushe_money),count(user_id) from sushe_user where sushe_name=2 and sushe_Y='".$YM."' and sushe_jg='未缴费'";
 				$rszw2=mysql_query($zw2,$con);
 				if($rowzw2=mysql_fetch_row($rszw2))
 				{
@@ -223,7 +224,7 @@
 					$dow2='暂无数据';
 					$cdow2='暂无数据';
 				}
-				$zw3="select sum(sushe_money),count(user_id) from sushe_user where sushe_name=3 and sushe_Y='".$taY."' and sushe_m='".$tam."' and sushe_jg='未缴费'";
+				$zw3="select sum(sushe_money),count(user_id) from sushe_user where sushe_name=3 and sushe_Y='".$YM."' and sushe_jg='未缴费'";
 				$rszw3=mysql_query($zw3,$con);
 				if($rowzw3=mysql_fetch_row($rszw3))
 				{
@@ -235,7 +236,7 @@
 					$dow3='暂无数据';
 					$cdow3='暂无数据';
 				}
-				$zw4="select sum(sushe_money),count(user_id) from sushe_user where sushe_name=4 and sushe_Y='".$taY."' and sushe_m='".$tam."' and sushe_jg='未缴费'";
+				$zw4="select sum(sushe_money),count(user_id) from sushe_user where sushe_name=4 and sushe_Y='".$YM."' and sushe_jg='未缴费'";
 				$rszw4=mysql_query($zw4,$con);
 				if($rowzw4=mysql_fetch_row($rszw4))
 				{
@@ -247,7 +248,7 @@
 					$dow4='暂无数据';
 					$cdow4='暂无数据';
 				}
-				$zw5="select sum(sushe_money),count(user_id) from sushe_user where sushe_name=5 and sushe_Y='".$taY."' and sushe_m='".$tam."' and sushe_jg='未缴费'";
+				$zw5="select sum(sushe_money),count(user_id) from sushe_user where sushe_name=5 and sushe_Y='".$YM."' and sushe_jg='未缴费'";
 				$rszw5=mysql_query($zw5,$con);
 				if($rowzw5=mysql_fetch_row($rszw5))
 				{
@@ -262,31 +263,31 @@
 				?>
                 <!--每号楼用电量-->
                 <?
-                $dl1="select sum(sushe_ele) from sushe_user where sushe_name=1 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+                $dl1="select sum(sushe_ele) from sushe_user where sushe_name=1 and sushe_Y='".$YM."'";
 				$rsdl1=mysql_query($dl1,$con);
 				if($rowdl1=mysql_fetch_row($rsdl1))
 					$ydl1=$rowdl1[0];
 				if($ydl1=='')
 					$ydl1='暂无数据';
-				$dl2="select sum(sushe_ele) from sushe_user where sushe_name=2 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+				$dl2="select sum(sushe_ele) from sushe_user where sushe_name=2 and sushe_Y='".$YM."'";
 				$rsdl2=mysql_query($dl2,$con);
 				if($rowdl2=mysql_fetch_row($rsdl2))
 					$ydl2=$rowdl2[0];
 				if($ydl2=='')
 					$ydl2='暂无数据';
-				$dl3="select sum(sushe_ele) from sushe_user where sushe_name=3 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+				$dl3="select sum(sushe_ele) from sushe_user where sushe_name=3 and sushe_Y='".$YM."'";
 				$rsdl3=mysql_query($dl3,$con);
 				if($rowdl3=mysql_fetch_row($rsdl3))
 					$ydl3=$rowdl3[0];
 				if($ydl3=='')
 					$ydl3='暂无数据';
-				$dl4="select sum(sushe_ele) from sushe_user where sushe_name=4 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+				$dl4="select sum(sushe_ele) from sushe_user where sushe_name=4 and sushe_Y='".$YM."'";
 				$rsdl4=mysql_query($dl4,$con);
 				if($rowdl4=mysql_fetch_row($rsdl4))
 					$ydl4=$rowdl4[0];
 				if($ydl4=='')
 					$ydl4='暂无数据';
-				$dl5="select sum(sushe_ele) from sushe_user where sushe_name=5 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+				$dl5="select sum(sushe_ele) from sushe_user where sushe_name=5 and sushe_Y='".$YM."'";
 				$rsdl5=mysql_query($dl5,$con);
 				if($rowdl5=mysql_fetch_row($rsdl5))
 					$ydl5=$rowdl5[0];
@@ -295,31 +296,31 @@
 				?>
                 <!--每号楼超额量-->
                 <?
-                $ce1="select sum(sushe_excess) from sushe_user where sushe_name=1 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+                $ce1="select sum(sushe_excess) from sushe_user where sushe_name=1 and sushe_Y='".$YM."'";
 				$rsce1=mysql_query($ce1,$con);
 				if($rowce1=mysql_fetch_row($rsce1))
 					$cel1=$rowce1[0];
 				if($cel1=='')
 					$cel1='暂无数据';
-				$ce2="select sum(sushe_excess) from sushe_user where sushe_name=2 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+				$ce2="select sum(sushe_excess) from sushe_user where sushe_name=2 and sushe_Y='".$YM."'";
 				$rsce2=mysql_query($ce2,$con);
 				if($rowce2=mysql_fetch_row($rsce2))
 					$cel2=$rowce2[0];
 				if($cel2=='')
 					$cel2='暂无数据';
-				$ce3="select sum(sushe_excess) from sushe_user where sushe_name=3 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+				$ce3="select sum(sushe_excess) from sushe_user where sushe_name=3 and sushe_Y='".$YM."'";
 				$rsce3=mysql_query($ce3,$con);
 				if($rowce3=mysql_fetch_row($rsce3))
 					$cel3=$rowce3[0];
 				if($cel3=='')
 					$cel3='暂无数据';
-				$ce4="select sum(sushe_excess) from sushe_user where sushe_name=4 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+				$ce4="select sum(sushe_excess) from sushe_user where sushe_name=4 and sushe_Y='".$YM."'";
 				$rsce4=mysql_query($ce4,$con);
 				if($rowce4=mysql_fetch_row($rsce4))
 					$cel4=$rowce4[0];
 				if($cel4=='')
 					$cel4='暂无数据';
-				$ce5="select sum(sushe_excess) from sushe_user where sushe_name=5 and sushe_Y='".$taY."' and sushe_m='".$tam."'";
+				$ce5="select sum(sushe_excess) from sushe_user where sushe_name=5 and sushe_Y='".$YM."'";
 				$rsce5=mysql_query($ce5,$con);
 				if($rowce5=mysql_fetch_row($rsce5))
 					$cel5=$rowce5[0];

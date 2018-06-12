@@ -161,7 +161,8 @@ $(document).ready(function(e) {
           <a href="javascript:;">水电费缴费</a>
           <dl class="layui-nav-child">
             <dd><a class="ann" id="../ele_exp/ele_pay.php" href="javascript:;">电费缴费</a></dd>
-            
+            <dd><a class="ann" id="../ele_exp/ele_re.php" href="javascript:;">电费缴费统计</a></dd>
+
           </dl>
         </li>
         <?
@@ -183,13 +184,19 @@ $(document).ready(function(e) {
             <?
             }
             ?>
-            <dd><a class="ann" id="../ele_exp/ele_re.php" href="javascript:;">电费详情统计</a></dd>
+
+            <dd><a class="ann" id="../ele_exp/ele_accounts.php" href="javascript:;">开始轧账</a></dd>
           </dl>
+          
         </li>
         <?
     }
     ?>
         <!--聊天室管理-->
+        <?
+        if($_SESSION['cg']==1)
+        {
+        ?>
         <li class="layui-nav-item layui-nav-itemed">
           <a href="javascript:;">聊天室管理</a>
           <dl class="layui-nav-child">
@@ -198,7 +205,10 @@ $(document).ready(function(e) {
             
           </dl>
         </li>
-        
+        <?
+        }
+        ?>
+
         <?
 		if($_SESSION['cg']==1)
 		{

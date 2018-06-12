@@ -135,7 +135,8 @@
                 $lstrqm=substr($lstt,-1,2);
                 $lstrqY=substr($lstt,0,4);
               }
-              $cxsql="select * from sushe_user where sushe_dor='".$dorm."' and sushe_Y='".$lstrqY."' and sushe_m='".$lstrqm."'";
+              $lstYM=$lstrqY."-".$lstrqm;
+              $cxsql="select * from sushe_user where sushe_dor='".$dorm."' and sushe_Y='".$lstYM."'";
               $cxrs=mysql_query($cxsql,$con);
               if($cxrow=mysql_fetch_row($cxrs))
               {

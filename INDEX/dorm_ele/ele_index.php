@@ -67,6 +67,7 @@
   	
     <?
       $dorm=$_SESSION['tdorm']; //寝室
+      $YM=$rqY."-".$rqm; //上传日期
       //木有寝室的
       if(!is_numeric($dorm) || strlen($dorm) != 4) 
       {
@@ -103,7 +104,8 @@
         <?
         die();
       }
-      $sqldf="select * from sushe_user where sushe_dor='".$dorm."' and sushe_Y='".$rqY."' and sushe_m='".$rqm."'";
+
+      $sqldf="select * from sushe_user where sushe_dor='".$dorm."' and sushe_Y='".$YM."'";
       $rsdf=mysql_query($sqldf,$con);
       if($rowdf=mysql_fetch_row($rsdf))
       {
@@ -192,7 +194,8 @@
                 $lstrqm=substr($lstt,-1,2);
                 $lstrqY=substr($lstt,0,4);
               }
-              $cxsql="select * from sushe_user where sushe_dor='".$dorm."' and sushe_Y='".$lstrqY."' and sushe_m='".$lstrqm."'";
+              $lstYM=$lstrqY."-".$lstrqm;
+              $cxsql="select * from sushe_user where sushe_dor='".$dorm."' and sushe_Y='".$lstYM."'";
               $cxrs=mysql_query($cxsql,$con);
               if($cxrow=mysql_fetch_row($cxrs))
               {
