@@ -98,18 +98,9 @@
                 btnAlign: 'c',
                 closeBtn: 0,
               }, function(){
-                parent.layer.msg('正在轧账……', {
-                  title: false,
-                  closeBtn: 0,
-                  time:1000,
-                  maxWidth:200,
-                  anim: 0,
-                  offset: '240px',
-                });
+                
                 //因为是parent 所以需要再次进入文件夹访问
-                setTimeout(function () {
-                  location.href="../ele_exp/ele_accounts.php?startzz=<?=cmoney();?>";
-                },1000);
+                location.href="../ele_exp/ele_accounts.php?startzz=<?=cmoney();?>";
 
               },function(){
                 
@@ -119,26 +110,194 @@
         });
       </script>
     </div>
-    
-    <div class="layui-col-md4">
+    <!--轧账详情显示-->
+    <div class="layui-row layui-col-space20" style="margin-top: 40px;">
+      <div class="layui-col-md6">
+        <blockquote class="layui-elem-quote">
+          <h3>轧账记录（最近五条）</h3>
+        </blockquote>
+        
+          <table class="layui-table">
+            <colgroup>
+              <col>
+              <col>
+              <col>
+            </colgroup>
+            <thead>
+              <tr>
+                <th>轧账金额</th>
+                <th>轧账时间</th>
+                <th>查看</th>
+              </tr> 
+            </thead>
+            <tbody>
+            <?php
+            //记录显示5条
+            $sqlre="select * from sch_dfre_re where s_username='".$_SESSION['id']."' order by s_acctime desc limit 5";
+            $rsre=mysql_query($sqlre,$con);
+            while($rowre=mysql_fetch_row($rsre))
+            {
+              ?>
+              <tr>
+                <td><?=$rowre[2]?></td>
+                <td><?=$rowre[3]?></td>
+                <td>
+                  <button type="button" onclick="consay('<? 
+                  $sqlrea="select * from sch_dfre where s_username='".$_SESSION[id]."' and s_acctime='".$rowre[3]."'";
+                  $rsrea=mysql_query($sqlrea,$con);
+                  echo '<table width=600px><tr><th>寝室</th><th>金额</th><th>状态</th><th>收款时间</th></tr>';
+                  while($rowrea=mysql_fetch_row($rsrea))
+                  {
+                    if(substr($rowrea[7],0,1)!=0)
+                    {
+                      echo "<tr><th>".$rowrea[4]."</th><th>".$rowrea[5]."</th><th>".$rowrea[3]."</th><th>".$rowrea[7]."</th></tr>";
+                    }
+                  }
+                  echo "</table>";
+                  ?>')" name="button" class="layui-btn">详情</button>
+                </td>
+              </tr>
+              <?
+            }
+            ?>
+            </tbody>
+          </table>
+          
+      </div>
+      <div class="layui-col-md6">
+        <blockquote class="layui-elem-quote">
+          <h3>轧账记录查询（按轧账年月份查询）</h3>
+          <!--时间-->
+          <form name="timef" id="elef" class="layui-form layui-form-pane" action="" method="post" onSubmit="return checktime()" style="margin-top: 20px;">
+            <?
+              if(isset($_POST['timesql']))
+              {
+                $lstt=$_POST['timesql'];
+              }
+              else
+              {
+                $lstt=$rqY.'-'.$rqm;
+              }
+              
+            ?>
+            <div class="layui-form-item">
+              <label class="layui-form-label">日期</label>
+              <div class="layui-input-inline">
+                <input type="text"  class="layui-input" required  lay-verify="required" placeholder="请选择日期" readonly autocomplete="off" name="timesql" id="timetext" value="<?=$lstt?>">
+              </div>
+            
+            </div>
+          
+          </form>
+        </blockquote>
+        <?php
+
+          if(isset($_POST['timesql']))
+          {
+            ?>
+            
+            <?
+            $sqluc="select * from sch_dfre_re where s_username='".$_SESSION[id]."' and s_acctime>='".$_POST['timesql']."-00:00:00' and s_acctime<='".$_POST['timesql']."-23:59:59' order by s_acctime desc";
+            $rsuc=mysql_query($sqluc,$con);
+            $rsuct=mysql_query($sqluc,$con);
+            if($rowuct=mysql_fetch_row($rsuct))
+            {
+              ?>
+              <table class="layui-table">
+              <colgroup>
+                <col>
+                <col>
+                <col>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>轧账金额</th>
+                  <th>轧账时间</th>
+                  <th>查看</th>
+                </tr> 
+              </thead>
+              <tbody>
+              <?
+              while($rowuc=mysql_fetch_row($rsuc))
+              {
+              ?>
+              <tr>
+                <td><?=$rowuc[2]?></td>
+                <td><?=$rowuc[3]?></td>
+                <td>
+                  <button type="button" onclick="consay('<? 
+                  $sqlrea="select * from sch_dfre where s_username='".$_SESSION[id]."' and s_acctime='".$rowuc[3]."'";
+                  $rsrea=mysql_query($sqlrea,$con);
+                  echo '<table width=600px><tr><th>寝室</th><th>金额</th><th>状态</th><th>收款时间</th></tr>';
+                  while($rowrea=mysql_fetch_row($rsrea))
+                  {
+                    if(substr($rowrea[7],0,1)!=0)
+                    {
+                      echo "<tr><th>".$rowrea[4]."</th><th>".$rowrea[5]."</th><th>".$rowrea[3]."</th><th>".$rowrea[7]."</th></tr>";
+                    }
+                  }
+                  echo "</table>";
+                  ?>')" name="button" class="layui-btn">详情</button>
+                </td>
+              </tr>
+              <?
+              }
+            }
+            else
+            {
+              ?>
+              <script>
+              $(document).ready(function(e) {
+                    layui.use('layer', function(){
+                    var layer = layui.layer;
+                    parent.layer.msg('当前日期无记录(｡・`ω´･)', {
+                    time: 2000,
+                    area: ['240px','50px'],
+                    });
+                });
+              });
+              </script>
+              <?
+            }
+            
+            ?>
+              </tbody>
+            </table>
+            <?
+          }
+
+        ?>
+
+      </div>
       
     </div>
-    <div class="layui-col-md4">
-    
-    </div>
-    <div class="layui-col-md4">
-     
-    </div>
+
 
   </div>
 </div>
-
-
 
 <?php
 //轧账
 if(isset($_GET['startzz']))
 {
+  ?>
+  <script type="text/javascript">
+    $(document).ready(function(e) {
+      layui.use('layer', function(){
+        var layer = layui.layer;
+        parent.layer.msg('正在轧账中……', {
+          title: false,
+          closeBtn: 0,
+          time:10000,
+          maxWidth:200,
+          anim: 0,
+          offset: '240px',
+        });
+      });
+    });
+    
+  </script>
+  <?
   //操作日期
   $settime=$rqY."-".$rqm."-".$rqd."-".$rqH.":".$rqi.":".$rqs;
   $szz=$_GET['startzz'];
@@ -264,5 +423,62 @@ if(isset($_GET['startzz']))
 }
 ?>
 
+<script type="text/javascript">
+  layui.use('laydate', function(){
+    var laydate = layui.laydate;
+    
+    laydate.render({
+      elem: '#timetext'
+      ,type: 'month'
+      ,format: 'yyyy-M'
+      ,theme: '#393D49'
+      ,done: function(value, date){
+        $('#timetext').val(value);
+        $("#elef").submit();
+      }//选中后提交
+    });
+  });
+  //询问框
+  //tnr=内容
+  function consay(tnr)
+  {
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      parent.layer.open({
+        type: 1,
+        title:'轧账详情记录',
+        closeBtn: 1, //不显示关闭按钮
+        anim: 0,
+        area:['600px','300px'],
+        shadeClose: true, //开启遮罩关闭
+        content: tnr
+      });
+
+    }); 
+  }
+
+  function checktime()
+  {
+    if(timef.timesql.value=="")
+    {
+      $(document).ready(function(e) {
+              layui.use('layer', function(){
+              var layer = layui.layer;
+            layer.msg('点击选择时间(｡・`ω´･)', {
+            time: 2000,
+            area: ['240px','50px'],
+            });
+          });
+        });
+        return false;
+    }
+  }
+
+  //防止页面后退
+  history.pushState(null, null, document.URL);
+  window.addEventListener('popstate', function () {
+      history.pushState(null, null, document.URL);
+  });
+</script>
 </body>
 </html>
