@@ -176,16 +176,19 @@ $(document).ready(function(e) {
         <li class="layui-nav-item layui-nav-itemed">
           <a href="javascript:;">水电费管理</a>
           <dl class="layui-nav-child">
+
+            <dd><a class="ann" id="../ele_exp/ele_accounts.php" href="javascript:;">开始轧账</a></dd>
             <?
             if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管主管')
             {
             ?>
             <dd><a class="ann" id="../ele_exp/upload_ele.php" href="javascript:;">电费表excel.csv上传</a></dd>
+            <dd><a class="ann" id="../ele_exp/ele_accounts_re.php" href="javascript:;">轧账财务统计</a></dd>
             <?
             }
             ?>
 
-            <dd><a class="ann" id="../ele_exp/ele_accounts.php" href="javascript:;">开始轧账</a></dd>
+            
           </dl>
           
         </li>
