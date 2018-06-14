@@ -184,6 +184,7 @@ $(document).ready(function(e) {
             ?>
             <dd><a class="ann" id="../ele_exp/upload_ele.php" href="javascript:;">电费表excel.csv上传</a></dd>
             <dd><a class="ann" id="../ele_exp/ele_accounts_re.php" href="javascript:;">轧账财务统计</a></dd>
+            <dd><a class="ann" id="../ele_exp/ele_dfBF.php" href="javascript:;">电费表备份</a></dd>
             <?
             }
             ?>
