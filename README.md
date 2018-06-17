@@ -1,4 +1,4 @@
-校园宝 ![SchoolB](favicon.ico) 
+校园宝
 = 
 
 ### 校园宝是什么?
@@ -12,20 +12,18 @@
 
 ### 预览
 
-> Mobile首页
+> Mobile首页  
 
 ![Schoolb_Mobile.PNG](Schoolb_Mobile.PNG)  
 
-<img src="Schoolb_stu.png" width="44%" />  
+> PC首页  
 
-> PC首页
-
-![Schoolb_PC.PNG](Schoolb_PC.PNG)
+![Schoolb_PC.PNG](Schoolb_PC.PNG)  
 
 ### 问题反馈
-在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
+在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流  
 
-* [邮箱-主题请填写校园宝](http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=YQAMDhIJFAoEIRAQTwIODA)主题请填写校园宝+你的问题
+* [邮箱-主题请填写校园宝](http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=YQAMDhIJFAoEIRAQTwIODA)主题请填写校园宝+你的问题  
 
 ### 感谢给我提出建议的各位
 
