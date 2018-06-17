@@ -14,9 +14,9 @@
 
 > Mobile首页
 
-![Schoolb_Mobile.PNG](Schoolb_Mobile.PNG)
+![Schoolb_Mobile.PNG](Schoolb_Mobile.PNG)  
 
-![Schoolb_stu.png](Schoolb_stu.png)
+<img src="Schoolb_stu.png" width="44%" />  
 
 > PC首页
 
