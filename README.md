@@ -16,6 +16,8 @@
 
 ![Schoolb_Mobile.PNG](Schoolb_Mobile.PNG)  
 
+![Schoolb_stu.PNG](Schoolb_stu.PNG)  
+
 > PC首页  
 
 ![Schoolb_PC.PNG](Schoolb_PC.PNG)  
