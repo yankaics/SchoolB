@@ -84,11 +84,11 @@ if(isset($_GET['z']))
     $(document).ready(function(e) {
 			layui.use('layer', function(){
   				var layer = layui.layer;
-				layer.msg('未找到账号', {
+				layer.msg('账号或密码错误', {
 				  title: false,
 				  closeBtn: 0,
 				  time:2000,
-				  maxWidth:140,
+				  maxWidth:160,
 				  anim: 6,
 				  offset: '240px',
 				});
@@ -105,11 +105,11 @@ if(isset($_GET['c']))
     $(document).ready(function(e) {
 			layui.use('layer', function(){
   				var layer = layui.layer;
-				layer.msg('密码错误', {
+				layer.msg('账号或密码错误', {
 				  title: false,
 				  closeBtn: 0,
 				  time:2000,
-				  maxWidth:120,
+				  maxWidth:160,
 				  anim: 6,
 				  offset: '240px',
 				});
