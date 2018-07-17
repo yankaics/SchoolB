@@ -11,14 +11,6 @@
  * @license   https://opensource.org/licenses/Apache-2.0 (Apache License, Version 2.0)
  */
 
-//加载动画
-layui.use('layer', function(){
-  var layer = layui.layer;
-  $(window).load(function() {
-    layer.close(index);
-  }) 
-  var index = layer.load(1);
-});
 //锚点平滑
 $(document).ready(function(e) {
     $('a[href*=#]').click(function() {
