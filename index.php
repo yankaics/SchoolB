@@ -46,6 +46,11 @@ include"PHP/riqi.php";
 				</h1>
 			</span>
 			<form class="form zdlogin layui-anim layui-anim-fadein" name="admin" method="post" onsubmit="return check()" action="PHP/loginok.php">
+				<?php
+					require_once 'PHP/CSRF.php';
+					$c = new CSRF();
+					$c->_init('token');
+				?>
 				<input type="text" name="user" class="user" placeholder="学号 工号 账号" value="<? if(isset($_GET['sname'])) echo $_GET['sname'];?>">
 				<input type="password" name="upass" class="upass" placeholder="出生日期八位">
                 <select name="utype" class="utype" size="1">
