@@ -118,14 +118,14 @@ if (!!window.ActiveXObject || "ActiveXObject" in window) {
         $(document).ready(function(e) {
           layui.use('layer', function(){
             var layer = layui.layer;
-            parent.layer.confirm('<center style="color:#000;">请使用极速模式（Chrome内核）<br>或下载主流浏览器<br><a target="_blank" href="http://browser.qq.com" >QQ浏览器</a> | <a target="_blank" href="http://www.firefox.com.cn/">火狐浏览器</a> | 等 <br>达到更好体验效果<br>【地址栏右侧】<br><img src="Chrome_re.png"></center>', {
-              btn: ['我才不管|·_·)'],
+            parent.layer.confirm('<center style="color:#000;">请使用极速模式（Chrome内核）<br>或<a target="_blank" href="ChromeSetup.exe" >下载谷歌浏览器【点击下载】</a> <br>达到更好体验效果<br>【地址栏右侧】<br><img src="Chrome_re.png"></center>', {
+              btn:['下载谷歌浏览器',],
               title: false,
               btnAlign: 'c',
               offset: '140px',
               closeBtn: 0
             }, function(){
-              layer.closeAll();
+              location.href="ChromeSetup.exe";
             });
           });
         });
