@@ -53,7 +53,7 @@ class verifyCsrf{
 	
 	//跳转
 	public static function _jump() {
-		header("Location: ../del_login.php?z=1");
+		header("Location: ../del_login.php?er");
 	}
 	
 }

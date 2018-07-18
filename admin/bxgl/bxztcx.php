@@ -274,7 +274,11 @@
             ?>
 
             </td>
-            <td align="center" class="text-danger"><?=$rowre[8]?></td>
+            <td align="center" class="text-danger" style="width:200px;word-break: normal;word-wrap: break-word; ">
+              <div style="text-align: left;width:200px;height:80px;word-break: normal;word-wrap: break-word;overflow-y: scroll;overflow-x: auto;overflow:-moz-scrollbars-vertical;">
+                <?=$rowre[8]?>
+              </div>
+            </td>
 
             <td align="center">
               <button type="button" onclick="consay('<?=$rowre[17]?>')" name="shms" class="layui-btn">损坏描述</button>

@@ -230,7 +230,7 @@ $(".choo").change(function(){
 //	})
 $(".lskdo").on('input propertychange',function(){
 	          var deox=$(this).val();
-			  if(isNaN(deox)){
+			  if(isNaN(deox) || deox=="0"){
 				  alert("请输入您想报修的数量!");
 				  $(this).val(1);
 				  }

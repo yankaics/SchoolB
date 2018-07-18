@@ -112,22 +112,25 @@
 /**
  * IE检测版本提示
  */
-
+function CIE()
+{
+  layui.use('layer', function(){
+    var layer = layui.layer;
+    parent.layer.confirm('<center style="color:#000;">请使用极速模式（Chrome内核）<br>或<a target="_blank" href="ChromeSetup.exe" >下载谷歌浏览器【点击下载】</a> <br>达到更好体验效果<br>【地址栏右侧】<br><img src="Chrome_re.png"></center>', {
+      btn:['下载谷歌浏览器',],
+      title: false,
+      btnAlign: 'c',
+      offset: '140px',
+      closeBtn: 0
+    }, function(){
+      location.href="ChromeSetup.exe";
+    });
+  });
+}
 //Chrome内核更好体验，判断IE浏览器或IE内核
 if (!!window.ActiveXObject || "ActiveXObject" in window) {
         $(document).ready(function(e) {
-          layui.use('layer', function(){
-            var layer = layui.layer;
-            parent.layer.confirm('<center style="color:#000;">请使用极速模式（Chrome内核）<br>或<a target="_blank" href="ChromeSetup.exe" >下载谷歌浏览器【点击下载】</a> <br>达到更好体验效果<br>【地址栏右侧】<br><img src="Chrome_re.png"></center>', {
-              btn:['下载谷歌浏览器',],
-              title: false,
-              btnAlign: 'c',
-              offset: '140px',
-              closeBtn: 0
-            }, function(){
-              location.href="ChromeSetup.exe";
-            });
-          });
+          CIE();
         });
 }
 

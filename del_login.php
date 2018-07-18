@@ -25,6 +25,10 @@ else if(isset($_GET['c']))
 {
 	header("location:index.php?c=1&sname=".$_GET['sname']."");
 }
+else if(isset($_GET['er']))
+{
+	header("location:index.php?er");
+}
 else if(isset($_GET['jg']))
 {
 	header("location:index.php?jg=1");

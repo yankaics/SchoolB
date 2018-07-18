@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 /**
  * This file is part of SchoolB.
  *
@@ -8,7 +8,7 @@
  *
  * @author    AmosHuKe<amoshuke@qq.com>
  * @copyright AmosHuKe<amoshuke@qq.com>
- * @link      https://github.com/AmosHuKe/SchoolB
+ * @link      
  * @license   https://opensource.org/licenses/Apache-2.0 (Apache License, Version 2.0)
  */
 -->
@@ -24,6 +24,7 @@
 	<link rel="stylesheet" href="layui/css/layui.css">
 	<script src="layui/layui.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script src="https://s19.cnzz.com/z_stat.php?id=1273333349&web_id=1273333349" language="JavaScript"></script>
 	<title>校园宝 | Hi~</title>
 	<system.webServer>
 	    <httpProtocol>
@@ -67,7 +68,7 @@ include"PHP/riqi.php";
           		<a href="copy.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | <span class="layui-badge-dot"></span> 关于 </span></a>
           		<a href="copy.php" ><span style="color:#CCC; z-index:1103;" class="layui-anim layui-anim-fadein"> | &copy;<? if($rqY>2017) echo "2017-".$rqY; else echo "2017"; ?> </span></a>
           		
-          		<p></p>
+          		<p>重庆广德学校后勤服务有限公司</p>
           	</p>
 
 		</div>
@@ -120,6 +121,16 @@ if(isset($_GET['c']))
 				});
 				
 			});
+		});
+    </script>
+    <?
+}
+if(isset($_GET['er']))
+{
+	?>
+    <script>
+    $(document).ready(function(e) {
+			CIE();
 		});
     </script>
     <?

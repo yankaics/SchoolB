@@ -185,7 +185,7 @@
 	      	<table width="100%" class="layui-table table" lay-even>
 	      		<colgroup>
 					<col width="100">
-					<col width="100">
+					<col width="200">
 					<col width="100">
 					<col width="300">
 					<col width="80">
@@ -199,7 +199,7 @@
 					    <td align="center" class="">
 					    	<input name="allc" id="allc" class="allc" type="checkbox" value="allc"  style=" width:20px;" ><label for="allc">全选</label>&nbsp;·&nbsp;删除
 					    </td>
-					    <td align="center" class="">损坏描述</td>
+					    <td align="center" class="">问题描述</td>
 					    <td align="center" class="">物件详情</td>
 					    <td align="center" class="">地点</td>
 					    <td align="center" class="">姓名</td>
@@ -242,7 +242,11 @@
 
 							<span>&nbsp;<a href="delete_adminly.php?tname=<?=$rowre[3]?>&tphone=<?=$rowre[5]?>&tadd=<?=$rowre[1]?>&ttime=<?=$rowre[10]?>&b=<?=$b?>"><button onclick="return confirm('确定删除？');" type="button" class="layui-btn layui-btn-xs layui-btn-danger">删除</button></a></span>
 						</td>
-						<td align="center"><button type="button" onclick="consay('<?=$rowre[14]?>');" name="shms" class="layui-btn">损坏描述</button></td>
+						<td align="center" style="width:200px;overflow:hidden;word-break: normal;word-wrap: break-word; ">
+							<div style="text-align: left;width:200px;height:80px;word-break: normal;word-wrap: break-word; overflow-y:scroll;overflow-x: auto;overflow:-moz-scrollbars-vertical;">
+								<?=$rowre[14]?><!-- <button type="button" onclick="consay('<?=$rowre[14]?>');" name="shms" class="layui-btn">损坏描述</button> -->
+							</div>
+						</td>
 					    
 					    <td align="center">
 							    <button type="button" onclick="consay('<? 
