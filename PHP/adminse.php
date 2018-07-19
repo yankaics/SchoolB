@@ -13,7 +13,7 @@
  */
 
 //此处修改非法接入返回位置（网址首页）
-$add="http://127.0.0.1:8080/schoolB/index.php";
+$add="./index.php";
 
 $user=$_SESSION['user'];
 $upass=$_SESSION['upass'];
