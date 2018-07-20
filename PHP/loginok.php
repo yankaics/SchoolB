@@ -318,7 +318,7 @@ if ($vc === true) {
 				sdcl();
 				?>
 				<script language="javascript">
-					location.href="../del_login?c=1";
+					location.href="../index.php?z=1";
 				</script>
 				<?
 			}
