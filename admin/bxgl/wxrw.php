@@ -134,14 +134,21 @@ if($rowle=mysql_fetch_row($rsle))
                    title:'<?=$rowl[3]?>物件详情' ,
                    type: 1,
                    shadeClose: true,
-                   area: ['200px'], //宽高
+                   area: ['240px','300px'], //宽高
                    content: '<?
                     $sqlrea="select * from sch_repair_rea where s_repair='".$_SESSION['name']."' and s_jg!='已处理' and s_add='".$rowl[1]."' and s_name='".$rowl[3]."' and s_phone='".$rowl[5]."' and s_time='".$rowl[10]."'";
                   $rsrea=mysql_query($sqlrea,$con);
                   while($rowrea=mysql_fetch_row($rsrea))
                   {
                     ?><center style="padding:10px;"><p><?=$rowrea[1]?> <?=$rowrea[2]?>件</p></center><? 
-                  } ?>'
+                  } 
+                  $sqlrea="select * from sch_repair_re where s_repair='".$_SESSION['name']."' and s_jg!='已处理' and s_add='".$rowl[1]."' and s_name='".$rowl[3]."' and s_phone='".$rowl[5]."' and s_settime='".$rowl[10]."'";
+                  $rsrea=mysql_query($sqlrea,$con);
+                  if($rowrea=mysql_fetch_row($rsrea))
+                  {
+                    ?><div style="padding:10px;"><p style="color:#FF5722;">问题描述：</p><p><?=$rowrea[14]?></p></div><? 
+                  } 
+                  ?>'
                   });
                 });
               });
