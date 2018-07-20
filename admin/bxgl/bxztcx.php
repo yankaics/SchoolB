@@ -203,7 +203,16 @@
             <td align="center" class="">报修时间</td>
             <td align="center" class="">维修员</td>
             <td align="center" class="">处理情况</td>
-            <td align="center" class="">维修时间</td>
+            <td align="center" class="">
+              <?php
+              if(isset($_GET['wcl']))
+              {
+                echo "问题描述";
+              } else{
+                echo "维修时间";
+              }
+              ?>
+            </td>
             <td align="center" class="">物件详情</td>
           
           <?php
@@ -216,7 +225,7 @@
               <input name="allc" id="allc" class="allc" type="checkbox" value="allc"  style=" width:20px;" ><label for="allc">全选</label>
             </td>
             <td align="center" class="layui-bg-red">原因</td>
-            <td align="center" class="">损坏描述</td>
+            <td align="center" class="">问题描述</td>
             <td align="center" class="">地点</td>
             <td align="center" class="">物件</td>
             <td align="center" class="">数量</td> 
@@ -291,7 +300,20 @@
             <td align="center"><?=$rowre[10]?></td>
             <td align="center"><?=$rowre[7]?></td>
             <td align="center"><?=$rowre[11]?></td>
-            <td align="center"><?=$rowre[12]?></td>
+            <td align="center" style="width:200px;word-break: normal;word-wrap: break-word; ">
+              <?php
+              if(isset($_GET['wcl']))
+              {
+                ?>
+                <div style="text-align: left;width:200px;height:80px;word-break: normal;word-wrap: break-word;overflow-y: scroll;overflow-x: auto;overflow:-moz-scrollbars-vertical;">
+                  <?=$rowre[14];?>
+                </div>
+                <?
+              } else{
+                echo $rowre[12];
+              }
+              ?>
+            </td>
             <td align="center">
               <button type="button" onclick="consay('<? 
           $sqlrea="select * from sch_repair_rea where s_time='".$rowre[10]."' and s_name='".$rowre[3]."' and s_phone='".$rowre[5]."' and s_add='".$rowre[1]."'";
@@ -334,7 +356,7 @@
             </td>
 
             <td align="center">
-              <button type="button" onclick="consay('<?=$rowre[17]?>')" name="shms" class="layui-btn">损坏描述</button>
+              <button type="button" onclick="consay('<?=$rowre[17]?>')" name="shms" class="layui-btn">问题描述</button>
             </td>
             <td align="center"><?=$rowre[10].$rowre[2]?></td>
             <td align="center"><?=$rowre[4]?></td>
