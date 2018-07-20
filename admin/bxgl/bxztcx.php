@@ -82,6 +82,19 @@
     { 
       if(GetCookie("scroll")!=null){document.body.scrollTop=GetCookie("scroll")} 
     } 
+
+
+    function checkfp()
+    {
+      if(!$(".choo").is(":checked"))
+      {
+        layui.use('layer', function(){
+          var layer = layui.layer;
+          parent.layer.msg('请勾选需要转接的任务');
+        });
+        return false;
+      }   
+    }
   </script>
 
   <script language="javascript">
@@ -142,8 +155,35 @@
           </table>
         </div>
     </form>
-
   </blockquote>
+    <!--维修员分配-->
+  <form name="wxyfp" id="wxyfp" action="" method="get" onsubmit="return checkfp();">
+    <blockquote class="layui-elem-quote">
+      <div class="layui-form layui-form-pane">
+
+          <div class="layui-form-item">
+            <label class="layui-form-label">维修员</label>
+            <div class="layui-input-inline">
+                <select name="wxy" id="tt2">
+              <?php
+                $sqlwx="select * from sch_admin where s_position='维修员' and s_g!=0";
+                $rswx=mysql_query($sqlwx,$con);
+                while($rowwx=mysql_fetch_row($rswx))
+                {
+              ?>
+                <option value="<?=$rowwx[3]?>"><?=$rowwx[3]?></option>
+              <?php
+                }
+              ?>
+                </select>
+            </div>
+            
+            <button name="buttonfp" id="buttonfp" type="button" class="layui-btn layui-form-mid" style="width: 80px;">转接</button>
+        </div>
+      </div>
+    </blockquote>
+
+  
   <!--详情-->
   <div class="table-responsive">
     <table width="100%" class="layui-table table" lay-even>
@@ -153,7 +193,9 @@
             if(isset($_GET['ycl']) || isset($_GET['wcl']) || isset($_GET['yclall']))
             {
       		?>
-            <td align="center" class="">操作</td> 
+            <td align="center" class="">
+              <input name="allc" id="allc" class="allc" type="checkbox" value="allc"  style=" width:20px;" ><label for="allc">全选</label>
+            </td>
             <td align="center" class="">地点</td>
             <td align="center" class="">姓名</td>
             <td align="center" class="">电话</td>
@@ -170,7 +212,9 @@
           	{
           ?>
             
-            <td align="center" class="">操作</td>
+            <td align="center" class="">
+              <input name="allc" id="allc" class="allc" type="checkbox" value="allc"  style=" width:20px;" ><label for="allc">全选</label>
+            </td>
             <td align="center" class="layui-bg-red">原因</td>
             <td align="center" class="">损坏描述</td>
             <td align="center" class="">地点</td>
@@ -229,7 +273,13 @@
             <td align="center">
               <?php
               if(isset($_GET['wcl']))
-                echo "未处理";
+              {
+                ?>
+                <input name="c[]" id="<?=$rowre[0]?>" class="choo" type="checkbox" value="<?=$rowre[0]?>"  style=" width:20px;" ><label for="<?=$rowre[0]?>">选择</label>
+                <input name="tb" type="hidden" value="<?=$b?>" />
+                <!-- <span>&nbsp;<a href="delete_adminly.php?tname=<?=$rowre[3]?>&tphone=<?=$rowre[5]?>&tadd=<?=$rowre[1]?>&ttime=<?=$rowre[10]?>&b=<?=$b?>"><button onclick="return confirm('确定删除？');" type="button" class="layui-btn layui-btn-xs layui-btn-danger">删除</button></a></span> -->
+                <?
+              }
               else
                 echo "已处理";
               ?>
@@ -259,11 +309,14 @@
           	{
         	?>
             <td align="center">
-            <?php
+              <input name="c[]" id="<?=$rowre[0]?>" class="choo" type="checkbox" value="<?=$rowre[0]?>"  style=" width:20px;" ><label for="<?=$rowre[0]?>">选择</label>
+              <input name="tb" type="hidden" value="<?=$b?>" />
+
+            <!-- <?php
               if($rowre[7]!="零星维修")
               {
             ?>
-              <button type="button" onclick="zlxwx(<?=$rowre[0]?>)" name="lxwx" class="layui-btn layui-btn-warm">转【零星维修】处理</button>
+              <button type="button" onclick="zlxwx(<?=$rowre[0]?>)" name="lxwx" class="layui-btn layui-btn-warm">转【零星维修】处理</button> 
               
             <?php
               }
@@ -271,7 +324,7 @@
               {
                 echo "零星维修处理中";
               }
-            ?>
+            ?> -->
 
             </td>
             <td align="center" class="text-danger" style="width:200px;word-break: normal;word-wrap: break-word; ">
@@ -301,71 +354,133 @@
         	?>
           
         </tr>
+
       <?php
         }
       ?>
-          <!--已处理查看所有-->
-          <?
-            if(isset($_GET['ycl']))
-            {
-          ?>
-          <td colspan="10" align="center">
-            <form class="" action="" method="get" role="form">
-              <button type="submit" name="yclall" class="layui-btn layui-btn-sm layui-btn-normal">查看所有</button>
-            </form>
-          </td>
-          <?
-            }
-          ?>
+          
 
       </tbody>
-    </table>
+      </table>
+      
+
+
+
   </div>
-</div>
 
+  </form><!--form name="wxyfp"-->
 
-<!--转<零星维修>处理-->
-<?php
-if(isset($_GET['lxwx']))
-{
-  // $selectsql="select s_schid,s_settime from sch_repair_re where sid='".$_GET['lxwx']."'";
-  // $selectrs=mysql_query($selectsql,$con);
-  // if($selectrow=mysql_fetch_row($selectrs))
-  // {
-  //   $tid=$selectrow[0];
-  //   $ttime=$selectrow[1];
-  // }
-  $sql="update sch_repair_re as a,sch_repair_rea as b set a.s_repair='零星维修',b.s_repair='零星维修' where a.sid='".$_GET['lxwx']."' and a.s_settime=b.s_time and a.s_schid=b.s_schid";
-  $rs=mysql_query($sql,$con);
-  if($rs>0)
-  {
-    ?>
-    <script type="text/javascript">
-      layui.use('layer', function(){
-        var layer = layui.layer;
-        parent.layer.msg('成功转到 - 零星维修');
-      });
-      location.href="bxztcx.php?bncl";
-    </script>
+  <!--已处理查看所有-->
     <?
-
-  }
-  else
-  {
+      if(isset($_GET['ycl']))
+      {
     ?>
-    <script type="text/javascript">
-      layui.use('layer', function(){
-        var layer = layui.layer;
-        parent.layer.msg('转任务失败');
-      });
-      location.href="bxztcx.php?bncl";
-    </script>
+    <table width="100%">
+      <tr>
+        <td colspan="10" align="center">
+          <form class="" action="" method="get" role="form">
+            <button type="submit" name="yclall" class="layui-btn layui-btn-sm layui-btn-normal">查看所有</button>
+          </form>
+        </td>
+      </tr>
+    </table>
     <?
-  }
-}
-?>
+      }
+    ?>
+    
+
+  </div>
 
 <script type="text/javascript">
+    //多选
+    $("#allc").change(function(){
+      var innum=$(".choo").length;
+      if($(this).prop("checked")){
+        $(".choo").prop("checked",true);
+        $("#in_num").text(innum);
+        $(".lskdo").val(1);
+        $("#sp_num").text(innum);
+        $(".lskdo").prop("disabled",false);
+      }
+      else{
+        $(".choo").prop("checked",false);
+        $("#in_num").text(0);
+        $(".lskdo").val(0);
+        $("#sp_num").text(0);
+        $(".lskdo").prop("disabled",true);
+        }
+      })
+    
+  </script>
+  <!--分配-->
+  <?php
+    if(isset($_GET['wxy']))
+    { 
+      $nc=$_GET['c'];
+      $n=count($_GET['c']);
+      $tb=$_GET['tb'];
+      $wxy=$_GET['wxy'];
+      for($i=0;$i<=$n-1;$i++)
+      {
+        $sql_inewxy="select * from sch_repair_re where sid='".$nc[$i]."'";
+        $rs_inewxy=mysql_query($sql_inewxy,$con);
+        if($rowewxy=mysql_fetch_row($rs_inewxy))
+        {
+          $sql_update="update sch_repair_rea set s_repair='".$wxy."' where s_time='".$rowewxy[10]."' and s_add='".$rowewxy[1]."' and s_name='".$rowewxy[3]."' and s_phone='".$rowewxy[5]."'";
+          $rs_update=mysql_query($sql_update,$con);
+        }
+        $sql_inwxy="update sch_repair_re set s_repair='".$wxy."' where sid='".$nc[$i]."'";
+        $rs_inwxy=mysql_query($sql_inwxy,$con);
+      }
+      if($rs_inwxy>0)
+      {
+        /*
+        短信平台：http://www.sms.cn/
+         
+        $requesturl='http://api.sms.cn/sms/?ac=send&uid=amos&pwd=7191d511822634f5783dc89baeea616d&template=418231&mobile=15111888341&content={"name":"'.$wxy.'"}';
+          //curl方式获取json数组
+          $curl = curl_init(); //初始化
+          curl_setopt($curl, CURLOPT_URL, $requesturl);//设置抓取的url
+          curl_setopt($curl, CURLOPT_HEADER, 0);//设置头文件的信息作为数据流输出
+          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);//设置获取的信息以文件流的形式返回，而不是直接输出。
+          $data = curl_exec($curl);//执行命令
+          curl_close($curl);//关闭URL请求
+
+          */
+        ?>
+            <script language="javascript">
+              layui.use('layer', function(){
+            var layer = layui.layer;
+            parent.layer.msg('成功转接到 - <?=$wxy?>');
+          });
+          location.href="bxztcx.php?<?=$tb?>";
+            </script>
+            <?
+      }
+      else
+      {
+        ?>
+            <script language="javascript">
+              layui.use('layer', function(){
+            var layer = layui.layer;
+            parent.layer.msg('转接失败');
+          });
+          location.href="bxztcx.php?<?=$tb?>";
+            </script>
+            <?
+      }
+          
+    }
+  ?>
+
+
+
+<script type="text/javascript">
+  //表单
+  layui.use('form', function(){
+    var form = layui.form;
+  });
+
   //询问框
   //tnr=内容
   function consay(tnr)
@@ -381,23 +496,23 @@ if(isset($_GET['lxwx']))
       });
     }); 
   }
-  //转为零星维修
-  //tid=任务id
-  function zlxwx(tid)
-  {
+
+  //维修员分配询问框
+  $("#buttonfp").click(function(e) {
     layui.use('layer', function(){
       var layer = layui.layer;
 
-      parent.layer.confirm("确认转给零星维修处理？", {
+      parent.layer.confirm("转接给 - "+$("#tt2").find("option:selected").text()+"？", {
       btn: ['确认','取消'] //按钮
-      ,title:"转零星维修"
+      ,title:"转接任务"
       }, function(){
-        location.href="../bxgl/bxztcx.php?lxwx="+tid;
+        $("#wxyfp").submit();
+        
       }, function(){
           parent.layer.closeAll();
       });
     }); 
-  }
+  });
 </script>
 
 </body>
