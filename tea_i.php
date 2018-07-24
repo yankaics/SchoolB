@@ -81,6 +81,21 @@
           ?><span class="layui-badge-dot "></span><? }?>
             <a href="INDEX/gwbx/gwbxcx_index.php">报修查询</a>
           </dd>
+          
+          <dd>
+            <!--住房审批-->
+            <?php
+              if($_SESSION['utype']=="教师")
+              {
+                $sql="select * from reserve_room_re where ruser='".$_SESSION['txh']."' order by rid desc";
+                $rs=mysql_query($sql,$con);
+                if($row=mysql_fetch_row($rs))
+                {
+                  if($row[8]!="未审核")
+                  {
+            ?><span class="layui-badge-dot "></span><? }}}?>
+            <a class="" href="INDEX/Reserve_Room/Room_sh.php">住房审批</a>
+          </dd>
 
           <dd>
           <!--修改密码-->
@@ -100,6 +115,78 @@
   </div>
 </div><br><br>
 <!--main-->
+
+<!--轮播-->
+<div class="layui-container paddingtop layui-anim layui-anim-upbit">
+  <div class="layui-row">
+    <div class="layui-col-md12">
+
+      <div class="layui-carousel" id="sylb" >
+          <div carousel-item class="lb">
+            <!--3-->
+            <div>
+              <div class="tlb3">
+                <p class="ptlb3">有 奖 问 卷 调 查</p>
+                <a class="atlb3" target="_blank" href="https://wj.qq.com/s/2111491/269d">进入</a>
+              </div>
+            </div>
+            <!--1-->
+            <div>
+              <div class="tlb1">
+                <p class="ptlb1">校 园 报 修</p>
+                <a class="atlb1" href="INDEX/gwbx/alerts.php">进入</a>
+              </div>
+            </div>
+            <!--2-->
+            <div class="tlb2">
+              <p class="ptlb2">校 园 聊 天 室</p>
+              <a class="atlb2 chat_room" href="javascript:;">进入</a>
+            </div>
+
+          </div>
+        </div>
+        <script>
+        layui.use('carousel', function(){
+          var carousel = layui.carousel;
+          //获取屏幕宽度
+          var _width = $(window).width();
+          //获取屏幕高度
+          $('.wrapper').height($(window).height());
+          var num = Math.floor(5*Math.random());
+          if(_width < 768)
+          {
+            //建造实例
+            carousel.render({
+              elem: '#sylb'
+              ,width: '100%' //设置容器宽度
+              ,height: '160px'
+              ,arrow: 'always' //始终显示箭头
+              ,autoplay:'true'
+              ,interval:'4000'
+              ,anim: 'fade' //切换动画方式
+              ,indicator:'none'
+            });
+          }
+          if(_width>767)
+          {
+            //建造实例
+            carousel.render({
+              elem: '#sylb'
+              ,width: '100%' //设置容器宽度
+              ,arrow: 'hove' //始终显示箭头
+              ,autoplay:'true'
+              ,interval:'4000'
+              ,anim: 'fade', //切换动画方式
+            });
+          }
+          
+        });
+        </script>
+      </div>
+
+    </div>
+  </div>
+
 <!--主要功能-->
 <div class="layui-container paddingtop layui-anim layui-anim-upbit">
   <div class="layui-col-md12">
@@ -140,6 +227,23 @@
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10 yy">
           <br/>&nbsp;&nbsp;&nbsp;&nbsp;水电费查看及缴费
+        </div>
+      </div>
+  </div>
+  </a>
+
+  <a href="INDEX/Reserve_Room/Reserve_Room_Index.php" class="z_index_box">
+  <div class="layui-col-md3 layui-col-sm5 border_box">
+      <div class="layui-row">
+        <div class="layui-col-md2 layui-col-xs2 layui-col-sm2">
+          <img src="UI/index/room.svg">
+          <!-- <i class="layui-icon img48">&#xe636;</i> -->
+        </div>
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10">
+          &nbsp;&nbsp;&nbsp;&nbsp;住房预定
+        </div>
+        <div class="layui-col-md10 layui-col-xs10 layui-col-sm10 yy">
+          <br/>&nbsp;&nbsp;&nbsp;&nbsp;华岩校区 6号楼房
         </div>
       </div>
   </div>
@@ -366,6 +470,136 @@ $(document).ready(function(e) {
     </script>
     <?
   }
+  //住房预定
+  if(isset($_GET['reserve_room']))
+  {
+    $jg=$_GET['reserve_room'];
+    if($jg=="ok")
+    {
+      ?>
+      <script type="text/javascript">
+        $(document).ready(function(e) {
+          layui.use('layer', function(){
+            var layer = layui.layer;
+            parent.layer.confirm('<center>审核中……<br>右上角【住房审批】查看</center>', {
+              btn: ['前往|·_·)','菜单'],
+              title: false,
+              btnAlign: 'c',
+              closeBtn: 0,
+            }, function(){
+              location.href="INDEX/Reserve_Room/Room_sh.php";
+            },function(){
+              <?
+                if($_SESSION['utype']=="教师")
+                {
+                  ?>
+                  location.href="tea_i.php";
+                  <?
+                }
+                else
+                {
+                  ?>
+                  location.href="stu_i.php";
+                  <?
+                }
+              ?>
+            });
+          });
+            
+        });
+      </script>
+      <?
+    }
+    else if($jg=="#0")
+    {
+      ?>
+      <script type="text/javascript">
+        $(document).ready(function(e) {
+          layui.use('layer', function(){
+            var layer = layui.layer;
+            parent.layer.confirm('<center>预定失败<br>请重新登陆再试</center>', {
+              btn: ['重新登陆','取消'],
+              title: false,
+              btnAlign: 'c',
+              closeBtn: 0,
+            }, function(){
+              location.href="del_login.php";
+            },function(){
+              <?
+                if($_SESSION['utype']=="教师")
+                {
+                  ?>
+                  location.href="tea_i.php";
+                  <?
+                }
+                else
+                {
+                  ?>
+                  location.href="stu_i.php";
+                  <?
+                }
+              ?>
+            });
+          });
+            
+        });
+      </script>
+      <?
+    }
+    else if($jg=="#1")
+    {
+      ?>
+      <script type="text/javascript">
+        $(document).ready(function(e) {
+          layui.use('layer', function(){
+            var layer = layui.layer;
+            parent.layer.confirm('<center>预定失败<br>请稍后再试</center>', {
+              btn: ['确定','取消'],
+              title: false,
+              btnAlign: 'c',
+              closeBtn: 0,
+            }, function(){
+              <?
+                if($_SESSION['utype']=="教师")
+                {
+                  ?>
+                  location.href="tea_i.php";
+                  <?
+                }
+                else
+                {
+                  ?>
+                  location.href="stu_i.php";
+                  <?
+                }
+              ?>
+            },function(){
+              <?
+                if($_SESSION['utype']=="教师")
+                {
+                  ?>
+                  location.href="tea_i.php";
+                  <?
+                }
+                else
+                {
+                  ?>
+                  location.href="stu_i.php";
+                  <?
+                }
+              ?>
+            });
+          });
+            
+        });
+      </script>
+      <?
+    }
+  }
+
+
+
+
 if($_SESSION['utype']=="学生")
 {
 	?>
