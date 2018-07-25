@@ -196,6 +196,33 @@ $(document).ready(function(e) {
         <?
     }
     ?>
+
+    <!--住房预定管理-->
+    <?
+    if($_SESSION['cg']==1 || $_SESSION['zw']=='审核员')
+    {
+    ?>
+    <li class="layui-nav-item layui-nav-itemed">
+      <a href="javascript:;">住房预定管理</a>
+      <dl class="layui-nav-child">
+        <?
+          if($_SESSION['zw']=='审核员')
+          {
+        ?>
+        <dd><a class="ann" id="../admin_reserve_room/admin_reserve.php" href="javascript:;">住房预定审批</a></dd>
+        <dd><a class="ann" id="../admin_reserve_room/admin_reserve.php" href="javascript:;">黑名单</a></dd>
+        <?
+          }
+        ?>
+        <dd><a class="ann" id="../admin_reserve_room/admin_reserve.php" href="javascript:;">住房预定统计</a></dd>
+        <!-- <dd><a class="ann" id="../admin_chat_room/chatroom_re.php" href="javascript:;">聊天室统计</a></dd> -->
+        
+      </dl>
+    </li>
+    <?
+    }
+    ?>
+
         <!--聊天室管理-->
         <?
         if($_SESSION['cg']==1)
