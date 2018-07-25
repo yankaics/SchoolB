@@ -18,51 +18,51 @@
 include("../SQL/db/db.php");
 include"riqi.php";
 
-//CSRF保护（登陆页）
-class verifyCsrf{
+// //CSRF保护（登陆页）
+// class verifyCsrf{
 	
-	protected static $originCheck = true; //来源控制
-	public $token;
-	public $time_token;
+// 	protected static $originCheck = true; //来源控制
+// 	public $token;
+// 	public $time_token;
 	
-	public static function _checkToken( $key, $origin ){
-		if ( !isset( $_SESSION[ 'csrf_' . $key ] ) )
-            return false;
+// 	public static function _checkToken( $key, $origin ){
+// 		if ( !isset( $_SESSION[ 'csrf_' . $key ] ) )
+//             return false;
 		
-		if ( !isset( $origin[ $key ] ) )
-            return false;
+// 		if ( !isset( $origin[ $key ] ) )
+//             return false;
 			
-		$hash = $_SESSION[ 'csrf_' . $key ]; //获取存在session中的token
+// 		$hash = $_SESSION[ 'csrf_' . $key ]; //获取存在session中的token
 		
-		//验证来源  根据加密验证
-		if( self::$originCheck && sha1( $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] ) != substr( base64_decode( $hash ), 10, 40 ) ) 
-			return false;
+// 		//验证来源  根据加密验证
+// 		if( self::$originCheck && sha1( $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] ) != substr( base64_decode( $hash ), 10, 40 ) ) 
+// 			return false;
 		
-		//验证token
-		if ( $origin[ $key ] != $hash )
-            return false;
+// 		//验证token
+// 		if ( $origin[ $key ] != $hash )
+//             return false;
 		
-		//验证时间
-		$expired_time = time() - $_SESSION['token_time'];
-		if ($expired_time >= 300)
-			return false;
+// 		//验证时间
+// 		$expired_time = time() - $_SESSION['token_time'];
+// 		if ($expired_time >= 300)
+// 			return false;
 		
-        return true;
-	}
+//         return true;
+// 	}
  
 	
-	//跳转
-	public static function _jump() {
-		header("Location: ../del_login.php?er");
-	}
+// 	//跳转
+// 	public static function _jump() {
+// 		header("Location: ../del_login.php?er");
+// 	}
 	
-}
+// }
  
-$post['token'] = $_POST['token'];
+// $post['token'] = $_POST['token'];
  
-$vc = verifyCsrf::_checkToken('token',$post);
+// $vc = verifyCsrf::_checkToken('token',$post);
  
-if ($vc === true) {
+// if ($vc === true) {
 	
 
 	//登陆超过五次错误锁定30分钟
@@ -342,7 +342,7 @@ if ($vc === true) {
 			<?
 		}
 
-} else {
-	verifyCsrf::_jump();//CSRF
-}
+// } else {
+// 	verifyCsrf::_jump();//CSRF
+// }
 ?>

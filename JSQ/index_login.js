@@ -74,7 +74,7 @@ $(function(){
     if(_width < 769)
     {
      	$(".wrapper").css({
-			"background":"url(UI/bg/Mobile/webp/bg-"+num+".jpg) ",
+			"background":"url(UI/bg/Mobile/bg-"+num+".jpg) ",
 			"-webkit-background-size": "cover",
 			"-moz-background-size": "cover",
 			"-o-background-size": "cover",
@@ -92,7 +92,7 @@ $(function(){
     if(_width>768)
     {
 		$(".wrapper").css({
-			"background":"url(UI/bg/PC/webp/bg-"+num+".jpg)",
+			"background":"url(UI/bg/PC/bg-"+num+".jpg)",
 			"-webkit-background-size": "cover",
 			"-moz-background-size": "cover",
 			"-o-background-size": "cover",
