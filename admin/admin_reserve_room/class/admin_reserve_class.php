@@ -30,21 +30,30 @@ class admin_reserve_class{
 
 	/*
 		根据审核员查询数据
-		$zt 	根据审核结果查询数据（未审核，同意，拒绝）
+		$zt 		根据审核结果查询数据（未审核，同意，拒绝)
+		$zt_order 	ID排列顺序(true升序,false降序)
 	 */
-	function Select_SH($zt){
+	function Select_SH($zt,$zt_order){
+		if($zt_order)
+		{
+			$zt_order="asc";
+		}
+		else
+		{
+			$zt_order="desc";
+		}
 		//数值
 		$con=$this->con;
 		$ruser=$this->ruser;
 		//查数据
 		if($ruser=="sha")		//审核员A
 		{
-			$sql="select a.tname,a.tdepar,b.* from sch_teab as a,reserve_room_re as b where a.tjobnum=b.ruser and b.r_sh_a='".$zt."' order by rend_time asc";
+			$sql="select a.tname,a.tdepar,b.* from sch_teab as a,reserve_room_re as b where a.tjobnum=b.ruser and b.r_sh_a='".$zt."' order by rid ".$zt_order."";
 			$rs=mysql_query($sql,$con);
 		}
 		else if($ruser=="shb")	//审核员B
 		{
-			$sql="select a.tname,a.tdepar,b.* from sch_teab as a,reserve_room_re as b where a.tjobnum=b.ruser and b.r_sh_a='同意' and b.r_sh_b='".$zt."' order by rend_time asc";
+			$sql="select a.tname,a.tdepar,b.* from sch_teab as a,reserve_room_re as b where a.tjobnum=b.ruser and b.r_sh_a='同意' and b.r_sh_b='".$zt."' order by rid ".$zt_order."";
 			$rs=mysql_query($sql,$con);
 		}
 
@@ -54,25 +63,45 @@ class admin_reserve_class{
 
 	/*
 		审批
-		$zt 	审批结果（未审核，同意，拒绝）
+		$tid 	ID
+		$tcz 	审批结果（未审核，同意，拒绝）
 	 */
-	function SH($zt){
-		//数值
-		$con=$this->con;
-		$ruser=$this->ruser;
-		//查数据
-		if($ruser=="sha")		//审核员A
+	function SH($tid,$tcz='未审核'){
+		if($tid!="" || $tid!=null)
 		{
-			$sql="select a.tname,a.tdepar,b.* from sch_teab as a,reserve_room_re as b where a.tjobnum=b.ruser and b.r_sh_a='".$zt."'";
-			$rs=mysql_query($sql,$con);
-		}
-		else if($ruser=="shb")	//审核员B
-		{
-			$sql="select a.tname,a.tdepar,b.* from sch_teab as a,reserve_room_re as b where a.tjobnum=b.ruser and b.r_sh_a='同意' and b.r_sh_b='".$zt."'";
-			$rs=mysql_query($sql,$con);
-		}
+			//数值
+			$con=$this->con;
+			$ruser=$this->ruser;
+			//审批
+			if($ruser=="sha")		//审核员A
+			{
+				$sql="update reserve_room_re set r_sh_a='".$tcz."' where rid=".$tid."";
+				$rs=mysql_query($sql,$con);
+				if($rs>0)
+				{
+					$jg=$tcz;
+				}
+				else
+				{
+					$jg="error";
+				}
+			}
+			else if($ruser=="shb")	//审核员B
+			{
+				$sql="update reserve_room_re set r_sh_b='".$tcz."' where rid=".$tid." and r_sh_a='同意'";
+				$rs=mysql_query($sql,$con);
+				if($rs>0)
+				{
+					$jg=$tcz;
+				}
+				else
+				{
+					$jg="error";
+				}
+			}
 
-		return $rs;
+			return $jg;
+		}
 
 	}
 }
