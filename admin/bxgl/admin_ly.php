@@ -112,6 +112,8 @@
 	include("../../PHP/adminse.php");
 	include("../adminse/admin_se.php");
 	include("address.php");//地点
+	include("../../PHP/SMS.php"); //短信类
+	$saysms=new SMS();
 
 	$sqlall="select count(sid) from sch_repair_re where s_jg='未处理' and s_repair='未分配'";
 	$rsall=mysql_query($sqlall,$con);
@@ -306,6 +308,8 @@
 			$n=count($_GET['c']);
 			$tb=$_GET['tb'];
 			$wxy=$_GET['wxy'];
+			$pphone=array();
+			$pnum=0;
 			for($i=0;$i<=$n-1;$i++)
 			{
 				$sql_inewxy="select * from sch_repair_re where sid='".$nc[$i]."'";
@@ -314,25 +318,47 @@
 				{
 					$sql_update="update sch_repair_rea set s_repair='".$wxy."' where s_time='".$rowewxy[10]."' and s_add='".$rowewxy[1]."' and s_name='".$rowewxy[3]."' and s_phone='".$rowewxy[5]."'";
 					$rs_update=mysql_query($sql_update,$con);
+
+					//提醒用户已经分配完成
+					for($p=0;$p<=count($pphone);$p++)
+					{
+						if($rowewxy[5]==$pphone[$p])
+						{
+							$pd=false;
+							break;
+						}
+						else
+						{
+							$pd=true;
+						}
+					}
+					if(strlen($rowewxy[5])==11 && $pd)
+					{
+
+						$pphone[$pnum]=$rowewxy[5];
+						$pnum++;
+						
+						$jg=$saysms->say_sms($rowewxy[5],"校园宝报修","你的报修已被分配，维修员正在赶来的路上……  ".date('Y-m-d H:i:s',time()));
+					}
 				}
 				$sql_inwxy="update sch_repair_re set s_repair='".$wxy."' where sid='".$nc[$i]."'";
 				$rs_inwxy=mysql_query($sql_inwxy,$con);
+
 			}
 			if($rs_inwxy>0)
-			{
-				/*
-				短信平台：http://www.sms.cn/
-				 
-				$requesturl='http://api.sms.cn/sms/?ac=send&uid=amos&pwd=7191d511822634f5783dc89baeea616d&template=418231&mobile=15111888341&content={"name":"'.$wxy.'"}';
-			    //curl方式获取json数组
-			    $curl = curl_init(); //初始化
-			    curl_setopt($curl, CURLOPT_URL, $requesturl);//设置抓取的url
-			    curl_setopt($curl, CURLOPT_HEADER, 0);//设置头文件的信息作为数据流输出
-			    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);//设置获取的信息以文件流的形式返回，而不是直接输出。
-			    $data = curl_exec($curl);//执行命令
-			    curl_close($curl);//关闭URL请求
+			{	
+				//提醒维修员有新任务
+				$smssql="select s_userid from sch_admin where s_name='".$wxy."'";
+				$smsrs=mysql_query($smssql,$con);
+				if($smsrow=mysql_fetch_row($smsrs))
+				{
+					if(strlen($smsrow[0])==11)
+					{
+						
+						$jg=$saysms->say_sms($smsrow[0],"校园宝报修","你有新的维修任务请及时查看  ".date('Y-m-d H:i:s',time()));
+					}
+				
 
-			    */
 				?>
 		        <script language="javascript">
 		        	layui.use('layer', function(){
@@ -342,6 +368,7 @@
 					location.href="admin_ly.php?<?=$tb?>";
 		        </script>
 		        <?
+		        }
 			}
 			else
 			{
