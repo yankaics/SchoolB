@@ -13,15 +13,15 @@ class SMS{
 
 	var $tphone;	//电话
 	var $ttext;		//内容
-
+	var $con;		//数据库
 	var $client; 	//短信需要
 	var $wsdl;		//接口地址
 	var $appID;		//账号ID
 	var	$appToken;	//ToKen
 	var $strMd5;	//加密验证
 
-	function __construct(){
-
+	function __construct($con){
+		$this->con=$con;
 	}
 
 	/*
@@ -32,6 +32,8 @@ class SMS{
 
 	 */
 	function say_sms($tphone,$ttitle,$ttext){
+		$con=$this->con;
+		date_default_timezone_set("Asia/Shanghai");
 		$wsdl = ""; //短信接口
 		$client = new SoapClient($wsdl);
 		$appID=""; //ID账号
@@ -43,7 +45,8 @@ class SMS{
 
 		//发送短信
 		$ret = $client->SendMs($param);
-
+		$sql="insert into sms_re(sphone,stitle,stext,stime) values('".$tphone."','".$ttitle."','".$ttext."','".date("Y-m-d")."')";
+		$rs=mysql_query($sql,$con);
 		//返回结果
 		return $ret;
 	}

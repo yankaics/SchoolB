@@ -113,7 +113,7 @@
 	include("../adminse/admin_se.php");
 	include("address.php");//地点
 	include("../../PHP/SMS.php"); //短信类
-	$saysms=new SMS();
+	$saysms=new SMS($con);
 
 	$sqlall="select count(sid) from sch_repair_re where s_jg='未处理' and s_repair='未分配'";
 	$rsall=mysql_query($sqlall,$con);

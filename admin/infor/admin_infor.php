@@ -239,11 +239,19 @@ $(document).ready(function(e) {
         <?
         }
         ?>
-
+        
         <?
 		if($_SESSION['cg']==1)
 		{
 		?>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">短信管理</a>
+          <dl class="layui-nav-child">
+            <dd><a class="ann" id="../admin_sms/sms_re.php" href="javascript:;">短信统计</a></dd>
+            <!-- <dd><a class="ann" id="../admin_chat_room/chatroom_re.php" href="javascript:;">聊天室统计</a></dd> -->
+            
+          </dl>
+        </li>
         <li class="layui-nav-item"><a class="ann" id="../logincount/lindex.php" href="javascript:;">登陆记录</a></li>
         <?
 		}

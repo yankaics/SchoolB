@@ -1,4 +1,4 @@
-﻿
+
 <!-- 定时刷新一次 -->
 <script type="text/javascript">
 	setTimeout(function(){  
@@ -19,7 +19,7 @@
 		
 		include("../../PHP/SMS.php");//短信类
 		$tphone=array("电话");
-		$gms=new SMS();
+		$gms=new SMS($con);
 
 		//文件名
 		$myroom="gwbx_num.xml";
