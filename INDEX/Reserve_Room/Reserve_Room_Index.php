@@ -93,13 +93,13 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">入住时间</label>
 						<div class="layui-input-block">
-						  <input type="text" readonly="readonly" name="starttime" id="starttime" required  lay-verify="required" placeholder="入住时间" autocomplete="off" class="layui-input">
+						  <input type="text" readonly="readonly" name="starttime" id="starttime" required  lay-verify="required" placeholder="入住时间" autocomplete="off" class="layui-input starttime">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">退房时间</label>
 						<div class="layui-input-block">
-						  <input type="text" readonly="readonly" name="endtime" id="endtime" required  lay-verify="required" placeholder="退房时间" autocomplete="off" class="layui-input">
+						  <input type="text" readonly="readonly" name="endtime" id="endtime" required  lay-verify="required" placeholder="退房时间" autocomplete="off" class="layui-input endtime">
 						</div>
 					</div>
 					<table  class="layui-table" lay-skin="line" align="center">
@@ -211,37 +211,61 @@ layui.use('form', function(){
   var form = layui.form;
 
 });
-layui.use('laydate', function(){
-	var laydate = layui.laydate;
-
-	var myDate = new Date();
-	//获取当前年
-	var year=myDate.getFullYear();
-	//获取当前月
-	var month=myDate.getMonth()+1;
-	//获取当前日
-	var date=myDate.getDate(); 
-	var nowDate=year+'-'+p(month)+"-"+p(date);
-	//date
-	laydate.render({
-		elem: '#starttime'
-		,showBottom: false
-		,theme: '#393D49'
-		,value: nowDate
-	});
-	//date
-	laydate.render({
-		elem: '#endtime'
-		,showBottom: false
-		,theme: '#393D49'
-		,value: nowDate
-	});
-});
-
 //时间
 function p(s) {
     return s < 10 ? '0' + s: s;
 }
+//当前年月日
+function nowdate(AddDayCount) { 
+	var dd = new Date(); 
+	dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期 
+	var y = dd.getFullYear(); 
+	var m = dd.getMonth()+1;//获取当前月份的日期 
+	var d = dd.getDate(); 
+	return y+"-"+p(m)+"-"+p(d);
+}
+layui.use('laydate', function(){
+	var laydate = layui.laydate;
+
+	var AnowDate=nowdate(1);//入住时间
+	var BnowDate=nowdate(2);//退房时间
+	//date
+	var start =laydate.render({
+		elem: '#starttime'
+		,showBottom: false
+		,theme: '#393D49'
+		,value: AnowDate
+		,calendar: true
+		,min:AnowDate
+		,done: function(value, date, endDate) {
+                end.config.min = {
+                    year: date.year,
+                    month: date.month - 1,
+                    date: date.date,
+                    hours: date.hours,
+					minutes: date.minutes,
+					seconds: date.seconds
+                }
+                if($("#endtime").val()<=value)
+                {
+                	$("#endtime").val(value);
+                }
+                
+
+            }
+	});
+	//date
+	var end=laydate.render({
+		elem: '#endtime'
+		,showBottom: false
+		,theme: '#393D49'
+		,value: BnowDate
+		,calendar: true
+		,min: BnowDate
+	});
+});
+
+
 //选择
 $("#allc").change(function(){
 	var innum=$(".choo").length;
@@ -401,6 +425,8 @@ function ftc(nr){
 	setTimeout(function(){ tc(); }, 2000);
 	
 }
+
+
 </script>
 	
 </body>
