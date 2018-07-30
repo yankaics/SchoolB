@@ -378,8 +378,8 @@ body{
 
 
 .paddingtop{
-	margin-top:80px;
-	margin-bottom:80px;
+	margin-top:0px;
+	margin-bottom:20px;
 }
 
 .bta{
@@ -402,6 +402,7 @@ body{
 }
 .z_index_box{
 	z-index: 2;
+	font-size: 16px;
 }
 .layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after {
     position: absolute;
@@ -533,7 +534,7 @@ body{
 }
 
 .yy{
-	
+	margin-top: 8px;
 }
 .logo_a{
 	color:#FFF;
@@ -545,9 +546,11 @@ body{
 .border_box_icon{
 	background-color:#393D49;
 	padding:10px;
+	font-weight:600;
 	-moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
 	color:#FFF;
-	box-shadow: 1px 1px 16px #CCC;
+	letter-spacing:1.7px;
+	box-shadow: 1px 2px 20px #CCC;
 }

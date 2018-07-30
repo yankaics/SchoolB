@@ -113,79 +113,81 @@
     <div class="layui-col-md12">
 
       <div class="layui-carousel" id="sylb" >
-          <div carousel-item class="lb">
-            <!--3-->
-            <div>
-              <div class="tlb3">
-                <p class="ptlb3">有 奖 问 卷 调 查</p>
-                <a class="atlb3" target="_blank" href="https://wj.qq.com/s/2111491/269d">进入</a>
-              </div>
+        <div carousel-item class="lb">
+          <!--3-->
+          <div>
+            <div class="tlb3">
+              <p class="ptlb3">智 能 物 业</p>
+              <a class="atlb3" target="_blank" href="#top">进入</a>
             </div>
-            <!--1-->
-            <div>
-              <div class="tlb1">
-                <p class="ptlb1">校 园 报 修</p>
-                <a class="atlb1" href="INDEX/gwbx/alerts.php">进入</a>
-              </div>
-            </div>
-            <!--2-->
-            <div class="tlb2">
-              <p class="ptlb2">校 园 聊 天 室</p>
-              <a class="atlb2 chat_room" href="javascript:;">进入</a>
-            </div>
-
           </div>
-        </div>
-        <script>
-        layui.use('carousel', function(){
-          var carousel = layui.carousel;
-          //获取屏幕宽度
-          var _width = $(window).width();
-          //获取屏幕高度
-          $('.wrapper').height($(window).height());
-          var num = Math.floor(5*Math.random());
-          if(_width < 768)
-          {
-            //建造实例
-            carousel.render({
-              elem: '#sylb'
-              ,width: '100%' //设置容器宽度
-              ,height: '160px'
-              ,arrow: 'always' //始终显示箭头
-              ,autoplay:'true'
-              ,interval:'4000'
-              ,anim: 'fade' //切换动画方式
-              ,indicator:'none'
-            });
-          }
-          if(_width>767)
-          {
-            //建造实例
-            carousel.render({
-              elem: '#sylb'
-              ,width: '100%' //设置容器宽度
-              ,arrow: 'hove' //始终显示箭头
-              ,autoplay:'true'
-              ,interval:'4000'
-              ,anim: 'fade', //切换动画方式
-            });
-          }
-          
-        });
-        </script>
-      </div>
+          <!--1-->
+          <div>
+            <div class="tlb1">
+              <p class="ptlb1">校 园 报 修</p>
+              <a class="atlb1" href="INDEX/gwbx/alerts.php">进入</a>
+            </div>
+          </div>
+          <!--2-->
+          <div class="tlb2">
+            <p class="ptlb2">用 户 反 馈</p>
+            <a class="atlb2"  href="https://wj.qq.com/s/2111491/269d">进入</a>
+          </div>
 
+        </div>
+      </div>
+      <a name="top"></a>
+      <script>
+      layui.use('carousel', function(){
+        var carousel = layui.carousel;
+        //获取屏幕宽度
+        var _width = $(window).width();
+        //获取屏幕高度
+        $('.wrapper').height($(window).height());
+        
+        if(_width < 768)
+        {
+          //建造实例
+          carousel.render({
+            elem: '#sylb'
+            ,width: '100%' //设置容器宽度
+            ,height: '140px'
+            ,arrow: 'always' //始终显示箭头
+            ,autoplay:'true'
+            ,interval:'4000'
+            ,anim: 'fade' //切换动画方式
+            ,indicator:'none'
+          });
+        }
+        if(_width>767)
+        {
+          //建造实例
+          carousel.render({
+            elem: '#sylb'
+            ,width: '100%' //设置容器宽度
+            ,arrow: 'hove' //始终显示箭头
+            ,autoplay:'true'
+            ,interval:'4000'
+            ,anim: 'fade', //切换动画方式
+          });
+        }
+        
+      });
+      </script>
     </div>
+
   </div>
+</div>
   
 
 <!--主要功能-->
+
 <div class="layui-container paddingtop layui-anim layui-anim-upbit">
   <div class="layui-col-md12">
       <div class="layui-row">
         <div class="layui-col-md3 layui-col-sm5 border_box_icon">
           <a class="md" id=""></a>
-          <i class="layui-icon">&#xe68e;</i>&nbsp;主要功能
+          <i class="layui-icon">&#xe857;</i>&nbsp;主要功能
         </div>
     </div>
   </div>
@@ -201,7 +203,7 @@
           &nbsp;&nbsp;&nbsp;&nbsp;公物报修
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10 yy">
-          <br/>&nbsp;&nbsp;&nbsp;&nbsp;学院公共物品报修
+          &nbsp;&nbsp;&nbsp;&nbsp;学院公共物品报修
         </div>
       </div>
   </div>
@@ -218,7 +220,7 @@
           &nbsp;&nbsp;&nbsp;&nbsp;宿舍水电
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10 yy">
-          <br/>&nbsp;&nbsp;&nbsp;&nbsp;水电费查看及缴费
+          &nbsp;&nbsp;&nbsp;&nbsp;水电费查看及缴费
         </div>
       </div>
   </div>
@@ -231,7 +233,7 @@
       <div class="layui-row">
         <div class="layui-col-md3 layui-col-sm5 border_box_icon">
           <a class="md" id=""></a>
-          <i class="layui-icon">&#xe613;</i>&nbsp;学生功能
+          <i class="layui-icon">&#xe770;</i>&nbsp;学生功能
         </div>
     </div>
   </div>
@@ -247,7 +249,7 @@
           &nbsp;&nbsp;&nbsp;&nbsp;成绩查询
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10 yy">
-          <br/>&nbsp;&nbsp;&nbsp;&nbsp;学院官网成绩查询
+          &nbsp;&nbsp;&nbsp;&nbsp;学院官网成绩查询
         </div>
       </div>
   </div>
@@ -264,7 +266,7 @@
           &nbsp;&nbsp;&nbsp;&nbsp;聊天室
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10 yy">
-          <br/>&nbsp;&nbsp;&nbsp;&nbsp;多聊天私人聊天室
+          &nbsp;&nbsp;&nbsp;&nbsp;多聊天私人聊天室
         </div>
       </div>
   </div>
@@ -281,7 +283,7 @@
           &nbsp;&nbsp;&nbsp;&nbsp;敬请期待
         </div>
         <div class="layui-col-md10 layui-col-xs10 layui-col-sm10 yy">
-          <br/>&nbsp;&nbsp;&nbsp;&nbsp;更多功能
+          &nbsp;&nbsp;&nbsp;&nbsp;更多功能
         </div>
       </div>
   </div>
@@ -485,6 +487,21 @@ $(document).ready(function(e) {
               }
             });
           });
+          //锚点平滑滚动
+          $('a[href*=#]').click(function() {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var $target = $(this.hash);
+                    $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+                    if ($target.length) {
+                        var targetOffset = $target.offset().top;
+                        $('html,body').animate({
+                            scrollTop: targetOffset
+                        },
+                        1000);
+                        return false;
+                    }
+                }
+            });
           //防止页面后退
           history.pushState(null, null, document.URL);
           window.addEventListener('popstate', function () {
