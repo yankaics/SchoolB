@@ -118,6 +118,8 @@
   include("../../SQL/db/db.php");
   include("../../PHP/adminse.php");
   include("../adminse/admin_se.php");
+  include("../../PHP/SMS.php"); //短信类
+  $saysms=new SMS($con);
 
   //未处理数量
   $sql10="select count(sid) from sch_repair_re where s_jg='未处理' and s_repair!='未分配'";
@@ -456,19 +458,16 @@
       }
       if($rs_inwxy>0)
       {
-        /*
-        短信平台：http://www.sms.cn/
-         
-        $requesturl='http://api.sms.cn/sms/?ac=send&uid=amos&pwd=7191d511822634f5783dc89baeea616d&template=418231&mobile=15111888341&content={"name":"'.$wxy.'"}';
-          //curl方式获取json数组
-          $curl = curl_init(); //初始化
-          curl_setopt($curl, CURLOPT_URL, $requesturl);//设置抓取的url
-          curl_setopt($curl, CURLOPT_HEADER, 0);//设置头文件的信息作为数据流输出
-          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);//设置获取的信息以文件流的形式返回，而不是直接输出。
-          $data = curl_exec($curl);//执行命令
-          curl_close($curl);//关闭URL请求
-
-          */
+        //提醒维修员有新任务
+        $smssql="select s_userid from sch_admin where s_name='".$wxy."'";
+        $smsrs=mysql_query($smssql,$con);
+        if($smsrow=mysql_fetch_row($smsrs))
+        {
+          if(strlen($smsrow[0])==11)
+          {
+            
+            $jg=$saysms->say_sms($smsrow[0],"校园宝报修","你接到新的转接维修任务请及时查看  ".date('Y-m-d H:i:s',time()));
+          }
         ?>
             <script language="javascript">
               layui.use('layer', function(){
@@ -478,6 +477,7 @@
           location.href="bxztcx.php?<?=$tb?>";
             </script>
             <?
+        }
       }
       else
       {
