@@ -48,6 +48,9 @@
 	include("../../SQL/db/db.php");
 	include("../../PHP/adminse.php");
 	include("../adminse/admin_se.php");
+
+	include("../../PHP/SMS.php");//短信类
+	$sms_s=new SMS($con);
 	include("class/admin_reserve_class.php");			//住房预定审批类
 	$re=new admin_reserve_class($con,$_SESSION['id']); 	//实例化
 	
@@ -229,11 +232,33 @@ function ftc(nr){
 <?php
 	if(isset($_POST['tid']) && isset($_POST['tcz']));
 	{
+
 		$rid=$_POST['tid'];
 		$rcz=$_POST['tcz'];
 		$rjg=$re->SH($rid,$rcz);
+
+		$sqls="select rphone from reserve_room_re where rid='".$rid."'";
+		$rss=mysql_query($sqls,$con);
+		if($rows=mysql_fetch_row($rss))
+		{
+			$tphone=$rows[0];
+		}
+		else
+		{
+			$tphone=0;
+		}
 		if($rjg=="同意")
 		{
+				if($_SESSION['id']=="sha" && $tphone!=0)
+				{
+					
+					$sms_s->say_sms($tphone,"校园宝住房预定","你的预定已通过第一次审核，等待最终审核。");
+				}
+				else if($_SESSION['id']=="shb" && $tphone!=0)
+				{
+					
+					$sms_s->say_sms($tphone,"校园宝住房预定","你的预定已通过最终审核，等待安排入住。");
+				}
 			?>
 			<script type="text/javascript">
 				location.href="admin_reserve.php";
@@ -244,6 +269,15 @@ function ftc(nr){
 		}
 		else if($rjg=="拒绝")
 		{
+			if($_SESSION['id']=="sha" && $tphone!=0)
+			{
+				$sms_s->say_sms($tphone,"校园宝住房预定","你的预定已被拒绝，详细请联系相关人员。");
+			}
+			else if($_SESSION['id']=="shb" && $tphone!=0)
+			{
+				
+				$sms_s->say_sms($tphone,"校园宝住房预定","你的预定已被拒绝，详细请联系相关人员。");
+			}
 			?>
 			<script type="text/javascript">
 				location.href="admin_reserve.php";
