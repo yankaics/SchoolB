@@ -65,8 +65,39 @@ class Reserve_Room_class{
 	}
 
 	//匹配黑名单
-	function Room_Blacklist(){
+	/*
+		匹配黑名单
+		@param $tuser 用户ID
+		主要用于判断用户是否被拉黑，强制跳出。
 
+	 */
+	function Room_Blacklist($tuser){
+		$con=$this->con;
+		$sql="select * from reserve_room_blacklist where ruser='".$tuser."' and rmm='拉黑'";
+		$rs=mysql_query($sql,$con);
+		if($row=mysql_fetch_row($rs))
+		{
+			?>
+			<script type="text/javascript">
+				$(document).ready(function(e) {
+					layui.use('layer', function(){
+						var layer = layui.layer;
+						layer.confirm('抱歉！你已被拉黑，不能继续使用该功能<br/>详细请联系相关人员', {
+						  btn: ['确定','取消'],
+						  title: false,
+						  closeBtn: 0,
+						}, function(){
+							location.href="../../tea_i.php";
+						},function(){
+							location.href="../../tea_i.php";
+						});
+					
+					});
+				});
+			</script>
+			<?
+			die();
+		}
 	}
 
 	//查询电话

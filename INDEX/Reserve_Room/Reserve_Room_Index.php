@@ -52,6 +52,7 @@
 		include"../../PHP/adminse.php";
 		include"class/Reserve_Room_class.php"; //住房预定类
 		$res_room=new Reserve_Room_class($con);
+		$res_room->Room_Blacklist($_SESSION['txh']);//查询是否被拉黑
 		
 	?>
     <ul class="layui-nav layui-layout-right">

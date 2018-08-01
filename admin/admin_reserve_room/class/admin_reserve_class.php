@@ -20,6 +20,8 @@ error_reporting(E_ALL^E_NOTICE^E_WARNING);
 header("content-type:text/html;charset=utf-8"); 
 date_default_timezone_set("Asia/Shanghai");
 
+
+
 class admin_reserve_class{
 	var $con;	//数据库
 	var $ruser;	//审核员账号

@@ -210,7 +210,7 @@ $(document).ready(function(e) {
           {
         ?>
         <dd><a class="ann" id="../admin_reserve_room/admin_reserve.php" href="javascript:;">住房预定审批</a></dd>
-        <dd><a class="ann" id="../admin_reserve_room/admin_reserve.php" href="javascript:;">黑名单</a></dd>
+        <dd><a class="ann" id="../admin_reserve_room/reserve_blacklist.php" href="javascript:;">黑名单</a></dd>
         <?
           }
         ?>
