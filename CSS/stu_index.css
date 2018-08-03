@@ -9,7 +9,13 @@ body{
 	color:#FFF;
 	font-size:15px;
 }
-
+#sylb{
+	-moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+	-moz-box-shadow: 4px 4px 8px rgba(204,204,204,0.8); /*Firefox */
+	box-shadow: 4px 4px 8px rgba(204,204,204,0.8);
+}
 .lb{
 	-moz-border-radius: 8px;
     -webkit-border-radius: 8px;
