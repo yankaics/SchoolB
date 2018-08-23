@@ -115,7 +115,7 @@
                             </thead>
                             <tbody>
                             <?
-                            $sqlres="select s_res from sch_repair_res where s_g='".$_POST['tadd']."'";
+                            $sqlres="select s_res from sch_repair_res where s_g='".$_POST['tadd']."' order by s_order asc";
                             $rsres=mysql_query($sqlres,$con);
                             while($rowres=mysql_fetch_row($rsres))
                             {

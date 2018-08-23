@@ -116,9 +116,9 @@ function c()
     </p>
     <div class="container">
 	<div class="row clearfix">
-		<div class="col-md-4 column">
+		<div class="col-md-2 column">
 		</div>
-		<div class="col-md-4 column">
+		<div class="col-md-8 column">
         <h3>
     <?
     if(isset($_GET['r']))
@@ -134,7 +134,7 @@ function c()
     <?	
 		if(isset($_GET['button']))
 		{
-			$sql="select * from sch_repair_res where s_res='".$_GET['ink']."' and s_g='".$_GET['wjaddx']."'";
+			$sql="select * from sch_repair_res where s_res='".$_GET['ink']."' and s_g='".$_GET['wjaddx']."' order by s_order asc";
 			$rs=mysql_query($sql,$con);
 			if($row=mysql_fetch_row($rs))
 			{
@@ -146,7 +146,7 @@ function c()
 			}
 			else
 			{
-				$sql="insert into sch_repair_res(s_res,s_g) values('".$_GET['ink']."','".$_GET['wjaddx']."')";
+				$sql="insert into sch_repair_res(s_res,s_g,s_order) values('".$_GET['ink']."','".$_GET['wjaddx']."','0')";
 				$rs=mysql_query($sql,$con);
 				if($rs>0)
 				{
@@ -182,16 +182,19 @@ function c()
    	  <div class="table-responsive">
    		  <table width="90%" border="1" class="table" cellspacing="0" cellpadding="0">
   <tr>
+  	
     <td align="center">操作</td>
     <td align="center">类型</td>
+    <td align="center">排序</td>
   </tr>
   <?
-  $sqlcx="select * from sch_repair_res where s_g='".$tt."' order by sid desc";
+  $sqlcx="select * from sch_repair_res where s_g='".$tt."' order by s_order asc";
   $rscx=mysql_query($sqlcx,$con);
   while($rowcx=mysql_fetch_row($rscx))
   {
   ?>
   <tr>
+  	
     <td align="right">
     <?
 	if($rowcx[1]!='无')
@@ -208,6 +211,19 @@ function c()
 	?>
     </td>
     <td align="left"><?=$rowcx[1]?></td>
+
+    <td align="left">
+		<form name="order_res" class="form-inline" action="" method="get">
+			<div class="form-group">
+				<input name="order" class="form-control" type="text" value="<?=$rowcx[3]?>" />
+			</div>
+		    <input name="id" type="hidden" value="<?=$rowcx[0]?>" />
+		    <input name="dewj" type="hidden" value="<?=$tt?>" />
+		    <input name="<?=$t?>" type="hidden" value="" />
+		    <button onclick="return confirm('确定保存？');" name="buttonorder" type="submit" class="btn btn-default">保存</button>
+		</form>
+    </td>
+
   </tr>
   <? 
   }
@@ -234,7 +250,33 @@ function c()
           <?
 			}
   }
+  	/*
+  		排序保存
+
+  	 */
+	if(isset($_GET['buttonorder']))
+	{
+	  $sqlde="update sch_repair_res set s_order='".$_GET['order']."' where sid='".$_GET['id']."' and s_g='".$_GET['dewj']."'";
+	  $rsde=mysql_query($sqlde,$con);
+	  if($rsde>0)
+	  {
+		  ?>
+	      <script language="javascript">
 	
+			location.href="inbxre.php?<?=$t?>=";
+	      </script>
+	      <?
+		 }
+		 else
+		 {
+			  ?>
+	      <script language="javascript">
+	      	alert("删除失败~请告知技术人员");
+			location.href="inbxre.php?<?=$t?>=";
+	      </script>
+	      <?
+			}
+	}
   ?>
  
 </table>
@@ -243,7 +285,7 @@ function c()
         </p>
 		</div>
         </div>
-		<div class="col-md-4 column">
+		<div class="col-md-2 column">
 		</div>
 	</div>
 	</div>
