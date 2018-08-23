@@ -84,7 +84,7 @@ $(document).ready(function(e) {
     	if($_SESSION['cg']==1 || $_SESSION['zw']=='维修主管' || $_SESSION['zw']=='宿管主管')
 		{
 		?>
-        <li class="layui-nav-item layui-nav-itemed">
+        <li class="layui-nav-item ">
           <a href="javascript:;">账号管理</a>
           <dl class="layui-nav-child">
             <?
@@ -123,7 +123,7 @@ $(document).ready(function(e) {
 		if($_SESSION['cg']==1 || $_SESSION['zw']=='维修主管')
 		{
 		?>
-        <li class="layui-nav-item layui-nav-itemed">
+        <li class="layui-nav-item ">
           <a href="javascript:;">报修管理</a>
           <dl class="layui-nav-child">
             <dd><a class="ann" id="../bxgl/admin_ly.php" href="javascript:;">报修分配</a></dd>
@@ -141,7 +141,7 @@ $(document).ready(function(e) {
 		if($_SESSION['zw']=='维修员')
 		{
 		?>
-        <li class="layui-nav-item layui-nav-itemed">
+        <li class="layui-nav-item ">
           <a href="javascript:;">维修员</a>
           <dl class="layui-nav-child">
             <dd><a class="ann" id="../bxgl/wxrw.php" href="javascript:;">任务</a></dd>
@@ -157,7 +157,7 @@ $(document).ready(function(e) {
     if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管主管' || $_SESSION['zw']=='宿管员')
     {
     ?>
-        <li class="layui-nav-item layui-nav-itemed">
+        <li class="layui-nav-item ">
           <a href="javascript:;">水电费缴费</a>
           <dl class="layui-nav-child">
             <dd><a class="ann" id="../ele_exp/ele_pay.php" href="javascript:;">电费缴费</a></dd>
@@ -173,7 +173,7 @@ $(document).ready(function(e) {
     if($_SESSION['cg']==1 || $_SESSION['zw']=='宿管主管' || $_SESSION['zw']=='宿管员')
     {
     ?>
-        <li class="layui-nav-item layui-nav-itemed">
+        <li class="layui-nav-item ">
           <a href="javascript:;">水电费管理</a>
           <dl class="layui-nav-child">
 
@@ -202,7 +202,7 @@ $(document).ready(function(e) {
     if($_SESSION['cg']==1 || $_SESSION['zw']=='审核员')
     {
     ?>
-    <li class="layui-nav-item layui-nav-itemed">
+    <li class="layui-nav-item ">
       <a href="javascript:;">住房预定管理</a>
       <dl class="layui-nav-child">
         <?
@@ -214,7 +214,14 @@ $(document).ready(function(e) {
         <?
           }
         ?>
-        <dd><a class="ann" id="../admin_reserve_room/admin_reserve.php" href="javascript:;">住房预定统计</a></dd>
+        <?
+        if($_SESSION['cg']==1)
+        {
+        ?>
+        <dd><a class="ann" id="../admin_reserve_room/reserve_end.php" href="javascript:;">已通过审核预定</a></dd>
+        <?
+        }
+        ?>
         <!-- <dd><a class="ann" id="../admin_chat_room/chatroom_re.php" href="javascript:;">聊天室统计</a></dd> -->
         
       </dl>
@@ -228,7 +235,7 @@ $(document).ready(function(e) {
         if($_SESSION['cg']==1)
         {
         ?>
-        <li class="layui-nav-item layui-nav-itemed">
+        <li class="layui-nav-item ">
           <a href="javascript:;">聊天室管理</a>
           <dl class="layui-nav-child">
             <dd><a class="ann" id="../admin_chat_room/chatroom_admin.php" href="javascript:;">房间管理</a></dd>
@@ -244,7 +251,7 @@ $(document).ready(function(e) {
 		if($_SESSION['cg']==1)
 		{
 		?>
-        <li class="layui-nav-item layui-nav-itemed">
+        <li class="layui-nav-item ">
           <a href="javascript:;">短信管理</a>
           <dl class="layui-nav-child">
             <dd><a class="ann" id="../admin_sms/sms_re.php" href="javascript:;">短信统计</a></dd>
