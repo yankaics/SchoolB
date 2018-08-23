@@ -13,8 +13,8 @@ body{
 	-moz-border-radius: 8px;
     -webkit-border-radius: 8px;
     border-radius: 8px;
-	-moz-box-shadow: 4px 4px 8px rgba(251,252,253,0.8); /*Firefox */
-	box-shadow: 4px 4px 8px rgba(251,252,253,0.8);
+	-moz-box-shadow: 2px 14px 40px rgba(251,252,253,0.8); /*Firefox */
+	box-shadow: 2px 14px 40px rgba(251,252,253,0.8);
 }
 .lb{
 	-moz-border-radius: 8px;
@@ -158,10 +158,10 @@ body{
 		text-align: center;
 		font-size:24px;
 		padding-top:8%;
-		color:#666666;
+		color:#FFFFFF;
 		width: 100%;
 		height: 100%;
-		background: url("../UI/lbbg/trianglify.svg");
+		background: url("../UI/lbbg/trianglify_1.svg");
 		background-size: cover;
 		
 	}
@@ -170,10 +170,10 @@ body{
 
 	}
 	.atlb1{
-		color:#666666;
+		color:#ffffff;
 		position: relative;
 	    padding: .3em 1em;
-	    border: 2px solid #666666;
+	    border: 2px solid #ffffff;
 	    -webkit-border-radius: 3px;
 	    -moz-border-radius: 3px;
 	    border-radius: 3px;
@@ -215,10 +215,10 @@ body{
 		text-align: center;
 		font-size:20px;
 		padding-top:8%;
-		color:#666666;
+		color:#ffffff;
 		width: 100%;
 		height: 100%;
-		background: url("../UI/lbbg/trianglify.svg");
+		background: url("../UI/lbbg/trianglify_1.svg");
 		background-size: cover;
 		
 	}
@@ -227,10 +227,10 @@ body{
 
 	}
 	.atlb1{
-		color:#666666;
+		color:#ffffff;
 		position: relative;
 	    padding: .3em 1em;
-	    border: 2px solid #666666;
+	    border: 2px solid #ffffff;
 	    -webkit-border-radius: 3px;
 	    -moz-border-radius: 3px;
 	    border-radius: 3px;
