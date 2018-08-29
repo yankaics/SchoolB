@@ -102,7 +102,10 @@ body :-ms-input-placeholder {
 
   }
   .container {
-    background-color:rgba(57,61,73,0.8);
+    background: rgba(57,61,73,0.8);  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, rgba(57,61,73,0.8),rgba(57,61,73,1));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, rgba(57,61,73,0.8), rgba(57,61,73,1)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     width: 360px;
     margin: 0 auto;
     padding: 80px 0;
@@ -132,7 +135,9 @@ body :-ms-input-placeholder {
   
   }
   .container {
-    background-color:rgba(57,61,73,0.8);
+    background: rgba(57,61,73,0.8);  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, rgba(57,61,73,0.8),rgba(57,61,73,1));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, rgba(57,61,73,0.8), rgba(57,61,73,1)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     min-width: 100%;
     margin: 0 auto;
     padding: 80px 0;
@@ -163,21 +168,37 @@ form {
   padding-bottom: 60px;
   z-index: 3;
 }
+.user,.upass,.utype{
+  letter-spacing: 1.2px;
+}
+.m_input{
+  border-bottom:2px solid rgba(255, 255, 255, 0.4);
+  width: 230px;
+  height: 40px;
+  margin: 0 auto 10px auto;
+ 
+}
+.i_icon{
+  float: left;
+  font-size: 18px;
+  width: 30px;
+  padding: 10px 15px;
+}
 form input {
+  float: right;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   outline: 0;
   border-top: 0px;
-  border-bottom:1px solid rgba(255, 255, 255, 0.4);
+  border-bottom:0px solid rgba(255, 255, 255, 0.4);
   border-left: 0px;
   border-right: 0px;
   background-color: rgba(0, 0, 0, 0);
-  width: 240px;
-  padding: 10px 15px;
+  width: 200px;
+  padding: 10px 40px;
   margin: 0 auto 10px auto;
   display: block;
-  text-align: center;
   font-size: 16px;
   color: white;
   -webkit-transition-duration: 0.25s;
@@ -195,25 +216,22 @@ form input:focus {
 form select {
   outline: 0;
   border-top: 0px;
-  border-bottom:1px solid rgba(255, 255, 255, 0.4);
+  border-bottom:0px solid rgba(255, 255, 255, 0.4);
   border-left: 0px;
   border-right: 0px;
   background-color: rgba(0, 0, 0, 0);
-  width: 240px;
-  padding: 10px 15px;
+  width: 200px;
+  padding: 10px 37px;
   margin: 0 auto 10px auto;
   display: block;
-  text-align: center;
+  
   font-size: 16px;
   color: white;
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
 }
-form select:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-  color: #393D49;
-}
-form select:focus {
+
+form option{
   background-color: white;
   color: #393D49;
 }
@@ -228,7 +246,7 @@ form button {
   padding: 10px 15px;
   color: #393D49;
   border-radius: 3px;
-  width: 240px;
+  width: 230px;
   cursor: pointer;
   font-size: 16px;
   border: 1px solid rgba(255, 255, 255, 0.4);
