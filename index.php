@@ -21,10 +21,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<link rel="shortcut icon" href="favicon.ico" />
 	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+	<!-- JQuery -->
+	<script src="jsq/jquery-2.1.1.min.js" type="text/javascript"></script>
+	<!-- Layui -->
 	<link rel="stylesheet" href="layui/css/layui.css">
 	<script src="layui/layui.js"></script>
+	<!-- Main -->
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<!-- 页面加载 -->
+	<link rel="stylesheet" href="css/main_loading.css">
 	<script src="https://s19.cnzz.com/z_stat.php?id=1273333349&web_id=1273333349" language="JavaScript"></script>
+
 	<title>校园宝 | Hi~</title>
 	<system.webServer>
 	    <httpProtocol>
@@ -38,6 +45,23 @@
 include"PHP/riqi.php";
 ?>
 <body>
+	<!--页面加载-->
+	<script type="text/javascript">         
+	    // 等待所有加载
+	    $(window).load(function(){
+	        $('body').addClass('loaded');
+	        $('#loader-wrapper .load_title').remove();
+	    }); 
+	</script>    
+
+	<div id="loader-wrapper">
+	    <div id="loader"></div>
+	    <div class="loader-section section-left"></div>
+	    <div class="loader-section section-right"></div>
+	    <div class="load_title"></div>
+	</div>
+
+<!-- Main -->
 <div class="htmleaf-container">
 	<div class="wrapper layui-anim layui-anim-fadein">
 		<div class="container">
@@ -55,8 +79,8 @@ include"PHP/riqi.php";
 				<div class="m_input"><i class="layui-icon i_icon">&#xe66f;</i><input type="text" name="user" class="user" placeholder="学号 工号 账号" value="<? if(isset($_GET['sname'])) echo $_GET['sname'];?>"></div>
 				<div class="m_input"><i class="layui-icon i_icon">&#xe673;</i><input type="password" name="upass" class="upass" placeholder="出生日期  八位"></div>
                 <div class="m_input m_select"><i class="layui-icon i_icon">&#xe672;</i>
-                	<select name="utype" class="utype" size="1">
-	                  <option value="学生">学生</option>
+                	<select name="utype" class="utype dropdown" >
+	                  <option value="学生" class="label">学生</option>
 	                  <option value="教师">教师</option>
 	                  <option value="管理员">管理</option>
 	                </select>
@@ -80,7 +104,7 @@ include"PHP/riqi.php";
     
 </div>
 
-<script src="jsq/jquery-2.1.1.min.js" type="text/javascript"></script>
+
 <!--placeholder兼容及IE提示-->
 <script src="jsq/placeholder_ie.js" type="text/javascript"></script>
 
